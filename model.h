@@ -10,21 +10,70 @@
 
 #include "ross.h"
 
-//Example enumeration of message type... could also use #defines
-typedef enum {
-  HELLO,
-  GOODBYE,
+#define MAX_BOXES 8
+// #define MAX_ROBOTS 50
+#define MAX_CONVEYORS 6000
+
+// #include "ross.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <ctype.h>
+#include <assert.h>
+#include <math.h>
+#include <time.h>
+
+typedef struct
+{
+    bool empty;
+    int SKU;
+} box;
+
+typedef enum
+{
+    TAKE_IN,
+    TAKE_OUT,
+    REVERSE
 } message_type;
 
-//hui
-
-//Message struct
-//   this contains all data sent in an event
-typedef struct {
-  message_type type;
-  double contents;
-  tw_lpid sender;
+typedef struct
+{
+    message_type type;
+    double contents;
+    tw_lpid sender;
 } message;
+
+// struct _robot
+// {
+//     int free;
+// };
+
+// struct _robots
+// {
+//     struct _robot elem[MAX_ROBOTS];
+//     int N;
+// };
+
+// struct _robots Robots;
+
+struct _conveyor
+{
+    int max_length;
+    int current_length;
+    box boxes[MAX_BOXES];
+};
+
+struct _Store
+{
+    struct _conveyor conveyor[MAX_CONVEYORS];
+    int N;
+    bool full;
+};
+
+struct _Store Store;
 
 
 //State struct

@@ -52,7 +52,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   // handle the message
   switch (in_msg->type) {
-    case REVERSE :
+    case TAKE_IN :
     {
       s->rcvd_count_H++;
       break;
@@ -89,7 +89,7 @@ void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   // handle the message
   switch (in_msg->type) {
-    case REVERSE :
+    case TAKE_IN :
     {
       s->rcvd_count_H--;
       break;

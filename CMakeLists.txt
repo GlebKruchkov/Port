@@ -20,6 +20,7 @@ SET(model_srcs
 	model_main.c
 	model_driver.c
 	model_map.c
+	# init.c
 	model.h
 	model_config.h
 )

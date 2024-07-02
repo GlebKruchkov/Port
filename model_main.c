@@ -9,6 +9,7 @@
 //includes
 #include "ross.h"
 #include "model.h"
+#include "init.c"
 
 // Define LP types
 //   these are the functions called by ROSS for each LP
@@ -42,6 +43,7 @@ const tw_optdef model_opts[] = {
 #define model_main main
 
 int model_main (int argc, char* argv[]) {
+	InitROSS();
 	int i;
 	int num_lps_per_pe;
 
