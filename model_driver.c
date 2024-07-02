@@ -63,6 +63,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   switch (s->type) {
     case COMMAND_CENTER:
+      for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+        if (Store.cnt_boxes_type[i] < 20) {
+          Add_Boxes(i);
+        }
+      }
       break;
     case CONVEYOR:
       break;
