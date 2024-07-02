@@ -12,7 +12,7 @@
 
 #define MAX_BOXES 8
 // #define MAX_ROBOTS 50
-#define MAX_CONVEYORS 6000
+#define MAX_CONVEYORS 60000
 
 // #include "ross.h"
 #include <stdbool.h>
@@ -68,6 +68,7 @@ struct _conveyor
 
 struct _Store
 {
+    int cnt_boxes_type[MAX_CONVEYORS / 10];
     struct _conveyor conveyor[MAX_CONVEYORS];
     int N;
     bool full;

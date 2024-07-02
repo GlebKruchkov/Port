@@ -11,14 +11,17 @@
 void ConveyorsInit()
 {
     for (int i = 0; i < MAX_CONVEYORS; ++i) {
-        Store.conveyor[i].max_length = 8;
+        Store.conveyor[i].max_length = MAX_BOXES;
         Store.conveyor[i].current_length = 0;
         for (int j = 0; j < MAX_BOXES; ++j) {
             box b;
-            b.empty = 1;
-            b.SKU = -1;
+            b.empty = 0;
+            b.SKU = 1001 + i % 10;
             Store.conveyor[i].boxes[j] = b;
         }
+    }
+    for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+        Store.cnt_boxes_type[i] = 80;
     }
 }
 

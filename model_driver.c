@@ -56,18 +56,18 @@ void model_init (state *s, tw_lp *lp) {
 
 }
 
-//Forward event handler
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
-
-  // initialize the bit field
   *(int *) bf = (int) 0;
-
-  // update the current state
-  // however, save the old value in the 'reverse' message
   SWAP(&(s->value), &(in_msg->contents));
 
-  // handle the message
+  switch (s->type) {
+    case COMMAND_CENTER:
+      break;
+    case CONVEYOR:
+      break;
+  }
+
   switch (in_msg->type) {
     case TAKE_IN :
     {
