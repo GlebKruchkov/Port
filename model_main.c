@@ -50,29 +50,7 @@ int model_main (int argc, char* argv[]) {
 	tw_opt_add(model_opts);
 	tw_init(&argc, &argv);
 
-	//Do some error checking?
-	//Print out some settings?
-
-	//Custom Mapping
-	/*
-	g_tw_mapping = CUSTOM;
-	g_tw_custom_initial_mapping = &model_custom_mapping;
-	g_tw_custom_lp_global_to_local_map = &model_mapping_to_lp;
-	*/
-
-	//Useful ROSS variables and functions
-	// tw_nnodes() : number of nodes/processors defined
-	// g_tw_mynode : my node/processor id (mpi rank)
-
-	//Useful ROSS variables (set from command line)
-	// g_tw_events_per_pe
-	// g_tw_lookahead
-	// g_tw_nlp
-	// g_tw_nkp
-	// g_tw_synchronization_protocol
-
-	//assume 1 lp per node
-	num_lps_per_pe = 1;
+	num_lps_per_pe = 10;
 
 	//set up LPs within ROSS
 	tw_define_lps(num_lps_per_pe, sizeof(message));

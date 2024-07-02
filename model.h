@@ -75,12 +75,21 @@ struct _Store
 
 struct _Store Store;
 
+typedef enum
+{
+    COMMAND_CENTER,
+    CONVEYOR,
+} lp_type;
 
 //State struct
 //   this defines the state of each LP
 typedef struct {
-  int rcvd_count_H;
-  int rcvd_count_G;
+  int got_msgs_TAKE_IN;
+  int got_msgs_TAKE_OUT;
+  int got_msgs_REVERSE;
+  lp_type type;
+  int rcvd_count_H; //УБРАТЬ НАХУЙ
+  int rcvd_count_G; //УБРАТЬ НАХУЙ
   double value;
 } state;
 

@@ -10,6 +10,7 @@
 
 #include "ross.h"
 #include "model.h"
+#include <stdio.h>
 
 //Helper Functions
 void SWAP (double *a, double *b) {
@@ -37,6 +38,22 @@ void model_init (state *s, tw_lp *lp) {
   msg->contents = tw_rand_unif(lp->rng);
   msg->sender = self;
   tw_event_send(e);
+
+  // int num_lps_per_pe = 8; //n robots + command center
+  // tw_define_lps(num_lps_per_pe, sizeof(message));
+  // for (int i = 0; i < g_tw_nlp; ++i)
+  //   tw_lp_settype(i, &model_lps[0]);
+
+  if (self == 0) {
+    s->type = COMMAND_CENTER;
+    printf("%s\n", "COMMAND_CENTER is initialized");
+  } else {
+    s->type = CONVEYOR;
+    printf("%s ", "CONVEYOR");
+    printf("%d ", self);
+    printf("%s\n", " is initialized");
+  }
+
 }
 
 //Forward event handler
