@@ -11,6 +11,9 @@
 #include "ross.h"
 #include "model.h"
 #include <stdio.h>
+#include "commands.c"
+#include <sys/time.h>
+
 
 //Helper Functions
 void SWAP (double *a, double *b) {
@@ -63,6 +66,13 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   switch (s->type) {
     case COMMAND_CENTER:
+      // printf("%s\n", "COMMAND_CENTER");
+      struct timeval currentTime;
+      gettimeofday(&currentTime, NULL);
+
+      printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
+
+
       for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
         if (Store.cnt_boxes_type[i] < 20) {
           Add_Boxes(i);
@@ -70,6 +80,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
       break;
     case CONVEYOR:
+      struct timeval currentTime;
+      gettimeofday(&currentTime, NULL);
+      printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
+      // printf("%s\n", "CONVEYOR");
       break;
   }
 
