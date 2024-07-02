@@ -16,6 +16,8 @@ typedef enum {
   GOODBYE,
 } message_type;
 
+//hui
+
 //Message struct
 //   this contains all data sent in an event
 typedef struct {
