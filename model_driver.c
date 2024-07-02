@@ -33,7 +33,7 @@ void model_init (state *s, tw_lp *lp) {
   // Init message to myself
   tw_event *e = tw_event_new(self, 1, lp);
   message *msg = tw_event_data(e);
-  msg->type = HELLO;
+  msg->type = REVERSE;
   msg->contents = tw_rand_unif(lp->rng);
   msg->sender = self;
   tw_event_send(e);
@@ -52,12 +52,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   // handle the message
   switch (in_msg->type) {
-    case HELLO :
+    case REVERSE :
     {
       s->rcvd_count_H++;
       break;
     }
-    case GOODBYE :
+    case REVERSE :
     {
       s->rcvd_count_G++;
       break;
@@ -71,9 +71,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   //# randomly choose message type
   double random = tw_rand_unif(lp->rng);
   if (random < 0.5) {
-    msg->type = HELLO;
+    msg->type = REVERSE;
   } else {
-    msg->type = GOODBYE;
+    msg->type = REVERSE;
   }
   msg->contents = tw_rand_unif(lp->rng);
   msg->sender = self;
@@ -89,12 +89,12 @@ void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   // handle the message
   switch (in_msg->type) {
-    case HELLO :
+    case REVERSE :
     {
       s->rcvd_count_H--;
       break;
     }
-    case GOODBYE :
+    case REVERSE :
     {
       s->rcvd_count_G--;
       break;
@@ -111,5 +111,5 @@ void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 //report any final statistics for this LP
 void model_final (state *s, tw_lp *lp){
   int self = lp->gid;
-  printf("%d handled %d Hello and %d Goodbye messages\n", self, s->rcvd_count_H, s->rcvd_count_G);
+  printf("%d handled %d REVERSE and %d REVERSE messages\n", self, s->rcvd_count_H, s->rcvd_count_G);
 }
