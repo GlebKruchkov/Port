@@ -12,7 +12,7 @@
 #include "model.h"
 #include <stdio.h>
 #include "commands.c"
-#include <sys/time.h>
+#include <time.h>
 
 
 //Helper Functions
@@ -63,15 +63,31 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));
+  struct timeval currentTime;
+
+  int c = -1000000;
 
   switch (s->type) {
     case COMMAND_CENTER:
-      // printf("%s\n", "COMMAND_CENTER");
-      struct timeval currentTime;
-      gettimeofday(&currentTime, NULL);
+      printf("%ld ", lp->gid);
+      for (int cnt = 0; cnt < 9; ++cnt) {
+        tw_event *e = tw_event_new(cnt, 1, lp);
+        message *msg = tw_event_data(e);
+        //# randomly choose message type
+        double random = tw_rand_unif(lp->rng);
+        msg->contents = tw_rand_unif(lp->rng);
+        msg->sender = self;
+        tw_event_send(e);
+      }
+      for (int j = 0; j < 1000000000; ++j) {
+        ++c;
+      }
+      printf("%d\n", lp->gid);
+      // printf("%d ", lp->gid);
+      // // printf("%s\n", "COMMAND_CENTER");
+      // gettimeofday(&currentTime, NULL);
 
-      printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
-
+      // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
 
       for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
         if (Store.cnt_boxes_type[i] < 20) {
@@ -80,72 +96,60 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
       break;
     case CONVEYOR:
-      struct timeval currentTime;
-      gettimeofday(&currentTime, NULL);
-      printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
+      printf("%d ", lp->gid);
+      for (int cnt = 0; cnt < 9; ++cnt) {
+        tw_event *e = tw_event_new(cnt, 1, lp);
+        message *msg = tw_event_data(e);
+        //# randomly choose message type
+        double random = tw_rand_unif(lp->rng);
+        msg->contents = tw_rand_unif(lp->rng);
+        msg->sender = self;
+        tw_event_send(e);
+      }
+      for (int j = 0; j < 1000000000; ++j) {
+        ++c;
+      }
+      printf("%d\n", lp->gid);
+      // for (int j = 0; j < 100000000; ++j) {
+      //   ++c;
+      // }
+      
+      // printf("%s\n", "COMMAND_CENTER");
+      // gettimeofday(&currentTime, NULL);
+
+      // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
+
+      for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+        if (Store.cnt_boxes_type[i] < 20) {
+          Add_Boxes(i);
+        }
+      }
+      // struct timespec ts;
+      // clock_gettime(CLOCK_REALTIME, &ts);
+    
+      // // Преобразуем время в макросекунды
+      // long long microseconds = (long long)ts.tv_sec * 1000000 + (long long)ts.tv_nsec / 1000;
+      
+      // // Выводим время на консоль
+      // printf("Текущее время в макросекундах: %lld\n", microseconds);
+
+
+      // printf("%d\n", lp->gid);
+      // struct timeval currentTime;
+      // gettimeofday(&currentTime, NULL);
+      // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
       // printf("%s\n", "CONVEYOR");
       break;
   }
 
-  switch (in_msg->type) {
-    case TAKE_IN :
-    {
-      s->rcvd_count_H++;
-      break;
-    }
-    case REVERSE :
-    {
-      s->rcvd_count_G++;
-      break;
-    }
-    default :
-      printf("Unhandeled forward message type %d\n", in_msg->type);
-  }
-
-  tw_event *e = tw_event_new(self, 1, lp);
-  message *msg = tw_event_data(e);
-  //# randomly choose message type
-  double random = tw_rand_unif(lp->rng);
-  if (random < 0.5) {
-    msg->type = REVERSE;
-  } else {
-    msg->type = REVERSE;
-  }
-  msg->contents = tw_rand_unif(lp->rng);
-  msg->sender = self;
-  tw_event_send(e);
 }
 
 //Reverse Event Handler
 void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
-  int self = lp->gid;
-
-  // undo the state update using the value stored in the 'reverse' message
-  SWAP(&(s->value), &(in_msg->contents));
-
-  // handle the message
-  switch (in_msg->type) {
-    case TAKE_IN :
-    {
-      s->rcvd_count_H--;
-      break;
-    }
-    case REVERSE :
-    {
-      s->rcvd_count_G--;
-      break;
-    }
-    default :
-      printf("Unhandeled reverse message type %d\n", in_msg->type);
-  }
-
-  // don't forget to undo all rng calls
-  tw_rand_reverse_unif(lp->rng);
-  tw_rand_reverse_unif(lp->rng);
+  return;
 }
 
 //report any final statistics for this LP
 void model_final (state *s, tw_lp *lp){
-  int self = lp->gid;
-  printf("%d handled %d REVERSE and %d REVERSE messages\n", self, s->rcvd_count_H, s->rcvd_count_G);
+  return;
 }
