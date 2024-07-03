@@ -70,8 +70,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   switch (s->type) {
     case COMMAND_CENTER:
       printf("%ld ", lp->gid);
-      for (int cnt = 0; cnt < 10; ++cnt) {
-        tw_event *e = tw_event_new(16, 1, lp);
+      for (int cnt = 0; cnt < 1; ++cnt) {
+        tw_event *e = tw_event_new(2, 1, lp);
         message *msg = tw_event_data(e);
         //# randomly choose message type
         double random = tw_rand_unif(lp->rng);
@@ -97,8 +97,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       break;
     case CONVEYOR:
       printf("%d ", lp->gid);
-      for (int cnt = 0; cnt < 10; ++cnt) {
-        tw_event *e = tw_event_new(16, 1, lp);
+      for (int cnt = 0; cnt < 1; ++cnt) {
+        tw_event *e = tw_event_new(2, 1, lp);
         message *msg = tw_event_data(e);
         //# randomly choose message type
         double random = tw_rand_unif(lp->rng);

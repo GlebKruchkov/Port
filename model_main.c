@@ -65,15 +65,14 @@ int model_main (int argc, char* argv[]) {
 	int i, num_lps_per_pe;
     tw_opt_add(model_opts);
     tw_init(&argc, &argv);
-    num_lps_per_pe = 10; //n robots + command center
+    num_lps_per_pe = 1;
     tw_define_lps(num_lps_per_pe, sizeof(message));
-	g_tw_nlp = 10;  
   	// displayModelSettings();
     g_tw_lp_typemap = &model_map;
     for (int i = 0; i < g_tw_nlp; ++i)
     	tw_lp_settype(i, &model_lps[0]);
 	
-	displayModelSettings();
+	// displayModelSettings();
 
 	// Do some file I/O here? on a per-node (not per-LP) basis
 
