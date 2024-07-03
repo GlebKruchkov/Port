@@ -1,3 +1,7 @@
+#include "model.h"
+
+
+extern int glb_time;
 void SendMessageContents(tw_lpid receiver, tw_lp* lp, double ts, lp_type type, double contents)
 {
     tw_event* Event   = tw_event_new(receiver, ts, lp);
@@ -11,3 +15,4 @@ void SendMessageContents(tw_lpid receiver, tw_lp* lp, double ts, lp_type type, d
 void SendMessage(tw_lpid receiver, tw_lp* lp, double ts, lp_type type)
 {
     SendMessageContents(receiver, lp, ts, type, 0);
+}

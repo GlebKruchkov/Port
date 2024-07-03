@@ -28,10 +28,6 @@
 #include <string.h>
 #include <dirent.h>
 
-DIR *dir; //ИСПРАВИТЬ
-dir = opendir("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM");
-
-
 typedef struct
 {
     bool empty;

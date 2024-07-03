@@ -15,7 +15,7 @@ void Add_Boxes(int type) {
  
 void Remove_Boxes(int type, int cnt) { 
  for (int j = 0; j < cnt; ++j) { 
-  if (not Store.conveyor[type * 10].boxes[j].empty) { 
+  if (!Store.conveyor[type * 10].boxes[j].empty) { 
    Store.conveyor[type * 10].boxes[j].empty = 1; 
    Store.cnt_boxes_type[type]--; 
   } 
@@ -24,7 +24,9 @@ void Remove_Boxes(int type, int cnt) {
  
  
 void Check() { 
- struct dirent *entry; 
+	DIR *dir; //ИСПРАВИТЬ
+	dir = opendir("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM");
+ 	struct dirent *entry; 
     if ((entry = readdir(dir)) != NULL) { 
         if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) { 
             char full_path[255]; 
@@ -36,13 +38,13 @@ void Check() {
  
             while (fgets(line, sizeof(line), file)) { 
                 fields[0] = strtok(line, ","); 
-                for (i = 1; i < 10; i++) { 
+                for (int i = 1; i < 10; i++) { 
                     fields[i] = strtok(NULL, ","); 
                 } 
                 int SKU =  atoi(fields[0]); 
                 int quantity = atoi(fields[1]); 
                 int length = atoi(fields[2]); 
-    Remove_Boxes(SKU, quantity); 
+    			Remove_Boxes(SKU, quantity); 
             } 
             fclose(file); 
         } 

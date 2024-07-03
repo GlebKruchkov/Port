@@ -13,7 +13,9 @@
 #include <stdio.h>
 #include "commands.c"
 #include <time.h>
+#include "extras.c"
 
+int glb_time = 0;
 
 //Helper Functions
 void SWAP (double *a, double *b) {
@@ -99,11 +101,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       switch (in_msg->type)
 
       {
-         case TAKE_IN:
+        case TAKE_IN:
             for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
                 if (Store.cnt_boxes_type[i] < 20) {
                     Add_Boxes(i);
                 }
+            }
 
           break;
 
@@ -116,7 +119,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
 
       if (in_msg->sender == 0) //the message came from the command center
-                SendMessage(0, lp, glb_time, RECEIVED);
+                SendMessage(0, lp, glb_time, TAKE_OUT); // TODO 
 
 
       break;
