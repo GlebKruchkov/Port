@@ -31,18 +31,7 @@ void SWAP (double *a, double *b) {
 void model_init (state *s, tw_lp *lp) {
   int self = lp->gid;
 
-  // init state data
-  s->rcvd_count_H = 0;
-  s->rcvd_count_G = 0;
-  s->value = -1;
-
-  // Init message to myself
-  tw_event *e = tw_event_new(self, 1, lp);
-  message *msg = tw_event_data(e);
-  msg->type = REVERSE;
-  msg->contents = tw_rand_unif(lp->rng);
-  msg->sender = self;
-  tw_event_send(e);
+  SendMessage(0, lp, 1, COMMAND_CENTER);
 
   // int num_lps_per_pe = 8; //n robots + command center
   // tw_define_lps(num_lps_per_pe, sizeof(message));
@@ -68,66 +57,84 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   struct timeval currentTime;
 
   int c = -1000000;
+  bool flag = false;
 
   switch (s->type) {
     case COMMAND_CENTER:
-      printf("%ld ", lp->gid);
-      for (int cnt = 0; cnt < 1; ++cnt) {
-        tw_event *e = tw_event_new(2, 1, lp);
-        message *msg = tw_event_data(e);
-        //# randomly choose message type
-        double random = tw_rand_unif(lp->rng);
-        msg->contents = tw_rand_unif(lp->rng);
-        msg->sender = self;
-        tw_event_send(e);
-      }
+      // printf("%ld ", lp->gid);
+      // for (int cnt = 0; cnt < 1; ++cnt) {
+      //   tw_event *e = tw_event_new(2, 1, lp);
+      //   message *msg = tw_event_data(e);
+      //   //# randomly choose message type
+      //   double random = tw_rand_unif(lp->rng);
+      //   msg->contents = tw_rand_unif(lp->rng);
+      //   msg->sender = self;
+      //   tw_event_send(e);
+      // }
 
-      Check();
-      
-      
+      // Check();
+      // for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+      //     if (Store.cnt_boxes_type[i] < 99) {
+      //       // for (int j = 1; j < 10; ++j) {
+      //         // printf("\n\n%s\n\n", "TVAAAAAAAARIIIIII");
+      //       flag = true;
+      //       SendMessage(2, lp, glb_time, TAKE_IN);
+      //       // }
+      //     }
+      // }
+      for (int k = 0; k < 100000000; ++k) {
+
+      }
+      for (int j = 1; j < 10; ++j) {
+        printf("\n%s\n", "comand center");
+        SendMessage(j, lp, 1, CONVEYOR);
+      }
       break;
     case CONVEYOR:
   
-      for (int cnt = 0; cnt < 1; ++cnt) {
-        tw_event *e = tw_event_new(2, 1, lp);
-        message *msg = tw_event_data(e);
-        //# randomly choose message type
-        double random = tw_rand_unif(lp->rng);
-        msg->contents = tw_rand_unif(lp->rng);
-        msg->sender = self;
-        tw_event_send(e);
-      }
+      // for (int cnt = 0; cnt < 1; ++cnt) {
+      //   tw_event *e = tw_event_new(2, 1, lp);
+      //   message *msg = tw_event_data(e);
+      //   //# randomly choose message type
+      //   double random = tw_rand_unif(lp->rng);
+      //   msg->contents = tw_rand_unif(lp->rng);
+      //   msg->sender = self;
+      //   tw_event_send(e);
+      // }
+
+
 
       switch (in_msg->type)
-
       {
         case TAKE_IN:
-            for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-                if (Store.cnt_boxes_type[i] < 20) {
-                    Add_Boxes(i);
-                }
+          printf("%s\n", "take in");
+          for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+            if (Store.cnt_boxes_type[i] < 20) {
+              Add_Boxes(i);
             }
-
+          }
           break;
 
-         case TAKE_OUT:
+        case TAKE_OUT:
+          printf("\n%s\n", "take out");
           break;
 
-          default:
-              printf("%d: Message huita %d\n", self, in_msg->type);
-              assert(false);
+        default:
+          printf("%d: SAM huita %d\n", self, in_msg->type);
+          printf("\n\n%ld\n\n", lp->gid);
+          assert(false);
       }
 
-      if (in_msg->sender == 0) //the message came from the command center
-                SendMessage(0, lp, glb_time, TAKE_OUT); // TODO 
+      for (int k = 0; k < 100000000; ++k) {
+
+      }
+
+      SendMessage(0, lp, 1, COMMAND_CENTER); // TODO 
 
 
       break;
 
-
-
-
-      printf("%d\n", lp->gid);
+      // printf("%d\n", lp->gid);
       // for (int j = 0; j < 100000000; ++j) {
       //   ++c;
       // }
@@ -137,11 +144,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
       // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
 
-      for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-        if (Store.cnt_boxes_type[i] < 20) {
-          Add_Boxes(i);
-        }
-      }
+      // for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+      //   if (Store.cnt_boxes_type[i] < 20) {
+      //     Add_Boxes(i);
+      //   }
+      // }
       // struct timespec ts;
       // clock_gettime(CLOCK_REALTIME, &ts);
     
@@ -157,7 +164,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       // gettimeofday(&currentTime, NULL);
       // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
       // printf("%s\n", "CONVEYOR");
-      break;
+      // break;
   }
 
 }
