@@ -38,6 +38,24 @@ const tw_optdef model_opts[] = {
 	TWOPT_END(),
 };
 
+void displayModelSettings()
+{
+  if (g_tw_mynode == 0)
+  {
+    for (int i = 0; i < 30; i++)
+      printf("*");
+    
+    printf("\n");
+    printf("Model Configuration:\n");
+    printf("\t nnodes: %i\n", tw_nnodes());
+    printf("\t g_tw_nlp: %llu\n", g_tw_nlp);
+
+    for (int i = 0; i < 30; i++)
+      printf("*");
+    
+    printf("\n");
+  }
+}
 
 //for doxygen
 #define model_main main
@@ -49,9 +67,13 @@ int model_main (int argc, char* argv[]) {
     tw_init(&argc, &argv);
     num_lps_per_pe = 10; //n robots + command center
     tw_define_lps(num_lps_per_pe, sizeof(message));
+	g_tw_nlp = 10;  
+  	// displayModelSettings();
     g_tw_lp_typemap = &model_map;
     for (int i = 0; i < g_tw_nlp; ++i)
     	tw_lp_settype(i, &model_lps[0]);
+	
+	displayModelSettings();
 
 	// Do some file I/O here? on a per-node (not per-LP) basis
 
