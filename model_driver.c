@@ -79,24 +79,13 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         msg->sender = self;
         tw_event_send(e);
       }
-      for (int j = 0; j < 1000000000; ++j) {
-        ++c;
-      }
-      printf("%d\n", lp->gid);
-      // printf("%d ", lp->gid);
-      // // printf("%s\n", "COMMAND_CENTER");
-      // gettimeofday(&currentTime, NULL);
 
-      // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
-
-      for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-        if (Store.cnt_boxes_type[i] < 20) {
-          Add_Boxes(i);
-        }
-      }
+      Check();
+      
+      
       break;
     case CONVEYOR:
-      printf("%d ", lp->gid);
+  
       for (int cnt = 0; cnt < 1; ++cnt) {
         tw_event *e = tw_event_new(2, 1, lp);
         message *msg = tw_event_data(e);
@@ -106,9 +95,35 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         msg->sender = self;
         tw_event_send(e);
       }
-      for (int j = 0; j < 1000000000; ++j) {
-        ++c;
+
+      switch (in_msg->type)
+
+      {
+         case TAKE_IN:
+            for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+                if (Store.cnt_boxes_type[i] < 20) {
+                    Add_Boxes(i);
+                }
+
+          break;
+
+         case TAKE_OUT:
+          break;
+
+          default:
+              printf("%d: Message huita %d\n", self, in_msg->type);
+              assert(false);
       }
+
+      if (in_msg->sender == 0) //the message came from the command center
+                SendMessage(0, lp, glb_time, RECEIVED);
+
+
+      break;
+
+
+
+
       printf("%d\n", lp->gid);
       // for (int j = 0; j < 100000000; ++j) {
       //   ++c;
