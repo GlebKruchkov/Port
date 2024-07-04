@@ -61,6 +61,7 @@ void displayModelSettings()
 #define model_main main
 
 int model_main (int argc, char* argv[]) {
+  file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/order_2.csv", "r");
 	InitROSS();
 	int i, num_lps_per_pe;
     tw_opt_add(model_opts);

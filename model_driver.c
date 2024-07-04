@@ -49,9 +49,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   SWAP(&(s->value), &(in_msg->contents));
   bool flag = false;
   if (self == 0) {
-    printf("\n%s\n", "brain");
+    // printf("\n%s\n", "brain");
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-      if (Store.cnt_boxes_type[i] < 99) {
+      if (Store.cnt_boxes_type[i] < 30) {
         flag = true;
       }
     }
@@ -62,8 +62,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       msg1->contents = tw_rand_unif(lp->rng);
       msg1->sender = self;
       tw_event_send(e1);
-      for (int k = 2; k < 10; ++k) {
-        tw_event *e = tw_event_new(k, 1, lp);
+      for (int process = 2; process < 10; ++process) {
+        Check(process);
+        tw_event *e = tw_event_new(process, 1, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
@@ -71,8 +72,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e);
       }
     } else {
-      for (int k = 1; k < 10; ++k) {
-        tw_event *e = tw_event_new(k, 1, lp);
+      for (int process = 1; process < 10; ++process) {
+        Check(process);
+        tw_event *e = tw_event_new(process, 1, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
@@ -84,13 +86,17 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     switch (in_msg->type)
     {
       case TAKE_IN:
-        printf("%s\n", "take in");
         for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-          if (Store.cnt_boxes_type[i] < 20) {
+          //printf("%d\n", Store.cnt_boxes_type[0]);
+          if (Store.cnt_boxes_type[i] < 30) {
+            if (i < 5900) {
+              printf("%d %d\n", i, Store.cnt_boxes_type[i]);
+            }
+            
             Add_Boxes(i);
           }
         }
-        tw_event *e1 = tw_event_new(self, 1, lp);
+        tw_event *e1 = tw_event_new(0, 1, lp);
         message *msg1 = tw_event_data(e1);
         msg1->type = TAKE_OUT;
         msg1->contents = tw_rand_unif(lp->rng);
@@ -98,8 +104,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e1);
         break;
       case TAKE_OUT:
-        printf("\n%s\n", "take out");
-        Check();
+        Remove_Boxes(Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
         tw_event *e = tw_event_new(0, 1, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_IN;

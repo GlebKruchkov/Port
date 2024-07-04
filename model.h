@@ -28,6 +28,8 @@
 #include <string.h>
 #include <dirent.h>
 
+FILE *file;
+
 typedef struct
 {
     bool empty;
@@ -70,6 +72,7 @@ struct _conveyor
 
 struct _Store
 {
+    int box_data[9][2];
     int cnt_boxes_type[MAX_CONVEYORS / 10];
     struct _conveyor conveyor[MAX_CONVEYORS];
     int N;

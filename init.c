@@ -23,6 +23,10 @@ void ConveyorsInit()
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
         Store.cnt_boxes_type[i] = 80;
     }
+    for (int i = 0; i < 9; ++i) {
+        Store.box_data[i][0] = -1;
+        Store.box_data[i][1] = 0;
+    }
 }
 
 void InitROSS()
