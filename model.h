@@ -94,8 +94,6 @@ typedef struct {
   int got_msgs_TAKE_OUT;
   int got_msgs_REVERSE;
 //   lp_type type;
-  int rcvd_count_H; //УБРАТЬ НАХУЙ
-  int rcvd_count_G; //УБРАТЬ НАХУЙ
   double value;
 } state;
 

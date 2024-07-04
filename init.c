@@ -16,11 +16,12 @@ void ConveyorsInit()
         for (int j = 0; j < MAX_BOXES; ++j) {
             box b;
             b.empty = 0;
-            b.SKU = 1001 + i % 10;
+            b.SKU = 1001 + i / 10;
             Store.conveyor[i].boxes[j] = b;
         }
     }
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+        // printf("%d\n", i);
         Store.cnt_boxes_type[i] = 80;
     }
     for (int i = 0; i < 9; ++i) {
@@ -29,9 +30,9 @@ void ConveyorsInit()
     }
 }
 
-void InitROSS()
-{
-	srand(time(NULL));
+void InitROSS() {
+// {
+// 	srand(time(NULL));
     // RobotsInit();
     ConveyorsInit();
 

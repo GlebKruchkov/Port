@@ -3,9 +3,9 @@
 void Add_Boxes(int type) { 
  for (int i = type * 10; i <= type * 10 + 9; ++i) { 
   for (int j = 0; j < 8; ++j) { 
-//    printf("%s\n", "SUUUUUKA"); 
+    //printf("%s\n", "SUUUUUKA"); 
    if (Store.conveyor[i].boxes[j].empty) { 
-    // printf("%s\n", "SUUUUUKA");
+    //printf("%s\n", "SUUUUUKA");
     Store.conveyor[i].boxes[j].SKU = type; 
     Store.cnt_boxes_type[type]++; 
     Store.conveyor[i].boxes[j].empty = 0; 
@@ -66,23 +66,20 @@ void Remove_Boxes(int type, int cnt) {
  
  
 void Check(int process) { 
-    // char line[1024];
-    // char *fields[10];
+    char line[1024];
+    char *fields[10];
 
-    // if (fgets(line, sizeof(line), file)) {
-    //     fields[0] = strtok(line, ",");
-    //     for (int i = 1; i < 10; i++) {
-    //         fields[i] = strtok(NULL, ",");
-    //     }
-    //     int SKU =  atoi(fields[0]);
-    //     int quantity = atoi(fields[1]);
-    //     int length = atoi(fields[2]);
-    //     printf("%d %d %d\n", SKU, quantity, process);
-    //     Store.box_data[process - 1][0] = SKU;
-    //     Store.box_data[process - 1][1] = quantity;
-    // }
-    Remove_Boxes(1001, 1);
-    if (Store.cnt_boxes_type[1001] > 0) {
-        //printf("%d\n", Store.cnt_boxes_type[1001]);
-    } 
+    if (fgets(line, sizeof(line), file)) {
+        fields[0] = strtok(line, ",");
+        for (int i = 1; i < 10; i++) {
+            fields[i] = strtok(NULL, ",");
+        }
+        int SKU =  atoi(fields[0]);
+        int quantity = atoi(fields[1]);
+        int length = atoi(fields[2]);
+        // printf("%d %d %d\n", SKU, quantity, process);
+        Store.box_data[process - 1][0] = SKU;
+        Store.box_data[process - 1][1] = quantity;
+    }
+
 }

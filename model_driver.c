@@ -48,10 +48,15 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));
   bool flag = false;
+  struct timeval currentTime;
   if (self == 0) {
+    // printf("%d\n", Store.cnt_boxes_type[5898]);
     // printf("\n%s\n", "brain");
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-      if (Store.cnt_boxes_type[i] < 30) {
+      if (Store.cnt_boxes_type[i] < 77) {
+        //printf("%d\n", i);
+        //printf("%d\n", Store.cnt_boxes_type[i]);
+        // printf("%d %d %d \n", self, i, Store.cnt_boxes_type[i]);
         flag = true;
       }
     }
@@ -86,14 +91,14 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     switch (in_msg->type)
     {
       case TAKE_IN:
+        // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-          //printf("%d\n", Store.cnt_boxes_type[0]);
-          if (Store.cnt_boxes_type[i] < 30) {
-            if (i < 5900) {
-              printf("%d %d\n", i, Store.cnt_boxes_type[i]);
-            }
-            
+          if (Store.cnt_boxes_type[i] < 77) {
+            gettimeofday(&currentTime, NULL);
+            //printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
+            //printf("%d %d %d", self, i, Store.cnt_boxes_type[i]);
             Add_Boxes(i);
+            //printf(" and %d %d %d \n", self, i, Store.cnt_boxes_type[i]);
           }
         }
         tw_event *e1 = tw_event_new(0, 1, lp);
@@ -104,7 +109,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e1);
         break;
       case TAKE_OUT:
+        // printf("%d\n", Store.cnt_boxes_type[1001]);
+        // printf("%s", "");
+        // printf("%d\n", Store.cnt_boxes_type[1001]);
         Remove_Boxes(Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
+        // printf("%d\n", Store.box_data[self - 1][0]);
         tw_event *e = tw_event_new(0, 1, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_IN;
