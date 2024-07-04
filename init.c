@@ -20,6 +20,9 @@ void ConveyorsInit()
             Store.conveyor[i].boxes[j] = b;
         }
     }
+    fprintf(f, "The warehouse is palletized\n");
+    fprintf(f, "------------------------------------------\n");
+    
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
         // printf("%d\n", i);
         Store.cnt_boxes_type[i] = 80;

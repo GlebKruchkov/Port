@@ -94,12 +94,14 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     switch (in_msg->type)
     {
       case TAKE_IN:
+
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
           if (Store.cnt_boxes_type[i] < 78) {
             gettimeofday(&currentTime, NULL);
             // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
-            printf("%d %d %d\n", self, i, Store.cnt_boxes_type[i]);
+            //printf("%d %d %d\n", self, i, Store.cnt_boxes_type[i]);
+            fprintf(f, "take in box type %d\n", i);
             Add_Boxes(i);
             //printf(" and %d %d %d \n", self, i, Store.cnt_boxes_type[i]);
           }
@@ -117,6 +119,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         // printf("%s", "");
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         Remove_Boxes(Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
+        fprintf(f, "take out box type %d cnt: %d\n", Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
         glb_time += 1;
         // printf("%d %d\n", Store.box_data[self - 1][0], Store.cnt_boxes_type[Store.box_data[self - 1][0]]);
         tw_event *e = tw_event_new(0, glb_time, lp);
@@ -141,5 +144,7 @@ void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
 //report any final statistics for this LP
 void model_final (state *s, tw_lp *lp){
+  fprintf(f, "The conveyer is depalletized\n");
+  fprintf(f, "------------------------------------------\n");
   return;
 }
