@@ -19,8 +19,8 @@ void Remove_Boxes(int type, int cnt) {
    Store.conveyor[type * 10].boxes[j].empty = 1; 
    Store.cnt_boxes_type[type]--; 
   } 
- } 
-} 
+ }
+}
  
  
 void Check() { 
@@ -28,9 +28,10 @@ void Check() {
 	dir = opendir("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM");
  	struct dirent *entry; 
     if ((entry = readdir(dir)) != NULL) { 
-        if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) { 
-            char full_path[255]; 
-            sprintf(full_path, "%s/%s", "/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM", entry->d_name); 
+        if (true) {
+			// printf("\n%s\n", "SKU"); 
+            char full_path[255] = "/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/order_2.csv"; 
+        
             char line[1024]; 
             char *fields[10]; 
             FILE *file = fopen(full_path, "r"); 
@@ -42,12 +43,12 @@ void Check() {
                     fields[i] = strtok(NULL, ","); 
                 } 
                 int SKU =  atoi(fields[0]); 
+				printf("\n%s\n", SKU);
                 int quantity = atoi(fields[1]); 
-                int length = atoi(fields[2]); 
+                int length = atoi(fields[2]);
     			Remove_Boxes(SKU, quantity); 
             } 
             fclose(file); 
         } 
     } 
-    closedir(dir); 
 }

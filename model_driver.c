@@ -27,14 +27,12 @@ void SWAP (double *a, double *b) {
 
 void model_init (state *s, tw_lp *lp) {
   int self = lp->gid;
-  for (int i = 0; i < 10; ++i) {
-    tw_event *e = tw_event_new(self, 1, lp);
-    message *msg = tw_event_data(e);
-    msg->type = TAKE_OUT;
-    msg->contents = tw_rand_unif(lp->rng);
-    msg->sender = self;
-    tw_event_send(e);
-  } 
+  tw_event *e = tw_event_new(0, 1, lp);
+  message *msg = tw_event_data(e);
+  msg->type = TAKE_OUT;
+  msg->contents = tw_rand_unif(lp->rng);
+  msg->sender = self;
+  tw_event_send(e);
   if (self == 0) {
     printf("%s\n", "COMMAND_CENTER is initialized");
   } else {
@@ -49,20 +47,38 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));
+  bool flag = false;
   if (self == 0) {
     printf("\n%s\n", "brain");
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
-      if (Store.cnt_boxes_type[i] < 20) {
-        Add_Boxes(i);
+      if (Store.cnt_boxes_type[i] < 99) {
+        flag = true;
       }
     }
-    for (int k = 1; k < 10; ++k) {
-      tw_event *e = tw_event_new(k, 1, lp);
-      message *msg = tw_event_data(e);
-      msg->type = TAKE_OUT;
-      msg->contents = tw_rand_unif(lp->rng);
-      msg->sender = self;
-      tw_event_send(e);
+    if (flag) {
+      tw_event *e1 = tw_event_new(1, 1, lp);
+      message *msg1 = tw_event_data(e1);
+      msg1->type = TAKE_IN;
+      msg1->contents = tw_rand_unif(lp->rng);
+      msg1->sender = self;
+      tw_event_send(e1);
+      for (int k = 2; k < 10; ++k) {
+        tw_event *e = tw_event_new(k, 1, lp);
+        message *msg = tw_event_data(e);
+        msg->type = TAKE_OUT;
+        msg->contents = tw_rand_unif(lp->rng);
+        msg->sender = self;
+        tw_event_send(e);
+      }
+    } else {
+      for (int k = 1; k < 10; ++k) {
+        tw_event *e = tw_event_new(k, 1, lp);
+        message *msg = tw_event_data(e);
+        msg->type = TAKE_OUT;
+        msg->contents = tw_rand_unif(lp->rng);
+        msg->sender = self;
+        tw_event_send(e);
+      }
     }
   } else {
     switch (in_msg->type)
