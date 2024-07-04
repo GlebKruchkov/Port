@@ -67,6 +67,7 @@ int model_main (int argc, char* argv[]) {
     tw_opt_add(model_opts);
     tw_init(&argc, &argv);
     num_lps_per_pe = 10;
+    // g_tw_events_per_pe = 100000;
     tw_define_lps(num_lps_per_pe, sizeof(message));
   	// displayModelSettings();
     g_tw_lp_typemap = &model_map;

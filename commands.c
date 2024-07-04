@@ -3,9 +3,7 @@
 void Add_Boxes(int type) { 
  for (int i = type * 10; i <= type * 10 + 9; ++i) { 
   for (int j = 0; j < 8; ++j) { 
-    //printf("%s\n", "SUUUUUKA"); 
    if (Store.conveyor[i].boxes[j].empty) { 
-    //printf("%s\n", "SUUUUUKA");
     Store.conveyor[i].boxes[j].SKU = type; 
     Store.cnt_boxes_type[type]++; 
     Store.conveyor[i].boxes[j].empty = 0; 
@@ -13,23 +11,8 @@ void Add_Boxes(int type) {
   } 
  } 
 } 
- 
-// void Remove_Boxes(int type, int cnt) { 
-//  for (int j = 0; j < cnt; ++j) { 
-//   if (!Store.conveyor[type * 10].boxes[j].empty) { 
-//    Store.conveyor[type * 10].boxes[j].empty = 1; 
-//    Store.cnt_boxes_type[type]--; 
-//   } 
-//  }
-// }
 
 void Remove_Boxes(int type, int cnt) { 
- //for (int j = 0; j < cnt; ++j) { 
- // if (!Store.conveyor[type * 10].boxes[j].empty) { 
- //  Store.conveyor[type * 10].boxes[j].empty = 1; 
- //  Store.cnt_boxes_type[type]--; 
- // } 
- //}
    int have_done = 0;
    bool break_flag = 0;
    for (int ind = type * 10; ind <= type * 10 + 9; ++ind) {
@@ -45,7 +28,6 @@ void Remove_Boxes(int type, int cnt) {
                 if (!Store.conveyor[ind].boxes[ch].empty) {
                     Store.conveyor[ind].boxes[ch].empty = 1;
                     Store.conveyor[ind].boxes[7].empty = 0;
-                    // printf("%s\n", "REMOVE BOX");
                     break;
                 }
 
@@ -65,7 +47,7 @@ void Remove_Boxes(int type, int cnt) {
 }
  
  
-void Check(int process) { 
+bool Check(int process) { 
     char line[1024];
     char *fields[10];
 
@@ -78,8 +60,12 @@ void Check(int process) {
         int quantity = atoi(fields[1]);
         int length = atoi(fields[2]);
         // printf("%d %d %d\n", SKU, quantity, process);
+        // printf("%d\n", Store.cnt_boxes_type[SKU]);
         Store.box_data[process - 1][0] = SKU;
         Store.box_data[process - 1][1] = quantity;
+        return true;
+    } else {
+        return false;
     }
 
 }

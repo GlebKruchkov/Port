@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <dirent.h>
 
-
 int main() {
     FILE *fp;
     int i = 0;
