@@ -45,6 +45,7 @@ void model_init (state *s, tw_lp *lp) {
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
+  int glb_time = 0;
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));
   bool flag = false;
@@ -61,7 +62,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
     }
     if (flag) {
-      tw_event *e1 = tw_event_new(1, 1, lp);
+      tw_event *e1 = tw_event_new(1, glb_time, lp);
       message *msg1 = tw_event_data(e1);
       msg1->type = TAKE_IN;
       msg1->contents = tw_rand_unif(lp->rng);
@@ -69,7 +70,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       tw_event_send(e1);
       for (int process = 2; process < 10; ++process) {
         Check(process);
-        tw_event *e = tw_event_new(process, 1, lp);
+        tw_event *e = tw_event_new(process, glb_time, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
@@ -79,7 +80,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     } else {
       for (int process = 1; process < 10; ++process) {
         Check(process);
-        tw_event *e = tw_event_new(process, 1, lp);
+        tw_event *e = tw_event_new(process, glb_time, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
@@ -95,13 +96,14 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
           if (Store.cnt_boxes_type[i] < 77) {
             gettimeofday(&currentTime, NULL);
-            //printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
-            //printf("%d %d %d", self, i, Store.cnt_boxes_type[i]);
+            // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
+            printf("%d %d %d\n", self, i, Store.cnt_boxes_type[i]);
             Add_Boxes(i);
             //printf(" and %d %d %d \n", self, i, Store.cnt_boxes_type[i]);
           }
         }
-        tw_event *e1 = tw_event_new(0, 1, lp);
+        glb_time += 1;
+        tw_event *e1 = tw_event_new(0, glb_time, lp);
         message *msg1 = tw_event_data(e1);
         msg1->type = TAKE_OUT;
         msg1->contents = tw_rand_unif(lp->rng);
@@ -113,10 +115,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         // printf("%s", "");
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         Remove_Boxes(Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
+        glb_time += 1;
         // printf("%d\n", Store.box_data[self - 1][0]);
-        tw_event *e = tw_event_new(0, 1, lp);
+        tw_event *e = tw_event_new(0, glb_time, lp);
         message *msg = tw_event_data(e);
-        msg->type = TAKE_IN;
+        msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
         msg->sender = self;
         tw_event_send(e);

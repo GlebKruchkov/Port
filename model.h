@@ -29,6 +29,7 @@
 #include <dirent.h>
 
 FILE *file;
+const static double g_robot_calc_time = 0.001;
 
 typedef struct
 {
