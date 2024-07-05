@@ -14,6 +14,8 @@
 #include "commands.c"
 #include <time.h>
 #include "extras.c"
+#include "sqlite3.h"
+// #include "model_sqlite_func.c"
 
 int glb_time = 0;
 
@@ -26,6 +28,14 @@ void SWAP (double *a, double *b) {
 
 
 void model_init (state *s, tw_lp *lp) {
+  int rc = sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql", (struct sqlite3 **) &(s->db));
+  sqlite3_config(SQLITE_CONFIG_HEAP, s->mem_pool, MEM_POOL_SIZE, 512);
+	struct sqlite3 * db = (struct sqlite3 *) s->db;
+	sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, NULL);
+	// db_exec_from_file(db, lp, "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql");
+
+  // db_init(&(s->db), lp, s->mem_pool, MEM_POOL_SIZE,  "/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db" , "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql");
+  // db_exec_from_file(s->db, lp, "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_fill.sql");
   int self = lp->gid;
   tw_event *e = tw_event_new(0, 1, lp);
   message *msg = tw_event_data(e);

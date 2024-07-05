@@ -13,6 +13,7 @@
 #define MAX_BOXES 8
 // #define MAX_ROBOTS 50
 #define MAX_CONVEYORS 60000
+#define MEM_POOL_SIZE (512 * 1024 * 1024)
 
 // #include "ross.h"
 #include <stdbool.h>
@@ -97,7 +98,15 @@ typedef struct {
   int got_msgs_REVERSE;
 //   lp_type type;
   double value;
+  void * db;
+  char mem_pool[MEM_POOL_SIZE];
 } state;
+
+// typedef struct model_state_t model_state_t; 
+// struct model_state_t {
+//     void * db;
+//     char mem_pool[MEM_POOL_SIZE];
+// };
 
 
 //Command Line Argument declarations

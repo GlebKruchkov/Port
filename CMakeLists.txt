@@ -20,6 +20,8 @@ SET(model_srcs
 	model_driver.c
 	model_map.c
 	# init.c
+	sqlite3.c
+	# model_sqlite_func.c
 	model.h
 	model_config.h
 )
@@ -31,3 +33,5 @@ ADD_EXECUTABLE(model ${model_srcs})
 TARGET_LINK_LIBRARIES(model ROSS m)
 ## Alternatively, use this command with RIO
 #TARGET_LINK_LIBRARIES(model ROSS RIO m)
+
+
