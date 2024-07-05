@@ -94,7 +94,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     switch (in_msg->type)
     {
       case TAKE_IN:
-
+        fprintf(f, "------------------------------------------\n");
+        fprintf(f, "startDepalletize\n"); 
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
           if (Store.cnt_boxes_type[i] < 78) {
@@ -106,6 +107,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             //printf(" and %d %d %d \n", self, i, Store.cnt_boxes_type[i]);
           }
         }
+        fprintf(f, "finishDepalletize\n");
+        fprintf(f, "------------------------------------------\n");
+
         glb_time += 1;
         tw_event *e1 = tw_event_new(0, glb_time, lp);
         message *msg1 = tw_event_data(e1);
@@ -144,7 +148,5 @@ void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
 //report any final statistics for this LP
 void model_final (state *s, tw_lp *lp){
-  fprintf(f, "The conveyer is depalletized\n");
-  fprintf(f, "------------------------------------------\n");
   return;
 }

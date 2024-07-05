@@ -10,6 +10,7 @@
 
 void ConveyorsInit()
 {
+    fprintf(f, "startDepalletize\n"); 
     for (int i = 0; i < MAX_CONVEYORS; ++i) {
         Store.conveyor[i].max_length = MAX_BOXES;
         Store.conveyor[i].current_length = 0;
@@ -20,8 +21,9 @@ void ConveyorsInit()
             Store.conveyor[i].boxes[j] = b;
         }
     }
-    fprintf(f, "The warehouse is palletized\n");
+    fprintf(f, "finishDepalletize\n");
     fprintf(f, "------------------------------------------\n");
+    fprintf(f, "startPalletize\n");
     
     for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
         // printf("%d\n", i);

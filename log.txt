@@ -1,5 +1,7 @@
-The warehouse is palletized
+startDepalletize
+finishDepalletize
 ------------------------------------------
+startPalletize
 take out box type 1002 cnt: 1
 take out box type 1007 cnt: 1
 take out box type 1006 cnt: 1
@@ -19,8 +21,12 @@ take out box type 1014 cnt: 1
 take out box type 1012 cnt: 1
 take out box type 1016 cnt: 1
 take out box type 1025 cnt: 1
+------------------------------------------
+startDepalletize
 take in box type 1017
 take in box type 1018
+finishDepalletize
+------------------------------------------
 take out box type 1024 cnt: 1
 take out box type 1019 cnt: 1
 take out box type 1020 cnt: 1
@@ -50,7 +56,11 @@ take out box type 1050 cnt: 1
 take out box type 1051 cnt: 1
 take out box type 1046 cnt: 1
 take out box type 1047 cnt: 1
+------------------------------------------
+startDepalletize
 take in box type 1041
+finishDepalletize
+------------------------------------------
 take out box type 1045 cnt: 1
 take out box type 1052 cnt: 1
 take out box type 1049 cnt: 1
@@ -127,8 +137,12 @@ take out box type 1122 cnt: 1
 take out box type 1116 cnt: 1
 take out box type 1121 cnt: 1
 take out box type 1120 cnt: 1
+------------------------------------------
+startDepalletize
 take in box type 1053
 take in box type 1123
+finishDepalletize
+------------------------------------------
 take out box type 1125 cnt: 2
 take out box type 1131 cnt: 1
 take out box type 1126 cnt: 1
@@ -420,11 +434,15 @@ take out box type 1412 cnt: 3
 take out box type 1415 cnt: 2
 take out box type 1413 cnt: 1
 take out box type 1416 cnt: 1
+------------------------------------------
+startDepalletize
 take in box type 1229
 take in box type 1263
 take in box type 1364
 take in box type 1409
 take in box type 1412
+finishDepalletize
+------------------------------------------
 take out box type 1414 cnt: 1
 take out box type 1417 cnt: 1
 take out box type 1419 cnt: 1
@@ -613,8 +631,12 @@ take out box type 1603 cnt: 1
 take out box type 1606 cnt: 1
 take out box type 1602 cnt: 1
 take out box type 1607 cnt: 1
+------------------------------------------
+startDepalletize
 take in box type 1463
 take in box type 1594
+finishDepalletize
+------------------------------------------
 take out box type 1601 cnt: 1
 take out box type 1600 cnt: 1
 take out box type 1604 cnt: 1
@@ -667,8 +689,12 @@ take out box type 1644 cnt: 1
 take out box type 1656 cnt: 1
 take out box type 1654 cnt: 1
 take out box type 1655 cnt: 1
+------------------------------------------
+startDepalletize
 take in box type 1645
 take in box type 1651
+finishDepalletize
+------------------------------------------
 take out box type 1657 cnt: 1
 take out box type 1659 cnt: 1
 take out box type 1653 cnt: 1
@@ -751,23 +777,7 @@ take out box type 1733 cnt: 1
 take out box type 1737 cnt: 1
 take out box type 1736 cnt: 1
 take out box type 1734 cnt: 1
-The conveyer is depalletized
 ------------------------------------------
-The conveyer is depalletized
 ------------------------------------------
-The conveyer is depalletized
 ------------------------------------------
-The conveyer is depalletized
-------------------------------------------
-The conveyer is depalletized
-------------------------------------------
-The conveyer is depalletized
-------------------------------------------
-The conveyer is depalletized
-------------------------------------------
-The conveyer is depalletized
-------------------------------------------
-The conveyer is depalletized
-------------------------------------------
-The conveyer is depalletized
-------------------------------------------
+finishPalletize

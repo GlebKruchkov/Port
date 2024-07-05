@@ -82,6 +82,11 @@ int model_main (int argc, char* argv[]) {
 	tw_run();
 
 	tw_end();
+  fprintf(f, "------------------------------------------\n");
+  fprintf(f, "------------------------------------------\n");
+  fprintf(f, "------------------------------------------\n");
+  fprintf(f, "finishPalletize\n");
+
 
 	return 0;
 }
