@@ -69,7 +69,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   if (self == 0) {
     // printf("%d\n", Store.cnt_boxes_type[5898]);
     // printf("\n%s\n", "brain");
-    for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+    for (int i = 0; i < high_border - low_border; ++i) {
       if (Store.cnt_boxes_type[i] < 77) {
         //printf("%d\n", i);
         //printf("%d\n", Store.cnt_boxes_type[i]);
@@ -113,7 +113,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         fprintf(f, "------------------------------------------\n");
         fprintf(f, "startDepalletize\n"); 
         // printf("%d\n", Store.cnt_boxes_type[1001]);
-        for (int i = 0; i < MAX_CONVEYORS / 10; ++i) {
+        for (int i = 0; i < high_border - low_border; ++i) {
           if (Store.cnt_boxes_type[i] < 78) {
             gettimeofday(&currentTime, NULL);
             // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);

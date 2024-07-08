@@ -31,17 +31,24 @@
 #include "sqlite3.h"
 
 static sqlite3 *db;
-static int low_border = 1001;
-static int high_border = 2999;
+static const int low_border = 1001;
+static const int high_border = 2999;
 FILE *file;
 FILE *f;
 const static double g_robot_calc_time = 0.001;
 
 typedef struct
 {
+    bool reserved;
     bool empty;
     int SKU;
 } box;
+
+struct _best_box
+{
+    int row;
+    int column;
+};
 
 typedef enum
 {
@@ -80,13 +87,14 @@ struct _conveyor
 struct _Store
 {
     int box_data[9][2];
-    int cnt_boxes_type[MAX_CONVEYORS / 10];
+    int cnt_boxes_type[high_border - low_border];
     struct _conveyor conveyor[MAX_CONVEYORS];
     int N;
     bool full;
 };
 
 struct _Store Store;
+struct _best_box best_box;
 
 // typedef enum
 // {
