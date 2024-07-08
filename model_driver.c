@@ -17,8 +17,6 @@
 #include "sqlite3.h"
 // #include "model_sqlite_func.c"
 
-int glb_time = 0;
-
 //Helper Functions
 void SWAP (double *a, double *b) {
   double tmp = *a;
@@ -115,9 +113,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int i = 0; i < high_border - low_border; ++i) {
           if (Store.cnt_boxes_type[i] < 78) {
-            gettimeofday(&currentTime, NULL);
-            // printf("%ld, %ld\n", currentTime.tv_sec, currentTime.tv_usec);
-            //printf("%d %d %d\n", self, i, Store.cnt_boxes_type[i]);
+            
             fprintf(f, "take in box type %d\n", i);
             Add_Boxes(i);
             //printf(" and %d %d %d \n", self, i, Store.cnt_boxes_type[i]);

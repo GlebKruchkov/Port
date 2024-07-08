@@ -3,7 +3,7 @@
 int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     // printf("%d ", atoi(argv[1]));
     // printf("%d\n\n", atoi(argv[2]));
-    if (atoi(argv[2]) < best_box.row) {
+    if (atoi(argv[2]) > best_box.row) {
         best_box.row = atoi(argv[2]);
         best_box.column = atoi(argv[1]);
     }

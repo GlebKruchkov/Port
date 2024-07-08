@@ -33,6 +33,7 @@
 static sqlite3 *db;
 static const int low_border = 1001;
 static const int high_border = 2999;
+static int glb_time = 0;
 FILE *file;
 FILE *f;
 const static double g_robot_calc_time = 0.001;
