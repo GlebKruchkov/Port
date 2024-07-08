@@ -28,7 +28,11 @@
 #include <time.h>
 #include <string.h>
 #include <dirent.h>
+#include "sqlite3.h"
 
+static sqlite3 *db;
+static int low_border = 1001;
+static int high_border = 2999;
 FILE *file;
 FILE *f;
 const static double g_robot_calc_time = 0.001;

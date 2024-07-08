@@ -28,11 +28,17 @@ void SWAP (double *a, double *b) {
 
 
 void model_init (state *s, tw_lp *lp) {
-  int rc = sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql", (struct sqlite3 **) &(s->db));
-  sqlite3_config(SQLITE_CONFIG_HEAP, s->mem_pool, MEM_POOL_SIZE, 512);
-	struct sqlite3 * db = (struct sqlite3 *) s->db;
-	sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, NULL);
+  // int rc = sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql", (struct sqlite3 **) &(s->db));
+  // printf("\n\n\n\n%d\n\n\n\n", rc);
+  // sqlite3_config(SQLITE_CONFIG_HEAP, s->mem_pool, MEM_POOL_SIZE, 512);
+	// struct sqlite3 * db = (struct sqlite3 *) s->db;
+	// sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, NULL);
 	// db_exec_from_file(db, lp, "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql");
+  sqlite3 *db;
+  char *err_msg = 0;
+  int rc = sqlite3_open("warehouse.db", &db);
+  char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER)";
+  sqlite3_exec(db, sql, 0, 0, &err_msg);
 
   // db_init(&(s->db), lp, s->mem_pool, MEM_POOL_SIZE,  "/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db" , "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql");
   // db_exec_from_file(s->db, lp, "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_fill.sql");
