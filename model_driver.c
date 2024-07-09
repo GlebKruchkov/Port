@@ -58,7 +58,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     // printf("%d\n", Store.cnt_boxes_type[5898]);
     // printf("\n%s\n", "brain");
     for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < 18) {
+      if (Store.cnt_boxes_type[i] < 15) {
         //printf("%d\n", Store.cnt_boxes_type[i]);
         // printf("%d %d %d \n", self, i, Store.cnt_boxes_type[i]);
         flag = true;
@@ -100,10 +100,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         fprintf(f, "------------------------------------------\n");
         fprintf(f, "startDepalletize\n"); 
         // printf("%d\n", Store.cnt_boxes_type[1001]);
-        for (int i = 0; i < high_border - low_border; ++i) {
-          if (Store.cnt_boxes_type[i] < 18) {
-            for (int q = 0; q < 20 - Store.cnt_boxes_type[i]; ++q) {
+        for (int i = 0; i < high_border - low_border + 1; ++i) {
+          if (Store.cnt_boxes_type[i] < 15) {
+            while (Store.cnt_boxes_type[i] < 20) {
               int channel = Add_Box(i);
+              printf("%s %d\n", "SUKAA", Store.cnt_boxes_type[i]);
               glb_time += 8;
               fprintf(f, "movebox%dchannel%d %d\n", i, channel, glb_time);
             }
