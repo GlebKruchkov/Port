@@ -145,7 +145,7 @@ extern int Add_Box(int type);
 extern void Swap_Boxes(int row, int col1, int col2);
 
 extern void Reverse(int row, int col);
-extern void Remove_Boxes(int type);
+extern int Remove_Boxes(int type);
  
 extern bool Check(int process);
 

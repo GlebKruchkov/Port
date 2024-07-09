@@ -83,10 +83,9 @@ void Reverse(int col, int row) {
     }
 }
 
-void Remove_Boxes(int type) {
+int Remove_Boxes(int type) {
     sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
     find_data(db, type);
-    printf("\n\n\n\n\n\n%d %d\n\n\n\n\n\n", best_box.row, best_box.column);
     int col = best_box.column;
     int row = best_box.row;
 
@@ -99,11 +98,6 @@ void Remove_Boxes(int type) {
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", type, 7, col);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
-    // int cur = 0;
-    // while (Store.conveyor[col].boxes[cur].empty) {
-    //     ++cur;
-    // }
-    // printf("\n%d %d\n", cur, col);
     insert_data(db, -1, 7, col);
 
     Store.conveyor[col].boxes[7].SKU = -1;
@@ -112,6 +106,7 @@ void Remove_Boxes(int type) {
         Swap_Boxes(col, i, i - 1);
     }
     Store.cnt_boxes_type[type]--;
+    return 1;
 }
  
  

@@ -2,24 +2,24 @@ startDepalletize
 finishDepalletize
 ------------------------------------------
 startPalletize
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
-take out box type 1
+movebox1channel1 8
+movebox1channel1 16
+movebox1channel1 24
+movebox1channel1 32
+movebox1channel1 40
+movebox1channel1 48
+movebox1channel1 56
+movebox1channel1 64
+movebox1channel1 72
+movebox1channel1 80
+movebox1channel1 88
+movebox1channel1 96
+movebox1channel1 104
+movebox1channel1 112
+movebox1channel1 120
+movebox1channel1 128
+movebox1channel1 136
+movebox1channel1 144
 ------------------------------------------
 startDepalletize
 movebox1channel3 8

@@ -38,13 +38,6 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
-  // sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
-  // insert_data(db, 1000, 10, 10);
-  // char *err_msg = 0;
-  // char sql[100];
-  // sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", 1000, 10, 10);
-  // sqlite3_exec(db, sql, 0, 0, &err_msg);
-
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
@@ -55,12 +48,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   bool flag = false;
   struct timeval currentTime;
   if (self == 0) {
-    // printf("%d\n", Store.cnt_boxes_type[5898]);
-    // printf("\n%s\n", "brain");
     for (int i = 0; i < high_border - low_border; ++i) {
       if (Store.cnt_boxes_type[i] < 15) {
-        //printf("%d\n", Store.cnt_boxes_type[i]);
-        // printf("%d %d %d \n", self, i, Store.cnt_boxes_type[i]);
         flag = true;
       }
     }
@@ -99,12 +88,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       case TAKE_IN:
         fprintf(f, "------------------------------------------\n");
         fprintf(f, "startDepalletize\n"); 
-        // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int i = 0; i < high_border - low_border + 1; ++i) {
           if (Store.cnt_boxes_type[i] < 15) {
             while (Store.cnt_boxes_type[i] < 20) {
               int channel = Add_Box(i);
-              printf("%s %d\n", "SUKAA", Store.cnt_boxes_type[i]);
               glb_time += 8;
               fprintf(f, "movebox%dchannel%d %d\n", i, channel, glb_time);
             }
@@ -113,7 +100,6 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         fprintf(f, "finishDepalletize\n");
         fprintf(f, "------------------------------------------\n");
 
-        glb_time += 1;
         tw_event *e1 = tw_event_new(0, glb_time, lp);
         message *msg1 = tw_event_data(e1);
         msg1->type = TAKE_OUT;
@@ -122,22 +108,17 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e1);
         break;
       case TAKE_OUT:
-        // printf("%d\n", Store.cnt_boxes_type[1001]);
-        // printf("%s", "");
-        // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int q = 0; q < Store.box_data[self - 1][1]; ++q) {
-          Remove_Boxes(Store.box_data[self - 1][0]);
-          fprintf(f, "take out box type %d\n", Store.box_data[self - 1][0]);
+          int channel = Remove_Boxes(Store.box_data[self - 1][0]);
+          glb_time += 8;
+          fprintf(f, "movebox%dchannel%d %d\n", Store.box_data[self - 1][0], 1, glb_time);
         }
-        glb_time += 1;
-        // printf("%d %d\n", Store.box_data[self - 1][0], Store.cnt_boxes_type[Store.box_data[self - 1][0]]);
         tw_event *e = tw_event_new(0, glb_time, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
         msg->sender = self;
         tw_event_send(e);
-        
         break;
       default:
         printf("\n%s\n", "micropenis");
