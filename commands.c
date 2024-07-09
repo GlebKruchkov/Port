@@ -1,9 +1,9 @@
 #include "model.h"
 
 int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-    if (atoi(argv[2]) > best_box.row) {
-        best_box.row = atoi(argv[2]);
-        best_box.column = atoi(argv[1]);
+    if (atoi(argv[1]) > best_box.row) {
+        best_box.row = atoi(argv[1]);
+        best_box.column = atoi(argv[2]);
     }
     return 0;
 }
@@ -41,6 +41,8 @@ void Swap_Boxes(int col, int row1, int row2) {
     int SKU_tmp = Store.conveyor[col].boxes[row1].SKU;
     char *err_msg = 0;
     char sql[100];
+    printf("\n%d %d %d ", col, row1, row2);
+    printf(" %d %d \n", Store.conveyor[col].boxes[row1].SKU, Store.conveyor[col].boxes[row2].SKU);
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", Store.conveyor[col].boxes[row1].SKU, col, row1);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
     char sql2[100];
@@ -52,8 +54,11 @@ void Swap_Boxes(int col, int row1, int row2) {
     Store.conveyor[col].boxes[row2].empty = empty_tmp;
     Store.conveyor[col].boxes[row2].SKU = SKU_tmp;
 
-    insert_data(db, Store.conveyor[col].boxes[row1].SKU, row2, col);
-    insert_data(db, Store.conveyor[col].boxes[row2].SKU, row1, col);
+    printf("\n%d %d %d ", col, row1, row2);
+    printf(" %d %d \n", Store.conveyor[col].boxes[row1].SKU, Store.conveyor[col].boxes[row2].SKU);
+
+    insert_data(db, Store.conveyor[col].boxes[row2].SKU, row2, col);
+    insert_data(db, Store.conveyor[col].boxes[row1].SKU, row1, col);
 }
 
 void Reverse(int col, int row) {
@@ -68,8 +73,8 @@ void Remove_Boxes(int type) {
     sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
     find_data(db, type);
     printf("\n\n\n\n\n\n%d %d\n\n\n\n\n\n", best_box.row, best_box.column);
-    int col = best_box.row;
-    int row = best_box.column;
+    int col = best_box.column;
+    int row = best_box.row;
 
     if (row != 7) {
         Reverse(col, row);
@@ -80,18 +85,19 @@ void Remove_Boxes(int type) {
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", type, 7, col);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
+    // int cur = 0;
+    // while (Store.conveyor[col].boxes[cur].empty) {
+    //     ++cur;
+    // }
+    // printf("\n%d %d\n", cur, col);
+    insert_data(db, -1, 7, col);
+
     Store.conveyor[col].boxes[7].SKU = -1;
     Store.conveyor[col].boxes[7].empty = 1;
-    for (int i = 7; i >= 1; --i) {
-        Swap_Boxes(col, i, i - 1);
-    }
-
-    int cur = 0;
-    while (Store.conveyor[col].boxes[cur].empty) {
-        ++cur;
-    }
-    cur--;
-    insert_data(db, -1, col, cur);
+    // for (int i = 7; i >= 1; --i) {
+    //     Swap_Boxes(col, i, i - 1);
+    // }
+    Swap_Boxes(col, 7, 6);
 }
  
  

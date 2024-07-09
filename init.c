@@ -18,23 +18,35 @@ void ConveyorsInit()
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
     int change_tmp = 0;
+    for (int i = 0; i < 4; ++i) {
+        Store.cnt_boxes_type[i] = 0;
+    }
 
-    for (int col = 0; col < MAX_BOXES; ++col) {
-        for (int row = 0; row < MAX_CONVEYORS; ++row) {
-            Store.conveyor[row].max_length = MAX_BOXES;
-            int current_SKU = low_border + (change_tmp) % (high_border - low_border + 1);
+    for (int row = 0; row < MAX_BOXES; ++row) {
+        for (int col = 0; col < MAX_CONVEYORS; ++col) {
+            Store.conveyor[col].max_length = MAX_BOXES;
+            int current_SKU = (low_border + (change_tmp) % (high_border - low_border + 1)) - 1;
             box b;
             b.empty = 0;
             b.SKU = current_SKU;
-            Store.conveyor[row].boxes[col] = b;
+            //printf("%d\n", current_SKU);
+            Store.conveyor[col].boxes[row] = b;
             change_tmp++;
-            Store.conveyor[row].current_length++;
+            Store.conveyor[col].current_length++;
             Store.cnt_boxes_type[current_SKU]++;
-            //insert_data(db, current_SKU, col, row);
+            insert_data(db, current_SKU, row, col);
         }
         // printf("%d\n", Store.cnt_boxes_type[1001]);
     }
+    for (int i = 0; i < 4; ++i) {
+        printf("%d\n", Store.cnt_boxes_type[i]);
+    }
+              //sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
+    //insert_data(db, -100, 10, 10);
     //insert_data(db, 100001, 100, 1000);
+    // for (int i = 0; i < 4; ++i) {
+    //     printf("%d\n", Store.cnt_boxes_type[i]);
+    // }
 
     // for (int i = 0; i < MAX_CONVEYORS; ++i) {
     //     Store.conveyor[i].max_length = MAX_BOXES;
@@ -60,7 +72,6 @@ void ConveyorsInit()
         Store.box_data[i][1] = 0;
     }
 
-    Remove_Boxes(1);
     // find_data(db, 1001);
     // insert_data(db, type, row, col);
 }

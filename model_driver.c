@@ -38,6 +38,12 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
+  // sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
+  // insert_data(db, 1000, 10, 10);
+  // char *err_msg = 0;
+  // char sql[100];
+  // sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", 1000, 10, 10);
+  // sqlite3_exec(db, sql, 0, 0, &err_msg);
 
 }
 
@@ -53,7 +59,6 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     // printf("\n%s\n", "brain");
     for (int i = 0; i < high_border - low_border; ++i) {
       if (Store.cnt_boxes_type[i] < 18) {
-        //printf("%d\n", i);
         //printf("%d\n", Store.cnt_boxes_type[i]);
         // printf("%d %d %d \n", self, i, Store.cnt_boxes_type[i]);
         flag = true;

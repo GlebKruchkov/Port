@@ -4,36 +4,6 @@ finishDepalletize
 startPalletize
 take out box type 1
 ------------------------------------------
-startDepalletize
-movebox0channel0 8
-movebox0channel0 16
-movebox0channel0 24
-movebox0channel0 32
-movebox0channel0 40
-movebox0channel0 48
-movebox0channel0 56
-movebox0channel0 64
-movebox0channel0 72
-movebox0channel0 80
-finishDepalletize
-------------------------------------------
-------------------------------------------
-startDepalletize
-movebox0channel0 8
-movebox0channel0 16
-movebox0channel0 24
-movebox0channel0 32
-movebox0channel0 40
-finishDepalletize
-------------------------------------------
-------------------------------------------
-startDepalletize
-movebox0channel0 8
-movebox0channel0 16
-movebox0channel0 24
-finishDepalletize
-------------------------------------------
-------------------------------------------
 ------------------------------------------
 ------------------------------------------
 finishPalletize
