@@ -42,19 +42,18 @@ void model_init (state *s, tw_lp *lp) {
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
-  int glb_time = 0;
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));
   bool flag = false;
   struct timeval currentTime;
   if (self == 0) {
     for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < 15) {
+      if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
         flag = true;
       }
     }
     if (flag) {
-      tw_event *e1 = tw_event_new(1, glb_time, lp);
+      tw_event *e1 = tw_event_new(1, 0, lp);
       message *msg1 = tw_event_data(e1);
       msg1->type = TAKE_IN;
       msg1->contents = tw_rand_unif(lp->rng);
@@ -62,7 +61,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       tw_event_send(e1);
       for (int process = 2; process < 10; ++process) {
         if (Check(process)) {
-          tw_event *e = tw_event_new(process, glb_time, lp);
+          tw_event *e = tw_event_new(process, 0, lp);
           message *msg = tw_event_data(e);
           msg->type = TAKE_OUT;
           msg->contents = tw_rand_unif(lp->rng);
@@ -73,7 +72,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     } else {
       for (int process = 1; process < 10; ++process) {
         if (Check(process)) {
-          tw_event *e = tw_event_new(process, glb_time, lp);
+          tw_event *e = tw_event_new(process, 0, lp);
           message *msg = tw_event_data(e);
           msg->type = TAKE_OUT;
           msg->contents = tw_rand_unif(lp->rng);
@@ -89,8 +88,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         fprintf(f, "------------------------------------------\n");
         fprintf(f, "startDepalletize\n"); 
         for (int i = 0; i < high_border - low_border + 1; ++i) {
-          if (Store.cnt_boxes_type[i] < 15) {
-            while (Store.cnt_boxes_type[i] < 20) {
+          if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
+            while (Store.cnt_boxes_type[i] < threshold) {
               int channel = Add_Box(i);
               glb_time += 8;
               fprintf(f, "movebox%dchannel%d %d\n", i, channel, glb_time);
@@ -100,7 +99,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         fprintf(f, "finishDepalletize\n");
         fprintf(f, "------------------------------------------\n");
 
-        tw_event *e1 = tw_event_new(0, glb_time, lp);
+        tw_event *e1 = tw_event_new(0, 0, lp);
         message *msg1 = tw_event_data(e1);
         msg1->type = TAKE_OUT;
         msg1->contents = tw_rand_unif(lp->rng);
@@ -111,9 +110,19 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         for (int q = 0; q < Store.box_data[self - 1][1]; ++q) {
           int channel = Remove_Boxes(Store.box_data[self - 1][0]);
           glb_time += 8;
-          fprintf(f, "movebox%dchannel%d %d\n", Store.box_data[self - 1][0], 1, glb_time);
+          // for (int i = 0; i < high_border - low_border + 1; ++i) {
+          //   if (Store.cnt_boxes_type[i] < 15) {
+          //     tw_event *e1= tw_event_new(0, glb_time, lp);
+          //     message *msg1 = tw_event_data(e1);
+          //     msg1->type = TAKE_IN;
+          //     msg1->contents = tw_rand_unif(lp->rng);
+          //     msg1->sender = self;
+          //     tw_event_send(e1);
+          //   }
+          // }
+          fprintf(f, "movebox%dchannel%d %d\n", Store.box_data[self - 1][0], channel, glb_time);
         }
-        tw_event *e = tw_event_new(0, glb_time, lp);
+        tw_event *e = tw_event_new(0, 0, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
         msg->contents = tw_rand_unif(lp->rng);
@@ -121,7 +130,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e);
         break;
       default:
-        printf("\n%s\n", "micropenis");
+        printf("\n%s\n", "No message");
         break;
     }
   }

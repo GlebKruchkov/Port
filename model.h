@@ -12,10 +12,9 @@
 
 #define MAX_BOXES 8
 // #define MAX_ROBOTS 50
-#define MAX_CONVEYORS 10
+#define MAX_CONVEYORS 100
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
 
-// #include "ross.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,11 +31,12 @@
 
 static sqlite3 *db;
 static const int low_border = 1;
-static const int high_border = 4;
+static const int high_border = 21;
 static int glb_time = 0;
 FILE *file;
 FILE *f;
 const static double g_robot_calc_time = 0.001;
+static const int threshold = (MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1);
 
 typedef struct
 {
@@ -97,14 +97,6 @@ struct _Store
 struct _Store Store;
 struct _best_box best_box;
 
-// typedef enum
-// {
-//     COMMAND_CENTER,
-//     CONVEYOR,
-// } lp_type;
-
-//State struct
-//   this defines the state of each LP
 typedef struct {
   int got_msgs_TAKE_IN;
   int got_msgs_TAKE_OUT;
@@ -113,14 +105,6 @@ typedef struct {
   double value;
 } state;
 
-// typedef struct model_state_t model_state_t; 
-// struct model_state_t {
-//     void * db;
-//     char mem_pool[MEM_POOL_SIZE];
-// };
-
-
-//Command Line Argument declarations
 extern unsigned int setting_1;
 
 //Global variables used by both main and driver
@@ -148,13 +132,5 @@ extern void Reverse(int row, int col);
 extern int Remove_Boxes(int type);
  
 extern bool Check(int process);
-
-
-/*
-//Custom mapping prototypes
-void model_cutom_mapping(void);
-tw_lp * model_mapping_to_lp(tw_lpid lpid);
-tw_peid model_map(tw_lpid gid);
-*/
 
 #endif

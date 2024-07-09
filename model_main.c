@@ -86,7 +86,7 @@ int model_main (int argc, char* argv[]) {
   fprintf(f, "------------------------------------------\n");
   fprintf(f, "------------------------------------------\n");
   fprintf(f, "------------------------------------------\n");
-  fprintf(f, "finishPalletize\n");
+  fprintf(f, "finishPalletize #1\n");
 
 
 	return 0;

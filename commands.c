@@ -33,8 +33,6 @@ int Add_Box(int type) {
     int col = best_box.column;
     int r = best_box.row;
 
-    //printf("%d %d\n", r, col);
-
     sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
     char *err_msg = 0;
     char sql[100];
@@ -55,8 +53,7 @@ void Swap_Boxes(int col, int row1, int row2) {
     int SKU_tmp = Store.conveyor[col].boxes[row1].SKU;
     char *err_msg = 0;
     char sql[100];
-    // printf("\n%d %d %d ", col, row1, row2);
-    // printf(" %d %d \n", Store.conveyor[col].boxes[row1].SKU, Store.conveyor[col].boxes[row2].SKU);
+    
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", Store.conveyor[col].boxes[row1].SKU, row1, col);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
     char sql2[100];
@@ -68,9 +65,6 @@ void Swap_Boxes(int col, int row1, int row2) {
     Store.conveyor[col].boxes[row2].empty = empty_tmp;
     Store.conveyor[col].boxes[row2].SKU = SKU_tmp;
 
-    // printf("\n%d %d %d ", col, row1, row2);
-    // printf(" %d %d \n", Store.conveyor[col].boxes[row1].SKU, Store.conveyor[col].boxes[row2].SKU);
-
     insert_data(db, Store.conveyor[col].boxes[row2].SKU, row2, col);
     insert_data(db, Store.conveyor[col].boxes[row1].SKU, row1, col);
 }
@@ -78,7 +72,9 @@ void Swap_Boxes(int col, int row1, int row2) {
 void Reverse(int col, int row) {
     for (int step = 0; step < 7 - row; ++step) {
         for (int i = 7; i >= 1; --i) {
-            Swap_Boxes(col, i, i - 1);
+            if (Store.conveyor[col].boxes[i - 1].empty == 0) {
+                Swap_Boxes(col, i, i - 1);
+            }
         }
     }
 }
@@ -106,7 +102,17 @@ int Remove_Boxes(int type) {
         Swap_Boxes(col, i, i - 1);
     }
     Store.cnt_boxes_type[type]--;
-    return 1;
+
+    for (int i = 0; i < 8; ++i) {
+        if (Store.conveyor[col].boxes[i].SKU == -1) {
+            fprintf(f, "/%s", "-");
+        } else {
+            fprintf(f, "/%d", Store.conveyor[col].boxes[i].SKU);
+        }
+    }
+    fprintf(f, "\n");
+
+    return col;
 }
  
  
@@ -120,7 +126,9 @@ bool Check(int process) {
             fields[i] = strtok(NULL, ",");
         }
         int SKU =  atoi(fields[0]);
+        //printf("%s %d ", "SKU", SKU);
         int quantity = atoi(fields[1]);
+        //printf("%s %d\n", "quantity", quantity);
         int length = atoi(fields[2]);
         Store.box_data[process - 1][0] = SKU;
         Store.box_data[process - 1][1] = quantity;

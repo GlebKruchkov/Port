@@ -1,48 +1,88 @@
 startDepalletize
 finishDepalletize
 ------------------------------------------
-startPalletize
-movebox1channel1 8
-movebox1channel1 16
-movebox1channel1 24
-movebox1channel1 32
-movebox1channel1 40
-movebox1channel1 48
-movebox1channel1 56
-movebox1channel1 64
-movebox1channel1 72
-movebox1channel1 80
-movebox1channel1 88
-movebox1channel1 96
-movebox1channel1 104
-movebox1channel1 112
-movebox1channel1 120
-movebox1channel1 128
-movebox1channel1 136
-movebox1channel1 144
+startPalletize #1
+/-/16/11/6/1/17/12/7
+movebox2channel16 8
+/-/16/11/6/1/17/12/7
+movebox2channel37 16
+/-/6/1/17/12/7/2/18
+movebox13channel6 24
+/-/4/20/15/10/5/0/16
+movebox11channel4 32
+/-/4/20/15/10/5/0/16
+movebox11channel25 40
+/-/4/20/15/10/5/0/16
+movebox11channel46 48
+/-/3/19/14/9/4/20/15
+movebox10channel3 56
+/-/3/19/14/9/4/20/15
+movebox10channel24 64
+/-/5/0/16/11/6/1/17
+movebox12channel5 72
+/-/5/0/16/11/6/1/17
+movebox12channel26 80
+/-/5/0/16/11/6/1/17
+movebox12channel47 88
+/-/5/0/16/11/6/1/17
+movebox12channel68 96
+/-/5/0/16/11/6/1/17
+movebox12channel89 104
+/-/7/0/16/11/6/1/17
+movebox12channel0 112
+/-/7/0/16/11/6/1/17
+movebox12channel21 120
+/-/0/16/11/6/1/17/12
+movebox7channel42 128
+/-/20/15/10/5/0/16/11
+movebox6channel20 136
+/-/1/17/12/7/2/18/13
+movebox8channel1 144
+/-/6/1/17/12/7/2/18
+movebox13channel27 152
+/-/3/19/14/9/4/20/15
+movebox10channel45 160
+/-/3/19/14/9/4/20/15
+movebox10channel66 168
+/-/19/14/9/4/20/15/10
+movebox5channel19 176
+/-/19/14/9/4/20/15/10
+movebox5channel40 184
+/-/-/0/16/11/6/1/17
+movebox12channel42 192
+/-/7/0/16/11/6/1/17
+movebox12channel63 200
+/-/7/0/16/11/6/1/17
+movebox12channel84 208
+/-/-/7/16/11/6/1/17
+movebox12channel16 216
+/-/-/7/16/11/6/1/17
+movebox12channel37 224
+/-/7/2/16/11/6/1/17
+movebox12channel58 232
+/-/7/2/16/11/6/1/17
+movebox12channel79 240
 ------------------------------------------
 startDepalletize
-movebox1channel3 8
-movebox1channel7 16
-movebox1channel1 24
-movebox1channel5 32
-movebox1channel9 40
-movebox1channel3 48
-movebox1channel7 56
-movebox1channel1 64
-movebox1channel5 72
-movebox1channel9 80
-movebox1channel3 88
-movebox1channel7 96
-movebox1channel1 104
-movebox1channel5 112
-movebox1channel9 120
-movebox1channel3 128
-movebox1channel7 136
-movebox1channel1 144
+movebox12channel42 248
+movebox12channel16 256
+movebox12channel37 264
+movebox12channel6 272
+movebox12channel4 280
+movebox12channel25 288
+movebox12channel46 296
+movebox12channel3 304
+movebox12channel24 312
+movebox12channel5 320
+movebox12channel26 328
+movebox12channel47 336
+movebox12channel68 344
+movebox12channel89 352
 finishDepalletize
 ------------------------------------------
+/-/2/18/13/8/3/19/14
+movebox9channel2 360
 ------------------------------------------
 ------------------------------------------
 ------------------------------------------
-finishPalletize
+finishPalletize #1

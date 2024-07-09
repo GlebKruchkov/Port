@@ -1,13 +1,5 @@
 #include "model.h"
 
-// void RobotsInit()
-// {
-//     for (int i = 0; i < MAX_ROBOTS; ++i) {
-//         Robots.elem[i].free = 1;
-//     }
-//     Robots.N = MAX_ROBOTS;
-// }
-
 void ConveyorsInit()
 {
     fprintf(f, "startDepalletize\n"); 
@@ -29,57 +21,26 @@ void ConveyorsInit()
             box b;
             b.empty = 0;
             b.SKU = current_SKU;
-            //printf("%d\n", current_SKU);
             Store.conveyor[col].boxes[row] = b;
             change_tmp++;
             Store.conveyor[col].current_length++;
             Store.cnt_boxes_type[current_SKU]++;
             insert_data(db, current_SKU, row, col);
         }
-        // printf("%d\n", Store.cnt_boxes_type[1001]);
     }
     for (int i = 0; i < 4; ++i) {
         printf("%d\n", Store.cnt_boxes_type[i]);
     }
-              //sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
-    //insert_data(db, -100, 10, 10);
-    //insert_data(db, 100001, 100, 1000);
-    // for (int i = 0; i < 4; ++i) {
-    //     printf("%d\n", Store.cnt_boxes_type[i]);
-    // }
-
-    // for (int i = 0; i < MAX_CONVEYORS; ++i) {
-    //     Store.conveyor[i].max_length = MAX_BOXES;
-    //     Store.conveyor[i].current_length = 0;
-    //     for (int j = 0; j < MAX_BOXES; ++j) {
-    //         box b;
-    //         b.empty = 0;
-    //         b.SKU = low_border + (i / 10) % high_border;
-    //         Store.conveyor[i].boxes[j] = b;
-    //     }
-    // }
     fprintf(f, "finishDepalletize\n");
     fprintf(f, "------------------------------------------\n");
-    fprintf(f, "startPalletize\n");
-    
-    // for (int i = 0; i < high_border - low_border; ++i) {
-    //     // printf("%d\n", i);
-    //     Store.cnt_boxes_type[i] = 80;
-    // }
-
+    fprintf(f, "startPalletize #1\n");
     for (int i = 0; i < 9; ++i) {
         Store.box_data[i][0] = -1;
         Store.box_data[i][1] = 0;
     }
-
-    // find_data(db, 1001);
-    // insert_data(db, type, row, col);
 }
 
 void InitROSS() {
-// {
-//   srand(time(NULL));
-    // RobotsInit();
     ConveyorsInit();
 
 }
