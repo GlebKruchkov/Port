@@ -62,19 +62,20 @@ void displayModelSettings()
 
 int model_main (int argc, char* argv[]) {
   f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
-  file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/order_2.csv", "r");
+  file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
+  sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
 	InitROSS();
 	int i, num_lps_per_pe;
-    tw_opt_add(model_opts);
-    tw_init(&argc, &argv);
-    num_lps_per_pe = 10;
-    // g_tw_events_per_pe = 100000;
-    tw_define_lps(num_lps_per_pe, sizeof(message));
-  	// displayModelSettings();
-    g_tw_lp_typemap = &model_map;
-    for (int i = 0; i < g_tw_nlp; ++i)
-    	tw_lp_settype(i, &model_lps[0]);
-	
+  tw_opt_add(model_opts);
+  tw_init(&argc, &argv);
+  num_lps_per_pe = 10;
+  // g_tw_events_per_pe = 100000;
+  tw_define_lps(num_lps_per_pe, sizeof(message));
+  // displayModelSettings();
+  g_tw_lp_typemap = &model_map;
+  for (int i = 0; i < g_tw_nlp; ++i)
+    tw_lp_settype(i, &model_lps[0]);
+
 	// displayModelSettings();
 
 	// Do some file I/O here? on a per-node (not per-LP) basis

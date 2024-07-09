@@ -12,7 +12,7 @@
 
 #define MAX_BOXES 8
 // #define MAX_ROBOTS 50
-#define MAX_CONVEYORS 60000
+#define MAX_CONVEYORS 10
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
 
 // #include "ross.h"
@@ -31,8 +31,8 @@
 #include "sqlite3.h"
 
 static sqlite3 *db;
-static const int low_border = 1001;
-static const int high_border = 2999;
+static const int low_border = 1;
+static const int high_border = 4;
 static int glb_time = 0;
 FILE *file;
 FILE *f;
@@ -111,8 +111,6 @@ typedef struct {
   int got_msgs_REVERSE;
 //   lp_type type;
   double value;
-  void * db;
-  char mem_pool[MEM_POOL_SIZE];
 } state;
 
 // typedef struct model_state_t model_state_t; 
@@ -137,6 +135,20 @@ extern void model_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp)
 extern void model_final(state *s, tw_lp *lp);
 // defined in model_map.c:
 extern tw_peid model_map(tw_lpid gid);
+extern int callback(void *NotUsed, int argc, char **argv, char **azColName);
+
+extern int insert_data(sqlite3 *db, int type, int row, int col);
+
+extern int find_data(sqlite3 *db, int type);
+extern int Add_Box(int type);
+
+extern void Swap_Boxes(int row, int col1, int col2);
+
+extern void Reverse(int row, int col);
+extern void Remove_Boxes(int type);
+ 
+extern bool Check(int process);
+
 
 /*
 //Custom mapping prototypes

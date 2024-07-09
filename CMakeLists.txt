@@ -21,6 +21,7 @@ SET(model_srcs
 	model_map.c
 	# init.c
 	sqlite3.c
+	commands.c
 	# model_sqlite_func.c
 	model.h
 	model_config.h

@@ -1,5 +1,4 @@
 #include "model.h"
-#include "sqlite3_commands.c"
 
 // void RobotsInit()
 // {
@@ -13,11 +12,10 @@ void ConveyorsInit()
 {
     fprintf(f, "startDepalletize\n"); 
     char *err_msg = 0;
-    int rc = sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
-    // char *sql_del = "DROP TABLE IF EXISTS Warehouse";
-    // char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER)";
-    // sqlite3_exec(db, sql_del, 0, 0, &err_msg);
-    // sqlite3_exec(db, sql, 0, 0, &err_msg);
+    char *sql_del = "DROP TABLE IF EXISTS Warehouse";
+    char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER)";
+    sqlite3_exec(db, sql_del, 0, 0, &err_msg);
+    sqlite3_exec(db, sql, 0, 0, &err_msg);
 
     int change_tmp = 0;
 
@@ -32,10 +30,11 @@ void ConveyorsInit()
             change_tmp++;
             Store.conveyor[row].current_length++;
             Store.cnt_boxes_type[current_SKU]++;
-            // insert_data(db, current_SKU, row, col);
+            //insert_data(db, current_SKU, col, row);
         }
         // printf("%d\n", Store.cnt_boxes_type[1001]);
     }
+    //insert_data(db, 100001, 100, 1000);
 
     // for (int i = 0; i < MAX_CONVEYORS; ++i) {
     //     Store.conveyor[i].max_length = MAX_BOXES;
@@ -51,16 +50,18 @@ void ConveyorsInit()
     fprintf(f, "------------------------------------------\n");
     fprintf(f, "startPalletize\n");
     
-    for (int i = 0; i < high_border - low_border; ++i) {
-        // printf("%d\n", i);
-        Store.cnt_boxes_type[i] = 80;
-    }
+    // for (int i = 0; i < high_border - low_border; ++i) {
+    //     // printf("%d\n", i);
+    //     Store.cnt_boxes_type[i] = 80;
+    // }
 
     for (int i = 0; i < 9; ++i) {
         Store.box_data[i][0] = -1;
         Store.box_data[i][1] = 0;
     }
-    find_data(db, 1001);
+
+    Remove_Boxes(1);
+    // find_data(db, 1001);
     // insert_data(db, type, row, col);
 }
 

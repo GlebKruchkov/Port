@@ -11,11 +11,9 @@
 #include "ross.h"
 #include "model.h"
 #include <stdio.h>
-#include "commands.c"
 #include <time.h>
 #include "extras.c"
 #include "sqlite3.h"
-// #include "model_sqlite_func.c"
 
 //Helper Functions
 void SWAP (double *a, double *b) {
@@ -26,20 +24,6 @@ void SWAP (double *a, double *b) {
 
 
 void model_init (state *s, tw_lp *lp) {
-  // int rc = sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql", (struct sqlite3 **) &(s->db));
-  // printf("\n\n\n\n%d\n\n\n\n", rc);
-  // sqlite3_config(SQLITE_CONFIG_HEAP, s->mem_pool, MEM_POOL_SIZE, 512);
-	// struct sqlite3 * db = (struct sqlite3 *) s->db;
-	// sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, NULL);
-	// db_exec_from_file(db, lp, "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql");
-  sqlite3 *db;
-  char *err_msg = 0;
-  int rc = sqlite3_open("warehouse.db", &db);
-  char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER)";
-  sqlite3_exec(db, sql, 0, 0, &err_msg);
-
-  // db_init(&(s->db), lp, s->mem_pool, MEM_POOL_SIZE,  "/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db" , "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_init.sql");
-  // db_exec_from_file(s->db, lp, "/Users/glebkruckov/Documents/Работа/Port/port-model/dat/db_fill.sql");
   int self = lp->gid;
   tw_event *e = tw_event_new(0, 1, lp);
   message *msg = tw_event_data(e);
@@ -68,7 +52,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     // printf("%d\n", Store.cnt_boxes_type[5898]);
     // printf("\n%s\n", "brain");
     for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < 77) {
+      if (Store.cnt_boxes_type[i] < 18) {
         //printf("%d\n", i);
         //printf("%d\n", Store.cnt_boxes_type[i]);
         // printf("%d %d %d \n", self, i, Store.cnt_boxes_type[i]);
@@ -112,11 +96,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         fprintf(f, "startDepalletize\n"); 
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         for (int i = 0; i < high_border - low_border; ++i) {
-          if (Store.cnt_boxes_type[i] < 78) {
-            
-            fprintf(f, "take in box type %d\n", i);
-            Add_Boxes(i);
-            //printf(" and %d %d %d \n", self, i, Store.cnt_boxes_type[i]);
+          if (Store.cnt_boxes_type[i] < 18) {
+            for (int q = 0; q < 20 - Store.cnt_boxes_type[i]; ++q) {
+              int channel = Add_Box(i);
+              glb_time += 8;
+              fprintf(f, "movebox%dchannel%d %d\n", i, channel, glb_time);
+            }
           }
         }
         fprintf(f, "finishDepalletize\n");
@@ -134,8 +119,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         // printf("%d\n", Store.cnt_boxes_type[1001]);
         // printf("%s", "");
         // printf("%d\n", Store.cnt_boxes_type[1001]);
-        Remove_Boxes(Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
-        fprintf(f, "take out box type %d cnt: %d\n", Store.box_data[self - 1][0], Store.box_data[self - 1][1]);
+        for (int q = 0; q < Store.box_data[self - 1][1]; ++q) {
+          Remove_Boxes(Store.box_data[self - 1][0]);
+          fprintf(f, "take out box type %d\n", Store.box_data[self - 1][0]);
+        }
         glb_time += 1;
         // printf("%d %d\n", Store.box_data[self - 1][0], Store.cnt_boxes_type[Store.box_data[self - 1][0]]);
         tw_event *e = tw_event_new(0, glb_time, lp);
