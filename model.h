@@ -88,6 +88,7 @@ struct _conveyor
 struct _Store
 {
     int box_data[10][2];
+    int arr_time[10];
     int cnt_boxes_type[high_border - low_border + 1];
     struct _conveyor conveyor[MAX_CONVEYORS];
     int N;

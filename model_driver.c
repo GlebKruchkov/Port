@@ -87,6 +87,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   SWAP(&(s->value), &(in_msg->contents));
   bool flag = false;
   struct timeval currentTime;
+  int cur_time = glb_time;
   //printf("%d\n", self);
   if (self == 0) {
     for (int i = 0; i < high_border - low_border; ++i) {
@@ -108,6 +109,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         }
       }
       if (!flag1) {
+        for (int i = 0; i < 10; ++i) {
+          if (Store.arr_time[i] > glb_time) {
+            glb_time = Store.arr_time[i];
+          }
+        }
         for (int process = 2; process < 10; ++process) {
           if (Store.box_data[process][1] != 0) {
             tw_event *e = tw_event_new(process, 0, lp);
@@ -136,6 +142,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         }
       }
       if (!flag1) {
+        for (int i = 0; i < 10; ++i) {
+          if (Store.arr_time[i] > glb_time) {
+            glb_time = Store.arr_time[i];
+          }
+        }
         for (int process = 1; process < 10; ++process) {
           if (Store.box_data[process][1] != 0) {
             tw_event *e = tw_event_new(process, 0, lp);
@@ -168,8 +179,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
             while (Store.cnt_boxes_type[i] < threshold) {
               int channel = Add_Box(i);
-              glb_time += 8;
-              fprintf(f, "movebox%dchannel%d %d\n", i, channel, glb_time);
+              cur_time += 8;
+              fprintf(f, "movebox%dchannel%d %d %d\n", i, channel, cur_time, self);
             }
           }
         }
@@ -188,7 +199,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         for (int q = 0; q < Store.box_data[self][1]; ++q) {
           //printf("%d\n", Store.box_data[self][0]);
           int channel = Remove_Boxes(Store.box_data[self][0]);
-          glb_time += 8;
+          cur_time += 8;
           // for (int i = 0; i < high_border - low_border + 1; ++i) {
           //   if (Store.cnt_boxes_type[i] < 15) {
           //     tw_event *e1= tw_event_new(0, glb_time, lp);
@@ -199,7 +210,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           //     tw_event_send(e1);
           //   }
           // }
-          fprintf(f, "movebox%dchannel%d %d\n", Store.box_data[self][0], channel, glb_time);
+          fprintf(f, "movebox%dchannel%d %d %d\n", Store.box_data[self][0], channel, cur_time, self);
         }
         Store.box_data[self][1] = 0;
         tw_event *e = tw_event_new(0, 0, lp);
@@ -213,6 +224,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         printf("\n%s\n", "No message");
         break;
     }
+    Store.arr_time[self] = cur_time;
   }
 }
 
