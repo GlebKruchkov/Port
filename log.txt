@@ -6,82 +6,1071 @@ startPalletize #1
 movebox2channel16 8
 /-/16/11/6/1/17/12/7
 movebox2channel37 16
+/-/3/19/14/9/4/20/15
+movebox10channel3 24
+/-/3/19/14/9/4/20/15
+movebox10channel24 32
+/-/4/20/15/10/5/0/16
+movebox11channel4 40
+/-/4/20/15/10/5/0/16
+movebox11channel25 48
+/-/4/20/15/10/5/0/16
+movebox11channel46 56
+/-/5/0/16/11/6/1/17
+movebox12channel5 64
+/-/5/0/16/11/6/1/17
+movebox12channel26 72
+/-/5/0/16/11/6/1/17
+movebox12channel47 80
+/-/5/0/16/11/6/1/17
+movebox12channel68 88
+/-/5/0/16/11/6/1/17
+movebox12channel89 96
+/-/7/0/16/11/6/1/17
+movebox12channel0 104
+/-/7/0/16/11/6/1/17
+movebox12channel21 112
 /-/6/1/17/12/7/2/18
-movebox13channel6 24
-/-/4/20/15/10/5/0/16
-movebox11channel4 32
-/-/4/20/15/10/5/0/16
-movebox11channel25 40
-/-/4/20/15/10/5/0/16
-movebox11channel46 48
-/-/3/19/14/9/4/20/15
-movebox10channel3 56
-/-/3/19/14/9/4/20/15
-movebox10channel24 64
-/-/5/0/16/11/6/1/17
-movebox12channel5 72
-/-/5/0/16/11/6/1/17
-movebox12channel26 80
-/-/5/0/16/11/6/1/17
-movebox12channel47 88
-/-/5/0/16/11/6/1/17
-movebox12channel68 96
-/-/5/0/16/11/6/1/17
-movebox12channel89 104
-/-/7/0/16/11/6/1/17
-movebox12channel0 112
-/-/7/0/16/11/6/1/17
-movebox12channel21 120
-/-/0/16/11/6/1/17/12
-movebox7channel42 128
+movebox13channel6 120
+/-/7/2/18/13/8/3/19
+movebox14channel7 128
+/-/7/2/18/13/8/3/19
+movebox14channel28 136
+/-/8/3/19/14/9/4/20
+movebox15channel8 144
+/-/8/3/19/14/9/4/20
+movebox15channel29 152
+/-/8/3/19/14/9/4/20
+movebox15channel50 160
+/-/9/4/20/15/10/5/0
+movebox16channel9 168
+/-/10/5/0/16/11/6/1
+movebox17channel10 176
+/-/11/6/1/17/12/7/2
+movebox18channel11 184
+/-/12/7/2/18/13/8/3
+movebox19channel12 192
+/-/12/7/2/18/13/8/3
+movebox19channel33 200
+/-/12/7/2/18/13/8/3
+movebox19channel54 208
+/-/12/7/2/18/13/8/3
+movebox19channel75 216
+/-/13/8/3/19/14/9/4
+movebox20channel13 224
+/-/15/10/5/0/16/11/6
+movebox1channel15 232
+/-/16/11/6/1/17/12/7
+movebox2channel58 240
+/-/16/11/6/1/17/12/7
+movebox2channel79 248
+/-/17/12/7/2/18/13/8
+movebox3channel17 256
+/-/17/12/7/2/18/13/8
+movebox3channel38 264
+/-/17/12/7/2/18/13/8
+movebox3channel59 272
+/-/18/13/8/3/19/14/9
+movebox4channel18 280
+/-/18/13/8/3/19/14/9
+movebox4channel39 288
+/-/18/13/8/3/19/14/9
+movebox4channel60 296
+/-/18/13/8/3/19/14/9
+movebox4channel81 304
+/-/-/13/8/3/19/14/9
+movebox4channel13 312
+/-/20/13/8/3/19/14/9
+movebox4channel34 320
+/-/20/13/8/3/19/14/9
+movebox4channel55 328
+/-/19/14/9/4/20/15/10
+movebox5channel19 336
+/-/19/14/9/4/20/15/10
+movebox5channel40 344
 /-/20/15/10/5/0/16/11
-movebox6channel20 136
+movebox6channel20 352
+/-/0/16/11/6/1/17/12
+movebox7channel42 360
 /-/1/17/12/7/2/18/13
-movebox8channel1 144
-/-/6/1/17/12/7/2/18
-movebox13channel27 152
+movebox8channel1 368
+/-/2/18/13/8/3/19/14
+movebox9channel2 376
 /-/3/19/14/9/4/20/15
-movebox10channel45 160
+movebox10channel45 384
 /-/3/19/14/9/4/20/15
-movebox10channel66 168
-/-/19/14/9/4/20/15/10
-movebox5channel19 176
-/-/19/14/9/4/20/15/10
-movebox5channel40 184
+movebox10channel66 392
+/-/4/20/15/10/5/0/16
+movebox11channel67 400
+/-/4/20/15/10/5/0/16
+movebox11channel88 408
+/-/-/20/15/10/5/0/16
+movebox11channel20 416
 /-/-/0/16/11/6/1/17
-movebox12channel42 192
+movebox12channel42 424
 /-/7/0/16/11/6/1/17
-movebox12channel63 200
+movebox12channel63 432
 /-/7/0/16/11/6/1/17
-movebox12channel84 208
+movebox12channel84 440
 /-/-/7/16/11/6/1/17
-movebox12channel16 216
+movebox12channel16 448
 /-/-/7/16/11/6/1/17
-movebox12channel37 224
-/-/7/2/16/11/6/1/17
-movebox12channel58 232
-/-/7/2/16/11/6/1/17
-movebox12channel79 240
+movebox12channel37 456
+/-/-/7/16/11/6/1/17
+movebox12channel58 464
+/-/-/7/16/11/6/1/17
+movebox12channel79 472
 ------------------------------------------
 startDepalletize
-movebox12channel42 248
-movebox12channel16 256
-movebox12channel37 264
-movebox12channel6 272
-movebox12channel4 280
-movebox12channel25 288
-movebox12channel46 296
-movebox12channel3 304
-movebox12channel24 312
-movebox12channel5 320
-movebox12channel26 328
-movebox12channel47 336
-movebox12channel68 344
-movebox12channel89 352
+movebox12channel13 480
+movebox12channel20 488
+movebox12channel42 496
+movebox12channel16 504
+movebox12channel37 512
+movebox12channel58 520
+movebox12channel79 528
+movebox12channel3 536
+movebox12channel24 544
+movebox12channel4 552
+movebox12channel25 560
+movebox12channel46 568
+movebox12channel5 576
+movebox12channel26 584
 finishDepalletize
 ------------------------------------------
+/-/6/1/17/12/7/2/18
+movebox13channel27 592
+/-/7/2/18/13/8/3/19
+movebox14channel49 600
+/-/7/2/18/13/8/3/19
+movebox14channel70 608
+/-/8/3/19/14/9/4/20
+movebox15channel71 616
+/-/8/3/19/14/9/4/20
+movebox15channel92 624
+/-/12/3/19/14/9/4/20
+movebox15channel3 632
+/-/9/4/20/15/10/5/0
+movebox16channel30 640
+/-/10/5/0/16/11/6/1
+movebox17channel31 648
+/-/11/6/1/17/12/7/2
+movebox18channel32 656
+/-/12/7/2/18/13/8/3
+movebox19channel96 664
+/-/-/7/2/18/13/8/3
+movebox19channel7 672
+/-/-/7/2/18/13/8/3
+movebox19channel28 680
+/-/-/7/2/18/13/8/3
+movebox19channel49 688
+/-/13/8/3/19/14/9/4
+movebox20channel76 696
+/-/15/10/5/0/16/11/6
+movebox1channel36 704
+/-/-/11/6/1/17/12/7
+movebox2channel11 712
+/-/-/11/6/1/17/12/7
+movebox2channel32 720
+/-/17/12/7/2/18/13/8
+movebox3channel80 728
+/-/-/12/7/2/18/13/8
+movebox3channel12 736
+/-/-/12/7/2/18/13/8
+movebox3channel33 744
+/-/-/13/8/3/19/14/9
+movebox4channel76 752
+/-/20/13/8/3/19/14/9
+movebox4channel97 760
+/-/-/20/8/3/19/14/9
+movebox4channel8 768
+/-/-/20/8/3/19/14/9
+movebox4channel29 776
+/-/-/20/8/3/19/14/9
+movebox4channel50 784
+/-/-/20/8/3/19/14/9
+movebox4channel71 792
+/-/-/20/8/3/19/14/9
+movebox4channel92 800
+------------------------------------------
+startDepalletize
+movebox4channel7 808
+movebox4channel28 816
+movebox4channel49 824
+movebox4channel11 832
+movebox4channel32 840
+movebox4channel12 848
+movebox4channel33 856
+movebox4channel76 864
+movebox4channel8 872
+movebox4channel29 880
+movebox4channel50 888
+movebox4channel71 896
+movebox4channel92 904
+movebox4channel47 912
+finishDepalletize
+------------------------------------------
+/-/19/14/9/4/20/15/10
+movebox5channel61 920
+/-/19/14/9/4/20/15/10
+movebox5channel82 928
+/-/20/15/10/5/0/16/11
+movebox6channel41 936
+/-/-/4/11/6/1/17/12
+movebox7channel11 944
+/-/1/17/12/7/2/18/13
+movebox8channel22 952
 /-/2/18/13/8/3/19/14
-movebox9channel2 360
+movebox9channel23 960
+/-/3/19/14/9/4/20/15
+movebox10channel87 968
+/-/-/19/14/9/4/20/15
+movebox10channel19 976
+/-/-/20/15/10/5/0/16
+movebox11channel41 984
+/-/6/20/15/10/5/0/16
+movebox11channel62 992
+/-/6/20/15/10/5/0/16
+movebox11channel83 1000
+/-/-/-/4/11/6/1/17
+movebox12channel11 1008
+/-/-/7/4/11/6/1/17
+movebox12channel32 1016
+/-/7/2/18/11/6/1/17
+movebox12channel53 1024
+/-/7/2/18/11/6/1/17
+movebox12channel74 1032
+/-/7/2/18/11/6/1/17
+movebox12channel95 1040
+/-/-/7/2/18/6/1/17
+movebox12channel6 1048
+/-/-/7/2/18/6/1/17
+movebox12channel27 1056
+/-/6/1/17/12/7/2/18
+movebox13channel48 1064
+/-/7/2/18/13/8/3/19
+movebox14channel91 1072
+/-/-/2/18/13/8/3/19
+movebox14channel2 1080
+/-/12/3/19/14/9/4/20
+movebox15channel24 1088
+/-/-/3/19/14/9/4/20
+movebox15channel45 1096
+/-/-/3/19/14/9/4/20
+movebox15channel66 1104
+/-/9/4/20/15/10/5/0
+movebox16channel51 1112
+/-/10/5/0/16/11/6/1
+movebox17channel52 1120
+/-/-/6/1/17/12/7/2
+movebox18channel48 1128
+/-/-/7/2/18/13/8/3
+movebox19channel70 1136
+/-/-/7/2/18/13/8/3
+movebox19channel91 1144
+/-/-/-/2/18/13/8/3
+movebox19channel2 1152
+/-/-/14/2/18/13/8/3
+movebox19channel23 1160
+/-/-/12/3/19/14/9/4
+movebox20channel3 1168
+/-/15/10/5/0/16/11/6
+movebox1channel57 1176
+/-/-/-/6/1/17/12/7
+movebox2channel48 1184
+/-/18/13/6/1/17/12/7
+movebox2channel69 1192
+/-/-/12/7/2/18/13/8
+movebox3channel54 1200
+/-/-/12/7/2/18/13/8
+movebox3channel75 1208
+/-/-/12/7/2/18/13/8
+movebox3channel96 1216
+/-/-/-/12/3/19/14/9
+movebox4channel3 1224
+/-/-/20/12/3/19/14/9
+movebox4channel24 1232
+/-/-/-/20/3/19/14/9
+movebox4channel45 1240
+/-/-/-/20/3/19/14/9
+movebox4channel66 1248
+/-/-/20/15/3/19/14/9
+movebox4channel87 1256
+/-/-/-/20/15/19/14/9
+movebox4channel19 1264
+/-/-/20/15/10/19/14/9
+movebox4channel40 1272
+/-/0/14/9/4/20/15/10
+movebox5channel14 1280
+/-/0/14/9/4/20/15/10
+movebox5channel35 1288
+/-/-/15/10/5/0/16/11
+movebox6channel15 1296
+/-/-/-/-/6/1/17/12
+movebox7channel48 1304
+/-/1/17/12/7/2/18/13
+movebox8channel43 1312
+/-/2/18/13/8/3/19/14
+movebox9channel44 1320
+/-/-/19/14/9/4/20/15
+movebox10channel61 1328
+/-/-/19/14/9/4/20/15
+movebox10channel82 1336
+/-/-/-/15/10/5/0/16
+movebox11channel15 1344
+/-/-/6/15/10/5/0/16
+movebox11channel36 1352
+/-/-/6/15/10/5/0/16
+movebox11channel57 1360
+/-/-/-/-/-/6/1/17
+movebox12channel48 1368
+/-/-/7/18/13/6/1/17
+movebox12channel69 1376
+/-/7/2/18/13/6/1/17
+movebox12channel90 1384
+/-/-/7/2/18/13/1/17
+movebox12channel1 1392
+/-/-/7/2/18/13/1/17
+movebox12channel22 1400
+/-/-/-/-/3/19/14/9
+movebox12channel3 1408
+/-/-/-/3/19/14/9/20
+movebox12channel24 1416
+------------------------------------------
+startDepalletize
+movebox12channel48 1424
+movebox12channel48 1432
+movebox12channel3 1440
+movebox12channel11 1448
+movebox12channel2 1456
+movebox12channel45 1464
+movebox12channel66 1472
+movebox12channel19 1480
+movebox12channel15 1488
+movebox12channel48 1496
+movebox12channel3 1504
+movebox12channel24 1512
+movebox12channel41 1520
+movebox12channel11 1528
+finishDepalletize
+------------------------------------------
+/-/-/1/17/12/7/2/18
+movebox13channel43 1536
+/-/-/2/18/13/8/3/19
+movebox14channel44 1544
+/-/9/2/18/13/8/3/19
+movebox14channel65 1552
+/-/-/-/19/14/9/4/20
+movebox15channel61 1560
+/-/-/-/19/14/9/4/20
+movebox15channel82 1568
+/-/-/10/0/14/9/4/20
+movebox15channel14 1576
+/-/9/4/20/15/10/5/0
+movebox16channel72 1584
+/-/10/5/0/16/11/6/1
+movebox17channel73 1592
+/-/-/-/1/17/12/7/2
+movebox18channel43 1600
+/-/-/-/2/18/13/8/3
+movebox19channel44 1608
+/-/-/9/2/18/13/8/3
+movebox19channel65 1616
+/-/14/9/2/18/13/8/3
+movebox19channel86 1624
+/-/-/14/9/18/13/8/3
+movebox19channel18 1632
+------------------------------------------
+startDepalletize
+movebox19channel61 1640
+movebox19channel82 1648
+movebox19channel43 1656
+movebox19channel44 1664
+movebox19channel32 1672
+movebox19channel6 1680
+movebox19channel27 1688
+movebox19channel70 1696
+movebox19channel91 1704
+movebox19channel2 1712
+movebox19channel23 1720
+movebox19channel54 1728
+movebox19channel75 1736
+movebox19channel96 1744
+movebox19channel45 1752
+movebox19channel66 1760
+finishDepalletize
+------------------------------------------
+/-/-/-/12/3/19/14/9
+movebox20channel24 1768
+/-/15/10/5/0/16/11/6
+movebox1channel78 1776
+/-/-/-/19/1/17/12/7
+movebox2channel43 1784
+/-/18/13/8/1/17/12/7
+movebox2channel64 1792
+/-/-/4/7/2/18/13/8
+movebox3channel7 1800
+/-/-/4/7/2/18/13/8
+movebox3channel28 1808
+/-/-/4/7/2/18/13/8
+movebox3channel49 1816
+/-/-/-/20/19/19/14/9
+movebox4channel61 1824
+/-/-/-/20/19/19/14/9
+movebox4channel82 1832
+/-/-/-/20/10/0/14/9
+movebox4channel14 1840
+/-/-/20/15/10/0/14/9
+movebox4channel35 1848
+/-/-/11/6/1/17/12/12
+movebox4channel11 1856
+/-/-/11/6/1/17/19/7
+movebox4channel32 1864
+/-/20/15/10/5/0/14/9
+movebox4channel56 1872
+/-/0/14/9/4/20/15/10
+movebox5channel77 1880
+/-/0/14/9/4/20/15/10
+movebox5channel98 1888
+/-/-/15/10/5/0/16/11
+movebox6channel78 1896
+/-/-/-/-/19/1/17/12
+movebox7channel43 1904
+------------------------------------------
+startDepalletize
+movebox4channel43 1912
+movebox4channel24 1920
+movebox4channel61 1928
+movebox4channel82 1936
+movebox4channel14 1944
+movebox4channel43 1952
+movebox4channel87 1960
+movebox4channel19 1968
+movebox4channel40 1976
+movebox4channel15 1984
+movebox4channel36 1992
+movebox4channel57 2000
+movebox4channel48 2008
+movebox4channel69 2016
+finishDepalletize
+------------------------------------------
+/-/1/17/12/7/2/18/13
+movebox8channel85 2024
+/-/-/18/13/8/3/19/14
+movebox9channel39 2032
+/-/-/0/14/9/4/20/15
+movebox10channel77 2040
+/-/-/0/14/9/4/20/15
+movebox10channel98 2048
+/-/-/-/15/10/5/0/16
+movebox11channel78 2056
+/-/6/1/15/10/5/0/16
+movebox11channel99 2064
+/-/-/6/1/10/5/0/16
+movebox11channel10 2072
+------------------------------------------
+startDepalletize
+movebox11channel78 2080
+movebox11channel1 2088
+movebox11channel22 2096
+movebox11channel3 2104
+movebox11channel44 2112
+movebox11channel65 2120
+movebox11channel18 2128
+movebox11channel24 2136
+movebox11channel7 2144
+movebox11channel28 2152
+movebox11channel49 2160
+movebox11channel61 2168
+movebox11channel82 2176
+movebox11channel14 2184
+movebox11channel35 2192
+finishDepalletize
+------------------------------------------
+/-/-/-/11/6/1/17/12
+movebox12channel11 2200
+/-/-/-/4/4/19/1/17
+movebox12channel43 2208
+/-/-/-/-/11/6/1/17
+movebox12channel11 2216
+/-/-/7/18/13/8/1/17
+movebox12channel64 2224
+/-/-/6/1/17/4/12/12
+movebox12channel48 2232
+/-/-/-/6/1/17/4/12
+movebox12channel48 2240
+/-/-/-/-/6/1/17/4
+movebox12channel48 2248
+/-/-/1/17/12/7/2/18
+movebox13channel85 2256
+/-/-/-/18/13/8/3/19
+movebox14channel39 2264
+/-/-/9/18/13/8/3/19
+movebox14channel60 2272
+/-/-/-/0/14/9/4/20
+movebox15channel77 2280
+/-/-/-/0/14/9/4/20
+movebox15channel98 2288
+/-/-/10/5/0/9/4/20
+movebox15channel9 2296
+------------------------------------------
+startDepalletize
+movebox15channel11 2304
+movebox15channel48 2312
+movebox15channel43 2320
+movebox15channel11 2328
+movebox15channel48 2336
+movebox15channel39 2344
+movebox15channel77 2352
+movebox15channel98 2360
+movebox15channel32 2368
+movebox15channel78 2376
+movebox15channel10 2384
+movebox15channel43 2392
+movebox15channel11 2400
+movebox15channel64 2408
+movebox15channel48 2416
+finishDepalletize
+------------------------------------------
+/-/9/4/20/15/10/5/0
+movebox16channel93 2424
+/-/10/5/0/16/11/6/1
+movebox17channel94 2432
+/-/-/-/1/17/12/7/2
+movebox18channel85 2440
+/-/-/-/15/18/13/8/3
+movebox19channel39 2448
+/-/-/-/9/18/13/8/3
+movebox19channel60 2456
+/-/-/7/15/11/6/1/17
+movebox19channel32 2464
+/-/-/14/9/18/13/8/3
+movebox19channel81 2472
+/-/-/-/15/0/14/9/4
+movebox20channel77 2480
+/-/-/10/5/0/16/11/6
+movebox1channel31 2488
+/-/-/-/-/1/17/12/7
+movebox2channel85 2496
+/-/-/18/13/8/17/12/7
+movebox2channel17 2504
+/-/-/19/7/2/18/13/8
+movebox3channel70 2512
+/-/-/19/7/2/18/13/8
+movebox3channel91 2520
+/-/-/19/12/2/18/13/8
+movebox3channel2 2528
+------------------------------------------
+startDepalletize
+movebox3channel85 2536
+movebox3channel39 2544
+movebox3channel60 2552
+movebox3channel77 2560
+movebox3channel85 2568
+movebox3channel98 2576
+movebox3channel9 2584
+movebox3channel39 2592
+movebox3channel60 2600
+movebox3channel32 2608
+movebox3channel81 2616
+movebox3channel77 2624
+movebox3channel31 2632
+movebox3channel85 2640
+movebox3channel17 2648
+finishDepalletize
+------------------------------------------
+/-/-/15/15/15/6/1/17
+movebox4channel48 2656
+/-/-/3/3/15/0/14/9
+movebox4channel77 2664
+/-/-/20/3/15/0/14/9
+movebox4channel98 2672
+/-/-/20/3/10/5/0/9
+movebox4channel9 2680
+/-/-/19/1/17/15/15/4
+movebox4channel43 2688
+/-/-/-/19/1/17/15/15
+movebox4channel43 2696
+/-/-/20/15/10/5/0/9
+movebox4channel30 2704
+/-/-/0/9/4/20/15/10
+movebox5channel51 2712
+/-/-/0/9/4/20/15/10
+movebox5channel72 2720
+/-/-/3/10/5/0/16/11
+movebox6channel31 2728
+/-/-/3/3/3/1/17/12
+movebox7channel85 2736
+/-/-/17/12/7/2/18/13
+movebox8channel38 2744
+/-/-/12/13/8/3/19/14
+movebox9channel13 2752
+/-/-/-/0/9/4/20/15
+movebox10channel51 2760
+/-/-/-/0/9/4/20/15
+movebox10channel72 2768
+/-/-/-/3/10/5/0/16
+movebox11channel31 2776
+/-/-/6/1/10/5/0/16
+movebox11channel52 2784
+/-/-/6/1/10/5/0/16
+movebox11channel73 2792
+/-/-/-/3/3/3/1/17
+movebox12channel85 2800
+/-/-/7/3/18/13/8/17
+movebox12channel17 2808
+/-/-/3/19/14/9/11/12
+movebox12channel3 2816
+/-/-/-/3/19/14/9/11
+movebox12channel3 2824
+/-/-/3/19/14/9/11/4
+movebox12channel24 2832
+/-/-/-/2/18/13/8/19
+movebox12channel2 2840
+/-/-/-/7/2/18/13/17
+movebox12channel38 2848
+/-/-/8/17/12/7/2/18
+movebox13channel59 2856
+/-/-/-/12/13/8/3/19
+movebox14channel13 2864
+/-/-/9/20/13/8/3/19
+movebox14channel34 2872
+------------------------------------------
+startDepalletize
+movebox12channel43 2880
+movebox12channel51 2888
+movebox12channel72 2896
+movebox12channel31 2904
+movebox12channel85 2912
+movebox12channel3 2920
+movebox12channel2 2928
+movebox12channel38 2936
+movebox12channel13 2944
+movebox12channel70 2952
+movebox12channel91 2960
+movebox12channel48 2968
+movebox12channel77 2976
+movebox12channel98 2984
+finishDepalletize
+------------------------------------------
+/-/-/-/12/19/1/17/15
+movebox15channel43 2992
+/-/-/-/12/0/9/4/20
+movebox15channel51 3000
+/-/-/-/12/0/9/4/20
+movebox15channel72 3008
+/-/12/4/20/15/10/5/0
+movebox16channel4 3016
+/-/12/5/0/16/11/6/1
+movebox17channel5 3024
+/-/-/-/8/17/12/7/2
+movebox18channel59 3032
+/-/-/-/12/2/18/13/8
+movebox19channel2 3040
+/-/-/-/12/12/13/8/3
+movebox19channel13 3048
+/-/-/-/9/20/13/8/3
+movebox19channel34 3056
+/-/-/14/9/20/13/8/3
+movebox19channel55 3064
+/-/-/-/-/12/0/9/4
+movebox20channel51 3072
+/-/-/10/5/0/16/11/6
+movebox1channel94 3080
+/-/-/-/-/8/17/12/7
+movebox2channel59 3088
+/-/-/18/13/8/17/12/7
+movebox2channel80 3096
+/-/-/19/14/2/18/13/8
+movebox3channel23 3104
+/-/-/11/19/2/18/13/8
+movebox3channel44 3112
+/-/-/11/9/2/18/13/8
+movebox3channel65 3120
+/-/-/-/3/19/14/9/11
+movebox4channel24 3128
+/-/-/-/-/-/12/0/9
+movebox4channel51 3136
+/-/-/-/-/20/12/0/9
+movebox4channel72 3144
+/-/-/7/2/18/13/8/11
+movebox4channel7 3152
+/-/-/7/2/18/13/8/11
+movebox4channel28 3160
+/-/-/7/2/18/13/8/11
+movebox4channel49 3168
+/-/-/20/19/19/14/9/11
+movebox4channel61 3176
+/-/-/0/9/4/20/15/10
+movebox5channel93 3184
+/-/-/0/12/4/20/15/10
+movebox5channel4 3192
+------------------------------------------
+startDepalletize
+movebox2channel51 3200
+movebox2channel59 3208
+movebox2channel51 3216
+movebox2channel72 3224
+movebox2channel43 3232
+movebox2channel2 3240
+movebox2channel13 3248
+movebox2channel34 3256
+movebox2channel59 3264
+movebox2channel24 3272
+movebox2channel51 3280
+movebox2channel72 3288
+movebox2channel9 3296
+movebox2channel30 3304
+movebox4channel31 3312
+movebox4channel52 3320
+movebox4channel73 3328
+movebox4channel85 3336
+movebox4channel17 3344
+movebox4channel3 3352
+movebox4channel38 3360
+movebox4channel43 3368
+movebox4channel2 3376
+movebox4channel13 3384
+movebox4channel34 3392
+movebox4channel55 3400
+movebox4channel94 3408
+movebox4channel59 3416
+finishDepalletize
+------------------------------------------
+/-/-/4/10/5/0/16/11
+movebox6channel94 3424
+/-/-/4/2/2/8/17/12
+movebox7channel59 3432
+/-/-/4/12/7/2/18/13
+movebox8channel12 3440
+/-/-/4/13/8/3/19/14
+movebox9channel76 3448
+/-/-/-/0/9/4/20/15
+movebox10channel93 3456
+/-/-/-/0/12/4/20/15
+movebox10channel4 3464
+/-/-/4/12/3/19/14/9
+movebox11channel3 3472
+/-/-/-/2/3/19/14/9
+movebox11channel24 3480
+/-/-/-/7/2/18/13/8
+movebox11channel7 3488
+------------------------------------------
+startDepalletize
+movebox10channel93 3496
+movebox10channel4 3504
+movebox10channel24 3512
+movebox10channel7 3520
+movebox10channel80 3528
+movebox10channel23 3536
+movebox10channel44 3544
+movebox10channel65 3552
+movebox10channel51 3560
+movebox10channel72 3568
+movebox10channel28 3576
+movebox10channel49 3584
+movebox10channel61 3592
+movebox10channel94 3600
+finishDepalletize
+------------------------------------------
+/-/-/-/4/2/2/8/17
+movebox12channel59 3608
+/-/-/7/10/18/13/8/17
+movebox12channel80 3616
+/-/-/0/9/10/2/2/2
+movebox12channel51 3624
+/-/-/0/9/10/2/2/20
+movebox12channel72 3632
+/-/-/13/8/3/4/2/12
+movebox12channel13 3640
+/-/-/-/13/8/3/4/2
+movebox12channel13 3648
+/-/-/-/4/20/15/10/0
+movebox12channel4 3656
+/-/-/-/4/12/7/2/18
+movebox13channel12 3664
+/-/-/-/4/13/8/3/19
+movebox14channel76 3672
+/-/-/9/20/13/8/3/19
+movebox14channel97 3680
+------------------------------------------
+startDepalletize
+movebox14channel59 3688
+movebox14channel13 3696
+movebox14channel4 3704
+movebox14channel12 3712
+movebox14channel76 3720
+movebox14channel93 3728
+movebox14channel3 3736
+movebox14channel24 3744
+movebox14channel7 3752
+movebox14channel59 3760
+movebox14channel80 3768
+movebox14channel51 3776
+movebox14channel72 3784
+movebox14channel13 3792
+finishDepalletize
+------------------------------------------
+/-/-/4/2/12/19/1/17
+movebox15channel43 3800
+/-/-/14/10/0/9/4/20
+movebox15channel93 3808
+/-/-/-/10/0/14/4/20
+movebox15channel4 3816
+/-/12/4/20/15/10/5/0
+movebox16channel25 3824
+/-/12/5/0/16/11/6/1
+movebox17channel26 3832
+/-/-/-/14/4/12/7/2
+movebox18channel12 3840
+/-/-/-/14/4/13/8/3
+movebox19channel76 3848
+/-/-/-/9/20/13/8/3
+movebox19channel97 3856
+/-/-/14/9/4/20/8/3
+movebox19channel8 3864
+/-/-/14/9/4/20/8/3
+movebox19channel29 3872
+/-/-/14/0/9/10/2/2
+movebox20channel72 3880
+/-/-/12/5/0/16/11/6
+movebox1channel5 3888
+/-/-/14/0/9/10/2/2
+movebox2channel51 3896
+/-/-/14/14/13/8/3/4
+movebox2channel13 3904
+/-/-/14/9/2/18/13/8
+movebox3channel86 3912
+/-/-/11/14/9/18/13/8
+movebox3channel18 3920
+/-/-/3/3/15/18/13/8
+movebox3channel39 3928
+/-/-/-/14/14/13/8/3
+movebox4channel13 3936
+/-/-/-/20/14/10/0/9
+movebox4channel93 3944
+/-/-/-/-/20/10/0/14
+movebox4channel4 3952
+/-/-/-/-/12/7/2/14
+movebox4channel12 3960
+/-/-/-/-/13/8/3/14
+movebox4channel76 3968
+/-/-/-/20/8/3/14/9
+movebox4channel8 3976
+/-/-/-/20/8/3/14/9
+movebox4channel29 3984
+/-/-/0/12/4/20/15/10
+movebox5channel25 3992
+/-/0/16/12/4/20/15/10
+movebox5channel46 4000
+/-/-/-/12/5/0/16/11
+movebox6channel5 4008
+------------------------------------------
+startDepalletize
+movebox5channel4 4016
+movebox5channel12 4024
+movebox5channel76 4032
+movebox5channel97 4040
+movebox5channel13 4048
+movebox5channel93 4056
+movebox5channel4 4064
+movebox5channel12 4072
+movebox5channel76 4080
+movebox5channel8 4088
+movebox5channel29 4096
+movebox5channel5 4104
+movebox5channel43 4112
+movebox5channel97 4120
+finishDepalletize
+------------------------------------------
+/-/-/-/2/14/5/5/12
+movebox7channel12 4128
+/-/-/4/12/7/2/18/13
+movebox8channel33 4136
+/-/-/4/20/8/3/19/14
+movebox9channel50 4144
+/-/-/-/0/12/4/20/15
+movebox10channel25 4152
+/-/-/0/16/12/4/20/15
+movebox10channel46 4160
+/-/-/10/7/2/18/13/8
+movebox11channel28 4168
+/-/-/10/7/2/18/13/8
+movebox11channel49 4176
+/-/-/10/20/19/19/14/9
+movebox11channel61 4184
+/-/-/-/-/2/14/5/5
+movebox12channel12 4192
+/-/-/19/1/17/5/4/2
+movebox12channel43 4200
+/-/-/-/-/4/20/15/0
+movebox12channel25 4208
+/-/-/-/4/20/15/0/16
+movebox12channel46 4216
+/-/-/2/18/13/8/4/2
+movebox12channel2 4224
+/-/-/3/19/14/9/14/4
+movebox12channel3 4232
+/-/-/-/5/0/16/11/5
+movebox12channel5 4240
+------------------------------------------
+startDepalletize
+movebox12channel12 4248
+movebox12channel25 4256
+movebox12channel12 4264
+movebox12channel25 4272
+movebox12channel46 4280
+movebox12channel5 4288
+movebox12channel72 4296
+movebox12channel51 4304
+movebox12channel86 4312
+movebox12channel18 4320
+movebox12channel39 4328
+movebox12channel13 4336
+movebox12channel93 4344
+movebox12channel4 4352
+finishDepalletize
+------------------------------------------
+/-/-/-/4/12/7/2/18
+movebox13channel33 4360
+/-/-/12/5/5/20/10/0
+movebox14channel4 4368
+/-/-/-/5/5/13/8/3
+movebox14channel76 4376
+/-/-/-/0/12/12/4/20
+movebox15channel25 4384
+/-/-/-/0/16/12/4/20
+movebox15channel46 4392
+/-/-/19/14/9/4/12/20
+movebox15channel19 4400
+/-/-/4/20/15/10/5/0
+movebox16channel67 4408
+/-/4/5/0/16/11/6/1
+movebox17channel47 4416
+/-/-/-/-/4/12/7/2
+movebox18channel33 4424
+/-/-/-/14/4/20/8/3
+movebox19channel50 4432
+/-/-/14/9/4/20/8/3
+movebox19channel71 4440
+/-/-/14/9/4/20/8/3
+movebox19channel92 4448
+/-/-/14/9/19/12/20/3
+movebox19channel45 4456
+------------------------------------------
+startDepalletize
+movebox19channel33 4464
+movebox19channel76 4472
+movebox19channel25 4480
+movebox19channel46 4488
+movebox19channel33 4496
+movebox19channel50 4504
+movebox19channel8 4512
+movebox19channel29 4520
+movebox19channel28 4528
+movebox19channel49 4536
+movebox19channel61 4544
+movebox19channel12 4552
+movebox19channel43 4560
+movebox19channel2 4568
+movebox19channel3 4576
+movebox19channel5 4584
+finishDepalletize
+------------------------------------------
+/-/-/-/19/0/12/12/4
+movebox20channel25 4592
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+------------------------------------------
+startDepalletize
+finishDepalletize
+------------------------------------------
+/-/-/-/2/19/19/4/12
+movebox7channel33 4600
+/-/-/1/12/5/0/16/11
+movebox6channel26 4608
+/-/-/19/12/7/2/18/13
+movebox8channel54 4616
+/-/-/19/3/19/14/9/14
+movebox4channel3 4624
+/-/-/-/-/19/0/12/12
+movebox4channel25 4632
+/-/-/2/19/19/1/17/5
+movebox4channel43 4640
+/-/-/2/19/2/18/13/8
+movebox4channel2 4648
+/-/-/-/20/19/0/16/12
+movebox4channel46 4656
+/-/-/-/-/12/2/19/19
+movebox4channel33 4664
+/-/-/-/12/20/19/14/9
+movebox4channel19 4672
+------------------------------------------
+startDepalletize
+movebox4channel25 4680
+movebox4channel33 4688
+movebox4channel25 4696
+movebox4channel46 4704
+movebox4channel33 4712
+movebox4channel19 4720
+movebox4channel4 4728
+movebox4channel76 4736
+movebox4channel67 4744
+movebox4channel50 4752
+movebox4channel71 4760
+movebox4channel92 4768
+movebox4channel45 4776
+movebox4channel26 4784
+finishDepalletize
+------------------------------------------
+/-/-/4/5/0/16/11/6
+movebox1channel47 4792
+/-/-/19/12/12/2/14/5
+movebox5channel12 4800
+/-/-/19/12/5/0/16/11
+movebox5channel5 4808
+/-/-/3/3/9/18/13/8
+movebox3channel60 4816
+/-/-/3/14/9/18/13/8
+movebox3channel81 4824
+/-/-/4/2/9/20/13/8
+movebox3channel34 4832
+/-/-/19/12/20/3/19/14
+movebox9channel66 4840
 ------------------------------------------
 ------------------------------------------
 ------------------------------------------

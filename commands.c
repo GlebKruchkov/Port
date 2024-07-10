@@ -130,8 +130,9 @@ bool Check(int process) {
         int quantity = atoi(fields[1]);
         //printf("%s %d\n", "quantity", quantity);
         int length = atoi(fields[2]);
-        Store.box_data[process - 1][0] = SKU;
-        Store.box_data[process - 1][1] = quantity;
+        //printf("%s %d %s %d\n", "process", process, "SKU", SKU);
+        Store.box_data[process][0] = SKU;
+        Store.box_data[process][1] = quantity;
         return true;
     } else {
         return false;

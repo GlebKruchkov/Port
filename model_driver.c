@@ -38,6 +38,47 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
+  bool flag = 0;
+  if (self == 0) {
+    for (int i = 0; i < high_border - low_border; ++i) {
+      if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
+        flag = true;
+      }
+    }
+    if (flag) {
+      tw_event *e1 = tw_event_new(1, 0, lp);
+      message *msg1 = tw_event_data(e1);
+      msg1->type = TAKE_IN;
+      msg1->contents = tw_rand_unif(lp->rng);
+      msg1->sender = self;
+      tw_event_send(e1);
+      for (int process = 2; process < 10; ++process) {
+        if (Store.box_data[process][1] == 0) {
+          if (Check(process)) {
+            tw_event *e = tw_event_new(process, 0, lp);
+            message *msg = tw_event_data(e);
+            msg->type = TAKE_OUT;
+            msg->contents = tw_rand_unif(lp->rng);
+            msg->sender = self;
+            tw_event_send(e);
+          };
+        }
+      }
+    } else {
+      for (int process = 1; process < 10; ++process) {
+        if (Store.box_data[process][1] == 0) {
+          if (Check(process)) {
+            tw_event *e = tw_event_new(process, 0, lp);
+            message *msg = tw_event_data(e);
+            msg->type = TAKE_OUT;
+            msg->contents = tw_rand_unif(lp->rng);
+            msg->sender = self;
+            tw_event_send(e);
+          };
+        }
+      }
+    }
+  }
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
@@ -60,25 +101,29 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       msg1->sender = self;
       tw_event_send(e1);
       for (int process = 2; process < 10; ++process) {
-        if (Check(process)) {
-          tw_event *e = tw_event_new(process, 0, lp);
-          message *msg = tw_event_data(e);
-          msg->type = TAKE_OUT;
-          msg->contents = tw_rand_unif(lp->rng);
-          msg->sender = self;
-          tw_event_send(e);
-        };
+        if (Store.box_data[process][1] == 0) {
+          if (Check(process)) {
+            tw_event *e = tw_event_new(process, 0, lp);
+            message *msg = tw_event_data(e);
+            msg->type = TAKE_OUT;
+            msg->contents = tw_rand_unif(lp->rng);
+            msg->sender = self;
+            tw_event_send(e);
+          };
+        } 
       }
     } else {
       for (int process = 1; process < 10; ++process) {
-        if (Check(process)) {
-          tw_event *e = tw_event_new(process, 0, lp);
-          message *msg = tw_event_data(e);
-          msg->type = TAKE_OUT;
-          msg->contents = tw_rand_unif(lp->rng);
-          msg->sender = self;
-          tw_event_send(e);
-        };
+        if (Store.box_data[process][1] == 0) {
+          if (Check(process)) {
+            tw_event *e = tw_event_new(process, 0, lp);
+            message *msg = tw_event_data(e);
+            msg->type = TAKE_OUT;
+            msg->contents = tw_rand_unif(lp->rng);
+            msg->sender = self;
+            tw_event_send(e);
+          };
+        }
       }
     }
   } else {
@@ -107,8 +152,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e1);
         break;
       case TAKE_OUT:
-        for (int q = 0; q < Store.box_data[self - 1][1]; ++q) {
-          int channel = Remove_Boxes(Store.box_data[self - 1][0]);
+        printf("%s %d\n", "self", self);
+        for (int q = 0; q < Store.box_data[self][1]; ++q) {
+          printf("%d\n", Store.box_data[self][0]);
+          int channel = Remove_Boxes(Store.box_data[self][0]);
           glb_time += 8;
           // for (int i = 0; i < high_border - low_border + 1; ++i) {
           //   if (Store.cnt_boxes_type[i] < 15) {
@@ -120,8 +167,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           //     tw_event_send(e1);
           //   }
           // }
-          fprintf(f, "movebox%dchannel%d %d\n", Store.box_data[self - 1][0], channel, glb_time);
+          fprintf(f, "movebox%dchannel%d %d\n", Store.box_data[self][0], channel, glb_time);
         }
+        Store.box_data[self][1] = 0;
         tw_event *e = tw_event_new(0, 0, lp);
         message *msg = tw_event_data(e);
         msg->type = TAKE_OUT;
