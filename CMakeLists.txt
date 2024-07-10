@@ -16,12 +16,12 @@ SET_SOURCE_FILES_PROPERTIES(${CMAKE_CURRENT_BINARY_DIR}/model_config.h PROPERTIE
 
 # All source files for the model
 SET(model_srcs
+	commands.c
 	model_main.c
 	model_driver.c
 	model_map.c
 	# init.c
 	sqlite3.c
-	commands.c
 	# model_sqlite_func.c
 	model.h
 	model_config.h

@@ -6,8 +6,8 @@ void ConveyorsInit()
     char *err_msg = 0;
     char *sql_del = "DROP TABLE IF EXISTS Warehouse";
     char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER)";
-    sqlite3_exec(db, sql_del, 0, 0, &err_msg);
-    sqlite3_exec(db, sql, 0, 0, &err_msg);
+    sqlite3_exec(Store.db, sql_del, 0, 0, &err_msg);
+    sqlite3_exec(Store.db, sql, 0, 0, &err_msg);
 
     int change_tmp = 0;
     for (int i = 0; i < 4; ++i) {
@@ -33,9 +33,8 @@ void ConveyorsInit()
             change_tmp++;
             Store.conveyor[col].current_length++;
             Store.cnt_boxes_type[current_SKU]++;
-            insert_data(db, current_SKU, row, col);
+            insert_data(&(Store.db), current_SKU, row, col);
             fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    ", 4, id, 4, glb_time, 5, current_SKU, 6, col);
-            ++id;
             for (int i = 0; i < MAX_BOXES; ++i) {
                 if (Store.conveyor[col].boxes[i].empty) {
                     fprintf(f_dep, "| - ");
@@ -55,7 +54,7 @@ void ConveyorsInit()
         printf("%d\n", Store.cnt_boxes_type[i]);
     }
     fprintf(f, "finishDepalletize\n");
-    fprintf(f, "------------------------------------------------------------------------------------\n");
+    fprintf(f, "------------------------------------------\n");
     fprintf(f, "startPalletize #1\n");
     for (int i = 0; i < 10; ++i) {
         Store.box_data[i][0] = -1;

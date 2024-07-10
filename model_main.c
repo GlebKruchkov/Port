@@ -7,7 +7,6 @@
 // - a main function
 
 //includes
-#include "ross.h"
 #include "model.h"
 #include "init.c"
 
@@ -64,7 +63,7 @@ int model_main (int argc, char* argv[]) {
   f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
   f_dep = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/first_depalitization.txt", "w");
-  sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
+  sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &Store.db);
 	InitROSS();
 	int i, num_lps_per_pe;
   tw_opt_add(model_opts);

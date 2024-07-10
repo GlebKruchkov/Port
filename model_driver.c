@@ -6,13 +6,9 @@
 // - a finalization function for each LP type
 
 //Includes
-#include <stdio.h>
 
-#include "ross.h"
 #include "model.h"
-#include <stdio.h>
 #include <time.h>
-#include "extras.c"
 #include "sqlite3.h"
 
 //Helper Functions
@@ -179,7 +175,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             fprintf(f, "------------------------------------------------------------------------------------\n");
             fprintf(f, "startDepalletize\n");
             while (Store.cnt_boxes_type[i] < threshold) {
-              int channel = Add_Box(i);
+              int channel = Add_Box(&(Store.db), i);
               cur_time += 8;
               // fprintf(f, "movebox%dchannel%d %d %d\n", i, channel, cur_time, self);
               fprintf(f, "%*d   %*d   movebox%*d   channel%*d   process%*d   ", 4, log_id, 4, cur_time, 5, i, 6, channel, 2, self);
@@ -207,7 +203,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         break;
       case TAKE_OUT:
         for (int q = 0; q < Store.box_data[self][1]; ++q) {
-          int channel = Remove_Boxes(Store.box_data[self][0]);
+          int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0]);
           cur_time += 8;
           fprintf(f, "%*d   %*d   movebox%*d   channel%*d   process%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self);
           // if (is_reverse != 0) {

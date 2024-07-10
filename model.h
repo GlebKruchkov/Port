@@ -29,7 +29,6 @@
 #include <dirent.h>
 #include "sqlite3.h"
 
-static sqlite3 *db;
 static const int low_border = 1;
 static const int high_border = 21;
 
@@ -92,6 +91,7 @@ struct _conveyor
 
 struct _Store
 {
+    sqlite3 *db;
     int box_data[10][2];
     int arr_time[10];
     int cnt_boxes_type[high_border - low_border + 1];
@@ -125,18 +125,14 @@ extern void model_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp)
 extern void model_final(state *s, tw_lp *lp);
 // defined in model_map.c:
 extern tw_peid model_map(tw_lpid gid);
+
 extern int callback(void *NotUsed, int argc, char **argv, char **azColName);
-
-extern int insert_data(sqlite3 *db, int type, int row, int col);
-
-extern int find_data(sqlite3 *db, int type);
-extern int Add_Box(int type);
-
-extern void Swap_Boxes(int row, int col1, int col2);
-
-extern void Reverse(int row, int col);
-extern int Remove_Boxes(int type);
- 
+extern int insert_data(sqlite3 **db1, int type, int row, int col);
+extern int find_data(sqlite3 **db1, int type);
+extern int Add_Box(sqlite3 **db1, int type);
+extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
+extern void Reverse(sqlite3 **db1, int row, int col);
+extern int Remove_Boxes(sqlite3 **db, int type);
 extern bool Check(int process);
 
 #endif

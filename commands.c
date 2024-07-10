@@ -1,5 +1,7 @@
 #include "model.h"
 
+//extern sqlite3 *db;
+
 int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     if (atoi(argv[1]) > best_box.row) {
         best_box.row = atoi(argv[1]);
@@ -8,8 +10,8 @@ int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     return 0;
 }
 
-int insert_data(sqlite3 *db, int type, int row, int col) {
-    sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
+int insert_data(sqlite3 **db1, int type, int row, int col) {
+    struct sqlite3 * db = (struct sqlite3 *) *db1;
     char *err_msg = 0;
     char sql[100];
     sprintf(sql, "INSERT INTO Warehouse(Type, Row, Column) VALUES (%d, %d, %d)", type, row, col);
@@ -17,8 +19,8 @@ int insert_data(sqlite3 *db, int type, int row, int col) {
     return 0;
 }
 
-int find_data(sqlite3 *db, int type) {
-    sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
+int find_data(sqlite3 **db1, int type) {
+    struct sqlite3 * db = (struct sqlite3 *) *db1;
     best_box.row = -1;
     best_box.column = -1;
     char *err_msg = 0;
@@ -28,12 +30,11 @@ int find_data(sqlite3 *db, int type) {
     return 0;
 }
 
-int Add_Box(int type) {
-    find_data(db, -1);
+int Add_Box(sqlite3 **db1, int type) {
+    struct sqlite3 * db = (struct sqlite3 *) *db1;
+    find_data(db1, -1);
     int col = best_box.column;
     int r = best_box.row;
-
-    sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
     char *err_msg = 0;
     char sql[100];
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", -1, r, col);
@@ -43,12 +44,12 @@ int Add_Box(int type) {
     Store.conveyor[col].boxes[r].empty = 0;
     Store.cnt_boxes_type[type]++;
 
-    insert_data(db, type, r, col);
+    insert_data(db1, type, r, col);
     return col;
 }
 
-void Swap_Boxes(int col, int row1, int row2) {
-    sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
+void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
+    struct sqlite3 * db = (struct sqlite3 *) *db1;
     bool empty_tmp = Store.conveyor[col].boxes[row1].empty;
     int SKU_tmp = Store.conveyor[col].boxes[row1].SKU;
     char *err_msg = 0;
@@ -65,15 +66,15 @@ void Swap_Boxes(int col, int row1, int row2) {
     Store.conveyor[col].boxes[row2].empty = empty_tmp;
     Store.conveyor[col].boxes[row2].SKU = SKU_tmp;
 
-    insert_data(db, Store.conveyor[col].boxes[row2].SKU, row2, col);
-    insert_data(db, Store.conveyor[col].boxes[row1].SKU, row1, col);
+    insert_data(db1, Store.conveyor[col].boxes[row2].SKU, row2, col);
+    insert_data(db1, Store.conveyor[col].boxes[row1].SKU, row1, col);
 }
 
-void Reverse(int col, int row) {
+void Reverse(sqlite3 **db1, int col, int row) {
     for (int step = 0; step < 7 - row; ++step) {
         for (int i = 7; i >= 1; --i) {
             if (Store.conveyor[col].boxes[i - 1].empty == 0) {
-                Swap_Boxes(col, i, i - 1);
+                Swap_Boxes(db1, col, i, i - 1);
             }
         }
         fprintf(f, "reverse%*d ", 4, best_box.column);
@@ -81,14 +82,14 @@ void Reverse(int col, int row) {
     fprintf(f, "\n");
 }
 
-int Remove_Boxes(int type) {
-    sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &db);
-    find_data(db, type);
+int Remove_Boxes(sqlite3 **db1, int type) {
+    struct sqlite3 * db = (struct sqlite3 *) *db1;
+    find_data(db1, type);
     int col = best_box.column;
     int row = best_box.row;
 
     if (row != 7) {
-        Reverse(col, row);
+        Reverse(db1, col, row);
     }
 
     char *err_msg = 0;
@@ -96,12 +97,12 @@ int Remove_Boxes(int type) {
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", type, 7, col);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
-    insert_data(db, -1, 7, col);
+    insert_data(db1, -1, 7, col);
 
     Store.conveyor[col].boxes[7].SKU = -1;
     Store.conveyor[col].boxes[7].empty = 1;
     for (int i = 7; i >= 1; --i) {
-        Swap_Boxes(col, i, i - 1);
+        Swap_Boxes(db1, col, i, i - 1);
     }
     Store.cnt_boxes_type[type]--;
 
@@ -119,11 +120,8 @@ bool Check(int process) {
             fields[i] = strtok(NULL, ",");
         }
         int SKU =  atoi(fields[0]);
-        //printf("%s %d ", "SKU", SKU);
         int quantity = atoi(fields[1]);
-        //printf("%s %d\n", "quantity", quantity);
         int length = atoi(fields[2]);
-        //printf("%s %d %s %d\n", "process", process, "SKU", SKU);
         Store.box_data[process][0] = SKU;
         Store.box_data[process][1] = quantity;
         return true;
