@@ -35,6 +35,7 @@ static const int high_border = 21;
 static int glb_time = 0;
 FILE *file;
 FILE *f;
+FILE *f_dep;
 const static double g_robot_calc_time = 0.001;
 static const int threshold = (MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1);
 

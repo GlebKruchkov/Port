@@ -13,19 +13,41 @@ void ConveyorsInit()
     for (int i = 0; i < 4; ++i) {
         Store.cnt_boxes_type[i] = 0;
     }
+    int tempor = 1;
 
     for (int row = 0; row < MAX_BOXES; ++row) {
         for (int col = 0; col < MAX_CONVEYORS; ++col) {
+            box b;
+            b.empty = 1;
+            b.SKU = -1;
+            Store.conveyor[col].boxes[row] = b;
+        }
+    }
+    int id = 1;
+    for (int row = MAX_BOXES - 1; row >= 0; --row) {
+        for (int col = 0; col < MAX_CONVEYORS; ++col) {
             Store.conveyor[col].max_length = MAX_BOXES;
             int current_SKU = (low_border + (change_tmp) % (high_border - low_border + 1)) - 1;
-            box b;
-            b.empty = 0;
-            b.SKU = current_SKU;
-            Store.conveyor[col].boxes[row] = b;
+            Store.conveyor[col].boxes[row].SKU = current_SKU;
+            Store.conveyor[col].boxes[row].empty = 0;
             change_tmp++;
             Store.conveyor[col].current_length++;
             Store.cnt_boxes_type[current_SKU]++;
             insert_data(db, current_SKU, row, col);
+            fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    ", 4, id, 4, glb_time, 5, current_SKU, 6, col);
+            ++id;
+            for (int i = 0; i < MAX_BOXES; ++i) {
+                if (Store.conveyor[col].boxes[i].empty) {
+                    fprintf(f_dep, "| - ");
+                } else {
+                    fprintf(f_dep, "|%*d", 3, Store.conveyor[col].boxes[i].SKU);
+                }
+            }
+            fprintf(f_dep, "|\n");
+            if (tempor % 10 == 0) {
+                glb_time += 8;
+            }
+            tempor += 1;
         }
     }
 
