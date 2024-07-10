@@ -76,7 +76,9 @@ void Reverse(int col, int row) {
                 Swap_Boxes(col, i, i - 1);
             }
         }
+        fprintf(f, "reverse%*d ", 4, best_box.column);
     }
+    fprintf(f, "\n");
 }
 
 int Remove_Boxes(int type) {
@@ -102,15 +104,6 @@ int Remove_Boxes(int type) {
         Swap_Boxes(col, i, i - 1);
     }
     Store.cnt_boxes_type[type]--;
-
-    for (int i = 0; i < 8; ++i) {
-        if (Store.conveyor[col].boxes[i].SKU == -1) {
-            fprintf(f, "/%s", "-");
-        } else {
-            fprintf(f, "/%d", Store.conveyor[col].boxes[i].SKU);
-        }
-    }
-    fprintf(f, "\n");
 
     return col;
 }

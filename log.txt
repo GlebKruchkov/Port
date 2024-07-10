@@ -1,521 +1,442 @@
 startDepalletize
 finishDepalletize
-------------------------------------------
+------------------------------------------------------------------------------------
 startPalletize #1
-/-/9/14/19/3/8/13/18
-movebox2channel2 8 2
-/-/9/14/19/3/8/13/18
-movebox2channel23 16 2
-/-/14/19/3/8/13/18/2
-movebox7channel7 8 7
-/-/13/18/2/7/12/17/1
-movebox6channel6 8 6
-/-/15/20/4/9/14/19/3
-movebox8channel8 8 8
-/-/11/16/0/5/10/15/20
-movebox4channel4 8 4
-/-/11/16/0/5/10/15/20
-movebox4channel25 16 4
-/-/11/16/0/5/10/15/20
-movebox4channel46 24 4
-/-/11/16/0/5/10/15/20
-movebox4channel67 32 4
-/-/11/16/0/5/10/15/20
-movebox4channel88 40 4
-/-/9/16/0/5/10/15/20
-movebox4channel9 48 4
-/-/9/16/0/5/10/15/20
-movebox4channel30 56 4
-/-/8/13/18/2/7/12/17
-movebox1channel1 8 1
-/-/12/17/1/6/11/16/0
-movebox5channel5 8 5
-/-/12/17/1/6/11/16/0
-movebox5channel26 16 5
-/-/10/15/20/4/9/14/19
-movebox3channel3 8 3
-/-/10/15/20/4/9/14/19
-movebox3channel24 16 3
-/-/10/15/20/4/9/14/19
-movebox3channel45 24 3
-/-/16/0/5/10/15/20/4
-movebox9channel51 8 9
-/-/20/4/9/14/19/3/8
-movebox13channel13 64 4
-/-/18/2/7/12/17/1/6
-movebox11channel11 64 2
-/-/18/2/7/12/17/1/6
-movebox11channel32 72 2
-/-/18/2/7/12/17/1/6
-movebox11channel53 80 2
-/-/4/9/14/19/3/8/13
-movebox18channel18 64 9
-/-/3/8/13/18/2/7/12
-movebox17channel17 64 8
-/-/17/1/6/11/16/0/5
-movebox10channel10 64 1
-/-/17/1/6/11/16/0/5
-movebox10channel31 72 1
-/-/1/6/11/16/0/5/10
-movebox15channel15 64 6
-/-/1/6/11/16/0/5/10
-movebox15channel36 72 6
-/-/1/6/11/16/0/5/10
-movebox15channel57 80 6
-/-/0/5/10/15/20/4/9
-movebox14channel14 64 5
-/-/0/5/10/15/20/4/9
-movebox14channel35 72 5
-/-/19/3/8/13/18/2/7
-movebox12channel12 64 3
-/-/19/3/8/13/18/2/7
-movebox12channel33 72 3
-/-/19/3/8/13/18/2/7
-movebox12channel54 80 3
-/-/19/3/8/13/18/2/7
-movebox12channel75 88 3
-/-/19/3/8/13/18/2/7
-movebox12channel96 96 3
-/-/-/3/8/13/18/2/7
-movebox12channel17 104 3
-/-/17/3/8/13/18/2/7
-movebox12channel38 112 3
-/-/2/7/12/17/1/6/11
-movebox16channel16 64 7
-/-/13/18/2/7/12/17/1
-movebox6channel27 120 8
-/-/5/10/15/20/4/9/14
-movebox19channel19 120 1
-/-/5/10/15/20/4/9/14
-movebox19channel40 128 1
-/-/5/10/15/20/4/9/14
-movebox19channel61 136 1
-/-/5/10/15/20/4/9/14
-movebox19channel82 144 1
-/-/12/17/1/6/11/16/0
-movebox5channel47 120 7
-/-/12/17/1/6/11/16/0
-movebox5channel68 128 7
-/-/6/11/16/0/5/10/15
-movebox20channel20 120 2
-/-/8/13/18/2/7/12/17
-movebox1channel22 120 3
-/-/9/14/19/3/8/13/18
-movebox2channel44 120 4
-/-/9/14/19/3/8/13/18
-movebox2channel65 128 4
-/-/14/19/3/8/13/18/2
-movebox7channel28 120 9
-/-/10/15/20/4/9/14/19
-movebox3channel66 120 5
-/-/10/15/20/4/9/14/19
-movebox3channel87 128 5
-/-/-/15/20/4/9/14/19
-movebox3channel8 136 5
-/-/-/16/0/5/10/15/20
-movebox4channel51 120 6
-/-/9/16/0/5/10/15/20
-movebox4channel72 128 6
-/-/9/16/0/5/10/15/20
-movebox4channel93 136 6
-/-/-/9/0/5/10/15/20
-movebox4channel14 144 6
-/-/-/9/0/5/10/15/20
-movebox4channel35 152 6
-/-/9/14/0/5/10/15/20
-movebox4channel56 160 6
-/-/9/14/0/5/10/15/20
-movebox4channel77 168 6
-/-/17/3/8/13/18/2/7
-movebox12channel59 176 6
-/-/17/3/8/13/18/2/7
-movebox12channel80 184 6
-/-/-/17/8/13/18/2/7
-movebox12channel1 192 6
-/-/-/17/8/13/18/2/7
-movebox12channel22 200 6
-/-/17/1/8/13/18/2/7
-movebox12channel43 208 6
-/-/17/1/8/13/18/2/7
-movebox12channel64 216 6
-/-/17/1/8/13/18/2/7
-movebox12channel85 224 6
-------------------------------------------
+   1      8   movebox    2   channel     2   process 2   | - |  9| 14| 19|  3|  8| 13| 18|
+   2     16   movebox    2   channel    23   process 2   | - |  9| 14| 19|  3|  8| 13| 18|
+   3      8   movebox    7   channel     7   process 7   | - | 14| 19|  3|  8| 13| 18|  2|
+   4      8   movebox    6   channel     6   process 6   | - | 13| 18|  2|  7| 12| 17|  1|
+   5      8   movebox    8   channel     8   process 8   | - | 15| 20|  4|  9| 14| 19|  3|
+   6      8   movebox    4   channel     4   process 4   | - | 11| 16|  0|  5| 10| 15| 20|
+   7     16   movebox    4   channel    25   process 4   | - | 11| 16|  0|  5| 10| 15| 20|
+   8     24   movebox    4   channel    46   process 4   | - | 11| 16|  0|  5| 10| 15| 20|
+   9     32   movebox    4   channel    67   process 4   | - | 11| 16|  0|  5| 10| 15| 20|
+  10     40   movebox    4   channel    88   process 4   | - | 11| 16|  0|  5| 10| 15| 20|
+reverse   9 
+  11     48   movebox    4   channel     9   process 4   | - |  9| 16|  0|  5| 10| 15| 20|
+reverse  30 
+  12     56   movebox    4   channel    30   process 4   | - |  9| 16|  0|  5| 10| 15| 20|
+  13      8   movebox    1   channel     1   process 1   | - |  8| 13| 18|  2|  7| 12| 17|
+  14      8   movebox    5   channel     5   process 5   | - | 12| 17|  1|  6| 11| 16|  0|
+  15     16   movebox    5   channel    26   process 5   | - | 12| 17|  1|  6| 11| 16|  0|
+  16      8   movebox    3   channel     3   process 3   | - | 10| 15| 20|  4|  9| 14| 19|
+  17     16   movebox    3   channel    24   process 3   | - | 10| 15| 20|  4|  9| 14| 19|
+  18     24   movebox    3   channel    45   process 3   | - | 10| 15| 20|  4|  9| 14| 19|
+  19      8   movebox    9   channel    51   process 9   | - | 16|  0|  5| 10| 15| 20|  4|
+  20     64   movebox   13   channel    13   process 4   | - | 20|  4|  9| 14| 19|  3|  8|
+  21     64   movebox   11   channel    11   process 2   | - | 18|  2|  7| 12| 17|  1|  6|
+  22     72   movebox   11   channel    32   process 2   | - | 18|  2|  7| 12| 17|  1|  6|
+  23     80   movebox   11   channel    53   process 2   | - | 18|  2|  7| 12| 17|  1|  6|
+  24     64   movebox   18   channel    18   process 9   | - |  4|  9| 14| 19|  3|  8| 13|
+  25     64   movebox   17   channel    17   process 8   | - |  3|  8| 13| 18|  2|  7| 12|
+  26     64   movebox   10   channel    10   process 1   | - | 17|  1|  6| 11| 16|  0|  5|
+  27     72   movebox   10   channel    31   process 1   | - | 17|  1|  6| 11| 16|  0|  5|
+  28     64   movebox   15   channel    15   process 6   | - |  1|  6| 11| 16|  0|  5| 10|
+  29     72   movebox   15   channel    36   process 6   | - |  1|  6| 11| 16|  0|  5| 10|
+  30     80   movebox   15   channel    57   process 6   | - |  1|  6| 11| 16|  0|  5| 10|
+  31     64   movebox   14   channel    14   process 5   | - |  0|  5| 10| 15| 20|  4|  9|
+  32     72   movebox   14   channel    35   process 5   | - |  0|  5| 10| 15| 20|  4|  9|
+  33     64   movebox   12   channel    12   process 3   | - | 19|  3|  8| 13| 18|  2|  7|
+  34     72   movebox   12   channel    33   process 3   | - | 19|  3|  8| 13| 18|  2|  7|
+  35     80   movebox   12   channel    54   process 3   | - | 19|  3|  8| 13| 18|  2|  7|
+  36     88   movebox   12   channel    75   process 3   | - | 19|  3|  8| 13| 18|  2|  7|
+  37     96   movebox   12   channel    96   process 3   | - | 19|  3|  8| 13| 18|  2|  7|
+  38    104   movebox   12   channel    17   process 3   | - | - |  3|  8| 13| 18|  2|  7|
+reverse  38 
+  39    112   movebox   12   channel    38   process 3   | - | 17|  3|  8| 13| 18|  2|  7|
+  40     64   movebox   16   channel    16   process 7   | - |  2|  7| 12| 17|  1|  6| 11|
+  41    120   movebox    6   channel    27   process 8   | - | 13| 18|  2|  7| 12| 17|  1|
+  42    120   movebox   19   channel    19   process 1   | - |  5| 10| 15| 20|  4|  9| 14|
+  43    128   movebox   19   channel    40   process 1   | - |  5| 10| 15| 20|  4|  9| 14|
+  44    136   movebox   19   channel    61   process 1   | - |  5| 10| 15| 20|  4|  9| 14|
+  45    144   movebox   19   channel    82   process 1   | - |  5| 10| 15| 20|  4|  9| 14|
+  46    120   movebox    5   channel    47   process 7   | - | 12| 17|  1|  6| 11| 16|  0|
+  47    128   movebox    5   channel    68   process 7   | - | 12| 17|  1|  6| 11| 16|  0|
+  48    120   movebox   20   channel    20   process 2   | - |  6| 11| 16|  0|  5| 10| 15|
+  49    120   movebox    1   channel    22   process 3   | - |  8| 13| 18|  2|  7| 12| 17|
+  50    120   movebox    2   channel    44   process 4   | - |  9| 14| 19|  3|  8| 13| 18|
+  51    128   movebox    2   channel    65   process 4   | - |  9| 14| 19|  3|  8| 13| 18|
+  52    120   movebox    7   channel    28   process 9   | - | 14| 19|  3|  8| 13| 18|  2|
+  53    120   movebox    3   channel    66   process 5   | - | 10| 15| 20|  4|  9| 14| 19|
+  54    128   movebox    3   channel    87   process 5   | - | 10| 15| 20|  4|  9| 14| 19|
+  55    136   movebox    3   channel     8   process 5   | - | - | 15| 20|  4|  9| 14| 19|
+  56    120   movebox    4   channel    51   process 6   | - | - | 16|  0|  5| 10| 15| 20|
+reverse  72 
+  57    128   movebox    4   channel    72   process 6   | - |  9| 16|  0|  5| 10| 15| 20|
+reverse  93 
+  58    136   movebox    4   channel    93   process 6   | - |  9| 16|  0|  5| 10| 15| 20|
+reverse  14 
+  59    144   movebox    4   channel    14   process 6   | - | - |  9|  0|  5| 10| 15| 20|
+reverse  35 
+  60    152   movebox    4   channel    35   process 6   | - | - |  9|  0|  5| 10| 15| 20|
+reverse  56 reverse  56 
+  61    160   movebox    4   channel    56   process 6   | - |  9| 14|  0|  5| 10| 15| 20|
+reverse  77 reverse  77 
+  62    168   movebox    4   channel    77   process 6   | - |  9| 14|  0|  5| 10| 15| 20|
+reverse  59 
+  63    176   movebox   12   channel    59   process 6   | - | 17|  3|  8| 13| 18|  2|  7|
+reverse  80 
+  64    184   movebox   12   channel    80   process 6   | - | 17|  3|  8| 13| 18|  2|  7|
+reverse   1 
+  65    192   movebox   12   channel     1   process 6   | - | - | 17|  8| 13| 18|  2|  7|
+reverse  22 
+  66    200   movebox   12   channel    22   process 6   | - | - | 17|  8| 13| 18|  2|  7|
+reverse  43 reverse  43 
+  67    208   movebox   12   channel    43   process 6   | - | 17|  1|  8| 13| 18|  2|  7|
+reverse  64 reverse  64 
+  68    216   movebox   12   channel    64   process 6   | - | 17|  1|  8| 13| 18|  2|  7|
+reverse  85 reverse  85 
+  69    224   movebox   12   channel    85   process 6   | - | 17|  1|  8| 13| 18|  2|  7|
+------------------------------------------------------------------------------------
 startDepalletize
-movebox4channel17 176 1
-movebox4channel8 184 1
-movebox4channel51 192 1
-movebox4channel14 200 1
-movebox4channel35 208 1
-movebox4channel1 216 1
-movebox4channel22 224 1
-movebox4channel2 232 1
-movebox4channel23 240 1
-movebox4channel7 248 1
-movebox4channel6 256 1
-movebox4channel4 264 1
-movebox4channel25 272 1
-movebox4channel46 280 1
-movebox12channel67 288 1
-movebox12channel88 296 1
-movebox12channel9 304 1
-movebox12channel30 312 1
-movebox12channel5 320 1
-movebox12channel26 328 1
-movebox12channel3 336 1
-movebox12channel24 344 1
-movebox12channel45 352 1
-movebox12channel13 360 1
-movebox12channel11 368 1
-movebox12channel32 376 1
-movebox12channel53 384 1
-movebox12channel18 392 1
+  70    176   movebox    4   channel    17   process 1   | - |  4|  3|  8| 13| 18|  2|  7|
+  71    184   movebox    4   channel     8   process 1   | - |  4| 15| 20|  4|  9| 14| 19|
+  72    192   movebox    4   channel    51   process 1   | - |  4| 16|  0|  5| 10| 15| 20|
+  73    200   movebox    4   channel    14   process 1   | - |  4|  9|  0|  5| 10| 15| 20|
+  74    208   movebox    4   channel    35   process 1   | - |  4|  9|  0|  5| 10| 15| 20|
+  75    216   movebox    4   channel     1   process 1   | - |  4| 17|  8| 13| 18|  2|  7|
+  76    224   movebox    4   channel    22   process 1   | - |  4| 17|  8| 13| 18|  2|  7|
+  77    232   movebox    4   channel     2   process 1   |  4|  9| 14| 19|  3|  8| 13| 18|
+  78    240   movebox    4   channel    23   process 1   |  4|  9| 14| 19|  3|  8| 13| 18|
+  79    248   movebox    4   channel     7   process 1   |  4| 14| 19|  3|  8| 13| 18|  2|
+  80    256   movebox    4   channel     6   process 1   |  4| 13| 18|  2|  7| 12| 17|  1|
+  81    264   movebox    4   channel     4   process 1   |  4| 11| 16|  0|  5| 10| 15| 20|
+  82    272   movebox    4   channel    25   process 1   |  4| 11| 16|  0|  5| 10| 15| 20|
+  83    280   movebox    4   channel    46   process 1   |  4| 11| 16|  0|  5| 10| 15| 20|
 finishDepalletize
-------------------------------------------
-/-/0/5/10/15/20/4/9
-movebox14channel98 176 8
-/-/-/5/10/15/20/4/9
-movebox14channel19 184 8
-/-/1/6/11/16/0/5/10
-movebox15channel78 176 9
-/-/1/6/11/16/0/5/10
-movebox15channel99 184 9
-/-/-/6/11/16/0/5/10
-movebox15channel20 192 9
-/-/17/1/6/11/16/0/5
-movebox10channel52 176 4
-/-/17/1/6/11/16/0/5
-movebox10channel73 184 4
-/-/20/4/9/14/19/3/8
-movebox13channel34 176 7
-/-/-/0/5/10/15/20/4
-movebox9channel98 176 3
-/-/18/2/7/12/17/1/6
-movebox11channel74 176 5
-/-/18/2/7/12/17/1/6
-movebox11channel95 184 5
-/-/-/2/7/12/17/1/6
-movebox11channel16 192 5
-/-/15/20/4/9/14/19/3
-movebox8channel29 176 2
-/-/1/4/13/18/2/7/12
-movebox17channel6 400 2
-/-/4/9/14/19/3/8/13
-movebox18channel39 400 3
-/-/6/11/16/0/5/10/15
-movebox20channel41 400 5
-/-/2/7/12/17/1/6/11
-movebox16channel37 400 1
-/-/9/14/19/3/8/13/18
-movebox2channel86 400 7
-/-/4/14/19/3/8/13/18
-movebox2channel7 408 7
-/-/12/10/15/20/4/9/14
-movebox19channel3 400 4
-/-/12/10/15/20/4/9/14
-movebox19channel24 408 4
-/-/12/10/15/20/4/9/14
-movebox19channel45 416 4
-/-/-/10/15/20/4/9/14
-movebox19channel66 424 4
-/-/-/13/18/2/7/12/17
-movebox1channel27 400 6
-/-/-/-/0/5/10/15/20
-movebox4channel98 400 9
-/-/-/-/9/5/10/15/20
-movebox4channel19 408 9
-/-/-/9/14/5/10/15/20
-movebox4channel40 416 9
-/-/-/9/14/5/10/15/20
-movebox4channel61 424 9
-/-/-/9/14/5/10/15/20
-movebox4channel82 432 9
-/-/-/9/14/12/10/15/20
-movebox4channel3 440 9
-/-/-/9/14/12/10/15/20
-movebox4channel24 448 9
-/-/-/15/20/4/9/14/19
-movebox3channel29 400 8
-/-/8/15/20/4/9/14/19
-movebox3channel50 408 8
-/-/8/15/20/4/9/14/19
-movebox3channel71 416 8
-/-/17/1/6/11/16/0/5
-movebox10channel94 456 6
-/-/-/1/6/11/16/0/5
-movebox10channel15 464 6
-/-/-/2/7/12/17/1/6
-movebox11channel37 456 7
-/-/16/2/7/12/17/1/6
-movebox11channel58 464 7
-/-/16/2/7/12/17/1/6
-movebox11channel79 472 7
-/-/20/4/9/14/19/3/8
-movebox13channel55 456 9
-/-/13/18/2/7/12/17/1
-movebox6channel48 456 2
-/-/14/19/3/8/13/18/2
-movebox7channel49 456 3
-/-/12/17/1/6/11/16/0
-movebox5channel89 456 1
-/-/-/17/1/6/11/16/0
-movebox5channel10 464 1
-/-/-/1/4/13/18/2/7
-movebox12channel6 456 8
-/-/-/-/17/13/18/2/7
-movebox12channel27 464 8
-/-/-/17/1/13/18/2/7
-movebox12channel48 472 8
-/-/17/1/6/13/18/2/7
-movebox12channel69 480 8
-/-/17/1/6/13/18/2/7
-movebox12channel90 488 8
-/-/17/1/6/12/18/2/7
-movebox12channel11 496 8
-/-/17/1/6/12/18/2/7
-movebox12channel32 504 8
-/-/-/14/12/10/15/20/4
-movebox9channel45 456 5
-/-/15/20/4/9/14/19/3
-movebox8channel92 456 4
-/-/4/9/14/19/3/8/13
-movebox18channel60 512 5
-/-/-/6/11/16/0/5/10
-movebox15channel41 512 2
-/-/20/6/11/16/0/5/10
-movebox15channel62 520 2
-/-/20/6/11/16/0/5/10
-movebox15channel83 528 2
-/-/0/7/12/17/1/6/11
-movebox16channel0 512 3
-/-/6/12/18/2/7/12/17
-movebox1channel53 512 8
-/-/-/14/19/3/8/13/18
-movebox2channel28 512 9
-/-/-/14/19/3/8/13/18
-movebox2channel49 520 9
-/-/-/6/12/18/2/7/12
-movebox17channel53 512 4
-/-/4/11/16/0/5/10/15
-movebox20channel4 512 7
-/-/-/10/15/20/4/9/14
-movebox19channel87 512 6
-/-/-/4/15/20/4/9/14
-movebox19channel8 520 6
-/-/-/-/15/20/4/9/14
-movebox19channel29 528 6
-/-/-/8/15/20/4/9/14
-movebox19channel50 536 6
-/-/-/18/2/7/12/17/1
-movebox6channel74 544 5
-/-/-/-/14/12/10/15/20
-movebox4channel45 544 3
-/-/-/-/9/14/10/15/20
-movebox4channel66 552 3
-/-/-/-/9/14/10/15/20
-movebox4channel87 560 3
-/-/-/-/9/14/4/15/20
-movebox4channel8 568 3
-/-/-/-/-/9/14/15/20
-movebox4channel29 576 3
-/-/-/-/9/14/8/15/20
-movebox4channel50 584 3
-/-/-/-/-/15/20/9/14
-movebox4channel8 592 3
-------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 startDepalletize
-movebox4channel29 544 1
-movebox4channel8 552 1
-movebox4channel98 560 1
-movebox4channel19 568 1
-movebox4channel27 576 1
-movebox4channel45 584 1
-movebox4channel66 592 1
-movebox4channel87 600 1
-movebox4channel29 608 1
-movebox4channel50 616 1
-movebox4channel8 624 1
-movebox4channel20 632 1
-movebox4channel16 640 1
-movebox4channel98 648 1
+  84    288   movebox   12   channel    67   process 1   | 12| 11| 16|  0|  5| 10| 15| 20|
+  85    296   movebox   12   channel    88   process 1   | 12| 11| 16|  0|  5| 10| 15| 20|
+  86    304   movebox   12   channel     9   process 1   | 12|  9| 16|  0|  5| 10| 15| 20|
+  87    312   movebox   12   channel    30   process 1   | 12|  9| 16|  0|  5| 10| 15| 20|
+  88    320   movebox   12   channel     5   process 1   | 12| 12| 17|  1|  6| 11| 16|  0|
+  89    328   movebox   12   channel    26   process 1   | 12| 12| 17|  1|  6| 11| 16|  0|
+  90    336   movebox   12   channel     3   process 1   | 12| 10| 15| 20|  4|  9| 14| 19|
+  91    344   movebox   12   channel    24   process 1   | 12| 10| 15| 20|  4|  9| 14| 19|
+  92    352   movebox   12   channel    45   process 1   | 12| 10| 15| 20|  4|  9| 14| 19|
+  93    360   movebox   12   channel    13   process 1   | 12| 20|  4|  9| 14| 19|  3|  8|
+  94    368   movebox   12   channel    11   process 1   | 12| 18|  2|  7| 12| 17|  1|  6|
+  95    376   movebox   12   channel    32   process 1   | 12| 18|  2|  7| 12| 17|  1|  6|
+  96    384   movebox   12   channel    53   process 1   | 12| 18|  2|  7| 12| 17|  1|  6|
+  97    392   movebox   12   channel    18   process 1   | 12|  4|  9| 14| 19|  3|  8| 13|
 finishDepalletize
-------------------------------------------
-/-/-/-/4/4/15/20/9
-movebox14channel8 544 1
-/-/-/19/8/15/20/4/9
-movebox14channel71 552 1
-/-/12/20/4/9/14/19/3
-movebox8channel13 544 7
-/-/-/17/1/6/11/16/0
-movebox5channel31 544 4
-/-/-/17/1/6/11/16/0
-movebox5channel52 552 4
-/-/-/15/20/4/9/14/19
-movebox3channel92 544 2
-/-/-/12/20/4/9/14/19
-movebox3channel13 552 2
-/-/-/8/20/4/9/14/19
-movebox3channel34 560 2
-/-/-/1/6/11/16/0/5
-movebox10channel36 544 9
-/-/-/1/6/11/16/0/5
-movebox10channel57 552 9
-/-/-/-/-/4/4/15/20
-movebox9channel8 544 8
-/-/14/19/3/8/13/18/2
-movebox7channel70 544 6
-/-/-/0/7/12/17/1/6
-movebox11channel0 600 1
-/-/16/0/7/12/17/1/6
-movebox11channel21 608 1
-/-/16/0/7/12/17/1/6
-movebox11channel42 616 1
-/-/20/4/9/14/19/3/8
-movebox13channel76 600 3
-/-/4/9/14/19/3/8/13
-movebox18channel81 600 8
-/-/-/4/11/16/0/5/10
-movebox15channel4 600 5
-/-/20/4/11/16/0/5/10
-movebox15channel25 608 5
-/-/20/4/11/16/0/5/10
-movebox15channel46 616 5
-/-/-/-/15/20/4/9/14
-movebox19channel92 600 9
-/-/-/-/12/20/4/9/14
-movebox19channel13 608 9
-/-/-/-/8/20/4/9/14
-movebox19channel34 616 9
-/-/-/3/8/20/4/9/14
-movebox19channel55 624 9
-------------------------------------------
+------------------------------------------------------------------------------------
+  98    176   movebox   14   channel    98   process 8   | - |  0|  5| 10| 15| 20|  4|  9|
+  99    184   movebox   14   channel    19   process 8   | - | - |  5| 10| 15| 20|  4|  9|
+ 100    176   movebox   15   channel    78   process 9   | - |  1|  6| 11| 16|  0|  5| 10|
+ 101    184   movebox   15   channel    99   process 9   | - |  1|  6| 11| 16|  0|  5| 10|
+ 102    192   movebox   15   channel    20   process 9   | - | - |  6| 11| 16|  0|  5| 10|
+ 103    176   movebox   10   channel    52   process 4   | - | 17|  1|  6| 11| 16|  0|  5|
+ 104    184   movebox   10   channel    73   process 4   | - | 17|  1|  6| 11| 16|  0|  5|
+ 105    176   movebox   13   channel    34   process 7   | - | 20|  4|  9| 14| 19|  3|  8|
+ 106    176   movebox    9   channel    98   process 3   | - | - |  0|  5| 10| 15| 20|  4|
+ 107    176   movebox   11   channel    74   process 5   | - | 18|  2|  7| 12| 17|  1|  6|
+ 108    184   movebox   11   channel    95   process 5   | - | 18|  2|  7| 12| 17|  1|  6|
+ 109    192   movebox   11   channel    16   process 5   | - | - |  2|  7| 12| 17|  1|  6|
+ 110    176   movebox    8   channel    29   process 2   | - | 15| 20|  4|  9| 14| 19|  3|
+reverse   6 
+ 111    400   movebox   17   channel     6   process 2   | - |  1|  4| 13| 18|  2|  7| 12|
+ 112    400   movebox   18   channel    39   process 3   | - |  4|  9| 14| 19|  3|  8| 13|
+ 113    400   movebox   20   channel    41   process 5   | - |  6| 11| 16|  0|  5| 10| 15|
+ 114    400   movebox   16   channel    37   process 1   | - |  2|  7| 12| 17|  1|  6| 11|
+ 115    400   movebox    2   channel    86   process 7   | - |  9| 14| 19|  3|  8| 13| 18|
+ 116    408   movebox    2   channel     7   process 7   | - |  4| 14| 19|  3|  8| 13| 18|
+ 117    400   movebox   19   channel     3   process 4   | - | 12| 10| 15| 20|  4|  9| 14|
+ 118    408   movebox   19   channel    24   process 4   | - | 12| 10| 15| 20|  4|  9| 14|
+ 119    416   movebox   19   channel    45   process 4   | - | 12| 10| 15| 20|  4|  9| 14|
+ 120    424   movebox   19   channel    66   process 4   | - | - | 10| 15| 20|  4|  9| 14|
+ 121    400   movebox    1   channel    27   process 6   | - | - | 13| 18|  2|  7| 12| 17|
+ 122    400   movebox    4   channel    98   process 9   | - | - | - |  0|  5| 10| 15| 20|
+reverse  19 
+ 123    408   movebox    4   channel    19   process 9   | - | - | - |  9|  5| 10| 15| 20|
+reverse  40 reverse  40 
+ 124    416   movebox    4   channel    40   process 9   | - | - |  9| 14|  5| 10| 15| 20|
+reverse  61 reverse  61 
+ 125    424   movebox    4   channel    61   process 9   | - | - |  9| 14|  5| 10| 15| 20|
+reverse  82 reverse  82 
+ 126    432   movebox    4   channel    82   process 9   | - | - |  9| 14|  5| 10| 15| 20|
+reverse   3 reverse   3 
+ 127    440   movebox    4   channel     3   process 9   | - | - |  9| 14| 12| 10| 15| 20|
+reverse  24 reverse  24 
+ 128    448   movebox    4   channel    24   process 9   | - | - |  9| 14| 12| 10| 15| 20|
+ 129    400   movebox    3   channel    29   process 8   | - | - | 15| 20|  4|  9| 14| 19|
+reverse  50 
+ 130    408   movebox    3   channel    50   process 8   | - |  8| 15| 20|  4|  9| 14| 19|
+reverse  71 
+ 131    416   movebox    3   channel    71   process 8   | - |  8| 15| 20|  4|  9| 14| 19|
+ 132    456   movebox   10   channel    94   process 6   | - | 17|  1|  6| 11| 16|  0|  5|
+ 133    464   movebox   10   channel    15   process 6   | - | - |  1|  6| 11| 16|  0|  5|
+ 134    456   movebox   11   channel    37   process 7   | - | - |  2|  7| 12| 17|  1|  6|
+reverse  58 
+ 135    464   movebox   11   channel    58   process 7   | - | 16|  2|  7| 12| 17|  1|  6|
+reverse  79 
+ 136    472   movebox   11   channel    79   process 7   | - | 16|  2|  7| 12| 17|  1|  6|
+ 137    456   movebox   13   channel    55   process 9   | - | 20|  4|  9| 14| 19|  3|  8|
+ 138    456   movebox    6   channel    48   process 2   | - | 13| 18|  2|  7| 12| 17|  1|
+ 139    456   movebox    7   channel    49   process 3   | - | 14| 19|  3|  8| 13| 18|  2|
+ 140    456   movebox    5   channel    89   process 1   | - | 12| 17|  1|  6| 11| 16|  0|
+ 141    464   movebox    5   channel    10   process 1   | - | - | 17|  1|  6| 11| 16|  0|
+ 142    456   movebox   12   channel     6   process 8   | - | - |  1|  4| 13| 18|  2|  7|
+reverse  27 
+ 143    464   movebox   12   channel    27   process 8   | - | - | - | 17| 13| 18|  2|  7|
+reverse  48 reverse  48 
+ 144    472   movebox   12   channel    48   process 8   | - | - | 17|  1| 13| 18|  2|  7|
+reverse  69 reverse  69 reverse  69 
+ 145    480   movebox   12   channel    69   process 8   | - | 17|  1|  6| 13| 18|  2|  7|
+reverse  90 reverse  90 reverse  90 
+ 146    488   movebox   12   channel    90   process 8   | - | 17|  1|  6| 13| 18|  2|  7|
+reverse  11 reverse  11 reverse  11 
+ 147    496   movebox   12   channel    11   process 8   | - | 17|  1|  6| 12| 18|  2|  7|
+reverse  32 reverse  32 reverse  32 
+ 148    504   movebox   12   channel    32   process 8   | - | 17|  1|  6| 12| 18|  2|  7|
+reverse  45 
+ 149    456   movebox    9   channel    45   process 5   | - | - | 14| 12| 10| 15| 20|  4|
+ 150    456   movebox    8   channel    92   process 4   | - | 15| 20|  4|  9| 14| 19|  3|
+ 151    512   movebox   18   channel    60   process 5   | - |  4|  9| 14| 19|  3|  8| 13|
+ 152    512   movebox   15   channel    41   process 2   | - | - |  6| 11| 16|  0|  5| 10|
+reverse  62 
+ 153    520   movebox   15   channel    62   process 2   | - | 20|  6| 11| 16|  0|  5| 10|
+reverse  83 
+ 154    528   movebox   15   channel    83   process 2   | - | 20|  6| 11| 16|  0|  5| 10|
+reverse   0 
+ 155    512   movebox   16   channel     0   process 3   | - |  0|  7| 12| 17|  1|  6| 11|
+reverse  53 
+ 156    512   movebox    1   channel    53   process 8   | - |  6| 12| 18|  2|  7| 12| 17|
+ 157    512   movebox    2   channel    28   process 9   | - | - | 14| 19|  3|  8| 13| 18|
+ 158    520   movebox    2   channel    49   process 9   | - | - | 14| 19|  3|  8| 13| 18|
+ 159    512   movebox   17   channel    53   process 4   | - | - |  6| 12| 18|  2|  7| 12|
+ 160    512   movebox   20   channel     4   process 7   | - |  4| 11| 16|  0|  5| 10| 15|
+ 161    512   movebox   19   channel    87   process 6   | - | - | 10| 15| 20|  4|  9| 14|
+ 162    520   movebox   19   channel     8   process 6   | - | - |  4| 15| 20|  4|  9| 14|
+ 163    528   movebox   19   channel    29   process 6   | - | - | - | 15| 20|  4|  9| 14|
+ 164    536   movebox   19   channel    50   process 6   | - | - |  8| 15| 20|  4|  9| 14|
+ 165    544   movebox    6   channel    74   process 5   | - | - | 18|  2|  7| 12| 17|  1|
+ 166    544   movebox    4   channel    45   process 3   | - | - | - | 14| 12| 10| 15| 20|
+reverse  66 reverse  66 
+ 167    552   movebox    4   channel    66   process 3   | - | - | - |  9| 14| 10| 15| 20|
+reverse  87 reverse  87 
+ 168    560   movebox    4   channel    87   process 3   | - | - | - |  9| 14| 10| 15| 20|
+reverse   8 reverse   8 
+ 169    568   movebox    4   channel     8   process 3   | - | - | - |  9| 14|  4| 15| 20|
+reverse  29 reverse  29 
+ 170    576   movebox    4   channel    29   process 3   | - | - | - | - |  9| 14| 15| 20|
+reverse  50 reverse  50 
+ 171    584   movebox    4   channel    50   process 3   | - | - | - |  9| 14|  8| 15| 20|
+reverse   8 reverse   8 
+ 172    592   movebox    4   channel     8   process 3   | - | - | - | - | 15| 20|  9| 14|
+------------------------------------------------------------------------------------
 startDepalletize
-movebox19channel8 600 1
-movebox19channel8 608 1
-movebox19channel92 616 1
-movebox19channel13 624 1
-movebox19channel34 632 1
-movebox19channel19 640 1
-movebox19channel40 648 1
-movebox19channel61 656 1
-movebox19channel82 664 1
-movebox19channel3 672 1
-movebox19channel24 680 1
-movebox19channel15 688 1
-movebox19channel37 696 1
-movebox19channel10 704 1
-movebox19channel6 712 1
-movebox19channel27 720 1
+ 173    544   movebox    4   channel    29   process 1   | - | - | - |  4|  9| 14| 15| 20|
+ 174    552   movebox    4   channel     8   process 1   | - | - | - |  4| 15| 20|  9| 14|
+ 175    560   movebox    4   channel    98   process 1   | - | - |  4|  0|  5| 10| 15| 20|
+ 176    568   movebox    4   channel    19   process 1   | - | - |  4|  9|  5| 10| 15| 20|
+ 177    576   movebox    4   channel    27   process 1   | - | - |  4| 17| 13| 18|  2|  7|
+ 178    584   movebox    4   channel    45   process 1   | - | - |  4| 14| 12| 10| 15| 20|
+ 179    592   movebox    4   channel    66   process 1   | - | - |  4|  9| 14| 10| 15| 20|
+ 180    600   movebox    4   channel    87   process 1   | - | - |  4|  9| 14| 10| 15| 20|
+ 181    608   movebox    4   channel    29   process 1   | - | - |  4|  4|  9| 14| 15| 20|
+ 182    616   movebox    4   channel    50   process 1   | - | - |  4|  9| 14|  8| 15| 20|
+ 183    624   movebox    4   channel     8   process 1   | - | - |  4|  4| 15| 20|  9| 14|
+ 184    632   movebox    4   channel    20   process 1   | - |  4|  6| 11| 16|  0|  5| 10|
+ 185    640   movebox    4   channel    16   process 1   | - |  4|  2|  7| 12| 17|  1|  6|
+ 186    648   movebox    4   channel    98   process 1   | - |  4|  4|  0|  5| 10| 15| 20|
 finishDepalletize
-------------------------------------------
-/-/-/-/19/15/20/4/9
-movebox14channel92 600 4
-/-/-/-/19/12/20/4/9
-movebox14channel13 608 4
-/-/-/-/6/12/18/2/7
-movebox12channel53 600 2
-/-/-/-/17/1/18/2/7
-movebox12channel74 608 2
-/-/-/17/1/6/18/2/7
-movebox12channel95 616 2
-/-/-/17/1/6/4/2/7
-movebox12channel16 624 2
-/-/-/10/15/20/19/9/14
-movebox12channel3 632 2
-/-/-/10/15/20/19/9/14
-movebox12channel24 640 2
-/-/-/17/1/6/19/2/7
-movebox12channel37 648 2
-------------------------------------------
+------------------------------------------------------------------------------------
+ 187    544   movebox   14   channel     8   process 1   | - | - | - |  4|  4| 15| 20|  9|
+reverse  71 
+ 188    552   movebox   14   channel    71   process 1   | - | - | 19|  8| 15| 20|  4|  9|
+ 189    544   movebox    8   channel    13   process 7   | - | 12| 20|  4|  9| 14| 19|  3|
+ 190    544   movebox    5   channel    31   process 4   | - | - | 17|  1|  6| 11| 16|  0|
+ 191    552   movebox    5   channel    52   process 4   | - | - | 17|  1|  6| 11| 16|  0|
+ 192    544   movebox    3   channel    92   process 2   | - | - | 15| 20|  4|  9| 14| 19|
+ 193    552   movebox    3   channel    13   process 2   | - | - | 12| 20|  4|  9| 14| 19|
+reverse  34 
+ 194    560   movebox    3   channel    34   process 2   | - | - |  8| 20|  4|  9| 14| 19|
+ 195    544   movebox   10   channel    36   process 9   | - | - |  1|  6| 11| 16|  0|  5|
+ 196    552   movebox   10   channel    57   process 9   | - | - |  1|  6| 11| 16|  0|  5|
+ 197    544   movebox    9   channel     8   process 8   | - | - | - | - |  4|  4| 15| 20|
+ 198    544   movebox    7   channel    70   process 6   | - | 14| 19|  3|  8| 13| 18|  2|
+ 199    600   movebox   11   channel     0   process 1   | - | - |  0|  7| 12| 17|  1|  6|
+reverse  21 reverse  21 
+ 200    608   movebox   11   channel    21   process 1   | - | 16|  0|  7| 12| 17|  1|  6|
+reverse  42 reverse  42 
+ 201    616   movebox   11   channel    42   process 1   | - | 16|  0|  7| 12| 17|  1|  6|
+ 202    600   movebox   13   channel    76   process 3   | - | 20|  4|  9| 14| 19|  3|  8|
+ 203    600   movebox   18   channel    81   process 8   | - |  4|  9| 14| 19|  3|  8| 13|
+ 204    600   movebox   15   channel     4   process 5   | - | - |  4| 11| 16|  0|  5| 10|
+reverse  25 
+ 205    608   movebox   15   channel    25   process 5   | - | 20|  4| 11| 16|  0|  5| 10|
+reverse  46 
+ 206    616   movebox   15   channel    46   process 5   | - | 20|  4| 11| 16|  0|  5| 10|
+ 207    600   movebox   19   channel    92   process 9   | - | - | - | 15| 20|  4|  9| 14|
+ 208    608   movebox   19   channel    13   process 9   | - | - | - | 12| 20|  4|  9| 14|
+ 209    616   movebox   19   channel    34   process 9   | - | - | - |  8| 20|  4|  9| 14|
+reverse  55 reverse  55 
+ 210    624   movebox   19   channel    55   process 9   | - | - |  3|  8| 20|  4|  9| 14|
+------------------------------------------------------------------------------------
 startDepalletize
-movebox12channel92 600 1
-movebox12channel13 608 1
-movebox12channel53 616 1
-movebox12channel74 624 1
-movebox12channel48 632 1
-movebox12channel41 640 1
-movebox12channel28 648 1
-movebox12channel49 656 1
-movebox12channel45 664 1
-movebox12channel66 672 1
-movebox12channel87 680 1
-movebox12channel29 688 1
-movebox12channel50 696 1
-movebox12channel71 704 1
+ 211    600   movebox   19   channel     8   process 1   | - | - | - | 19|  4|  4| 15| 20|
+ 212    608   movebox   19   channel     8   process 1   | - | - | 19| 19|  4|  4| 15| 20|
+ 213    616   movebox   19   channel    92   process 1   | - | - | 19| 15| 20|  4|  9| 14|
+ 214    624   movebox   19   channel    13   process 1   | - | - | 19| 12| 20|  4|  9| 14|
+ 215    632   movebox   19   channel    34   process 1   | - | - | 19|  8| 20|  4|  9| 14|
+ 216    640   movebox   19   channel    19   process 1   | - | 19|  4|  9|  5| 10| 15| 20|
+ 217    648   movebox   19   channel    40   process 1   | - | 19|  9| 14|  5| 10| 15| 20|
+ 218    656   movebox   19   channel    61   process 1   | - | 19|  9| 14|  5| 10| 15| 20|
+ 219    664   movebox   19   channel    82   process 1   | - | 19|  9| 14|  5| 10| 15| 20|
+ 220    672   movebox   19   channel     3   process 1   | - | 19|  9| 14| 12| 10| 15| 20|
+ 221    680   movebox   19   channel    24   process 1   | - | 19|  9| 14| 12| 10| 15| 20|
+ 222    688   movebox   19   channel    15   process 1   | - | 19|  1|  6| 11| 16|  0|  5|
+ 223    696   movebox   19   channel    37   process 1   | - | 19|  2|  7| 12| 17|  1|  6|
+ 224    704   movebox   19   channel    10   process 1   | - | 19| 17|  1|  6| 11| 16|  0|
+ 225    712   movebox   19   channel     6   process 1   | - | 19|  1|  4| 13| 18|  2|  7|
+ 226    720   movebox   19   channel    27   process 1   | - | 19|  4| 17| 13| 18|  2|  7|
 finishDepalletize
-------------------------------------------
-/-/0/7/12/17/1/6/11
-movebox16channel63 600 6
-/-/-/1/6/16/2/7/12
-movebox17channel58 600 7
-/-/-/6/16/2/7/12/17
-movebox1channel79 712 2
-/-/-/-/0/7/12/17/1
-movebox6channel0 712 7
-/-/-/17/1/6/11/16/0
-movebox5channel73 712 6
-/-/-/17/1/6/11/16/0
-movebox5channel94 720 6
-/-/-/9/12/19/8/15/20
-movebox4channel71 712 5
-/-/-/-/9/12/19/15/20
-movebox4channel92 720 5
-/-/-/-/9/12/19/12/20
-movebox4channel13 728 5
-/-/-/-/15/20/19/19/4
-movebox4channel8 736 5
-/-/-/-/-/15/20/19/19
-movebox4channel8 744 5
-/-/-/-/9/14/19/8/20
-movebox4channel34 752 5
-/-/-/-/9/14/3/8/20
-movebox4channel55 760 5
-/-/-/20/4/9/14/19/3
-movebox8channel76 712 9
-/-/14/19/3/8/13/18/2
-movebox7channel91 712 8
-/-/-/14/19/3/8/13/18
-movebox2channel70 712 3
-/-/-/14/19/3/8/13/18
-movebox2channel91 720 3
-/-/-/-/20/4/9/14/19
-movebox3channel76 712 4
-/-/8/13/20/4/9/14/19
-movebox3channel97 720 4
-/-/8/13/12/4/9/14/19
-movebox3channel18 728 4
-------------------------------------------
+------------------------------------------------------------------------------------
+ 227    600   movebox   14   channel    92   process 4   | - | - | - | 19| 15| 20|  4|  9|
+ 228    608   movebox   14   channel    13   process 4   | - | - | - | 19| 12| 20|  4|  9|
+ 229    600   movebox   12   channel    53   process 2   | - | - | - |  6| 12| 18|  2|  7|
+reverse  74 reverse  74 
+ 230    608   movebox   12   channel    74   process 2   | - | - | - | 17|  1| 18|  2|  7|
+reverse  95 reverse  95 reverse  95 
+ 231    616   movebox   12   channel    95   process 2   | - | - | 17|  1|  6| 18|  2|  7|
+reverse  16 reverse  16 reverse  16 
+ 232    624   movebox   12   channel    16   process 2   | - | - | 17|  1|  6|  4|  2|  7|
+reverse   3 reverse   3 reverse   3 
+ 233    632   movebox   12   channel     3   process 2   | - | - | 10| 15| 20| 19|  9| 14|
+reverse  24 reverse  24 reverse  24 
+ 234    640   movebox   12   channel    24   process 2   | - | - | 10| 15| 20| 19|  9| 14|
+reverse  37 reverse  37 reverse  37 
+ 235    648   movebox   12   channel    37   process 2   | - | - | 17|  1|  6| 19|  2|  7|
+------------------------------------------------------------------------------------
 startDepalletize
-movebox3channel8 768 1
-movebox3channel0 776 1
-movebox3channel92 784 1
-movebox3channel13 792 1
-movebox3channel8 800 1
-movebox3channel34 808 1
-movebox3channel55 816 1
-movebox3channel76 824 1
-movebox3channel31 832 1
-movebox3channel52 840 1
-movebox3channel36 848 1
-movebox3channel57 856 1
-movebox3channel4 864 1
-movebox3channel53 872 1
-movebox3channel74 880 1
+ 236    600   movebox   12   channel    92   process 1   | - | - | 12| 19| 15| 20|  4|  9|
+ 237    608   movebox   12   channel    13   process 1   | - | - | 12| 19| 12| 20|  4|  9|
+ 238    616   movebox   12   channel    53   process 1   | - | - | 12|  6| 12| 18|  2|  7|
+ 239    624   movebox   12   channel    74   process 1   | - | - | 12| 17|  1| 18|  2|  7|
+ 240    632   movebox   12   channel    48   process 1   | - | 12| 17|  1| 13| 18|  2|  7|
+ 241    640   movebox   12   channel    41   process 1   | - | 12|  6| 11| 16|  0|  5| 10|
+ 242    648   movebox   12   channel    28   process 1   | - | 12| 14| 19|  3|  8| 13| 18|
+ 243    656   movebox   12   channel    49   process 1   | - | 12| 14| 19|  3|  8| 13| 18|
+ 244    664   movebox   12   channel    45   process 1   | - | 12|  4| 14| 12| 10| 15| 20|
+ 245    672   movebox   12   channel    66   process 1   | - | 12|  4|  9| 14| 10| 15| 20|
+ 246    680   movebox   12   channel    87   process 1   | - | 12|  4|  9| 14| 10| 15| 20|
+ 247    688   movebox   12   channel    29   process 1   | - | 12|  4|  4|  9| 14| 15| 20|
+ 248    696   movebox   12   channel    50   process 1   | - | 12|  4|  9| 14|  8| 15| 20|
+ 249    704   movebox   12   channel    71   process 1   | - | 12| 19|  8| 15| 20|  4|  9|
 finishDepalletize
-------------------------------------------
-/-/-/1/6/11/16/0/5
-movebox10channel78 768 3
-/-/-/1/6/11/16/0/5
-movebox10channel99 776 3
-/-/-/-/14/10/15/20/19
-movebox9channel3 768 2
-/-/12/11/16/0/5/10/15
-movebox20channel67 888 1
-------------------------------------------
+------------------------------------------------------------------------------------
+reverse  63 
+ 250    600   movebox   16   channel    63   process 6   | - |  0|  7| 12| 17|  1|  6| 11|
+reverse  58 reverse  58 
+ 251    600   movebox   17   channel    58   process 7   | - | - |  1|  6| 16|  2|  7| 12|
+reverse  79 
+ 252    712   movebox    1   channel    79   process 2   | - | - |  6| 16|  2|  7| 12| 17|
+ 253    712   movebox    6   channel     0   process 7   | - | - | - |  0|  7| 12| 17|  1|
+ 254    712   movebox    5   channel    73   process 6   | - | - | 17|  1|  6| 11| 16|  0|
+ 255    720   movebox    5   channel    94   process 6   | - | - | 17|  1|  6| 11| 16|  0|
+reverse  71 
+ 256    712   movebox    4   channel    71   process 5   | - | - |  9| 12| 19|  8| 15| 20|
+reverse  92 
+ 257    720   movebox    4   channel    92   process 5   | - | - | - |  9| 12| 19| 15| 20|
+reverse  13 
+ 258    728   movebox    4   channel    13   process 5   | - | - | - |  9| 12| 19| 12| 20|
+reverse   8 reverse   8 
+ 259    736   movebox    4   channel     8   process 5   | - | - | - | 15| 20| 19| 19|  4|
+ 260    744   movebox    4   channel     8   process 5   | - | - | - | - | 15| 20| 19| 19|
+reverse  34 reverse  34 
+ 261    752   movebox    4   channel    34   process 5   | - | - | - |  9| 14| 19|  8| 20|
+reverse  55 reverse  55 
+ 262    760   movebox    4   channel    55   process 5   | - | - | - |  9| 14|  3|  8| 20|
+ 263    712   movebox    8   channel    76   process 9   | - | - | 20|  4|  9| 14| 19|  3|
+ 264    712   movebox    7   channel    91   process 8   | - | 14| 19|  3|  8| 13| 18|  2|
+ 265    712   movebox    2   channel    70   process 3   | - | - | 14| 19|  3|  8| 13| 18|
+ 266    720   movebox    2   channel    91   process 3   | - | - | 14| 19|  3|  8| 13| 18|
+ 267    712   movebox    3   channel    76   process 4   | - | - | - | 20|  4|  9| 14| 19|
+reverse  97 reverse  97 
+ 268    720   movebox    3   channel    97   process 4   | - |  8| 13| 20|  4|  9| 14| 19|
+reverse  18 reverse  18 
+ 269    728   movebox    3   channel    18   process 4   | - |  8| 13| 12|  4|  9| 14| 19|
+ 270    768   movebox    5   channel    15   process 8   | - | - | 19|  1|  6| 11| 16|  0|
+ 271    776   movebox    5   channel    36   process 8   | - | - | - |  1|  6| 11| 16|  0|
+------------------------------------------------------------------------------------
 startDepalletize
+ 272    768   movebox    3   channel     8   process 1   | - | - | - |  3| 15| 20| 19| 19|
+ 273    776   movebox    3   channel     0   process 1   | - | - |  3|  0|  7| 12| 17|  1|
+ 274    784   movebox    3   channel    92   process 1   | - | - |  3|  9| 12| 19| 15| 20|
+ 275    792   movebox    3   channel    13   process 1   | - | - |  3|  9| 12| 19| 12| 20|
+ 276    800   movebox    3   channel     8   process 1   | - | - |  3|  3| 15| 20| 19| 19|
+ 277    808   movebox    3   channel    34   process 1   | - | - |  3|  9| 14| 19|  8| 20|
+ 278    816   movebox    3   channel    55   process 1   | - | - |  3|  9| 14|  3|  8| 20|
+ 279    824   movebox    3   channel    76   process 1   | - | - |  3| 20|  4|  9| 14| 19|
+ 280    832   movebox    3   channel    36   process 1   | - | - |  3|  1|  6| 11| 16|  0|
+ 281    840   movebox    3   channel    31   process 1   | - |  3| 17|  1|  6| 11| 16|  0|
+ 282    848   movebox    3   channel    52   process 1   | - |  3| 17|  1|  6| 11| 16|  0|
+ 283    856   movebox    3   channel    57   process 1   | - |  3|  1|  6| 11| 16|  0|  5|
+ 284    864   movebox    3   channel     4   process 1   | - |  3|  4| 11| 16|  0|  5| 10|
+ 285    872   movebox    3   channel    53   process 1   | - |  3| 12|  6| 12| 18|  2|  7|
+ 286    880   movebox    3   channel    74   process 1   | - |  3| 12| 17|  1| 18|  2|  7|
 finishDepalletize
-------------------------------------------
-------------------------------------------
-------------------------------------------
-------------------------------------------
+------------------------------------------------------------------------------------
+ 287    768   movebox    6   channel    21   process 9   | - | - | 16|  0|  7| 12| 17|  1|
+reverse  12 
+ 288    768   movebox    2   channel    12   process 5   | - | - |  7| 19|  3|  8| 13| 18|
+reverse  33 
+ 289    776   movebox    2   channel    33   process 5   | - | - |  7| 19|  3|  8| 13| 18|
+reverse  39 reverse  39 
+ 290    768   movebox    3   channel    39   process 6   | - | - |  8| 13|  4|  9| 14| 19|
+reverse  60 reverse  60 
+ 291    776   movebox    3   channel    60   process 6   | - | - |  8| 13|  4|  9| 14| 19|
+reverse  81 reverse  81 
+ 292    784   movebox    3   channel    81   process 6   | - | - |  8| 13|  4|  9| 14| 19|
+ 293    768   movebox    1   channel     0   process 4   | - | - | - |  3|  0|  7| 12| 17|
+reverse  16 reverse  16 
+ 294    768   movebox    4   channel    16   process 7   | - | - | - |  2|  7| 17|  1|  6|
+reverse  76 reverse  76 reverse  76 
+ 295    776   movebox    4   channel    76   process 7   | - | - | - |  9| 14| 19|  3| 20|
+reverse  97 reverse  97 reverse  97 
+ 296    784   movebox    4   channel    97   process 7   | - | - |  9| 14| 19|  8| 13| 20|
+reverse  18 reverse  18 reverse  18 
+ 297    792   movebox    4   channel    18   process 7   | - | - |  9| 14| 19|  8| 13| 12|
+reverse  39 reverse  39 reverse  39 
+ 298    800   movebox    4   channel    39   process 7   | - | - | - |  9| 14| 19|  8| 13|
+reverse  60 reverse  60 reverse  60 
+ 299    808   movebox    4   channel    60   process 7   | - | - | - |  9| 14| 19|  8| 13|
+reverse  81 reverse  81 reverse  81 
+ 300    816   movebox    4   channel    81   process 7   | - | - | - |  9| 14| 19|  8| 13|
+------------------------------------------------------------------------------------
+startDepalletize
+ 301    768   movebox    4   channel     0   process 1   | - | - |  4|  3|  0|  7| 12| 17|
+ 302    776   movebox    4   channel    16   process 1   | - | - |  4|  2|  7| 17|  1|  6|
+ 303    784   movebox    4   channel    76   process 1   | - | - |  4|  9| 14| 19|  3| 20|
+ 304    792   movebox    4   channel    39   process 1   | - | - |  4|  9| 14| 19|  8| 13|
+ 305    800   movebox    4   channel    60   process 1   | - | - |  4|  9| 14| 19|  8| 13|
+ 306    808   movebox    4   channel    81   process 1   | - | - |  4|  9| 14| 19|  8| 13|
+ 307    816   movebox    4   channel    95   process 1   | - |  4| 17|  1|  6| 18|  2|  7|
+ 308    824   movebox    4   channel     3   process 1   | - |  4| 10| 15| 20| 19|  9| 14|
+ 309    832   movebox    4   channel    24   process 1   | - |  4| 10| 15| 20| 19|  9| 14|
+ 310    840   movebox    4   channel    37   process 1   | - |  4| 17|  1|  6| 19|  2|  7|
+ 311    848   movebox    4   channel    58   process 1   | - |  4|  1|  6| 16|  2|  7| 12|
+ 312    856   movebox    4   channel    79   process 1   | - |  4|  6| 16|  2|  7| 12| 17|
+ 313    864   movebox    4   channel    73   process 1   | - |  4| 17|  1|  6| 11| 16|  0|
+ 314    872   movebox    4   channel    94   process 1   | - |  4| 17|  1|  6| 11| 16|  0|
+finishDepalletize
+------------------------------------------------------------------------------------
+ 315    768   movebox   10   channel    78   process 3   | - | - |  1|  6| 11| 16|  0|  5|
+ 316    776   movebox   10   channel    99   process 3   | - | - |  1|  6| 11| 16|  0|  5|
+reverse   3 
+ 317    768   movebox    9   channel     3   process 2   | - | - | 14|  4| 10| 15| 20| 19|
+reverse  24 
+ 318    880   movebox    9   channel    24   process 4   | - | - | 14|  4| 10| 15| 20| 19|
+ 319    880   movebox    7   channel    54   process 2   | - | - | 19|  3|  8| 13| 18|  2|
+ 320    880   movebox   10   channel    20   process 5   | - | - |  4|  6| 11| 16|  0|  5|
+ 321    888   movebox   10   channel    41   process 5   | - | - | 12|  6| 11| 16|  0|  5|
+ 322    880   movebox   20   channel    67   process 1   | - | 12| 11| 16|  0|  5| 10| 15|
+reverse  34 
+ 323    880   movebox    8   channel    34   process 3   | - | - | - | 20|  3|  9| 14| 19|
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 finishPalletize #1

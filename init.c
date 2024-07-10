@@ -55,7 +55,7 @@ void ConveyorsInit()
         printf("%d\n", Store.cnt_boxes_type[i]);
     }
     fprintf(f, "finishDepalletize\n");
-    fprintf(f, "------------------------------------------\n");
+    fprintf(f, "------------------------------------------------------------------------------------\n");
     fprintf(f, "startPalletize #1\n");
     for (int i = 0; i < 10; ++i) {
         Store.box_data[i][0] = -1;
