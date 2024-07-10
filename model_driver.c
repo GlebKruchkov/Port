@@ -23,6 +23,7 @@ void SWAP (double *a, double *b) {
 }
 
 
+
 void model_init (state *s, tw_lp *lp) {
   int self = lp->gid;
   tw_event *e = tw_event_new(0, 1, lp);
