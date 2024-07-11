@@ -38,7 +38,7 @@ void model_init (state *s, tw_lp *lp) {
   bool flag = 0;
   if (self == 0) {
     for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
+      if (Store.cnt_boxes_type[i] < (int)(Store.cnt_boxes_type_const[i] * 2 / 3)) {
         flag = true;
       }
     }
@@ -79,6 +79,7 @@ void model_init (state *s, tw_lp *lp) {
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+  //exit(0);
   int self = lp->gid;
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));
@@ -88,7 +89,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   //printf("%d\n", self);
   if (self == 0) {
     for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
+      if (Store.cnt_boxes_type[i] < (int)(Store.cnt_boxes_type_const[i] * 2 / 3)) {
         flag = true;
       }
     }
@@ -171,10 +172,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     {
       case TAKE_IN: 
         for (int i = 0; i < high_border - low_border + 1; ++i) {
-          if (Store.cnt_boxes_type[i] < (int)(threshold * 2 / 3)) {
+          if (Store.cnt_boxes_type[i] < (int)(Store.cnt_boxes_type_const[i] * 2 / 3)) {
             fprintf(f, "------------------------------------------------------------------------------------\n");
             fprintf(f, "startDepalletize\n");
-            while (Store.cnt_boxes_type[i] < threshold) {
+            while (Store.cnt_boxes_type[i] < Store.cnt_boxes_type_const[i]) {
               int channel = Add_Box(&(Store.db), i);
               cur_time += 8;
               // fprintf(f, "movebox%dchannel%d %d %d\n", i, channel, cur_time, self);

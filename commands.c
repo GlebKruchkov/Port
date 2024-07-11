@@ -10,11 +10,17 @@ int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     return 0;
 }
 
-int insert_data(sqlite3 **db1, int type, int row, int col) {
+int compare(const void *a, const void *b) {
+    const box_pair *boxA = (const box_pair *)a;
+    const box_pair *boxB = (const box_pair *)b;
+    return boxA->width - boxB->width;
+}
+
+int insert_data(sqlite3 **db1, int type, int row, int col, int width) {
     struct sqlite3 * db = (struct sqlite3 *) *db1;
     char *err_msg = 0;
     char sql[100];
-    sprintf(sql, "INSERT INTO Warehouse(Type, Row, Column) VALUES (%d, %d, %d)", type, row, col);
+    sprintf(sql, "INSERT INTO Warehouse(Type, Row, Column, Width) VALUES (%d, %d, %d, %d)", type, row, col, width);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
     return 0;
 }
@@ -41,10 +47,11 @@ int Add_Box(sqlite3 **db1, int type) {
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
     Store.conveyor[col].boxes[r].SKU = type;
+    Store.conveyor[col].boxes[r].width = Store.b_w[type];
     Store.conveyor[col].boxes[r].empty = 0;
     Store.cnt_boxes_type[type]++;
 
-    insert_data(db1, type, r, col);
+    insert_data(db1, type, r, col, Store.b_w[type]);
     return col;
 }
 
@@ -66,8 +73,8 @@ void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
     Store.conveyor[col].boxes[row2].empty = empty_tmp;
     Store.conveyor[col].boxes[row2].SKU = SKU_tmp;
 
-    insert_data(db1, Store.conveyor[col].boxes[row2].SKU, row2, col);
-    insert_data(db1, Store.conveyor[col].boxes[row1].SKU, row1, col);
+    insert_data(db1, Store.conveyor[col].boxes[row2].SKU, row2, col, 1);
+    insert_data(db1, Store.conveyor[col].boxes[row1].SKU, row1, col, 1);
 }
 
 void Reverse(sqlite3 **db1, int col, int row) {
@@ -97,7 +104,7 @@ int Remove_Boxes(sqlite3 **db1, int type) {
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", type, 7, col);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
-    insert_data(db1, -1, 7, col);
+    insert_data(db1, -1, 7, col, 1);
 
     Store.conveyor[col].boxes[7].SKU = -1;
     Store.conveyor[col].boxes[7].empty = 1;

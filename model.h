@@ -47,6 +47,7 @@ typedef struct
     bool reserved;
     bool empty;
     int SKU;
+    int width;
 } box;
 
 struct _best_box
@@ -89,12 +90,23 @@ struct _conveyor
     box boxes[MAX_BOXES];
 };
 
+typedef struct
+{
+    int width;
+    int SKU;
+} box_pair;
+
 struct _Store
 {
     sqlite3 *db;
     int box_data[10][2];
     int arr_time[10];
+    
+    int b_w[high_border - low_border + 1];
+    box_pair box_width[high_border - low_border + 1];
+    int conveyor_width[MAX_CONVEYORS];
     int cnt_boxes_type[high_border - low_border + 1];
+    int cnt_boxes_type_const[high_border - low_border + 1];
     struct _conveyor conveyor[MAX_CONVEYORS];
     int N;
     bool full;
@@ -127,12 +139,12 @@ extern void model_final(state *s, tw_lp *lp);
 extern tw_peid model_map(tw_lpid gid);
 
 extern int callback(void *NotUsed, int argc, char **argv, char **azColName);
-extern int insert_data(sqlite3 **db1, int type, int row, int col);
+extern int insert_data(sqlite3 **db1, int type, int row, int col, int width);
 extern int find_data(sqlite3 **db1, int type);
 extern int Add_Box(sqlite3 **db1, int type);
 extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
 extern void Reverse(sqlite3 **db1, int row, int col);
 extern int Remove_Boxes(sqlite3 **db, int type);
 extern bool Check(int process);
-
+extern int compare(const void *a, const void *b);
 #endif
