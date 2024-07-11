@@ -79,7 +79,7 @@ void model_init (state *s, tw_lp *lp) {
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
-  //exit(0);
+  // exit(0);
   int self = lp->gid;
   *(int *) bf = (int) 0;
   SWAP(&(s->value), &(in_msg->contents));

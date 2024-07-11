@@ -5,7 +5,7 @@ void ConveyorsInit()
     fprintf(f, "startDepalletize\n"); 
     char *err_msg = 0;
     char *sql_del = "DROP TABLE IF EXISTS Warehouse";
-    char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER, Width INTEGER)";
+    char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER, Width INTEGER, Channel_Width INTEGER)";
     sqlite3_exec(Store.db, sql_del, 0, 0, &err_msg);
     sqlite3_exec(Store.db, sql, 0, 0, &err_msg);
 
@@ -14,7 +14,8 @@ void ConveyorsInit()
     }
 
     for (int i = 0; i < high_border - low_border + 1; ++i) {
-        Store.b_w[0] = i % 5;
+        Store.b_w[i] = i % 5;
+        // printf("%d\n", Store.b_w[i]);
         box_pair bp;
         bp.SKU = i;
         bp.width = i % 5;
@@ -24,7 +25,7 @@ void ConveyorsInit()
     qsort(Store.box_width, high_border - low_border + 1, sizeof(box_pair), compare);
 
     for (int i = 0; i < 21; ++i) {
-        printf("%d\n", Store.box_width[i].width);
+        printf("%d\n", Store.b_w[i]);
     }
 
     int change_tmp = 0;
