@@ -24,9 +24,6 @@ void ConveyorsInit()
     
     qsort(Store.box_width, high_border - low_border + 1, sizeof(box_pair), compare);
 
-    for (int i = 0; i < 21; ++i) {
-        printf("%d\n", Store.b_w[i]);
-    }
 
     int change_tmp = 0;
     for (int i = 0; i < 4; ++i) {
@@ -67,9 +64,6 @@ void ConveyorsInit()
             }
 
             bool flag = true;
-
-            // printf("%d %s ", left, "LEFT");
-            // printf("%d %s\n", right, "RIGHT");
 
             int answer = -1;
             while (Store.box_width[right].width > current_conv_len) {
