@@ -10,7 +10,7 @@ void ConveyorsInit()
     sqlite3_exec(Store.db, sql, 0, 0, &err_msg);
 
     for (int i = 0; i < MAX_CONVEYORS; ++i) {
-        Store.conveyor_width[i] = i % 5;
+        Store.conveyor_width[i] = i % 5 + 1;
     }
 
     for (int i = 0; i < high_border - low_border + 1; ++i) {
@@ -22,7 +22,7 @@ void ConveyorsInit()
         Store.box_width[i] = bp;
     }
     
-    qsort(Store.box_width, high_border - low_border + 1, sizeof(box_pair), compare);
+    //qsort(Store.box_width, high_border - low_border + 1, sizeof(box_pair), compare);
 
 
     int change_tmp = 0;
@@ -49,40 +49,15 @@ void ConveyorsInit()
 
 
             int current_conv_len = Store.conveyor_width[col];
-
-
-            int left = 0;
-            int right = high_border - low_border;
-            
-            while (left < right) {
-                int mid = left + (right - left) / 2;
-                if (current_conv_len < Store.box_width[mid].width) {
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
+            int answer = -100;
+            int cur_box_len = -1;
+            for (int con = 0; con < high_border - low_border + 1; ++con) {
+                if (Store.box_width[con].width > cur_box_len && Store.box_width[con].width <= current_conv_len && Store.cnt_boxes_type[Store.box_width[con].SKU] < MAX_CONVEYORS * MAX_BOXES / (high_border - low_border) - 2) {
+                    cur_box_len = Store.box_width[con].width;
+                    answer = con;
                 }
             }
-
-            bool flag = true;
-
-            int answer = -1;
-            while (Store.box_width[right].width > current_conv_len) {
-                right--;
-            }
-            while (flag) {
-                if (Store.cnt_boxes_type[Store.box_width[left].SKU] > MAX_CONVEYORS * MAX_BOXES / (high_border - low_border + 1)) {
-                    left -= 1;
-                } else if (Store.cnt_boxes_type[Store.box_width[right].SKU] > MAX_CONVEYORS * MAX_BOXES / (high_border - low_border + 1)) {
-                    right += 1;
-                } else {
-                    if (abs(Store.box_width[left].width - current_conv_len) < abs(Store.box_width[right].width - current_conv_len)) {
-                        answer = left;
-                    } else {
-                        answer = right;
-                    }
-                    flag = false;
-                }
-            }
+            // printf("%d\n", answer);
 
             Store.conveyor[col].boxes[row].SKU = Store.box_width[answer].SKU;
             Store.conveyor[col].boxes[row].width = Store.box_width[answer].width;
@@ -92,13 +67,13 @@ void ConveyorsInit()
             Store.cnt_boxes_type[Store.box_width[answer].SKU]++;
             Store.cnt_boxes_type_const[Store.box_width[answer].SKU]++;
             insert_data(&(Store.db), Store.box_width[answer].SKU, row, col, Store.box_width[answer].width);
-            fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    %*d    ", 4, id, 4, glb_time, 5, Store.box_width[answer].SKU, 6, col, 4, current_conv_len);
+            fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    channellen%*d    ", 4, id, 4, glb_time, 5, Store.box_width[answer].SKU, 6, col, 4, current_conv_len);
             
             for (int i = 0; i < MAX_BOXES; ++i) {
                 if (Store.conveyor[col].boxes[i].empty) {
                     fprintf(f_dep, "| - ");
                 } else {
-                    fprintf(f_dep, "|%*d%*d", 3, Store.conveyor[col].boxes[i].SKU, 2, Store.conveyor[col].boxes[i].width);
+                    fprintf(f_dep, "|%*d boxwidth%*d", 3, Store.conveyor[col].boxes[i].SKU, 2, Store.conveyor[col].boxes[i].width);
                 }
             }
             fprintf(f_dep, "|\n");
@@ -108,8 +83,7 @@ void ConveyorsInit()
             tempor += 1;
         }
     }
-
-    // for (int i = 0; i < 4; ++i) {
+    // for (int i = 0; i < 21; ++i) {
     //     printf("%d\n", Store.cnt_boxes_type[i]);
     // }
     fprintf(f, "finishDepalletize\n");

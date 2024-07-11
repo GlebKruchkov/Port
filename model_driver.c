@@ -179,7 +179,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               int channel = Add_Box(&(Store.db), i);
               cur_time += 8;
               // fprintf(f, "movebox%dchannel%d %d %d\n", i, channel, cur_time, self);
-              fprintf(f, "%*d   %*d   movebox%*d   channel%*d   process%*d   ", 4, log_id, 4, cur_time, 5, i, 6, channel, 2, self);
+              fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, i, 6, channel, 2, self, 2, Store.b_w[i], 2, Store.conveyor_width[channel]);
               for (int i = 0; i < 8; ++i) {
                 if (Store.conveyor[channel].boxes[i].SKU == -1) {
                     fprintf(f, "| - ");
@@ -206,7 +206,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         for (int q = 0; q < Store.box_data[self][1]; ++q) {
           int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0]);
           cur_time += 8;
-          fprintf(f, "%*d   %*d   movebox%*d   channel%*d   process%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self);
+          fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
           // if (is_reverse != 0) {
           //   fprintf(f, "reverse box%*d  ", 4, best_box.row);
           // }
