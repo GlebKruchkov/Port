@@ -115,10 +115,6 @@ void ConveyorsInit()
         }
     }
 
-    for (int i = 0; i < 21; ++i) {
-        printf("%s %d\n", "SUKA", Store.cnt_boxes_type_const[i]);
-    }
-
     // for (int i = 0; i < 4; ++i) {
     //     printf("%d\n", Store.cnt_boxes_type[i]);
     // }
