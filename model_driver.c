@@ -94,12 +94,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
     }
     if (flag) {
-      tw_event *e1 = tw_event_new(1, 0, lp);
-      message *msg1 = tw_event_data(e1);
-      msg1->type = TAKE_IN;
-      msg1->contents = tw_rand_unif(lp->rng);
-      msg1->sender = self;
-      tw_event_send(e1);
+      Send_Event(TAKE_IN, lp, &(lp->gid));
       bool flag1 = 0;
       for (int process = 2; process < 10; ++process) {
         if (Store.box_data[process][1] != 0) {
@@ -203,32 +198,44 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         tw_event_send(e1);
         break;
       case TAKE_OUT:
-        for (int q = 0; q < Store.box_data[self][1]; ++q) {
-          int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0]);
-          cur_time += 8;
-          fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
-          // if (is_reverse != 0) {
-          //   fprintf(f, "reverse box%*d  ", 4, best_box.row);
-          // }
-          // printf("%d\n", is_reverse);
-          for (int i = 0; i < 8; ++i) {
-            if (Store.conveyor[channel].boxes[i].SKU == -1) {
-                fprintf(f, "| - ");
-            } else {
-                fprintf(f, "|%*d", 3, Store.conveyor[channel].boxes[i].SKU);
+        if (Store.box_data[self][0] > high_border || Store.box_data[self][0] < low_border) {
+            fprintf(f, "no-boxes-for-SKU %d\n", Store.box_data[self][0]);
+            Store.box_data[self][1] = 0;
+            tw_event *e = tw_event_new(0, 0, lp);
+            message *msg = tw_event_data(e);
+            msg->type = TAKE_OUT;
+            msg->contents = tw_rand_unif(lp->rng);
+            msg->sender = self;
+            tw_event_send(e);
+            break;
+        } else {
+          for (int q = 0; q < Store.box_data[self][1]; ++q) {
+            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0]);
+            cur_time += 8;
+            fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
+            // if (is_reverse != 0) {
+            //   fprintf(f, "reverse box%*d  ", 4, best_box.row);
+            // }
+            // printf("%d\n", is_reverse);
+            for (int i = 0; i < 8; ++i) {
+              if (Store.conveyor[channel].boxes[i].SKU == -1) {
+                  fprintf(f, "| - ");
+              } else {
+                  fprintf(f, "|%*d", 3, Store.conveyor[channel].boxes[i].SKU);
+              }
             }
+            fprintf(f, "|\n");
+            log_id++;
           }
-          fprintf(f, "|\n");
-          log_id++;
+          Store.box_data[self][1] = 0;
+          tw_event *e = tw_event_new(0, 0, lp);
+          message *msg = tw_event_data(e);
+          msg->type = TAKE_OUT;
+          msg->contents = tw_rand_unif(lp->rng);
+          msg->sender = self;
+          tw_event_send(e);
+          break;
         }
-        Store.box_data[self][1] = 0;
-        tw_event *e = tw_event_new(0, 0, lp);
-        message *msg = tw_event_data(e);
-        msg->type = TAKE_OUT;
-        msg->contents = tw_rand_unif(lp->rng);
-        msg->sender = self;
-        tw_event_send(e);
-        break;
       default:
         printf("\n%s\n", "No message");
         break;

@@ -167,3 +167,12 @@ bool Check(int process) {
         return false;
     }
 }
+
+void Send_Event(message_type command, tw_lp *lp, tw_lpid *self) {
+    tw_event *e = tw_event_new(1, 0, lp);
+    message *msg = tw_event_data(e);
+    msg->type = command;
+    msg->contents = tw_rand_unif(lp->rng);
+    msg->sender = self;
+    tw_event_send(e);
+}
