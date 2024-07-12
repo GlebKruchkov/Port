@@ -69,14 +69,7 @@ void ConveyorsInit()
             insert_data(&(Store.db), Store.box_width[answer].SKU, row, col, Store.box_width[answer].width);
             fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    channellen%*d    ", 4, id, 4, glb_time, 5, Store.box_width[answer].SKU, 6, col, 4, current_conv_len);
             
-            for (int i = 0; i < MAX_BOXES; ++i) {
-                if (Store.conveyor[col].boxes[i].empty) {
-                    fprintf(f_dep, "| - ");
-                } else {
-                    fprintf(f_dep, "|%*d boxwidth%*d", 3, Store.conveyor[col].boxes[i].SKU, 2, Store.conveyor[col].boxes[i].width);
-                }
-            }
-            fprintf(f_dep, "|\n");
+            Print_Channel(col, f_dep);
             if (tempor % 10 == 0) {
                 glb_time += 8;
             }

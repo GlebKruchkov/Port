@@ -147,5 +147,6 @@ extern void Reverse(sqlite3 **db1, int row, int col);
 extern int Remove_Boxes(sqlite3 **db, int type);
 extern bool Check(int process);
 extern int compare(const void *a, const void *b);
-extern void Send_Event(message_type command, tw_lp *lp, tw_lpid *self);
+extern void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self);
+extern void Print_Channel(int col, FILE *log_file);
 #endif

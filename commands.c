@@ -168,11 +168,22 @@ bool Check(int process) {
     }
 }
 
-void Send_Event(message_type command, tw_lp *lp, tw_lpid *self) {
-    tw_event *e = tw_event_new(1, 0, lp);
+void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self) {
+    tw_event *e = tw_event_new(process, 0, lp);
     message *msg = tw_event_data(e);
     msg->type = command;
     msg->contents = tw_rand_unif(lp->rng);
     msg->sender = self;
     tw_event_send(e);
+}
+
+void Print_Channel(int col, FILE *log_file) {
+    for (int i = 0; i < MAX_BOXES; ++i) {
+        if (Store.conveyor[col].boxes[i].empty) {
+            fprintf(log_file, "|   -   ");
+        } else {
+            fprintf(log_file, "|%*d %*d", 3, Store.conveyor[col].boxes[i].SKU, 3, Store.conveyor[col].boxes[i].width);
+        }
+    }
+    fprintf(log_file, "|\n");
 }
