@@ -109,12 +109,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         }
         for (int process = 2; process < 10; ++process) {
           if (Store.box_data[process][1] != 0) {
-            tw_event *e = tw_event_new(process, 0, lp);
-            message *msg = tw_event_data(e);
-            msg->type = TAKE_OUT;
-            msg->contents = tw_rand_unif(lp->rng);
-            msg->sender = self;
-            tw_event_send(e);
+            Send_Event(TAKE_OUT, lp, &(lp->gid));
           } else {
             if (Check(process)) {
               tw_event *e = tw_event_new(process, 0, lp);
