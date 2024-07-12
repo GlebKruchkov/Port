@@ -173,7 +173,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             break;
         } else {
           for (int q = 0; q < Store.box_data[self][1]; ++q) {
-            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0]);
+            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
             cur_time += 8;
             fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
             Print_Channel(channel, f);
