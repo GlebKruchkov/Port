@@ -101,6 +101,7 @@ struct _Store
     sqlite3 *db;
     int box_data[10][2];
     int arr_time[10];
+    int times_to_inc;
     
     int b_w[high_border - low_border + 1];
     box_pair box_width[high_border - low_border + 1];
@@ -143,7 +144,7 @@ extern int insert_data(sqlite3 **db1, int type, int row, int col, int width);
 extern int find_data(sqlite3 **db1, int type);
 extern int Add_Box(sqlite3 **db1, int type);
 extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
-extern void Reverse(sqlite3 **db1, int row, int col, int *time, int *l_id);
+extern int Reverse(sqlite3 **db1, int row, int col, int *time, int *l_id);
 extern int Remove_Boxes(sqlite3 **db, int type, int *time, int *l_id);
 extern bool Check(int process);
 extern int compare(const void *a, const void *b);

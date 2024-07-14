@@ -107,6 +107,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             glb_time = Store.arr_time[i];
           }
         }
+        
         for (int process = 2; process < 10; ++process) {
           if (Store.box_data[process][1] != 0) {
             Send_Event(process, TAKE_OUT, lp, &(lp->gid));
@@ -119,7 +120,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
     } else {
       bool flag1 = 0;
-      for (int process = 2; process < 10; ++process) {
+      for (int process = 1; process < 10; ++process) {
         if (Store.box_data[process][1] != 0) {
           flag1 = 1;
         }

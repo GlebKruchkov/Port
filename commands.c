@@ -106,7 +106,7 @@ void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
     insert_data(db1, Store.conveyor[col].boxes[row1].SKU, row1, col, Store.conveyor[col].boxes[row1].width);
 }
 
-void Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id) {
+int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id) {
     for (int step = 0; step < 7 - row; ++step) {
         // int temp_type = Store.conveyor[col].boxes[7].SKU;
         *time += 8;
@@ -119,6 +119,7 @@ void Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id) {
         }
         Print_Channel(col, f);
     }
+    return 0;
 }
 
 int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id) {
