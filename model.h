@@ -11,6 +11,8 @@
 #include "ross.h"
 
 #define MAX_BOXES 8
+#define MAX_CELLS 12
+#define MAX_ROBOTS 6
 // #define MAX_ROBOTS 50
 #define MAX_CONVEYORS 100
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
@@ -63,7 +65,8 @@ typedef enum
 {
     TAKE_IN,
     TAKE_OUT,
-    REVERSE
+    REVERSE,
+    WAIT
 } message_type;
 
 typedef struct
@@ -99,6 +102,18 @@ typedef struct
     int SKU;
 } box_pair;
 
+typedef struct
+{
+    int id;
+    bool reserved;
+} cell;
+
+typedef struct
+{
+    int cur_task;
+    cell cur_cell;
+} robot;
+
 typedef struct {
     int requests[3000][2];
     int total;
@@ -111,6 +126,10 @@ struct _Store
     sqlite3 *db;
     int box_data[10][2];
     int arr_time[10];
+
+    robot robots[MAX_ROBOTS];
+    cell cells[MAX_CELLS];
+
     //int prev_commands[10][36]; // 1 + 7 * 5
     int times_to_inc;
     

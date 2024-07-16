@@ -107,30 +107,27 @@ void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
 }
 
 int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id) {
-    for (int step = 0; step < 7 - row; ++step) {
-        // int temp_type = Store.conveyor[col].boxes[7].SKU;
-        *time += 8;
-        fprintf(f, "%*d   %*d   getbox%*d   shiftbox%*d    channelwidth%*d    putbox%*d  channel%*d         ", 4, *l_id, 4, *time, 5, Store.conveyor[col].boxes[7].SKU, 6, Store.conveyor[col].boxes[7].SKU, 2, Store.conveyor_width[col], 2, Store.conveyor[col].boxes[7].SKU, 2, col);
-        *l_id += 1;
-        for (int i = 7; i >= 1; --i) {
-            if (Store.conveyor[col].boxes[i - 1].empty == 0) {
-                Swap_Boxes(db1, col, i, i - 1);
-            }
+    // int temp_type = Store.conveyor[col].boxes[7].SKU;
+    *time += 8;
+    fprintf(f, "%*d   %*d   getbox%*d   shiftbox%*d    channelwidth%*d    putbox%*d  channel%*d         ", 4, *l_id, 4, *time, 5, Store.conveyor[col].boxes[7].SKU, 6, Store.conveyor[col].boxes[7].SKU, 2, Store.conveyor_width[col], 2, Store.conveyor[col].boxes[7].SKU, 2, col);
+    *l_id += 1;
+    for (int i = 7; i >= 1; --i) {
+        if (Store.conveyor[col].boxes[i - 1].empty == 0) {
+            Swap_Boxes(db1, col, i, i - 1);
         }
-        Print_Channel(col, f);
     }
+    Print_Channel(col, f);
     return 0;
 }
 
 int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id) {
-    struct sqlite3 * db = (struct sqlite3 *) *db1;
-    find_data(db1, type);
     int col = best_box.column;
     int row = best_box.row;
+    struct sqlite3 * db = (struct sqlite3 *) *db1;
 
-    if (row != 7) {
-        Reverse(db1, col, row, time, l_id);
-    }
+    // if (row != 7) {
+    //     Reverse(db1, col, row, time, l_id);
+    // }
 
     char *err_msg = 0;
     char sql[100];
@@ -152,7 +149,10 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id) {
 }
  
  
-bool Check(int process) { 
+bool Check(int process) {
+    if (is_reverse) {
+        return true;
+    }
     if (Store.request.curr == Store.request.total) {
         return false;
     } else {

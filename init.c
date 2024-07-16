@@ -21,10 +21,33 @@ void ConveyorsInit()
         bp.width = i % 5;
         Store.box_width[i] = bp;
     }
+
+
+    // Initialization of cells
+    for (int i = 0; i < MAX_CELLS; ++i) {
+        cell c_cell;
+        c_cell.id = i;
+        c_cell.reserved = 0;
+        Store.cells[i] = c_cell;
+    }
+
+    // Initialization of robots to take out
+    for (int i = 0; i < MAX_ROBOTS / 2; ++i) {
+        robot bot;
+        bot.cur_cell = Store.cells[i];
+        bot.cur_task = 2;
+        Store.robots[i] = bot;
+    }
+
+    // Initialization of robots to take in
+    for (int i = MAX_ROBOTS / 2; i < MAX_ROBOTS; ++i) {
+        robot bot;
+        bot.cur_cell = Store.cells[MAX_CELLS / 2];
+        bot.cur_task = 2;
+        Store.robots[i] = bot;
+    }
+
     
-    //qsort(Store.box_width, high_border - low_border + 1, sizeof(box_pair), compare);
-
-
     int change_tmp = 0;
     for (int i = 0; i < 4; ++i) {
         Store.cnt_boxes_type[i] = 0;

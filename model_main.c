@@ -63,14 +63,17 @@ void Init_Commands(FILE* file1) {
     while (fgets(line, sizeof(line), file1)) {
         fields[0] = strtok(line, ",");
         for (int i = 1; i < 10; i++) {
-           fields[i] = strtok(NULL, ",");
+          fields[i] = strtok(NULL, ",");
         }
         int SKU =  atoi(fields[0]);
         int quantity = atoi(fields[1]);
-        Store.request.requests[req_num][0] = SKU;
-        Store.request.requests[req_num][1] = quantity;
-        req_num++;
-        Store.request.total++;
+        while (quantity != 0) {
+          Store.request.requests[req_num][0] = SKU;
+          Store.request.requests[req_num][1] = 1;
+          quantity--;
+          Store.request.total++;
+          req_num++;
+        }
     }
 }
 

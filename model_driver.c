@@ -35,7 +35,7 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
-  for (int process = 9; process < 10; ++process) {
+  for (int process = 6; process < 10; ++process) {
     if (Store.box_data[process][1] != 0) {
       Store.used[process] = 1;
       Send_Event(process, TAKE_OUT, lp, &(lp->gid));
@@ -81,17 +81,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.used[3] = 1;
             Store.used[4] = 1;
             Store.used[5] = 1;
-            Store.used[6] = 1;
-            Store.used[7] = 1;
-            Store.used[8] = 1;
             Send_Event(1, TAKE_IN, lp, &(lp->gid));
             Send_Event(2, TAKE_IN, lp, &(lp->gid));
             Send_Event(3, TAKE_IN, lp, &(lp->gid));
             Send_Event(4, TAKE_IN, lp, &(lp->gid));
             Send_Event(5, TAKE_IN, lp, &(lp->gid));
-            Send_Event(6, TAKE_IN, lp, &(lp->gid));
-            Send_Event(7, TAKE_IN, lp, &(lp->gid));
-            Send_Event(8, TAKE_IN, lp, &(lp->gid));
             Store.type_to_add = i;
             break;
           }
@@ -102,29 +96,26 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           Store.used[3] = 1;
           Store.used[4] = 1;
           Store.used[5] = 1;
-          Store.used[6] = 1;
-          Store.used[7] = 1;
-          Store.used[8] = 1;
           Send_Event(1, TAKE_IN, lp, &(lp->gid));
           Send_Event(2, TAKE_IN, lp, &(lp->gid));
           Send_Event(3, TAKE_IN, lp, &(lp->gid));
           Send_Event(4, TAKE_IN, lp, &(lp->gid));
           Send_Event(5, TAKE_IN, lp, &(lp->gid));
-          Send_Event(6, TAKE_IN, lp, &(lp->gid));
-          Send_Event(7, TAKE_IN, lp, &(lp->gid));
-          Send_Event(8, TAKE_IN, lp, &(lp->gid));
       }
 
-      for (int process = 9; process < 10; ++process) {
-        if (Store.box_data[process][1] != 0) {
-          Store.used[process] = 1;
-          Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-        } else {
-          if (Check(process)) {
+      for (int process = 6; process < 10; ++process) {
+        if (Check(process)) {
+          find_data(&(Store.db), Store.box_data[process][0]);
+          if (best_box.row != 7) {
+            is_reverse = 1;
+            Store.used[process] = 1;
+            Send_Event(process, REVERSE, lp, &(lp->gid));
+          } else {
+            is_reverse = 0;
             Store.used[process] = 1;
             Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-          };
-        }
+          }
+        };
       }
     }
   } else {
@@ -152,17 +143,23 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Send_Event(0, TAKE_OUT, lp, &(lp->gid));
             break;
         } else {
-          for (int q = 0; q < Store.box_data[self][1]; ++q) {
-            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
-            cur_time += 8;
-            fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
-            Print_Channel(channel, f);
-            log_id++;
-          }
+          find_data(&(Store.db), Store.box_data[self][0]);
+          int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
+          cur_time += 8;
+          fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
+          Print_Channel(channel, f);
+          log_id++;
+          
           Store.box_data[self][1] = 0;
           Send_Event(0, TAKE_OUT, lp, &(lp->gid));
           break;
         }
+      case REVERSE:
+          find_data(&(Store.db), Store.box_data[self][0]);
+          Reverse(&(Store.db), best_box.column, best_box.row, &(cur_time), &(log_id));
+          Send_Event(0, REVERSE, lp, &(lp->gid));
+          break;
+
       default:
         printf("\n%s\n", "No message");
         break;
