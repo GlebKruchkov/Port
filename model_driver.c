@@ -35,7 +35,7 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
-  for (int process = 6; process < 10; ++process) {
+  for (int process = 4; process < 7; ++process) {
     if (Store.box_data[process][1] != 0) {
       Store.used[process] = 1;
       Send_Event(process, TAKE_OUT, lp, &(lp->gid));
@@ -63,7 +63,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
   if (self == 0) {
     int not_do = 0;
-    for (int i = 1; i < 10; ++i) {
+    for (int i = 1; i < 7; ++i) {
       if (Store.used[i] == 1) {
         not_do = 1;
       }
@@ -79,13 +79,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.used[1] = 1;
             Store.used[2] = 1;
             Store.used[3] = 1;
-            Store.used[4] = 1;
-            Store.used[5] = 1;
             Send_Event(1, TAKE_IN, lp, &(lp->gid));
             Send_Event(2, TAKE_IN, lp, &(lp->gid));
             Send_Event(3, TAKE_IN, lp, &(lp->gid));
-            Send_Event(4, TAKE_IN, lp, &(lp->gid));
-            Send_Event(5, TAKE_IN, lp, &(lp->gid));
             Store.type_to_add = i;
             break;
           }
@@ -94,16 +90,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           Store.used[1] = 1;
           Store.used[2] = 1;
           Store.used[3] = 1;
-          Store.used[4] = 1;
-          Store.used[5] = 1;
           Send_Event(1, TAKE_IN, lp, &(lp->gid));
           Send_Event(2, TAKE_IN, lp, &(lp->gid));
           Send_Event(3, TAKE_IN, lp, &(lp->gid));
-          Send_Event(4, TAKE_IN, lp, &(lp->gid));
-          Send_Event(5, TAKE_IN, lp, &(lp->gid));
       }
 
-      for (int process = 6; process < 10; ++process) {
+      for (int process = 4; process < 7; ++process) {
         if (Check(process)) {
           find_data(&(Store.db), Store.box_data[process][0]);
           if (best_box.row != 7) {

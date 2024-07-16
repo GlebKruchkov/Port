@@ -124,8 +124,8 @@ struct _Store
 {
     file_requests request;
     sqlite3 *db;
-    int box_data[10][2];
-    int arr_time[10];
+    int box_data[7][2];
+    int arr_time[7];
 
     robot robots[MAX_ROBOTS];
     cell cells[MAX_CELLS];
@@ -140,7 +140,7 @@ struct _Store
     int cnt_boxes_type_const[high_border - low_border + 1];
     struct _conveyor conveyor[MAX_CONVEYORS];
 
-    int used[10];
+    int used[7];
     int boxes_to_deliver;
     int type_to_add;
     int N;

@@ -107,7 +107,7 @@ void ConveyorsInit()
     fprintf(f, "finishDepalletize\n");
     fprintf(f, "------------------------------------------\n");
     fprintf(f, "startPalletize #1\n");
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 7; ++i) {
         Store.box_data[i][0] = -1;
         Store.box_data[i][1] = 0;
         Store.arr_time[i] = 0;
