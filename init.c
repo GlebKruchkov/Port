@@ -76,9 +76,11 @@ void ConveyorsInit()
             tempor += 1;
         }
     }
-    // for (int i = 0; i < 21; ++i) {
-    //     printf("%d\n", Store.cnt_boxes_type[i]);
-    // }
+    for (int i = 0; i < 10; ++i) {
+        Store.used[i] = 0;
+    }
+    Store.boxes_to_deliver = 0;
+
     fprintf(f, "finishDepalletize\n");
     fprintf(f, "------------------------------------------\n");
     fprintf(f, "startPalletize #1\n");

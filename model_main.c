@@ -56,6 +56,24 @@ void displayModelSettings()
   }
 }
 
+void Init_Commands(FILE* file1) {
+    int req_num = 0;
+    char line[256];
+    char *fields[10];
+    while (fgets(line, sizeof(line), file1)) {
+        fields[0] = strtok(line, ",");
+        for (int i = 1; i < 10; i++) {
+           fields[i] = strtok(NULL, ",");
+        }
+        int SKU =  atoi(fields[0]);
+        int quantity = atoi(fields[1]);
+        Store.request.requests[req_num][0] = SKU;
+        Store.request.requests[req_num][1] = quantity;
+        req_num++;
+        Store.request.total++;
+    }
+}
+
 //for doxygen
 #define model_main main
 
@@ -63,7 +81,16 @@ int model_main (int argc, char* argv[]) {
   f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
   f_dep = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/first_depalitization.txt", "w");
+  temp_txt = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/temp_txt.txt", "w");
   sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &Store.db);
+
+  // f_dep = fopen("/home/sasha/Port/first_depalitization.txt", "w");
+  // sqlite3_open("/home/sasha/Port/ross-sqlite.db", &Store.db);
+
+  // f = fopen("/home/sasha/Port/log.txt", "w");
+  // file = fopen("/home/sasha/Port/TEST1-SIMSIM/small_test.csv", "r");
+
+  Init_Commands(file);
 	InitROSS();
 	int i, num_lps_per_pe;
   tw_opt_add(model_opts);

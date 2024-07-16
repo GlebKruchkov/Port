@@ -153,22 +153,15 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id) {
  
  
 bool Check(int process) { 
-    char line[1024];
-    char *fields[10];
-
-    if (fgets(line, sizeof(line), file)) {
-        fields[0] = strtok(line, ",");
-        for (int i = 1; i < 10; i++) {
-            fields[i] = strtok(NULL, ",");
-        }
-        int SKU =  atoi(fields[0]);
-        int quantity = atoi(fields[1]);
-        int length = atoi(fields[2]);
+    if (Store.request.curr == Store.request.total) {
+        return false;
+    } else {
+        int SKU = Store.request.requests[Store.request.curr][0];
+        int quantity = Store.request.requests[Store.request.curr][1];
         Store.box_data[process][0] = SKU;
         Store.box_data[process][1] = quantity;
+        Store.request.curr++;
         return true;
-    } else {
-        return false;
     }
 }
 

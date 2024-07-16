@@ -32,15 +32,18 @@
 static const int low_border = 1;
 static const int high_border = 21;
 
+// static const int threshold = 38;
+
 static int is_reverse = 0;
 static int glb_time = 0;
 static int log_id = 1;
 FILE *file;
 FILE *f;
 FILE *f_dep;
+FILE *temp_txt;
 
 const static double g_robot_calc_time = 0.001;
-static const int threshold = (MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1);
+static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1));
 
 typedef struct
 {
@@ -96,11 +99,19 @@ typedef struct
     int SKU;
 } box_pair;
 
+typedef struct {
+    int requests[3000][2];
+    int total;
+    int curr;
+} file_requests;
+
 struct _Store
 {
+    file_requests request;
     sqlite3 *db;
     int box_data[10][2];
     int arr_time[10];
+    //int prev_commands[10][36]; // 1 + 7 * 5
     int times_to_inc;
     
     int b_w[high_border - low_border + 1];
@@ -109,6 +120,10 @@ struct _Store
     int cnt_boxes_type[high_border - low_border + 1];
     int cnt_boxes_type_const[high_border - low_border + 1];
     struct _conveyor conveyor[MAX_CONVEYORS];
+
+    int used[10];
+    int boxes_to_deliver;
+    int type_to_add;
     int N;
     bool full;
 };

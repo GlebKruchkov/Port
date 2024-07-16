@@ -35,50 +35,24 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
-  bool flag = 0;
-  if (self == 0) {
-    for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < (int)(Store.cnt_boxes_type_const[i] * 2 / 3)) {
-        flag = true;
-      }
-    }
-    if (flag) {
-      tw_event *e1 = tw_event_new(1, 0, lp);
-      message *msg1 = tw_event_data(e1);
-      msg1->type = TAKE_IN;
-      msg1->contents = tw_rand_unif(lp->rng);
-      msg1->sender = self;
-      tw_event_send(e1);
-      for (int process = 2; process < 10; ++process) {
-        if (Store.box_data[process][1] == 0) {
-          if (Check(process)) {
-            tw_event *e = tw_event_new(process, 0, lp);
-            message *msg = tw_event_data(e);
-            msg->type = TAKE_OUT;
-            msg->contents = tw_rand_unif(lp->rng);
-            msg->sender = self;
-            tw_event_send(e);
-          };
-        }
-      }
+  for (int process = 9; process < 10; ++process) {
+    if (Store.box_data[process][1] != 0) {
+      Store.used[process] = 1;
+      Send_Event(process, TAKE_OUT, lp, &(lp->gid));
     } else {
-      for (int process = 1; process < 10; ++process) {
-        if (Store.box_data[process][1] == 0) {
-          if (Check(process)) {
-            tw_event *e = tw_event_new(process, 0, lp);
-            message *msg = tw_event_data(e);
-            msg->type = TAKE_OUT;
-            msg->contents = tw_rand_unif(lp->rng);
-            msg->sender = self;
-            tw_event_send(e);
-          };
-        }
-      }
+      if (Check(process)) {
+        Store.used[process] = 1;
+        Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+      };
     }
   }
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+  for (int i = 0; i < 21; ++i) {
+    fprintf(temp_txt, "%d ", Store.cnt_boxes_type[i]);
+  }
+  fprintf(temp_txt, "\n");
   // exit(0);
   int self = lp->gid;
   *(int *) bf = (int) 0;
@@ -86,87 +60,92 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   bool flag = false;
   struct timeval currentTime;
   int cur_time = glb_time;
-  //printf("%d\n", self);
+
   if (self == 0) {
-    for (int i = 0; i < high_border - low_border; ++i) {
-      if (Store.cnt_boxes_type[i] < (int)(Store.cnt_boxes_type_const[i] * 2 / 3)) {
-        flag = true;
+    int not_do = 0;
+    for (int i = 1; i < 10; ++i) {
+      if (Store.used[i] == 1) {
+        not_do = 1;
       }
     }
-    if (flag) {
-      Send_Event(1, TAKE_IN, lp, &(lp->gid));
-      bool flag1 = 0;
-      for (int process = 2; process < 10; ++process) {
+    if (not_do == 0) {
+      if (Store.boxes_to_deliver <= 0) {
+        for (int i = 0; i < high_border - low_border + 1; ++i) {
+          if (Store.cnt_boxes_type[i] < 15) {
+
+            fprintf(f, "------------------------------------------------------------------------------------\n");
+            fprintf(f, "startDepalletize\n");
+            Store.boxes_to_deliver = threshold - Store.cnt_boxes_type[i];
+            Store.used[1] = 1;
+            Store.used[2] = 1;
+            Store.used[3] = 1;
+            Store.used[4] = 1;
+            Store.used[5] = 1;
+            Store.used[6] = 1;
+            Store.used[7] = 1;
+            Store.used[8] = 1;
+            Send_Event(1, TAKE_IN, lp, &(lp->gid));
+            Send_Event(2, TAKE_IN, lp, &(lp->gid));
+            Send_Event(3, TAKE_IN, lp, &(lp->gid));
+            Send_Event(4, TAKE_IN, lp, &(lp->gid));
+            Send_Event(5, TAKE_IN, lp, &(lp->gid));
+            Send_Event(6, TAKE_IN, lp, &(lp->gid));
+            Send_Event(7, TAKE_IN, lp, &(lp->gid));
+            Send_Event(8, TAKE_IN, lp, &(lp->gid));
+            Store.type_to_add = i;
+            break;
+          }
+        }
+      } else {
+          Store.used[1] = 1;
+          Store.used[2] = 1;
+          Store.used[3] = 1;
+          Store.used[4] = 1;
+          Store.used[5] = 1;
+          Store.used[6] = 1;
+          Store.used[7] = 1;
+          Store.used[8] = 1;
+          Send_Event(1, TAKE_IN, lp, &(lp->gid));
+          Send_Event(2, TAKE_IN, lp, &(lp->gid));
+          Send_Event(3, TAKE_IN, lp, &(lp->gid));
+          Send_Event(4, TAKE_IN, lp, &(lp->gid));
+          Send_Event(5, TAKE_IN, lp, &(lp->gid));
+          Send_Event(6, TAKE_IN, lp, &(lp->gid));
+          Send_Event(7, TAKE_IN, lp, &(lp->gid));
+          Send_Event(8, TAKE_IN, lp, &(lp->gid));
+      }
+
+      for (int process = 9; process < 10; ++process) {
         if (Store.box_data[process][1] != 0) {
-          flag1 = 1;
-        }
-      }
-      if (!flag1) {
-        for (int i = 0; i < 10; ++i) {
-          if (Store.arr_time[i] > glb_time) {
-            glb_time = Store.arr_time[i];
-          }
-        }
-        
-        for (int process = 2; process < 10; ++process) {
-          if (Store.box_data[process][1] != 0) {
+          Store.used[process] = 1;
+          Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+        } else {
+          if (Check(process)) {
+            Store.used[process] = 1;
             Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-          } else {
-            if (Check(process)) {
-              Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-            };
-          }
-        }
-      }
-    } else {
-      bool flag1 = 0;
-      for (int process = 1; process < 10; ++process) {
-        if (Store.box_data[process][1] != 0) {
-          flag1 = 1;
-        }
-      }
-      if (!flag1) {
-        for (int i = 0; i < 10; ++i) {
-          if (Store.arr_time[i] > glb_time) {
-            glb_time = Store.arr_time[i];
-          }
-        }
-        for (int process = 1; process < 10; ++process) {
-          if (Store.box_data[process][1] != 0) {
-            Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-          } else {
-            if (Check(process)) {
-              Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-            };
-          }
+          };
         }
       }
     }
   } else {
+    Store.used[self] = 0;
     //printf("%d\n", self);
     switch (in_msg->type)
     {
-      case TAKE_IN: 
-        for (int i = 0; i < high_border - low_border + 1; ++i) {
-          if (Store.cnt_boxes_type[i] < (int)(Store.cnt_boxes_type_const[i] * 2 / 3)) {
-            fprintf(f, "------------------------------------------------------------------------------------\n");
-            fprintf(f, "startDepalletize\n");
-            while (Store.cnt_boxes_type[i] < Store.cnt_boxes_type_const[i]) {
-              int channel = Add_Box(&(Store.db), i);
-              cur_time += 8;
-              // fprintf(f, "movebox%dchannel%d %d %d\n", i, channel, cur_time, self);
-              fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, i, 6, channel, 2, self, 2, Store.b_w[i], 2, Store.conveyor_width[channel]);
-              Print_Channel(channel, f);
-              log_id++;
-            }
-            fprintf(f, "finishDepalletize\n");
-            fprintf(f, "------------------------------------------------------------------------------------\n");
-          }
-        }
+      case TAKE_IN:
+        printf("");
+        Store.boxes_to_deliver -= 1;
+        int channel = Add_Box(&(Store.db), Store.type_to_add);
+        cur_time += 8;
+        fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
+        Print_Channel(channel, f);
+        log_id++;
+        
 
         Send_Event(0, TAKE_OUT, lp, &(lp->gid));
         break;
       case TAKE_OUT:
+
         if (Store.box_data[self][0] > high_border || Store.box_data[self][0] < low_border) {
             fprintf(f, "no-boxes-for-SKU %d\n", Store.box_data[self][0]);
             Store.box_data[self][1] = 0;
