@@ -111,6 +111,7 @@ typedef struct
 typedef struct
 {
     int cur_task;
+    int cur_conv;
     cell cur_cell;
 } robot;
 
@@ -176,6 +177,7 @@ extern tw_peid model_map(tw_lpid gid);
 extern int callback(void *NotUsed, int argc, char **argv, char **azColName);
 extern int insert_data(sqlite3 **db1, int type, int row, int col, int width);
 extern int find_data(sqlite3 **db1, int type);
+extern int find_data_by_width(sqlite3 **db1, int type);
 extern int Add_Box(sqlite3 **db1, int type);
 extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
 extern int Reverse(sqlite3 **db1, int row, int col, int *time, int *l_id);

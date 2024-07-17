@@ -49,10 +49,10 @@ void model_init (state *s, tw_lp *lp) {
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
-  for (int i = 0; i < 21; ++i) {
-    fprintf(temp_txt, "%d ", Store.cnt_boxes_type[i]);
-  }
-  fprintf(temp_txt, "\n");
+  // for (int i = 0; i < 21; ++i) {
+  //   fprintf(temp_txt, "%d ", Store.cnt_boxes_type[i]);
+  // }
+  // fprintf(temp_txt, "\n");
   // exit(0);
   int self = lp->gid;
   *(int *) bf = (int) 0;
@@ -80,19 +80,33 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.used[2] = 1;
             Store.used[3] = 1;
             Send_Event(1, TAKE_IN, lp, &(lp->gid));
+            Store.boxes_to_deliver -= 1;
             Send_Event(2, TAKE_IN, lp, &(lp->gid));
+            Store.boxes_to_deliver -= 1;
             Send_Event(3, TAKE_IN, lp, &(lp->gid));
+            Store.boxes_to_deliver -= 1;
             Store.type_to_add = i;
             break;
           }
         }
       } else {
           Store.used[1] = 1;
-          Store.used[2] = 1;
-          Store.used[3] = 1;
           Send_Event(1, TAKE_IN, lp, &(lp->gid));
+          Store.boxes_to_deliver -= 1;
+          // if (Store.boxes_to_deliver <= 0) {
+          //   break;
+          // }
+          Store.used[2] = 1;
           Send_Event(2, TAKE_IN, lp, &(lp->gid));
+          Store.boxes_to_deliver -= 1;
+
+
+          // if (Store.boxes_to_deliver <= 0) {
+          //   break;
+          // }
+          Store.used[3] = 1;
           Send_Event(3, TAKE_IN, lp, &(lp->gid));
+          Store.boxes_to_deliver -= 1;
       }
 
       for (int process = 4; process < 7; ++process) {
@@ -117,14 +131,49 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     {
       case TAKE_IN:
         printf("");
-        Store.boxes_to_deliver -= 1;
-        int channel = Add_Box(&(Store.db), Store.type_to_add);
-        cur_time += 8;
-        fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
-        Print_Channel(channel, f);
-        log_id++;
-        
 
+        for (int i = 0; i < 3; ++i) {
+          fprintf(temp_txt, "%d %d |||", Store.robots[i].cur_cell.id, i);
+        }
+        fprintf(temp_txt, "\n");
+
+        if (Store.robots[self - 1].cur_conv == -1 && Store.robots[self - 1].cur_cell.id == 10 && Store.cells[11].reserved == 0) {
+          find_data_by_width(&(Store.db), Store.type_to_add);
+          Store.robots[self - 1].cur_conv = best_box.column;
+          Store.robots[self - 1].cur_cell.id = 11;
+          Store.cells[11].reserved = 1;
+          Store.cells[10].reserved = 0;
+        } else {
+          if (Store.robots[self - 1].cur_cell.id == 11) {
+            if (Store.cells[6].reserved == 0) {
+              Store.cells[11].reserved = 0;
+              Store.robots[self - 1].cur_cell.id = 6;
+              Store.cells[6].reserved = 1;
+            }
+          } else {
+            if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].reserved == 0) {
+              if (Store.robots[self - 1].cur_conv != -1 && Store.robots[self - 1].cur_cell.id == 6 && Store.robots[self - 1].cur_conv < 50) {
+                Store.robots[self - 1].cur_conv = -1;
+                int channel = Add_Box(&(Store.db), Store.type_to_add); 
+                cur_time += 8;
+                fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
+                Print_Channel(channel, f);
+                log_id++;
+              } else if (Store.robots[self - 1].cur_conv != -1 && Store.robots[self - 1].cur_cell.id == 7 && Store.robots[self - 1].cur_conv >= 50) {
+                Store.robots[self - 1].cur_conv = -1;
+                int channel = Add_Box(&(Store.db), Store.type_to_add);
+                cur_time += 8;
+                fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
+                Print_Channel(channel, f);
+                log_id++;
+              }
+              Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+              Store.robots[self - 1].cur_cell.id += 1;
+              Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+            }
+          }
+        }
+        
         Send_Event(0, TAKE_OUT, lp, &(lp->gid));
         break;
       case TAKE_OUT:

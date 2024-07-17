@@ -64,7 +64,7 @@ int find_data_by_width(sqlite3 **db1, int type) {
 
 int Add_Box(sqlite3 **db1, int type) {
     struct sqlite3 * db = (struct sqlite3 *) *db1;
-    find_data_by_width(db1, type);
+    // find_data_by_width(db1, type);
     int col = best_box.column;
     int r = best_box.row;
     char *err_msg = 0;

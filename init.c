@@ -31,21 +31,24 @@ void ConveyorsInit()
         Store.cells[i] = c_cell;
     }
 
-    // Initialization of robots to take out
-    for (int i = 0; i < MAX_ROBOTS / 2; ++i) {
+    // Initialization of robots to take in
+    for (int i = 0; i < 3; ++i) {
         robot bot;
-        bot.cur_cell = Store.cells[i];
-        bot.cur_task = 2;
+        bot.cur_cell = Store.cells[10 - i];
+        Store.cells[10 - i].reserved = 1;
+        bot.cur_task = -1;
+        bot.cur_conv = -1;
+
         Store.robots[i] = bot;
     }
 
     // Initialization of robots to take in
-    for (int i = MAX_ROBOTS / 2; i < MAX_ROBOTS; ++i) {
-        robot bot;
-        bot.cur_cell = Store.cells[MAX_CELLS / 2];
-        bot.cur_task = 2;
-        Store.robots[i] = bot;
-    }
+    // for (int i = 0; i < MAX_ROBOTS / 2; ++i) {
+    //     robot bot;
+    //     bot.cur_cell = Store.cells[MAX_CELLS / 2];
+    //     bot.cur_task = 2;
+    //     Store.robots[i] = bot;
+    // }
 
     
     int change_tmp = 0;
