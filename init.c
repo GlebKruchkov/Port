@@ -34,8 +34,8 @@ void ConveyorsInit()
     // Initialization of robots to take in
     for (int i = 0; i < 3; ++i) {
         robot bot;
-        bot.cur_cell = Store.cells[10 - i];
-        Store.cells[10 - i].reserved = 1;
+        bot.cur_cell = Store.cells[11 - i];
+        Store.cells[11 - i].reserved = 1;
         bot.cur_task = -1;
         bot.cur_conv = -1;
         bot.col = -1;
