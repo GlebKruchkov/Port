@@ -106,7 +106,7 @@ void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
     insert_data(db1, Store.conveyor[col].boxes[row1].SKU, row1, col, Store.conveyor[col].boxes[row1].width);
 }
 
-int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id) {
+int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id, int process) {
     // int temp_type = Store.conveyor[col].boxes[7].SKU;
     *time += 8;
     fprintf(f, "%*d   %*d   getbox%*d   shiftbox%*d    channelwidth%*d    putbox%*d  channel%*d         ", 4, *l_id, 4, *time, 5, Store.conveyor[col].boxes[7].SKU, 6, Store.conveyor[col].boxes[7].SKU, 2, Store.conveyor_width[col], 2, Store.conveyor[col].boxes[7].SKU, 2, col);
@@ -116,6 +116,8 @@ int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id) {
             Swap_Boxes(db1, col, i, i - 1);
         }
     }
+    Store.robots[process - 1].row += 1;
+    printf("%d\n", Store.robots[process - 1].row );
     Print_Channel(col, f);
     return 0;
 }
@@ -150,9 +152,6 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id) {
  
  
 bool Check(int process) {
-    if (is_reverse) {
-        return true;
-    }
     if (Store.request.curr == Store.request.total) {
         return false;
     } else {

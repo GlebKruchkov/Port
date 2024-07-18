@@ -110,18 +110,42 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       }
 
       for (int process = 4; process < 7; ++process) {
-        if (Check(process)) {
-          find_data(&(Store.db), Store.box_data[process][0]);
-          if (best_box.row != 7) {
-            is_reverse = 1;
+        if (Store.robots[process - 1].col != -1 && Store.robots[process - 1].row != -1) {
+          if (Store.robots[process - 1].row != 7) {
             Store.used[process] = 1;
             Send_Event(process, REVERSE, lp, &(lp->gid));
           } else {
-            is_reverse = 0;
+            
             Store.used[process] = 1;
             Send_Event(process, TAKE_OUT, lp, &(lp->gid));
           }
-        };
+        } else {
+          if (Check(process)) {
+            find_data(&(Store.db), Store.box_data[process][0]);
+            Store.robots[process - 1].col = best_box.column;
+            Store.robots[process - 1].row = best_box.row;
+            if (Store.robots[process - 1].row != 7) {
+              Store.used[process] = 1;
+              Send_Event(process, REVERSE, lp, &(lp->gid));
+            } else {
+              
+              Store.used[process] = 1;
+              Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+            }
+          };
+        }
+        // if (Check(process)) {
+        //   find_data(&(Store.db), Store.box_data[process][0]);
+        //   if (best_box.row != 7) {
+        //     is_reverse = 1;
+        //     Store.used[process] = 1;
+        //     Send_Event(process, REVERSE, lp, &(lp->gid));
+        //   } else {
+        //     is_reverse = 0;
+        //     Store.used[process] = 1;
+        //     Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+        //   }
+        // };
       }
     }
   } else {
@@ -130,12 +154,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     switch (in_msg->type)
     {
       case TAKE_IN:
-        printf("");
+        // printf("");
 
-        for (int i = 0; i < 3; ++i) {
-          fprintf(temp_txt, "%d %d |||", Store.robots[i].cur_cell.id, i);
-        }
-        fprintf(temp_txt, "\n");
+        // for (int i = 0; i < 3; ++i) {
+        //   fprintf(temp_txt, "%d %d |||", Store.robots[i].cur_cell.id, i);
+        // }
+        // fprintf(temp_txt, "\n");
 
         if (Store.robots[self - 1].cur_conv == -1 && Store.robots[self - 1].cur_cell.id == 10 && Store.cells[11].reserved == 0) {
           find_data_by_width(&(Store.db), Store.type_to_add);
@@ -177,27 +201,96 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         Send_Event(0, TAKE_OUT, lp, &(lp->gid));
         break;
       case TAKE_OUT:
+        for (int i = 3; i < 6; ++i) {
+          fprintf(temp_txt, "%d %d |||", Store.robots[i].cur_cell.id, i);
+        }
+        fprintf(temp_txt, "\n");
 
-        if (Store.box_data[self][0] > high_border || Store.box_data[self][0] < low_border) {
-            fprintf(f, "no-boxes-for-SKU %d\n", Store.box_data[self][0]);
-            Store.box_data[self][1] = 0;
-            Send_Event(0, TAKE_OUT, lp, &(lp->gid));
-            break;
-        } else {
-          find_data(&(Store.db), Store.box_data[self][0]);
+        if (Store.robots[self - 1].cur_cell.id == 1 && Store.robots[self - 1].col >= 50 && Store.cells[0].reserved == 0 && Store.robots[self - 1].col != -1) {
+
           int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
           cur_time += 8;
           fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
           Print_Channel(channel, f);
           log_id++;
-          
           Store.box_data[self][1] = 0;
-          Send_Event(0, TAKE_OUT, lp, &(lp->gid));
-          break;
+
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id -= 1;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+          Store.robots[self - 1].has_box = 1;
+
+        } else if (Store.robots[self - 1].cur_cell.id == 0 && Store.robots[self - 1].col < 50 && Store.cells[5].reserved == 0 && Store.robots[self - 1].col != -1) {
+
+          int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
+          cur_time += 8;
+          fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
+          Print_Channel(channel, f);
+          log_id++;
+          Store.box_data[self][1] = 0;
+
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 5;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+          Store.robots[self - 1].has_box = 1;
+
+        } else if (Store.robots[self - 1].cur_cell.id == 3 && Store.cells[2].reserved == 0 && Store.robots[self - 1].has_box == 1) {
+          Store.robots[self - 1].has_box = 0;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id -= 1;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+
+          Store.robots[self - 1].row = -1;
+          Store.robots[self - 1].col = -1;
+
+
+          // робот выгрузил коробку; добавить действие
+        } else {
+          if (Store.robots[self - 1].cur_cell.id == 0 && Store.cells[5].reserved == 0) {
+
+            Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+            Store.robots[self - 1].cur_cell.id = 5;
+            Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+
+          } else if (Store.robots[self - 1].cur_cell.id != 0 && Store.cells[Store.robots[self - 1].cur_cell.id - 1].reserved == 0) {
+
+            Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+            Store.robots[self - 1].cur_cell.id -= 1;
+            Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+
+          }
         }
+        Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+        break;
+
+        // if (Store.box_data[self][0] > high_border || Store.box_data[self][0] < low_border) {
+        //     fprintf(f, "no-boxes-for-SKU %d\n", Store.box_data[self][0]);
+        //     Store.box_data[self][1] = 0;
+        //     Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+        //     break;
+        // } else {
+        //   find_data(&(Store.db), Store.box_data[self][0]);
+        //   int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
+        //   cur_time += 8;
+        //   fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
+        //   Print_Channel(channel, f);
+        //   log_id++;
+          
+        //   Store.box_data[self][1] = 0;
+        //   Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+        //   break;
+        // }
       case REVERSE:
+          
+          
           find_data(&(Store.db), Store.box_data[self][0]);
-          Reverse(&(Store.db), best_box.column, best_box.row, &(cur_time), &(log_id));
+          Reverse(&(Store.db), Store.robots[self - 1].col, best_box.row, &(cur_time), &(log_id), self);
           Send_Event(0, REVERSE, lp, &(lp->gid));
           break;
 
