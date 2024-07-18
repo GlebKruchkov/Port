@@ -52,6 +52,8 @@ void ConveyorsInit()
         Store.cells[6 - i].reserved = 1;
         bot.cur_task = -1;
         bot.cur_conv = -1;
+        bot.col = -1;
+        bot.row = -1;
         Store.robots[i] = bot;
     }
 

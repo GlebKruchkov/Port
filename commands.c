@@ -117,7 +117,6 @@ int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id, int process) 
         }
     }
     Store.robots[process - 1].row += 1;
-    printf("%d\n", Store.robots[process - 1].row );
     Print_Channel(col, f);
     return 0;
 }

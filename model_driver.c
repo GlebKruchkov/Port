@@ -35,17 +35,17 @@ void model_init (state *s, tw_lp *lp) {
     printf("%d ", self);
     printf("%s\n", " is initialized");
   }
-  for (int process = 4; process < 7; ++process) {
-    if (Store.box_data[process][1] != 0) {
-      Store.used[process] = 1;
-      Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-    } else {
-      if (Check(process)) {
-        Store.used[process] = 1;
-        Send_Event(process, TAKE_OUT, lp, &(lp->gid));
-      };
-    }
-  }
+  // for (int process = 4; process < 7; ++process) {
+  //   if (Store.box_data[process][1] != 0) {
+  //     Store.used[process] = 1;
+  //     Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+  //   } else {
+  //     if (Check(process)) {
+  //       Store.used[process] = 1;
+  //       Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+  //     };
+  //   }
+  // }
 }
 
 void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
@@ -122,8 +122,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         } else {
           if (Check(process)) {
             find_data(&(Store.db), Store.box_data[process][0]);
+
+
             Store.robots[process - 1].col = best_box.column;
             Store.robots[process - 1].row = best_box.row;
+
             if (Store.robots[process - 1].row != 7) {
               Store.used[process] = 1;
               Send_Event(process, REVERSE, lp, &(lp->gid));
@@ -249,7 +252,6 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           Store.robots[self - 1].row = -1;
           Store.robots[self - 1].col = -1;
 
-
           // робот выгрузил коробку; добавить действие
         } else {
           if (Store.robots[self - 1].cur_cell.id == 0 && Store.cells[5].reserved == 0) {
@@ -287,13 +289,74 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         //   break;
         // }
       case REVERSE:
-          
-          
-          find_data(&(Store.db), Store.box_data[self][0]);
-          Reverse(&(Store.db), Store.robots[self - 1].col, best_box.row, &(cur_time), &(log_id), self);
-          Send_Event(0, REVERSE, lp, &(lp->gid));
-          break;
+        for (int i = 3; i < 6; ++i) {
+          fprintf(temp_txt, "%d %d |||", Store.robots[i].cur_cell.id, i);
+        }
+        fprintf(temp_txt, "\n");
 
+        if (Store.robots[self - 1].cur_cell.id == 1 && Store.robots[self - 1].col >= 50 && Store.cells[0].reserved == 0 && Store.robots[self - 1].col != -1) {
+
+          Reverse(&(Store.db), Store.robots[self - 1].col, Store.robots[self - 1].row, &(cur_time), &(log_id), self);
+
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 0;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+          Store.robots[self - 1].has_box = 1;
+
+        } else if (Store.robots[self - 1].cur_cell.id == 0 && Store.robots[self - 1].col < 50 && Store.cells[5].reserved == 0 && Store.robots[self - 1].col != -1) {
+
+          Reverse(&(Store.db), Store.robots[self - 1].col, Store.robots[self - 1].row, &(cur_time), &(log_id), self);
+
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 5;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+          Store.robots[self - 1].has_box = 1;
+
+        } else if (Store.robots[self - 1].cur_cell.id == 6 && Store.robots[self - 1].col < 50 && Store.cells[7].reserved == 0 && Store.robots[self - 1].col != -1) {
+
+          // Выгрузка в канал
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 7;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+          Store.robots[self - 1].has_box = 0;
+
+          Store.robots[self - 1].row = -1;
+          Store.robots[self - 1].col = -1;
+
+        }  else if (Store.robots[self - 1].cur_cell.id == 7 && Store.robots[self - 1].col >= 50 && Store.cells[8].reserved == 0 && Store.robots[self - 1].col != -1) {
+
+          // Выгрузка в канал
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 8;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+          Store.robots[self - 1].cur_conv = -1;
+          Store.robots[self - 1].has_box = 0;
+
+          Store.robots[self - 1].row = -1;
+          Store.robots[self - 1].col = -1;
+          
+        } else if (Store.robots[self - 1].cur_cell.id == 8 && Store.cells[1].reserved == 0) {
+
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 1;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          
+        } else if (Store.robots[self - 1].cur_cell.id == 5 && Store.cells[6].reserved == 0) {
+
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+          Store.robots[self - 1].cur_cell.id = 6;
+          Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+
+        }
+        Send_Event(0, REVERSE, lp, &(lp->gid));
+        break;
       default:
         printf("\n%s\n", "No message");
         break;

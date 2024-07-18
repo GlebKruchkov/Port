@@ -1,0 +1,10 @@
+startDepalletize
+finishDepalletize
+------------------------------------------
+startPalletize #1
+   1      8   moveoutbox    2   channel     2   process 6    boxwidth 2    channelwidth 3   |   -   | 10   0| 16   1| 18   3| 13   3|  8   3|  8   3|  3   3|
+   2      8   moveoutbox    2   channel     2   process 5    boxwidth 2    channelwidth 3   |   -   |   -   | 10   0| 16   1| 18   3| 13   3|  8   3|  8   3|
+   3      8   moveoutbox    3   channel     2   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |   -   | 10   0| 16   1| 18   3| 13   3|  8   3|
+   4      8   moveoutbox    3   channel     7   process 6    boxwidth 3    channelwidth 3   |   -   | 10   0| 16   1| 18   3| 13   3|  8   3|  8   3|  3   3|
+   5      8   moveoutbox    3   channel     3   process 5    boxwidth 3    channelwidth 4   |   -   | 10   0| 16   1| 18   3| 13   3| 19   4| 14   4|  9   4|
+   6      8   moveoutbox    4   channel    46   process 4    boxwidth 4    channelwidth 2   |   -   | 15   0|  5   0| 17   2| 12   2|  7   2|  7   2|  2   2|

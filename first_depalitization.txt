@@ -785,4 +785,16 @@
    1    624   movebox   20   channel    84    channellen   5    | 20   0| 10   0| 16   1| 18   3| 13   3| 14   4|  9   4|  4   4|
    1    624   movebox   20   channel    85    channellen   1    | 20   0| 10   0| 16   1| 11   1| 11   1|  6   1|  1   1|  1   1|
    1    624   movebox   20   channel    86    channellen   2    | 20   0| 10   0| 16   1| 12   2| 12   2|  7   2|  2   2|  2   2|
-   1    624   movebox   20   channel    87    channellen   3    | 20   0| 10   0| 16   1| 
+   1    624   movebox   20   channel    87    channellen   3    | 20   0| 10   0| 16   1| 18   3| 13   3|  8   3|  3   3|  3   3|
+   1    624   movebox   20   channel    88    channellen   4    | 20   0| 10   0| 16   1| 18   3| 13   3| 19   4|  9   4|  4   4|
+   1    624   movebox   20   channel    89    channellen   5    | 20   0| 10   0| 16   1| 18   3| 13   3| 19   4|  9   4|  4   4|
+   1    632   movebox   20   channel    90    channellen   1    | 20   0| 10   0| 16   1| 11   1| 11   1|  6   1|  6   1|  1   1|
+   1    632   movebox   20   channel    91    channellen   2    | 20   0| 10   0| 16   1| 12   2| 12   2|  7   2|  7   2|  2   2|
+   1    632   movebox   20   channel    92    channellen   3    | 20   0| 10   0| 16   1| 18   3| 13   3|  8   3|  8   3|  3   3|
+   1    632   movebox   20   channel    93    channellen   4    | 20   0| 10   0| 16   1| 18   3| 13   3| 19   4| 14   4|  4   4|
+   1    632   movebox   20   channel    94    channellen   5    | 20   0| 10   0| 16   1| 18   3| 13   3| 19   4| 14   4|  4   4|
+   1    632   movebox   20   channel    95    channellen   1    | 20   0| 10   0| 16   1| 11   1| 11   1|  6   1|  6   1|  1   1|
+   1    632   movebox   20   channel    96    channellen   2    | 20   0| 10   0| 16   1| 12   2| 12   2|  7   2|  7   2|  2   2|
+   1    632   movebox   20   channel    97    channellen   3    | 20   0| 10   0| 16   1| 18   3| 13   3|  8   3|  8   3|  3   3|
+   1    632   movebox    0   channel    98    channellen   4    |  0   0| 10   0| 16   1| 18   3| 13   3| 19   4| 14   4|  9   4|
+   1    632   movebox    0   channel    99    channellen   5    |  0   0| 10   0| 16   1| 18   3| 13   3| 19   4| 14   4|  9   4|
