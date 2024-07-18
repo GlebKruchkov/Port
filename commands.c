@@ -4,20 +4,32 @@
 
 int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     if (atoi(argv[1]) > best_box.row) {
-        best_box.row = atoi(argv[1]);
-        best_box.column = atoi(argv[2]);
+        int flag = 1;
+        for (int i = 0; i < MAX_ROBOTS; ++i) {
+            if (Store.robots[i].col == atoi(argv[2])) {
+                flag = 0;
+            }
+        }
+        if (flag == 1) {
+            best_box.row = atoi(argv[1]);
+            best_box.column = atoi(argv[2]);
+        }
     }
     return 0;
 }
 
 int callback_by_width(void *NotUsed, int argc, char **argv, char **azColName) {
-    // for (int i = 0; i < argc; i++) {
-    //     printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-    // }
-    // printf("\n");
     if (atoi(argv[1]) > best_box.row) {
-        best_box.row = atoi(argv[1]);
-        best_box.column = atoi(argv[2]);
+        int flag = 1;
+        for (int i = 0; i < MAX_ROBOTS; ++i) {
+            if (Store.robots[i].col == atoi(argv[2])) {
+                flag = 0;
+            }
+        }
+        if (flag == 1) {
+            best_box.row = atoi(argv[1]);
+            best_box.column = atoi(argv[2]);
+        }
     }
     return 0;
 }
@@ -62,11 +74,11 @@ int find_data_by_width(sqlite3 **db1, int type) {
     return 0;
 }
 
-int Add_Box(sqlite3 **db1, int type) {
+int Add_Box(sqlite3 **db1, int type, int process) {
     struct sqlite3 * db = (struct sqlite3 *) *db1;
     // find_data_by_width(db1, type);
-    int col = best_box.column;
-    int r = best_box.row;
+    int col = Store.robots[process - 1].col;
+    int r = Store.robots[process - 1].row;
     char *err_msg = 0;
     char sql[100];
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", -1, r, col);
@@ -121,9 +133,9 @@ int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id, int process) 
     return 0;
 }
 
-int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id) {
-    int col = best_box.column;
-    int row = best_box.row;
+int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id, int process) {
+    int col = Store.robots[process - 1].col;
+    int row = Store.robots[process - 1].row;
     struct sqlite3 * db = (struct sqlite3 *) *db1;
 
     // if (row != 7) {

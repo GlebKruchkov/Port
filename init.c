@@ -41,6 +41,7 @@ void ConveyorsInit()
         bot.col = -1;
         bot.row = -1;
         bot.has_box = -1;
+        bot.reserved_channel = -1;
 
         Store.robots[i] = bot;
     }
@@ -54,6 +55,7 @@ void ConveyorsInit()
         bot.cur_conv = -1;
         bot.col = -1;
         bot.row = -1;
+        bot.reserved_channel = -1;
         Store.robots[i] = bot;
     }
 

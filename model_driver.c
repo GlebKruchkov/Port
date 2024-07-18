@@ -122,7 +122,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         } else {
           if (Check(process)) {
             find_data(&(Store.db), Store.box_data[process][0]);
-
+            Store.robots[process - 1].reserved_channel = best_box.column;
 
             Store.robots[process - 1].col = best_box.column;
             Store.robots[process - 1].row = best_box.row;
@@ -166,7 +166,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
         if (Store.robots[self - 1].cur_conv == -1 && Store.robots[self - 1].cur_cell.id == 10 && Store.cells[11].reserved == 0) {
           find_data_by_width(&(Store.db), Store.type_to_add);
-          Store.robots[self - 1].cur_conv = best_box.column;
+
+          Store.robots[self - 1].reserved_channel = best_box.column;
+
+          Store.robots[self - 1].col = best_box.column;
+          Store.robots[self - 1].row = best_box.row;
           Store.robots[self - 1].cur_cell.id = 11;
           Store.cells[11].reserved = 1;
           Store.cells[10].reserved = 0;
@@ -181,14 +185,16 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].reserved == 0) {
               if (Store.robots[self - 1].cur_conv != -1 && Store.robots[self - 1].cur_cell.id == 6 && Store.robots[self - 1].cur_conv < 50) {
                 Store.robots[self - 1].cur_conv = -1;
-                int channel = Add_Box(&(Store.db), Store.type_to_add); 
+                int channel = Add_Box(&(Store.db), Store.type_to_add, self); 
+                Store.robots[self - 1].reserved_channel = -1;
                 cur_time += 8;
                 fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
                 Print_Channel(channel, f);
                 log_id++;
               } else if (Store.robots[self - 1].cur_conv != -1 && Store.robots[self - 1].cur_cell.id == 7 && Store.robots[self - 1].cur_conv >= 50) {
                 Store.robots[self - 1].cur_conv = -1;
-                int channel = Add_Box(&(Store.db), Store.type_to_add);
+                int channel = Add_Box(&(Store.db), Store.type_to_add, self);
+                Store.robots[self - 1].reserved_channel = -1;
                 cur_time += 8;
                 fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
                 Print_Channel(channel, f);
@@ -212,7 +218,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         if (Store.robots[self - 1].cur_cell.id == 1 && Store.cells[0].reserved == 0) {
 
           if (Store.robots[self - 1].col >= 50 && Store.robots[self - 1].col != -1) {
-            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
+            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id), self);
+            Store.robots[self - 1].reserved_channel = -1;
             cur_time += 8;
             fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
             Print_Channel(channel, f);
@@ -229,7 +236,8 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
         } else if (Store.robots[self - 1].cur_cell.id == 0 && Store.cells[5].reserved == 0) {
           if (Store.robots[self - 1].col < 50 && Store.robots[self - 1].col != -1) {
-            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id));
+            int channel = Remove_Boxes(&(Store.db), Store.box_data[self][0], &(cur_time), &(log_id), self);
+            Store.robots[self - 1].reserved_channel = -1;
             cur_time += 8;
             fprintf(f, "%*d   %*d   moveoutbox%*d   channel%*d   process%*d    boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.box_data[self][0], 6, channel, 2, self, 2, Store.b_w[Store.box_data[self][0]], 2, Store.conveyor_width[channel]);
             Print_Channel(channel, f);
@@ -332,6 +340,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         } else if (Store.robots[self - 1].cur_cell.id == 6 && Store.cells[7].reserved == 0) {
           if (Store.robots[self - 1].col < 50 && Store.robots[self - 1].col != -1) {
             Reverse(&(Store.db), Store.robots[self - 1].col, Store.robots[self - 1].row, &(cur_time), &(log_id), self);
+            Store.robots[self - 1].reserved_channel = -1;
             Store.robots[self - 1].cur_conv = -1;
             Store.robots[self - 1].has_box = 0;
 
@@ -347,6 +356,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         }  else if (Store.robots[self - 1].cur_cell.id == 7 && Store.cells[8].reserved == 0) {
           if (Store.robots[self - 1].col >= 50 && Store.robots[self - 1].col != -1) {
             Reverse(&(Store.db), Store.robots[self - 1].col, Store.robots[self - 1].row, &(cur_time), &(log_id), self);
+            Store.robots[self - 1].reserved_channel = -1;
             Store.robots[self - 1].cur_conv = -1;
             Store.robots[self - 1].has_box = 0;
 

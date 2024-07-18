@@ -115,6 +115,7 @@ typedef struct
     int cur_task;
     int cur_conv;
     int has_box;
+    int reserved_channel;
     cell cur_cell;
 } robot;
 
@@ -181,10 +182,10 @@ extern int callback(void *NotUsed, int argc, char **argv, char **azColName);
 extern int insert_data(sqlite3 **db1, int type, int row, int col, int width);
 extern int find_data(sqlite3 **db1, int type);
 extern int find_data_by_width(sqlite3 **db1, int type);
-extern int Add_Box(sqlite3 **db1, int type);
+extern int Add_Box(sqlite3 **db1, int type, int process);
 extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
 extern int Reverse(sqlite3 **db1, int row, int col, int *time, int *l_id, int process);
-extern int Remove_Boxes(sqlite3 **db, int type, int *time, int *l_id);
+extern int Remove_Boxes(sqlite3 **db, int type, int *time, int *l_id, int process);
 extern bool Check(int process);
 extern int compare(const void *a, const void *b);
 extern void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self);
