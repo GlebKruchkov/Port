@@ -194,3 +194,32 @@ void Print_Channel(int col, FILE *log_file) {
     }
     fprintf(log_file, "|\n");
 }
+
+void Print_Graph() {
+    for (int i = 0; i < MAX_CELLS; ++i) {
+      Store.graph[i] = 0;
+    }
+    for (int i = 0; i < MAX_ROBOTS; ++i) {
+      Store.graph[Store.robots[i].cur_cell.id] = i + 1;
+    }
+    fprintf(temp_txt, "\n");
+    for (int i = 0; i < 15; ++i) {
+        fprintf(temp_txt, "*");
+    }         
+    fprintf(temp_txt, "\n");
+    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[9], Store.graph[10], Store.graph[11]);
+    fprintf(temp_txt, "|      |      |\n");
+    fprintf(temp_txt, "|      |      |\n");
+    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[8], Store.graph[7], Store.graph[6]);
+    fprintf(temp_txt, "|/////////////|\n");
+    fprintf(temp_txt, "|||||||||||||||\n");
+    fprintf(temp_txt, "|/////////////|\n");
+    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[1], Store.graph[0], Store.graph[5]);
+    fprintf(temp_txt, "|      |      |\n");
+    fprintf(temp_txt, "|      |      |\n");
+    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[2], Store.graph[3], Store.graph[4]);
+    fprintf(temp_txt, "\n");
+    for (int i = 0; i < 15; ++i) {
+        fprintf(temp_txt, "*");
+    }         
+}

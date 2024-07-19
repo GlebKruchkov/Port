@@ -62,6 +62,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int cur_time = glb_time;
 
   if (self == 0) {
+    // for (int i = 0; i < 21; ++i) {
+    //   printf("%d ", Store.cnt_boxes_type[i]);
+    // }
+    // printf("\n");
     int not_do = 0;
     for (int i = 1; i < 7; ++i) {
       if (Store.used[i] == 1) {
@@ -71,20 +75,17 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     if (not_do == 0) {
       if (Store.boxes_to_deliver <= 0) {
         for (int i = 0; i < high_border - low_border + 1; ++i) {
-          if (Store.cnt_boxes_type[i] < 15) {
-
+          if (Store.cnt_boxes_type[i] < 30) {
             fprintf(f, "------------------------------------------------------------------------------------\n");
             fprintf(f, "startDepalletize\n");
             Store.boxes_to_deliver = threshold - Store.cnt_boxes_type[i];
+            //printf("%d\n", Store.boxes_to_deliver);
             Store.used[1] = 1;
             Store.used[2] = 1;
             Store.used[3] = 1;
             Send_Event(1, TAKE_IN, lp, &(lp->gid));
-            Store.boxes_to_deliver -= 1;
             Send_Event(2, TAKE_IN, lp, &(lp->gid));
-            Store.boxes_to_deliver -= 1;
             Send_Event(3, TAKE_IN, lp, &(lp->gid));
-            Store.boxes_to_deliver -= 1;
             Store.type_to_add = i;
             break;
           }
@@ -92,21 +93,23 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       } else {
           Store.used[1] = 1;
           Send_Event(1, TAKE_IN, lp, &(lp->gid));
-          Store.boxes_to_deliver -= 1;
-          // if (Store.boxes_to_deliver <= 0) {
-          //   break;
-          // }
+
           Store.used[2] = 1;
           Send_Event(2, TAKE_IN, lp, &(lp->gid));
-          Store.boxes_to_deliver -= 1;
 
-
-          // if (Store.boxes_to_deliver <= 0) {
-          //   break;
-          // }
           Store.used[3] = 1;
           Send_Event(3, TAKE_IN, lp, &(lp->gid));
-          Store.boxes_to_deliver -= 1;
+      }
+
+      if (Store.boxes_to_deliver <= 0) {
+        Store.used[1] = 1;
+        Send_Event(1, GO, lp, &(lp->gid));
+
+        Store.used[2] = 1;
+        Send_Event(2, GO, lp, &(lp->gid));
+
+        Store.used[3] = 1;
+        Send_Event(3, GO, lp, &(lp->gid));
       }
 
       for (int process = 4; process < 7; ++process) {
@@ -158,13 +161,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     {
       case TAKE_IN:
         // printf("");
-
-        for (int i = 0; i < 3; ++i) {
-          fprintf(temp_txt, "%d %d |||", Store.robots[i].cur_cell.id, i);
+        for (int i = 0; i < 6; ++i) {
+          fprintf(temp_txt, "%d ||| ", Store.robots[i].cur_cell.id);
         }
         fprintf(temp_txt, "\n");
 
-        if (Store.robots[self - 1].cur_conv == -1 && Store.robots[self - 1].cur_cell.id == 10 && Store.cells[11].reserved == 0) {
+        if (Store.robots[self - 1].col == -1 && Store.robots[self - 1].cur_cell.id == 10 && Store.cells[11].reserved == 0) {
           find_data_by_width(&(Store.db), Store.type_to_add);
 
           Store.robots[self - 1].reserved_channel = best_box.column;
@@ -183,17 +185,19 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             }
           } else {
             if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].reserved == 0) {
-              if (Store.robots[self - 1].cur_conv != -1 && Store.robots[self - 1].cur_cell.id == 6 && Store.robots[self - 1].cur_conv < 50) {
-                Store.robots[self - 1].cur_conv = -1;
-                int channel = Add_Box(&(Store.db), Store.type_to_add, self); 
+              if (Store.robots[self - 1].col != -1 && Store.robots[self - 1].cur_cell.id == 6 && Store.robots[self - 1].col < 50) {
+                int channel = Add_Box(&(Store.db), Store.type_to_add, self);
+                Store.boxes_to_deliver -= 1;
+                Store.robots[self - 1].col = -1;
                 Store.robots[self - 1].reserved_channel = -1;
                 cur_time += 8;
                 fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
                 Print_Channel(channel, f);
                 log_id++;
-              } else if (Store.robots[self - 1].cur_conv != -1 && Store.robots[self - 1].cur_cell.id == 7 && Store.robots[self - 1].cur_conv >= 50) {
-                Store.robots[self - 1].cur_conv = -1;
+              } else if (Store.robots[self - 1].col != -1 && Store.robots[self - 1].cur_cell.id == 7 && Store.robots[self - 1].col >= 50) {
                 int channel = Add_Box(&(Store.db), Store.type_to_add, self);
+                Store.boxes_to_deliver -= 1;
+                Store.robots[self - 1].col = -1;
                 Store.robots[self - 1].reserved_channel = -1;
                 cur_time += 8;
                 fprintf(f, "%*d   %*d   moveinbox%*d   channel%*d   process%*d   boxwidth%*d    channelwidth%*d   ", 4, log_id, 4, cur_time, 5, Store.type_to_add, 6, channel, 2, self, 2, Store.b_w[Store.type_to_add], 2, Store.conveyor_width[channel]);
@@ -210,7 +214,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         Send_Event(0, TAKE_OUT, lp, &(lp->gid));
         break;
       case TAKE_OUT:
-        for (int i = 3; i < 6; ++i) {
+        for (int i = 0; i < 6; ++i) {
           fprintf(temp_txt, "%d ||| ", Store.robots[i].cur_cell.id);
         }
         fprintf(temp_txt, "\n");
@@ -314,7 +318,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         //   break;
         // }
       case REVERSE:
-        for (int i = 3; i < 6; ++i) {
+        for (int i = 0; i < 6; ++i) {
           fprintf(temp_txt, "%d ||| ", Store.robots[i].cur_cell.id);
         }
         fprintf(temp_txt, "\n");
@@ -401,6 +405,16 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           Store.robots[self - 1].cur_cell.id = 6;
           Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
 
+        }
+        Send_Event(0, REVERSE, lp, &(lp->gid));
+        break;
+      case GO:
+        if (Store.robots[self - 1].cur_cell.id != 11) {
+          if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].reserved == 0) {
+            Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
+            Store.robots[self - 1].cur_cell.id += 1;
+            Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
+          }
         }
         Send_Event(0, REVERSE, lp, &(lp->gid));
         break;
