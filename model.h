@@ -129,6 +129,7 @@ struct _Store
 {
     file_requests request;
     sqlite3 *db;
+    char *vertexes[12];
     int box_data[7][2];
     int arr_time[7];
     int graph[12];

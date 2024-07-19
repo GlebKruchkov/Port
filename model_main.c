@@ -80,7 +80,10 @@ void Init_Commands(FILE* file1) {
 //for doxygen
 #define model_main main
 
+
 int model_main (int argc, char* argv[]) {
+  FILE *bots_starting_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/bots_starting_positions.csv", "w");
+
   f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
   f_dep = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/first_depalitization.txt", "w");
@@ -92,8 +95,16 @@ int model_main (int argc, char* argv[]) {
 
   // f = fopen("/home/sasha/Port/log.txt", "w");
   // file = fopen("/home/sasha/Port/TEST1-SIMSIM/small_test.csv", "r");
-
+  fprintf(bots_starting_positions, "%s, %s\n", "BotId", "BotNode");
   Init_Commands(file);
+
+  fprintf(bots_starting_positions, "%d,     %s\n", 1, "D.3");
+  fprintf(bots_starting_positions, "%d,     %s\n", 2, "D.2");
+  fprintf(bots_starting_positions, "%d,     %s\n", 3, "D.1");
+  fprintf(bots_starting_positions, "%d,     %s\n", 4, "A.2");
+  fprintf(bots_starting_positions, "%d,     %s\n", 5, "A.1");
+  fprintf(bots_starting_positions, "%d,     %s\n", 6, "B.1");
+
 	InitROSS();
 	int i, num_lps_per_pe;
   tw_opt_add(model_opts);
@@ -116,6 +127,12 @@ int model_main (int argc, char* argv[]) {
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
+  fprintf(f, "finishMotion #1\n");
+  fprintf(f, "finishMotion #2\n");
+  fprintf(f, "finishMotion #3\n");
+  fprintf(f, "finishMotion #4\n");
+  fprintf(f, "finishMotion #5\n");
+  fprintf(f, "finishMotion #6\n");
   fprintf(f, "finishPalletize #1\n");
 
 

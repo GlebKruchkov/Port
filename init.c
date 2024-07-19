@@ -3,6 +3,12 @@
 void ConveyorsInit()
 {
     fprintf(f, "startDepalletize\n"); 
+    fprintf(f, "startMotion #1\n");
+    fprintf(f, "startMotion #2\n");
+    fprintf(f, "startMotion #3\n");
+    fprintf(f, "startMotion #4\n");
+    fprintf(f, "startMotion #5\n");
+    fprintf(f, "startMotion #6\n");
     char *err_msg = 0;
     char *sql_del = "DROP TABLE IF EXISTS Warehouse";
     char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER, Width INTEGER, Channel_Width INTEGER)";
@@ -33,6 +39,18 @@ void ConveyorsInit()
         Store.cells[i] = c_cell;
     }
 
+    Store.vertexes[0] = "B2";
+    Store.vertexes[1] = "B1";
+    Store.vertexes[2] = "A1";
+    Store.vertexes[3] = "A2";
+    Store.vertexes[4] = "A3";
+    Store.vertexes[5] = "B3";
+    Store.vertexes[6] = "C3";
+    Store.vertexes[7] = "C2";
+    Store.vertexes[8] = "C1";
+    Store.vertexes[9] = "D1";
+    Store.vertexes[10] = "D2";
+    Store.vertexes[11] = "D3";
     // Initialization of robots to take in
     for (int i = 0; i < 3; ++i) {
         robot bot;
@@ -59,6 +77,7 @@ void ConveyorsInit()
         bot.row = -1;
         bot.reserved_channel = -1;
         Store.robots[i] = bot;
+        
     }
 
     
@@ -107,9 +126,6 @@ void ConveyorsInit()
             fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    channellen%*d    ", 4, id, 4, glb_time, 5, Store.box_width[answer].SKU, 6, col, 4, current_conv_len);
             
             Print_Channel(col, f_dep);
-            if (tempor % 10 == 0) {
-                glb_time += 8;
-            }
             tempor += 1;
         }
     }

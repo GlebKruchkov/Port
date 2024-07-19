@@ -119,9 +119,7 @@ void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
 }
 
 int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id, int process) {
-    // int temp_type = Store.conveyor[col].boxes[7].SKU;
-    *time += 8;
-    fprintf(f, "%*d   %*d   getbox%*d   shiftbox%*d    channelwidth%*d    putbox%*d  channel%*d         ", 4, *l_id, 4, *time, 5, Store.conveyor[col].boxes[7].SKU, 6, Store.conveyor[col].boxes[7].SKU, 2, Store.conveyor_width[col], 2, Store.conveyor[col].boxes[7].SKU, 2, col);
+    //fprintf(f, "%*d   %*d   getbox%*d   shiftbox%*d    channelwidth%*d    putbox%*d  channel%*d         ", 4, *l_id, 4, *time, 5, Store.conveyor[col].boxes[7].SKU, 6, Store.conveyor[col].boxes[7].SKU, 2, Store.conveyor_width[col], 2, Store.conveyor[col].boxes[7].SKU, 2, col);
     *l_id += 1;
     for (int i = 7; i >= 1; --i) {
         if (Store.conveyor[col].boxes[i - 1].empty == 0) {
@@ -129,7 +127,6 @@ int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id, int process) 
         }
     }
     Store.robots[process - 1].row += 1;
-    Print_Channel(col, f);
     return 0;
 }
 
@@ -137,10 +134,6 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id, int process) {
     int col = Store.robots[process - 1].col;
     int row = Store.robots[process - 1].row;
     struct sqlite3 * db = (struct sqlite3 *) *db1;
-
-    // if (row != 7) {
-    //     Reverse(db1, col, row, time, l_id);
-    // }
 
     char *err_msg = 0;
     char sql[100];
