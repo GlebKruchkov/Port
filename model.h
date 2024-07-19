@@ -132,6 +132,7 @@ struct _Store
     int box_data[7][2];
     int arr_time[7];
     int graph[12];
+    bool kill_prog;
 
     robot robots[MAX_ROBOTS];
     cell cells[MAX_CELLS];

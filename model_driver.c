@@ -61,7 +61,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   struct timeval currentTime;
   int cur_time = glb_time;
 
-  if (self == 0) {
+  if (self == 0 && Store.kill_prog == false) {
     // for (int i = 0; i < 21; ++i) {
     //   printf("%d ", Store.cnt_boxes_type[i]);
     // }
@@ -138,7 +138,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               Store.used[process] = 1;
               Send_Event(process, TAKE_OUT, lp, &(lp->gid));
             }
-          };
+          } else {
+            Store.kill_prog = true;
+          }
         }
         // if (Check(process)) {
         //   find_data(&(Store.db), Store.box_data[process][0]);
@@ -154,7 +156,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         // };
       }
     }
-  } else {
+  } else if (Store.kill_prog == false) {
     Store.used[self] = 0;
     //printf("%d\n", self);
     switch (in_msg->type)

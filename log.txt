@@ -339,3 +339,1038 @@ startDepalletize
  317      8   moveinbox   19   channel    18   process 1   boxwidth 4    channelwidth 4   |   -   | 19   4|  7   2|  3   3| 10   0|  0   0| 12   2| 13   3|
  318      8   moveinbox   19   channel     4   process 2   boxwidth 4    channelwidth 5   | 19   4| 13   3|  9   4|  2   2|  2   2| 10   0| 16   1| 18   3|
  319      8   moveoutbox    4   channel    28   process 4    boxwidth 4    channelwidth 4   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 320      8   moveoutbox    6   channel    90   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  6   1|  1   1| 10   0| 11   1| 11   1|
+ 321      8   moveinbox   19   channel    93   process 3   boxwidth 4    channelwidth 4   | 19   4| 12   2| 13   3| 14   4|  4   4| 20   0| 10   0| 16   1|
+ 322      8   moveinbox   19   channel    94   process 1   boxwidth 4    channelwidth 5   | 19   4| 14   4|  4   4| 20   0| 10   0| 16   1| 18   3| 13   3|
+ 323      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel47         |   -   |  8   3|  3   3| 15   0|  5   0| 17   2| 18   3|  8   3|
+ 324      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel95         |   -   |   -   |  1   1|  6   1| 10   0| 11   1|  6   1|  6   1|
+ 325      8   moveinbox   19   channel     9   process 2   boxwidth 4    channelwidth 5   | 19   4| 14   4|  9   4|  2   2| 10   0|  0   0| 12   2| 13   3|
+ 326      8   moveoutbox    6   channel    15   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 10   0|  0   0| 11   1| 11   1|
+ 327      8   moveinbox   19   channel     8   process 3   boxwidth 4    channelwidth 4   | 19   4| 14   4|  9   4|  9   4|  2   2| 13   3| 10   0|  0   0|
+ 328      8   moveoutbox    7   channel    21   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 19   4|  2   2| 10   0|  0   0| 12   2| 12   2|
+ 329      8   moveinbox   19   channel     3   process 1   boxwidth 4    channelwidth 4   | 19   4| 14   4|  9   4|  3   3|  3   3|  3   3| 10   0| 16   1|
+ 330      8   moveoutbox    7   channel    26   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|  7   2|
+ 331      8   moveoutbox    7   channel    31   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|  7   2|
+ 332      8   moveinbox   19   channel    99   process 2   boxwidth 4    channelwidth 5   | 19   4| 14   4|  9   4|  0   0| 16   1|  3   3|  3   3|  3   3|
+ 333      8   moveoutbox    8   channel    97   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3| 20   0| 10   0| 16   1| 18   3| 13   3|
+ 334      8   moveinbox   19   channel    13   process 3   boxwidth 4    channelwidth 4   | 19   4| 14   4| 12   2|  4   4| 10   0|  0   0| 12   2| 13   3|
+ 335      8   moveoutbox    9   channel    24   process 5    boxwidth 4    channelwidth 5   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 336      8   moveinbox   19   channel    98   process 1   boxwidth 4    channelwidth 4   | 19   4|  3   3| 14   4|  9   4|  0   0| 16   1|  3   3| 13   3|
+ 337      8   moveoutbox    9   channel    28   process 4    boxwidth 4    channelwidth 4   |   -   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 338      8   moveoutbox   10   channel    88   process 6    boxwidth 0    channelwidth 4   |   -   |   -   | 19   4|  9   4| 13   3|  9   4|  4   4| 20   0|
+ 339      8   moveoutbox   11   channel    10   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  6   1|  1   1| 10   0|  0   0| 11   1|
+ 340      8   getbox   16   shiftbox    16    channelwidth 4    putbox16  channel93         | 16   1| 19   4| 12   2| 13   3| 14   4|  4   4| 20   0| 10   0|
+ 341      8   moveoutbox   12   channel    16   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  7   2| 12   2|  2   2| 10   0|  0   0|
+ 342      8   moveoutbox   12   channel    22   process 5    boxwidth 2    channelwidth 3   |   -   |   -   | 13   3|  3   3|  3   3|  3   3| 15   0|  0   0|
+ 343      8   moveoutbox   12   channel    21   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 19   4|  2   2| 10   0|  0   0| 12   2|
+ 344      8   moveoutbox   13   channel    94   process 6    boxwidth 3    channelwidth 5   |   -   | 19   4| 14   4|  4   4| 20   0| 10   0| 16   1| 18   3|
+ 345      8   moveoutbox   14   channel    19   process 5    boxwidth 4    channelwidth 5   |   -   |  9   4|  4   4| 10   0|  0   0| 12   2| 13   3| 19   4|
+ 346      8   moveoutbox   14   channel    24   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 347      8   moveoutbox   15   channel    27   process 6    boxwidth 0    channelwidth 3   |   -   |  0   0|  3   3| 17   2| 13   3|  8   3|  8   3|  3   3|
+ 348      8   moveoutbox   16   channel     0   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  6   1| 11   1|  1   1|  1   1| 10   0|
+ 349      8   getbox    0   shiftbox     0    channelwidth 3    putbox 0  channel22         |   -   |   -   |  0   0| 13   3|  3   3|  3   3|  3   3| 15   0|
+ 350      8   moveoutbox   17   channel    32   process 6    boxwidth 2    channelwidth 3   |   -   | 13   3|  6   1|  8   3|  8   3|  3   3| 15   0|  0   0|
+ 351      8   moveoutbox   18   channel     4   process 4    boxwidth 3    channelwidth 5   |   -   | 19   4| 13   3|  9   4|  2   2|  2   2| 10   0| 16   1|
+ 352      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel47         |   -   |  8   3|  8   3|  3   3| 15   0|  5   0| 17   2| 18   3|
+ 353      8   moveoutbox   18   channel    94   process 6    boxwidth 3    channelwidth 5   |   -   |   -   | 19   4| 14   4|  4   4| 20   0| 10   0| 16   1|
+------------------------------------------------------------------------------------
+startDepalletize
+ 354      8   moveoutbox   19   channel    19   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |  9   4|  4   4| 10   0|  0   0| 12   2| 13   3|
+ 355      8   moveinbox   18   channel    97   process 1   boxwidth 3    channelwidth 3   |   -   | 18   3|  3   3| 20   0| 10   0| 16   1| 18   3| 13   3|
+ 356      8   moveinbox   18   channel    23   process 2   boxwidth 3    channelwidth 4   | 18   3|  3   3|  3   3| 14   4|  4   4|  9   4|  0   0| 17   2|
+ 357      8   moveoutbox   19   channel    24   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3|
+ 358      8   moveinbox   18   channel    88   process 3   boxwidth 3    channelwidth 4   |   -   | 18   3| 19   4|  9   4| 13   3|  9   4|  4   4| 20   0|
+ 359      8   getbox   14   shiftbox    14    channelwidth 4    putbox14  channel28         |   -   |   -   | 14   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 360      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel29         |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 361      8   moveoutbox   20   channel    88   process 6    boxwidth 0    channelwidth 4   |   -   |   -   | 18   3| 19   4|  9   4| 13   3|  9   4|  4   4|
+ 362      8   getbox   10   shiftbox    10    channelwidth 4    putbox10  channel93         | 10   0| 16   1| 19   4| 12   2| 13   3| 14   4|  4   4| 20   0|
+ 363      8   moveoutbox    1   channel    35   process 5    boxwidth 1    channelwidth 1   |   -   | 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+ 364      8   moveinbox   18   channel    22   process 1   boxwidth 3    channelwidth 3   |   -   | 18   3|  0   0| 13   3|  3   3|  3   3|  3   3| 15   0|
+ 365      8   moveoutbox    2   channel    76   process 4    boxwidth 2    channelwidth 2   |   -   | 20   0|  5   0| 16   1| 12   2|  7   2|  7   2|  2   2|
+ 366      8   moveinbox   18   channel    24   process 2   boxwidth 3    channelwidth 5   |   -   |   -   | 18   3|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 367      8   moveoutbox    2   channel    81   process 6    boxwidth 2    channelwidth 2   |   -   | 20   0|  5   0| 16   1| 12   2| 12   2|  7   2|  2   2|
+ 368      8   moveinbox   18   channel    28   process 3   boxwidth 3    channelwidth 4   |   -   | 18   3| 14   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 369      8   moveoutbox    3   channel    17   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3| 10   0|  0   0| 12   2| 13   3|  8   3|  8   3|
+ 370      8   moveinbox   18   channel    94   process 1   boxwidth 3    channelwidth 5   |   -   | 18   3| 19   4| 14   4|  4   4| 20   0| 10   0| 16   1|
+ 371      8   moveinbox   18   channel    19   process 2   boxwidth 3    channelwidth 5   |   -   | 18   3|  9   4|  4   4| 10   0|  0   0| 12   2| 13   3|
+ 372      8   moveoutbox    3   channel    37   process 4    boxwidth 3    channelwidth 3   |   -   |   -   | 15   0|  0   0| 17   2| 13   3|  8   3|  8   3|
+ 373      8   moveinbox   18   channel    24   process 3   boxwidth 3    channelwidth 5   |   -   | 18   3| 18   3|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 374      8   moveoutbox    3   channel    42   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 15   0|  0   0| 17   2| 13   3|  8   3|  8   3|
+ 375      8   moveoutbox    4   channel    33   process 5    boxwidth 4    channelwidth 4   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 376      8   moveoutbox    6   channel    95   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  6   1| 10   0| 11   1|  6   1|
+ 377      8   getbox   18   shiftbox    18    channelwidth 3    putbox18  channel47         |   -   | 18   3|  8   3|  8   3|  3   3| 15   0|  5   0| 17   2|
+ 378      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel20         |   -   |  1   1| 10   0|  0   0| 11   1| 11   1|  6   1|  6   1|
+ 379      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel25         |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|
+ 380      8   moveoutbox    7   channel    26   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|
+ 381      8   moveoutbox    7   channel    31   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|
+ 382      8   moveoutbox    8   channel     2   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3| 10   0| 16   1| 18   3| 13   3|  8   3|
+ 383      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel36         |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|  7   2|  7   2|
+ 384      8   moveoutbox    9   channel    29   process 5    boxwidth 4    channelwidth 5   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 385      8   moveoutbox    9   channel    33   process 4    boxwidth 4    channelwidth 4   |   -   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 386      8   moveoutbox   10   channel     0   process 6    boxwidth 0    channelwidth 1   |   -   |   -   |   -   |   -   |  6   1| 11   1|  1   1|  1   1|
+ 387      8   moveoutbox   11   channel    90   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |   -   |  6   1|  1   1| 10   0| 11   1|
+ 388      8   getbox    0   shiftbox     0    channelwidth 4    putbox 0  channel 8         |  0   0| 19   4| 14   4|  9   4|  9   4|  2   2| 13   3| 10   0|
+ 389      8   moveoutbox   12   channel    21   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |   -   | 19   4|  2   2| 10   0|  0   0|
+ 390      8   moveoutbox   12   channel    26   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |   -   |  2   2| 15   0|  0   0| 17   2|
+ 391      8   moveoutbox   12   channel    31   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |   -   |  2   2| 15   0|  0   0| 17   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 392      8   moveoutbox   13   channel     9   process 6    boxwidth 3    channelwidth 5   |   -   | 19   4| 14   4|  9   4|  2   2| 10   0|  0   0| 12   2|
+ 393      8   moveinbox   12   channel    88   process 1   boxwidth 2    channelwidth 4   |   -   | 12   2| 18   3| 19   4|  9   4| 13   3|  9   4|  4   4|
+ 394      8   moveoutbox   14   channel    29   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 395      8   moveinbox   12   channel    21   process 2   boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 12   2| 19   4|  2   2| 10   0|  0   0|
+ 396      8   moveoutbox   14   channel    33   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4|
+ 397      8   moveinbox   12   channel    26   process 3   boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 12   2|  2   2| 15   0|  0   0| 17   2|
+ 398      8   moveinbox   12   channel    31   process 1   boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 12   2|  2   2| 15   0|  0   0| 17   2|
+ 399      8   moveoutbox   15   channel    22   process 6    boxwidth 0    channelwidth 3   |   -   |   -   | 18   3|  0   0| 13   3|  3   3|  3   3|  3   3|
+ 400      8   moveinbox   12   channel    96   process 2   boxwidth 2    channelwidth 2   |   -   |   -   | 12   2|  6   1| 16   1|  2   2|  7   2|  2   2|
+ 401      8   getbox    0   shiftbox     0    channelwidth 3    putbox 0  channel32         |   -   |  0   0| 13   3|  6   1|  8   3|  8   3|  3   3| 15   0|
+ 402      8   moveoutbox   16   channel     3   process 4    boxwidth 1    channelwidth 4   |   -   | 19   4| 14   4|  9   4|  3   3|  3   3|  3   3| 10   0|
+ 403      8   moveoutbox   17   channel    23   process 6    boxwidth 2    channelwidth 4   |   -   | 18   3|  3   3|  3   3| 14   4|  4   4|  9   4|  0   0|
+ 404      8   moveinbox   12   channel    16   process 3   boxwidth 2    channelwidth 2   |   -   |   -   | 12   2|  7   2| 12   2|  2   2| 10   0|  0   0|
+ 405      8   moveoutbox   17   channel    47   process 5    boxwidth 2    channelwidth 3   |   -   |   -   | 18   3|  8   3|  8   3|  3   3| 15   0|  5   0|
+ 406      8   moveinbox   12   channel    21   process 1   boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 12   2| 19   4|  2   2| 10   0|  0   0|
+ 407      8   moveinbox   12   channel    26   process 2   boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 12   2|  2   2| 15   0|  0   0| 17   2|
+ 408      8   getbox   13   shiftbox    13    channelwidth 3    putbox13  channel97         |   -   | 13   3| 18   3|  3   3| 20   0| 10   0| 16   1| 18   3|
+ 409      8   moveinbox   12   channel    31   process 3   boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 12   2|  2   2| 15   0|  0   0| 17   2|
+ 410      8   moveoutbox   19   channel    28   process 5    boxwidth 4    channelwidth 4   |   -   |   -   | 18   3| 14   4| 15   0|  0   0| 17   2| 13   3|
+ 411      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel 2         |   -   |   -   |  8   3|  3   3| 10   0| 16   1| 18   3| 13   3|
+ 412      8   moveoutbox   19   channel    29   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3|
+ 413      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel34         |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 414      8   getbox   16   shiftbox    16    channelwidth 3    putbox16  channel92         |   -   | 16   1|  3   3| 12   2| 12   2|  3   3| 20   0| 10   0|
+ 415      8   moveoutbox   20   channel    93   process 4    boxwidth 0    channelwidth 4   |   -   | 10   0| 16   1| 19   4| 12   2| 13   3| 14   4|  4   4|
+ 416      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel38         |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 417      8   moveoutbox    1   channel    40   process 6    boxwidth 1    channelwidth 1   |   -   | 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+ 418      8   moveoutbox    2   channel    86   process 5    boxwidth 2    channelwidth 2   |   -   | 20   0| 10   0| 16   1| 12   2| 12   2|  7   2|  2   2|
+ 419      8   moveoutbox    2   channel    46   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2|  2   2| 17   2|  7   2|  7   2|  2   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 420      8   moveoutbox    3   channel    52   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 15   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 421      8   moveinbox    2   channel    33   process 1   boxwidth 2    channelwidth 4   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 422      8   moveoutbox    3   channel    57   process 5    boxwidth 3    channelwidth 3   |   -   |   -   | 15   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 423      8   moveinbox    2   channel    29   process 2   boxwidth 2    channelwidth 5   |   -   |   -   |  2   2|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 424      8   moveoutbox    3   channel    62   process 4    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 425      8   moveinbox    2   channel     6   process 3   boxwidth 2    channelwidth 2   |   -   |  2   2|  7   2| 12   2| 16   1|  2   2|  7   2|  2   2|
+ 426      8   moveinbox    2   channel    11   process 1   boxwidth 2    channelwidth 2   |   -   |  2   2|  7   2| 12   2| 12   2|  2   2| 10   0|  0   0|
+ 427      8   moveoutbox    4   channel    39   process 6    boxwidth 4    channelwidth 5   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 428      8   moveoutbox    5   channel    47   process 5    boxwidth 0    channelwidth 3   |   -   |   -   |   -   | 18   3|  8   3|  8   3|  3   3| 15   0|
+ 429      8   moveinbox    2   channel     1   process 2   boxwidth 2    channelwidth 2   |   -   |  2   2|  7   2| 12   2|  7   2|  2   2| 10   0| 16   1|
+ 430      8   moveoutbox    6   channel    95   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |   -   |  1   1|  6   1| 10   0| 11   1|
+ 431      8   moveinbox    2   channel    96   process 3   boxwidth 2    channelwidth 2   |   -   |  2   2| 12   2|  6   1| 16   1|  2   2|  7   2|  2   2|
+ 432      8   moveinbox    2   channel    16   process 1   boxwidth 2    channelwidth 2   |   -   |  2   2| 12   2|  7   2| 12   2|  2   2| 10   0|  0   0|
+ 433      8   moveoutbox    6   channel    20   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 10   0|  0   0| 11   1| 11   1|  6   1|
+ 434      8   moveinbox    2   channel    47   process 2   boxwidth 2    channelwidth 3   |   -   |   -   |  2   2| 18   3|  8   3|  8   3|  3   3| 15   0|
+ 435      8   moveoutbox    6   channel    25   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|
+ 436      8   moveinbox    2   channel    37   process 3   boxwidth 2    channelwidth 3   |   -   |  2   2| 15   0|  0   0| 17   2| 13   3|  8   3|  8   3|
+ 437      8   moveoutbox    7   channel    36   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|  7   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 438      8   moveinbox    3   channel    42   process 1   boxwidth 3    channelwidth 3   |   -   |  3   3| 15   0|  0   0| 17   2| 13   3|  8   3|  8   3|
+ 439      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel41         |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|  7   2|  7   2|
+ 440      8   moveoutbox    8   channel     7   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |  2   2| 10   0| 16   1| 18   3| 13   3|  8   3|
+ 441      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel51         |   -   |  2   2| 15   0|  5   0| 17   2| 12   2|  7   2|  7   2|
+ 442      8   moveinbox    3   channel     2   process 2   boxwidth 3    channelwidth 3   |   -   |  3   3|  8   3|  3   3| 10   0| 16   1| 18   3| 13   3|
+ 443      8   moveoutbox    9   channel    34   process 6    boxwidth 4    channelwidth 5   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 444      8   moveinbox    3   channel    33   process 3   boxwidth 3    channelwidth 4   |   -   |  3   3|  2   2| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 445      8   moveoutbox    9   channel    38   process 5    boxwidth 4    channelwidth 4   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 446      8   moveinbox    3   channel    22   process 1   boxwidth 3    channelwidth 3   |   -   |  3   3| 18   3|  0   0| 13   3|  3   3|  3   3|  3   3|
+ 447      8   moveoutbox   10   channel     8   process 4    boxwidth 0    channelwidth 4   |   -   |  0   0| 19   4| 14   4|  9   4|  9   4|  2   2| 13   3|
+ 448      8   moveinbox    3   channel    28   process 2   boxwidth 3    channelwidth 4   |   -   |  3   3| 18   3| 14   4| 15   0|  0   0| 17   2| 13   3|
+ 449      8   moveoutbox   10   channel     3   process 6    boxwidth 0    channelwidth 4   |   -   |   -   | 19   4| 14   4|  9   4|  3   3|  3   3|  3   3|
+ 450      8   moveinbox    3   channel    29   process 3   boxwidth 3    channelwidth 5   |   -   |  3   3|  2   2|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 451      8   moveoutbox   11   channel    15   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |   -   |  1   1| 10   0|  0   0| 11   1|
+ 452      8   moveoutbox   12   channel     9   process 4    boxwidth 2    channelwidth 5   |   -   |   -   | 19   4| 14   4|  9   4|  2   2| 10   0|  0   0|
+ 453      8   moveinbox    3   channel    52   process 1   boxwidth 3    channelwidth 3   |   -   |  3   3| 15   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 454      8   moveinbox    3   channel    57   process 2   boxwidth 3    channelwidth 3   |   -   |  3   3| 15   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 455      8   moveinbox    3   channel    62   process 3   boxwidth 3    channelwidth 3   |   -   |  3   3| 20   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+------------------------------------------------------------------------------------
+startDepalletize
+ 456      8   getbox   13   shiftbox    13    channelwidth 4    putbox13  channel13         | 13   3| 19   4| 14   4| 12   2|  4   4| 10   0|  0   0| 12   2|
+ 457      8   moveoutbox   13   channel    98   process 4    boxwidth 3    channelwidth 4   |   -   | 19   4|  3   3| 14   4|  9   4|  0   0| 16   1|  3   3|
+ 458      8   getbox   13   shiftbox    13    channelwidth 5    putbox13  channel14         |   -   | 13   3| 19   4|  7   2| 14   4| 10   0|  0   0| 12   2|
+ 459      8   moveoutbox   14   channel    34   process 6    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 460      8   moveinbox    4   channel    47   process 1   boxwidth 4    channelwidth 3   |   -   |  4   4|  2   2| 18   3|  8   3|  8   3|  3   3| 15   0|
+ 461      8   moveoutbox   14   channel    38   process 5    boxwidth 4    channelwidth 4   |   -   |   -   |  4   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 462      8   moveinbox    4   channel     3   process 2   boxwidth 4    channelwidth 4   |   -   |  4   4| 19   4| 14   4|  9   4|  3   3|  3   3|  3   3|
+ 463      8   moveoutbox   15   channel    32   process 4    boxwidth 0    channelwidth 3   |   -   |   -   |  0   0| 13   3|  6   1|  8   3|  8   3|  3   3|
+ 464      8   moveinbox    4   channel     9   process 3   boxwidth 4    channelwidth 5   |   -   |  4   4| 19   4| 14   4|  9   4|  2   2| 10   0|  0   0|
+ 465      8   moveinbox    4   channel    34   process 1   boxwidth 4    channelwidth 5   |   -   |  4   4|  4   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 466      8   moveoutbox   15   channel    47   process 6    boxwidth 0    channelwidth 3   |   -   |   -   |  4   4|  2   2| 18   3|  8   3|  8   3|  3   3|
+ 467      8   moveinbox    4   channel    38   process 2   boxwidth 4    channelwidth 4   |   -   |  4   4|  4   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 468      8   moveoutbox   16   channel     5   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |   -   |  6   1|  6   1|  1   1| 10   0|
+ 469      8   moveoutbox   17   channel    26   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 12   2| 12   2|  2   2| 15   0|  0   0|
+ 470      8   moveinbox    4   channel    89   process 3   boxwidth 4    channelwidth 5   |  4   4| 19   4|  7   2|  9   4|  4   4| 20   0| 10   0| 16   1|
+ 471      8   moveinbox    4   channel    14   process 1   boxwidth 4    channelwidth 5   |  4   4| 13   3| 19   4|  7   2| 14   4| 10   0|  0   0| 12   2|
+ 472      8   moveoutbox   17   channel    31   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 12   2| 12   2|  2   2| 15   0|  0   0|
+ 473      8   moveoutbox   18   channel    97   process 5    boxwidth 3    channelwidth 3   |   -   |   -   | 13   3| 18   3|  3   3| 20   0| 10   0| 16   1|
+ 474      8   moveinbox    4   channel    18   process 2   boxwidth 4    channelwidth 4   |  4   4| 19   4|  7   2|  3   3| 10   0|  0   0| 12   2| 13   3|
+ 475      8   moveinbox    4   channel     4   process 3   boxwidth 4    channelwidth 5   |  4   4| 19   4| 13   3|  9   4|  2   2|  2   2| 10   0| 16   1|
+ 476      8   moveoutbox   19   channel    33   process 6    boxwidth 4    channelwidth 4   |   -   |   -   |  3   3|  2   2| 15   0|  0   0| 17   2| 13   3|
+ 477      8   getbox   13   shiftbox    13    channelwidth 3    putbox13  channel 2         |   -   | 13   3|  3   3|  8   3|  3   3| 10   0| 16   1| 18   3|
+ 478      8   moveoutbox   19   channel    34   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 479      8   moveoutbox   19   channel    38   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |  4   4|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 480      8   getbox    9   shiftbox     9    channelwidth 5    putbox 9  channel39         |   -   |  9   4| 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 481      8   getbox   10   shiftbox    10    channelwidth 3    putbox10  channel92         |   -   | 10   0| 16   1|  3   3| 12   2| 12   2|  3   3| 20   0|
+ 482      8   moveoutbox    1   channel    45   process 6    boxwidth 1    channelwidth 1   |   -   | 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+------------------------------------------------------------------------------------
+startDepalletize
+ 483      8   moveoutbox    2   channel    91   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2|  6   1| 12   2|  2   2| 10   0|  7   2|
+ 484      8   getbox   16   shiftbox    16    channelwidth 5    putbox16  channel89         | 16   1|  4   4| 19   4|  7   2|  9   4|  4   4| 20   0| 10   0|
+ 485      8   moveoutbox    2   channel    56   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 15   0|  5   0| 17   2| 12   2|  7   2|  7   2|
+ 486      8   moveinbox    1   channel    94   process 1   boxwidth 1    channelwidth 5   |  1   1| 18   3| 19   4| 14   4|  4   4| 20   0| 10   0| 16   1|
+ 487      8   moveinbox    1   channel     0   process 2   boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  6   1| 11   1|  1   1|  1   1|
+ 488      8   moveoutbox    3   channel    67   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 489      8   moveoutbox    3   channel    72   process 5    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0|  5   0| 16   1| 18   3|  8   3|  8   3|
+ 490      8   moveinbox    1   channel    90   process 3   boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  6   1|  1   1| 10   0| 11   1|
+ 491      8   moveoutbox    3   channel    77   process 4    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0|  5   0| 16   1| 18   3|  8   3|  8   3|
+ 492      8   moveinbox    1   channel    95   process 1   boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  1   1|  6   1| 10   0| 11   1|
+ 493      8   moveinbox    1   channel    15   process 2   boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  1   1| 10   0|  0   0| 11   1|
+ 494      8   moveinbox    1   channel     5   process 3   boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  6   1|  6   1|  1   1| 10   0|
+ 495      8   moveoutbox    4   channel    43   process 6    boxwidth 4    channelwidth 4   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|  9   4|
+ 496      8   moveinbox    1   channel    10   process 1   boxwidth 1    channelwidth 1   |   -   |   -   |  1   1|  6   1|  1   1| 10   0|  0   0| 11   1|
+ 497      8   moveoutbox    6   channel    20   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 10   0|  0   0| 11   1| 11   1|
+ 498      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel80         |   -   |   -   |   -   |  1   1|  5   0| 16   1| 11   1|  1   1|
+ 499      8   moveinbox    1   channel     0   process 2   boxwidth 1    channelwidth 1   |   -   |   -   |  1   1|  1   1|  6   1| 11   1|  1   1|  1   1|
+ 500      8   moveoutbox    6   channel    25   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|
+ 501      8   moveinbox    1   channel    80   process 3   boxwidth 1    channelwidth 1   |   -   |   -   |  1   1|  1   1|  5   0| 16   1| 11   1|  1   1|
+ 502      8   moveoutbox    7   channel    36   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|
+ 503      8   moveoutbox    7   channel    41   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|  7   2|
+ 504      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel30         |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|
+ 505      8   moveoutbox    7   channel    51   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 15   0|  5   0| 17   2| 12   2|  7   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 506      8   moveinbox    7   channel    26   process 3   boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 12   2| 12   2|  2   2| 15   0|  0   0|
+ 507      8   moveoutbox    8   channel    12   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3| 10   0|  0   0| 12   2| 13   3|  8   3|
+ 508      8   moveoutbox    9   channel    43   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4| 14   4|
+ 509      8   moveinbox    7   channel    90   process 1   boxwidth 2    channelwidth 1   |   -   |   -   |  7   2|  1   1|  6   1|  1   1| 10   0| 11   1|
+ 510      8   moveinbox    7   channel    31   process 2   boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 12   2| 12   2|  2   2| 15   0|  0   0|
+ 511      8   moveinbox    7   channel    36   process 3   boxwidth 2    channelwidth 2   |   -   |   -   |  7   2|  2   2| 15   0|  0   0| 17   2| 12   2|
+ 512      8   moveoutbox   10   channel     5   process 4    boxwidth 0    channelwidth 1   |   -   |   -   |   -   |   -   |  1   1|  6   1|  6   1|  1   1|
+ 513      8   moveoutbox   10   channel    89   process 6    boxwidth 0    channelwidth 5   |   -   | 16   1|  4   4| 19   4|  7   2|  9   4|  4   4| 20   0|
+ 514      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel44         |  4   4| 15   0|  0   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 515      8   moveinbox    7   channel    21   process 1   boxwidth 2    channelwidth 2   |   -   |  7   2| 12   2| 12   2| 19   4|  2   2| 10   0|  0   0|
+ 516      8   moveinbox    7   channel    46   process 2   boxwidth 2    channelwidth 2   |   -   |  7   2|  7   2|  2   2| 17   2|  7   2|  7   2|  2   2|
+ 517      8   moveoutbox   11   channel    10   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  6   1|  1   1| 10   0|  0   0|
+ 518      8   moveinbox    7   channel     7   process 3   boxwidth 2    channelwidth 3   |   -   |  7   2|  2   2| 10   0| 16   1| 18   3| 13   3|  8   3|
+ 519      8   moveoutbox   12   channel    13   process 4    boxwidth 2    channelwidth 4   |   -   | 13   3| 19   4| 14   4| 12   2|  4   4| 10   0|  0   0|
+ 520      8   moveinbox    7   channel    32   process 1   boxwidth 2    channelwidth 3   |   -   |  7   2|  0   0| 13   3|  6   1|  8   3|  8   3|  3   3|
+ 521      8   moveoutbox   12   channel    14   process 6    boxwidth 2    channelwidth 5   |   -   |  4   4| 13   3| 19   4|  7   2| 14   4| 10   0|  0   0|
+ 522      8   moveinbox    7   channel    47   process 2   boxwidth 2    channelwidth 3   |   -   |  7   2|  4   4|  2   2| 18   3|  8   3|  8   3|  3   3|
+ 523      8   moveoutbox   12   channel    36   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  7   2|  2   2| 15   0|  0   0| 17   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 524      8   moveoutbox   13   channel    18   process 4    boxwidth 3    channelwidth 4   |   -   |  4   4| 19   4|  7   2|  3   3| 10   0|  0   0| 12   2|
+ 525      8   moveinbox    8   channel    26   process 3   boxwidth 3    channelwidth 2   |   -   |  8   3|  7   2| 12   2| 12   2|  2   2| 15   0|  0   0|
+ 526      8   moveoutbox   14   channel    39   process 6    boxwidth 4    channelwidth 5   |   -   |   -   |  9   4| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 527      8   moveinbox    8   channel    97   process 1   boxwidth 3    channelwidth 3   |   -   |  8   3| 13   3| 18   3|  3   3| 20   0| 10   0| 16   1|
+ 528      8   moveoutbox   14   channel    43   process 5    boxwidth 4    channelwidth 4   |   -   |   -   |   -   | 15   0|  0   0| 17   2| 13   3| 19   4|
+ 529      8   moveinbox    8   channel    33   process 2   boxwidth 3    channelwidth 4   |   -   |  8   3|  3   3|  2   2| 15   0|  0   0| 17   2| 13   3|
+ 530      8   moveinbox    8   channel    34   process 3   boxwidth 3    channelwidth 5   |   -   |  8   3|  4   4|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 531      8   moveinbox    8   channel    38   process 1   boxwidth 3    channelwidth 4   |   -   |  8   3|  4   4|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 532      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel26         |   -   |  0   0|  8   3|  7   2| 12   2| 12   2|  2   2| 15   0|
+ 533      8   moveoutbox   16   channel     1   process 5    boxwidth 1    channelwidth 2   |   -   |   -   |  2   2|  7   2| 12   2|  7   2|  2   2| 10   0|
+ 534      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel31         |   -   |   -   |  0   0|  7   2| 12   2| 12   2|  2   2| 15   0|
+ 535      8   moveinbox    8   channel    43   process 2   boxwidth 3    channelwidth 4   |   -   |   -   |  8   3| 15   0|  0   0| 17   2| 13   3| 19   4|
+ 536      8   moveoutbox   17   channel    36   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |   -   |  7   2|  2   2| 15   0|  0   0|
+ 537      8   moveinbox    8   channel    67   process 3   boxwidth 3    channelwidth 3   |   -   |  8   3| 20   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 538      8   moveinbox    8   channel    72   process 1   boxwidth 3    channelwidth 3   |   -   |  8   3| 20   0|  5   0| 16   1| 18   3|  8   3|  8   3|
+ 539      8   moveinbox    8   channel    77   process 2   boxwidth 3    channelwidth 3   |   -   |  8   3| 20   0|  5   0| 16   1| 18   3|  8   3|  8   3|
+------------------------------------------------------------------------------------
+startDepalletize
+ 540      8   moveinbox   10   channel    12   process 3   boxwidth 0    channelwidth 3   |   -   | 10   0|  3   3| 10   0|  0   0| 12   2| 13   3|  8   3|
+ 541      8   moveoutbox   18   channel     2   process 5    boxwidth 3    channelwidth 3   |   -   |   -   | 13   3|  3   3|  8   3|  3   3| 10   0| 16   1|
+ 542      8   getbox   13   shiftbox    13    channelwidth 5    putbox13  channel24         |   -   | 13   3| 18   3| 18   3|  4   4| 15   0|  0   0| 17   2|
+ 543      8   moveinbox   10   channel     5   process 1   boxwidth 0    channelwidth 1   |   -   |   -   |   -   | 10   0|  1   1|  6   1|  6   1|  1   1|
+ 544      8   moveinbox   10   channel    36   process 2   boxwidth 0    channelwidth 2   |   -   |   -   |   -   | 10   0|  7   2|  2   2| 15   0|  0   0|
+ 545      8   moveoutbox   19   channel    39   process 6    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  9   4| 15   0|  0   0| 17   2| 13   3|
+ 546      8   moveinbox   10   channel    95   process 3   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0|  1   1|  1   1|  6   1| 10   0| 11   1|
+ 547      8   moveoutbox   19   channel    43   process 5    boxwidth 4    channelwidth 4   |   -   |   -   |   -   |  8   3| 15   0|  0   0| 17   2| 13   3|
+ 548      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel52         |   -   |  8   3|  3   3| 15   0|  5   0| 17   2| 18   3|  8   3|
+ 549      8   moveinbox   10   channel    15   process 1   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0|  1   1|  1   1| 10   0|  0   0| 11   1|
+ 550      8   moveinbox   10   channel    20   process 2   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0|  1   1| 10   0|  0   0| 11   1| 11   1|
+ 551      8   moveinbox   10   channel    25   process 3   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 552      8   getbox    9   shiftbox     9    channelwidth 5    putbox 9  channel44         |  9   4|  4   4| 15   0|  0   0| 17   2| 18   3| 19   4| 14   4|
+ 553      8   moveoutbox   20   channel    92   process 5    boxwidth 0    channelwidth 3   |   -   |   -   | 10   0| 16   1|  3   3| 12   2| 12   2|  3   3|
+ 554      8   moveinbox   10   channel     5   process 1   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0| 10   0|  1   1|  6   1|  6   1|  1   1|
+ 555      8   moveoutbox   20   channel    89   process 4    boxwidth 0    channelwidth 5   |   -   |   -   | 16   1|  4   4| 19   4|  7   2|  9   4|  4   4|
+ 556      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel48         |  4   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 557      8   moveinbox   10   channel    10   process 2   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0|  1   1|  6   1|  1   1| 10   0|  0   0|
+ 558      8   moveoutbox    2   channel    61   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0|  5   0| 17   2| 12   2|  7   2|  7   2|
+ 559      8   moveoutbox    1   channel    50   process 6    boxwidth 1    channelwidth 1   |   -   | 15   0|  5   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+ 560      8   moveinbox   10   channel    36   process 3   boxwidth 0    channelwidth 2   |   -   |   -   | 10   0| 10   0|  7   2|  2   2| 15   0|  0   0|
+------------------------------------------------------------------------------------
+startDepalletize
+ 561      8   moveoutbox    2   channel     6   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2|  7   2| 12   2| 16   1|  2   2|  7   2|
+ 562      8   moveinbox   11   channel    39   process 1   boxwidth 1    channelwidth 5   |   -   |   -   | 11   1|  9   4| 15   0|  0   0| 17   2| 13   3|
+ 563      8   moveoutbox    3   channel    99   process 5    boxwidth 3    channelwidth 5   |   -   | 19   4| 14   4|  9   4|  0   0| 16   1|  3   3|  3   3|
+ 564      8   moveinbox   11   channel    43   process 2   boxwidth 1    channelwidth 4   |   -   |   -   | 11   1|  8   3| 15   0|  0   0| 17   2| 13   3|
+ 565      8   moveoutbox    3   channel    82   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0|  5   0| 16   1| 18   3| 13   3|  8   3|
+ 566      8   moveinbox   11   channel    80   process 3   boxwidth 1    channelwidth 1   |   -   | 11   1|  1   1|  1   1|  5   0| 16   1| 11   1|  1   1|
+ 567      8   moveoutbox    3   channel    87   process 4    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0| 10   0| 16   1| 18   3| 13   3|  8   3|
+ 568      8   moveinbox   11   channel     0   process 1   boxwidth 1    channelwidth 1   |   -   | 11   1|  1   1|  1   1|  6   1| 11   1|  1   1|  1   1|
+ 569      8   moveoutbox    4   channel    49   process 5    boxwidth 4    channelwidth 5   |   -   | 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 570      8   moveinbox   11   channel    90   process 2   boxwidth 1    channelwidth 1   |   -   | 11   1|  7   2|  1   1|  6   1|  1   1| 10   0| 11   1|
+ 571      8   moveinbox   11   channel    95   process 3   boxwidth 1    channelwidth 1   |   -   | 11   1| 10   0|  1   1|  1   1|  6   1| 10   0| 11   1|
+ 572      8   moveoutbox    6   channel    30   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|
+ 573      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel80         |   -   |  1   1| 11   1|  1   1|  1   1|  5   0| 16   1| 11   1|
+ 574      8   moveinbox   11   channel    15   process 1   boxwidth 1    channelwidth 1   |   -   | 11   1| 10   0|  1   1|  1   1| 10   0|  0   0| 11   1|
+ 575      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel35         |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|
+ 576      8   moveoutbox    7   channel    91   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  7   2|  6   1| 12   2|  2   2| 10   0|
+ 577      8   moveinbox   11   channel    31   process 2   boxwidth 1    channelwidth 2   |   -   | 11   1|  0   0|  7   2| 12   2| 12   2|  2   2| 15   0|
+ 578      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel40         |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|
+ 579      8   moveoutbox    7   channel    56   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 15   0|  5   0| 17   2| 12   2|  7   2|
+ 580      8   moveinbox   11   channel    20   process 3   boxwidth 1    channelwidth 1   |   -   | 11   1| 10   0|  1   1| 10   0|  0   0| 11   1| 11   1|
+------------------------------------------------------------------------------------
+startDepalletize
+ 581      8   moveinbox    6   channel    25   process 1   boxwidth 1    channelwidth 1   |   -   |  6   1| 10   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 582      8   moveoutbox    7   channel    41   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  2   2| 15   0|  0   0| 17   2| 12   2|
+ 583      8   moveinbox    6   channel    51   process 2   boxwidth 1    channelwidth 2   |   -   |  6   1|  2   2| 15   0|  5   0| 17   2| 12   2|  7   2|
+ 584      8   moveoutbox    8   channel    17   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3| 10   0|  0   0| 12   2| 13   3|  8   3|
+ 585      8   moveoutbox    9   channel    48   process 5    boxwidth 4    channelwidth 4   |   -   |  4   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 586      8   moveinbox    6   channel    91   process 3   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1|  7   2|  6   1| 12   2|  2   2| 10   0|
+ 587      8   moveoutbox    9   channel    49   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 588      8   moveinbox    6   channel    56   process 1   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1| 15   0|  5   0| 17   2| 12   2|  7   2|
+ 589      8   moveoutbox   10   channel     1   process 4    boxwidth 0    channelwidth 2   |   -   |   -   |   -   |  2   2|  7   2| 12   2|  7   2|  2   2|
+ 590      8   moveinbox    6   channel    41   process 2   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1|  2   2| 15   0|  0   0| 17   2| 12   2|
+ 591      8   moveoutbox   10   channel    91   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |   -   |  6   1|  7   2|  6   1| 12   2|  2   2|
+ 592      8   moveinbox    6   channel     5   process 3   boxwidth 1    channelwidth 1   |   -   |  6   1| 10   0| 10   0|  1   1|  6   1|  6   1|  1   1|
+ 593      8   moveoutbox   11   channel    90   process 6    boxwidth 1    channelwidth 1   |   -   |   -   | 11   1|  7   2|  1   1|  6   1|  1   1| 10   0|
+ 594      8   moveinbox    6   channel    10   process 1   boxwidth 1    channelwidth 1   |   -   |  6   1| 10   0|  1   1|  6   1|  1   1| 10   0|  0   0|
+ 595      8   moveoutbox   12   channel    18   process 4    boxwidth 2    channelwidth 4   |   -   |   -   |  4   4| 19   4|  7   2|  3   3| 10   0|  0   0|
+ 596      8   moveinbox    6   channel     1   process 2   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1|  2   2|  7   2| 12   2|  7   2|  2   2|
+ 597      8   moveoutbox   12   channel    41   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  6   1|  2   2| 15   0|  0   0| 17   2|
+ 598      8   moveinbox    6   channel    91   process 3   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1|  6   1|  7   2|  6   1| 12   2|  2   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 599      8   moveinbox    9   channel    36   process 1   boxwidth 4    channelwidth 2   |   -   |  9   4| 10   0| 10   0|  7   2|  2   2| 15   0|  0   0|
+ 600      8   moveinbox    9   channel    39   process 2   boxwidth 4    channelwidth 5   |   -   |  9   4| 11   1|  9   4| 15   0|  0   0| 17   2| 13   3|
+ 601      8   moveinbox    9   channel    43   process 3   boxwidth 4    channelwidth 4   |   -   |  9   4| 11   1|  8   3| 15   0|  0   0| 17   2| 13   3|
+ 602      8   moveinbox    9   channel    89   process 1   boxwidth 4    channelwidth 5   |   -   |  9   4| 16   1|  4   4| 19   4|  7   2|  9   4|  4   4|
+ 603      8   moveinbox    9   channel    49   process 2   boxwidth 4    channelwidth 5   |   -   |  9   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 604      8   moveoutbox   13   channel    28   process 4    boxwidth 3    channelwidth 4   |   -   |   -   |  3   3| 18   3| 14   4| 15   0|  0   0| 17   2|
+ 605      8   getbox   13   shiftbox    13    channelwidth 5    putbox13  channel19         |   -   | 13   3| 18   3|  9   4|  4   4| 10   0|  0   0| 12   2|
+ 606      8   moveoutbox   14   channel    44   process 5    boxwidth 4    channelwidth 5   |   -   |  9   4|  4   4| 15   0|  0   0| 17   2| 18   3| 19   4|
+ 607      8   moveinbox    9   channel    18   process 3   boxwidth 4    channelwidth 4   |   -   |  9   4|  4   4| 19   4|  7   2|  3   3| 10   0|  0   0|
+ 608      8   moveoutbox   15   channel    26   process 4    boxwidth 0    channelwidth 2   |   -   |   -   |  0   0|  8   3|  7   2| 12   2| 12   2|  2   2|
+ 609      8   moveoutbox   15   channel    31   process 5    boxwidth 0    channelwidth 2   |   -   |   -   | 11   1|  0   0|  7   2| 12   2| 12   2|  2   2|
+ 610      8   moveinbox    9   channel    19   process 1   boxwidth 4    channelwidth 5   |  9   4| 13   3| 18   3|  9   4|  4   4| 10   0|  0   0| 12   2|
+ 611      8   moveoutbox   14   channel    48   process 6    boxwidth 4    channelwidth 4   |   -   |   -   |  4   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 612      8   moveinbox    9   channel    28   process 2   boxwidth 4    channelwidth 4   |   -   |  9   4|  3   3| 18   3| 14   4| 15   0|  0   0| 17   2|
+ 613      8   moveoutbox   16   channel     4   process 4    boxwidth 1    channelwidth 5   |   -   |  4   4| 19   4| 13   3|  9   4|  2   2|  2   2| 10   0|
+ 614      8   moveinbox    9   channel    24   process 3   boxwidth 4    channelwidth 5   |  9   4| 13   3| 18   3| 18   3|  4   4| 15   0|  0   0| 17   2|
+ 615      8   moveoutbox   17   channel    41   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |   -   |  6   1|  2   2| 15   0|  0   0|
+ 616      8   moveoutbox   17   channel    24   process 6    boxwidth 2    channelwidth 5   |   -   |  9   4| 13   3| 18   3| 18   3|  4   4| 15   0|  0   0|
+ 617      8   moveinbox    9   channel    88   process 1   boxwidth 4    channelwidth 4   |  9   4| 12   2| 18   3| 19   4|  9   4| 13   3|  9   4|  4   4|
+------------------------------------------------------------------------------------
+startDepalletize
+ 618      8   moveinbox   13   channel    48   process 2   boxwidth 3    channelwidth 4   |   -   | 13   3|  4   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 619      8   moveinbox   13   channel     2   process 3   boxwidth 3    channelwidth 3   |   -   | 13   3| 13   3|  3   3|  8   3|  3   3| 10   0| 16   1|
+ 620      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel52         |   -   |  8   3|  8   3|  3   3| 15   0|  5   0| 17   2| 18   3|
+ 621      8   moveinbox   13   channel    92   process 1   boxwidth 3    channelwidth 3   |   -   | 13   3| 10   0| 16   1|  3   3| 12   2| 12   2|  3   3|
+ 622      8   moveoutbox   19   channel    48   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 13   3|  4   4| 15   0|  5   0| 17   2| 18   3|
+ 623      8   getbox   19   shiftbox    19    channelwidth 5    putbox19  channel44         |   -   | 19   4|  9   4|  4   4| 15   0|  0   0| 17   2| 18   3|
+ 624      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel53         |  4   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 625      8   getbox   14   shiftbox    14    channelwidth 5    putbox14  channel49         |   -   | 14   4|  9   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 626      8   getbox   16   shiftbox    16    channelwidth 5    putbox16  channel94         | 16   1|  1   1| 18   3| 19   4| 14   4|  4   4| 20   0| 10   0|
+ 627      8   moveinbox   13   channel    82   process 2   boxwidth 3    channelwidth 3   |   -   | 13   3| 20   0|  5   0| 16   1| 18   3| 13   3|  8   3|
+ 628      8   moveinbox   13   channel    87   process 3   boxwidth 3    channelwidth 3   |   -   | 13   3| 20   0| 10   0| 16   1| 18   3| 13   3|  8   3|
+ 629      8   moveinbox   13   channel    17   process 1   boxwidth 3    channelwidth 3   |   -   | 13   3|  3   3| 10   0|  0   0| 12   2| 13   3|  8   3|
+ 630      8   moveoutbox    1   channel    55   process 4    boxwidth 1    channelwidth 1   |   -   | 15   0|  5   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+ 631      8   getbox    9   shiftbox     9    channelwidth 4    putbox 9  channel53         |  9   4|  4   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 632      8   moveinbox   13   channel    48   process 2   boxwidth 3    channelwidth 4   |   -   | 13   3| 13   3|  4   4| 15   0|  5   0| 17   2| 18   3|
+ 633      8   moveoutbox    2   channel    96   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 12   2|  6   1| 16   1|  2   2|  7   2|
+ 634      8   getbox   16   shiftbox    16    channelwidth 3    putbox16  channel97         |   -   | 16   1|  8   3| 13   3| 18   3|  3   3| 20   0| 10   0|
+ 635      8   moveinbox   13   channel    27   process 3   boxwidth 3    channelwidth 3   | 13   3|  0   0|  3   3| 17   2| 13   3|  8   3|  8   3|  3   3|
+ 636      8   moveoutbox    2   channel    66   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0|  5   0| 17   2| 12   2|  7   2|  7   2|
+ 637      8   moveinbox   13   channel    37   process 1   boxwidth 3    channelwidth 3   | 13   3|  2   2| 15   0|  0   0| 17   2| 13   3|  8   3|  8   3|
+ 638      8   moveoutbox    3   channel    27   process 6    boxwidth 3    channelwidth 3   |   -   | 13   3|  0   0|  3   3| 17   2| 13   3|  8   3|  8   3|
+ 639      8   moveinbox   13   channel    42   process 2   boxwidth 3    channelwidth 3   | 13   3|  3   3| 15   0|  0   0| 17   2| 13   3|  8   3|  8   3|
+------------------------------------------------------------------------------------
+startDepalletize
+ 640      8   moveoutbox    3   channel    22   process 5    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3| 18   3|  0   0| 13   3|  3   3|  3   3|
+ 641      8   moveinbox   14   channel    23   process 3   boxwidth 4    channelwidth 4   | 14   4| 18   3|  3   3|  3   3| 14   4|  4   4|  9   4|  0   0|
+ 642      8   moveoutbox    3   channel     3   process 4    boxwidth 3    channelwidth 4   |   -   |   -   |  4   4| 19   4| 14   4|  9   4|  3   3|  3   3|
+ 643      8   moveinbox   14   channel    29   process 1   boxwidth 4    channelwidth 5   | 14   4|  3   3|  2   2|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 644      8   moveoutbox    4   channel    54   process 6    boxwidth 4    channelwidth 5   |   -   | 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 645      8   moveinbox   14   channel    93   process 2   boxwidth 4    channelwidth 4   | 14   4| 10   0| 16   1| 19   4| 12   2| 13   3| 14   4|  4   4|
+ 646      8   moveinbox   14   channel     3   process 3   boxwidth 4    channelwidth 4   |   -   | 14   4|  4   4| 19   4| 14   4|  9   4|  3   3|  3   3|
+ 647      8   moveoutbox    6   channel    30   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|
+ 648      8   getbox   11   shiftbox    11    channelwidth 1    putbox11  channel80         |   -   | 11   1|  1   1| 11   1|  1   1|  1   1|  5   0| 16   1|
+ 649      8   moveoutbox    6   channel    35   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|
+ 650      8   moveinbox   14   channel     8   process 1   boxwidth 4    channelwidth 4   | 14   4|  0   0| 19   4| 14   4|  9   4|  9   4|  2   2| 13   3|
+ 651      8   moveoutbox    6   channel    40   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|
+ 652      8   moveinbox   14   channel     9   process 2   boxwidth 4    channelwidth 5   | 14   4|  4   4| 19   4| 14   4|  9   4|  2   2| 10   0|  0   0|
+ 653      8   moveoutbox    7   channel    51   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  6   1|  2   2| 15   0|  5   0| 17   2| 12   2|
+ 654      8   moveinbox   14   channel    98   process 3   boxwidth 4    channelwidth 4   | 14   4| 19   4|  3   3| 14   4|  9   4|  0   0| 16   1|  3   3|
+ 655      8   moveoutbox    7   channel    61   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 20   0|  5   0| 17   2| 12   2|  7   2|
+ 656      8   moveinbox   14   channel    33   process 1   boxwidth 4    channelwidth 4   | 14   4|  8   3|  3   3|  2   2| 15   0|  0   0| 17   2| 13   3|
+ 657      8   moveinbox   14   channel    34   process 2   boxwidth 4    channelwidth 5   | 14   4|  8   3|  4   4|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 658      8   moveoutbox    7   channel     6   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  2   2|  7   2| 12   2| 16   1|  2   2|
+ 659      8   moveinbox   14   channel    38   process 3   boxwidth 4    channelwidth 4   | 14   4|  8   3|  4   4|  4   4| 15   0|  0   0| 17   2| 13   3|
+ 660      8   moveoutbox    8   channel    37   process 4    boxwidth 3    channelwidth 3   |   -   | 13   3|  2   2| 15   0|  0   0| 17   2| 13   3|  8   3|
+ 661      8   moveoutbox    9   channel    54   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 662      8   moveinbox   14   channel    13   process 1   boxwidth 4    channelwidth 4   | 14   4| 13   3| 19   4| 14   4| 12   2|  4   4| 10   0|  0   0|
+ 663      8   moveinbox   14   channel    14   process 2   boxwidth 4    channelwidth 5   | 14   4|  4   4| 13   3| 19   4|  7   2| 14   4| 10   0|  0   0|
+------------------------------------------------------------------------------------
+startDepalletize
+ 664      8   moveoutbox   10   channel    90   process 4    boxwidth 0    channelwidth 1   |   -   |   -   |   -   | 11   1|  7   2|  1   1|  6   1|  1   1|
+ 665      8   moveinbox    3   channel    39   process 3   boxwidth 3    channelwidth 5   |  3   3|  9   4| 11   1|  9   4| 15   0|  0   0| 17   2| 13   3|
+ 666      8   moveinbox    3   channel    22   process 1   boxwidth 3    channelwidth 3   |   -   |  3   3|  3   3| 18   3|  0   0| 13   3|  3   3|  3   3|
+ 667      8   moveinbox    3   channel    54   process 2   boxwidth 3    channelwidth 5   |   -   |  3   3| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 668      8   moveoutbox   10   channel     4   process 6    boxwidth 0    channelwidth 5   |   -   |   -   |  4   4| 19   4| 13   3|  9   4|  2   2|  2   2|
+ 669      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel58         |  4   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 670      8   moveoutbox   11   channel    95   process 5    boxwidth 1    channelwidth 1   |   -   |   -   | 11   1| 10   0|  1   1|  1   1|  6   1| 10   0|
+ 671      8   moveinbox    3   channel    52   process 3   boxwidth 3    channelwidth 3   |  3   3|  8   3|  8   3|  3   3| 15   0|  5   0| 17   2| 18   3|
+ 672      8   moveinbox    3   channel    57   process 1   boxwidth 3    channelwidth 3   |  3   3|  3   3| 15   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 673      8   moveoutbox   12   channel    19   process 4    boxwidth 2    channelwidth 5   |   -   |  9   4| 13   3| 18   3|  9   4|  4   4| 10   0|  0   0|
+ 674      8   moveinbox    3   channel    62   process 2   boxwidth 3    channelwidth 3   |  3   3|  3   3| 20   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 675      8   moveoutbox   12   channel    51   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  6   1|  2   2| 15   0|  5   0| 17   2|
+ 676      8   moveinbox    3   channel     4   process 3   boxwidth 3    channelwidth 5   |   -   |  3   3|  4   4| 19   4| 13   3|  9   4|  2   2|  2   2|
+ 677      8   moveinbox    3   channel     7   process 1   boxwidth 3    channelwidth 3   |  3   3|  7   2|  2   2| 10   0| 16   1| 18   3| 13   3|  8   3|
+ 678      8   moveinbox    3   channel    32   process 2   boxwidth 3    channelwidth 3   |  3   3|  7   2|  0   0| 13   3|  6   1|  8   3|  8   3|  3   3|
+------------------------------------------------------------------------------------
+startDepalletize
+ 679      8   moveoutbox   13   channel    29   process 4    boxwidth 3    channelwidth 5   |   -   | 14   4|  3   3|  2   2|  4   4| 15   0|  0   0| 17   2|
+ 680      8   moveoutbox   14   channel    53   process 6    boxwidth 4    channelwidth 4   |   -   |  9   4|  4   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 681      8   getbox    3   shiftbox     3    channelwidth 3    putbox 3  channel92         |   -   |  3   3| 13   3| 10   0| 16   1|  3   3| 12   2| 12   2|
+ 682      8   moveinbox   16   channel    47   process 3   boxwidth 1    channelwidth 3   | 16   1|  7   2|  4   4|  2   2| 18   3|  8   3|  8   3|  3   3|
+ 683      8   moveinbox   16   channel    41   process 1   boxwidth 1    channelwidth 2   |   -   |   -   |   -   | 16   1|  6   1|  2   2| 15   0|  0   0|
+ 684      8   moveoutbox   14   channel    54   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |  3   3| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 685      8   moveinbox   16   channel    41   process 2   boxwidth 1    channelwidth 2   |   -   |   -   | 16   1| 16   1|  6   1|  2   2| 15   0|  0   0|
+ 686      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel36         |   -   |  0   0|  9   4| 10   0| 10   0|  7   2|  2   2| 15   0|
+ 687      8   moveoutbox   16   channel     2   process 5    boxwidth 1    channelwidth 3   |   -   |   -   | 13   3| 13   3|  3   3|  8   3|  3   3| 10   0|
+ 688      8   getbox    0   shiftbox     0    channelwidth 5    putbox 0  channel24         |   -   |  0   0|  9   4| 13   3| 18   3| 18   3|  4   4| 15   0|
+ 689      8   moveinbox   16   channel    30   process 3   boxwidth 1    channelwidth 1   |   -   |   -   | 16   1|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 690      8   moveoutbox   17   channel    28   process 4    boxwidth 2    channelwidth 4   |   -   |   -   |  9   4|  3   3| 18   3| 14   4| 15   0|  0   0|
+ 691      8   moveoutbox   17   channel    51   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |   -   |  6   1|  2   2| 15   0|  5   0|
+ 692      8   moveoutbox   18   channel    52   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3|  8   3|  8   3|  3   3| 15   0|  5   0| 17   2|
+ 693      8   moveinbox   16   channel    61   process 1   boxwidth 1    channelwidth 2   |   -   |   -   | 16   1| 20   0|  5   0| 17   2| 12   2|  7   2|
+ 694      8   moveinbox   16   channel     6   process 2   boxwidth 1    channelwidth 2   |   -   |   -   | 16   1|  2   2|  7   2| 12   2| 16   1|  2   2|
+ 695      8   moveoutbox   18   channel    48   process 4    boxwidth 3    channelwidth 4   |   -   |   -   | 13   3| 13   3|  4   4| 15   0|  5   0| 17   2|
+ 696      8   moveinbox   16   channel    90   process 3   boxwidth 1    channelwidth 1   |   -   |   -   | 16   1| 11   1|  7   2|  1   1|  6   1|  1   1|
+ 697      8   moveoutbox   19   channel    49   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 14   4|  9   4| 15   0|  5   0| 17   2| 18   3|
+ 698      8   moveinbox   16   channel    51   process 1   boxwidth 1    channelwidth 2   |   -   |   -   |   -   | 16   1|  6   1|  2   2| 15   0|  5   0|
+ 699      8   moveoutbox   19   channel    53   process 5    boxwidth 4    channelwidth 4   |   -   |   -   |  9   4|  4   4| 15   0|  5   0| 17   2| 18   3|
+ 700      8   moveinbox   16   channel    56   process 2   boxwidth 1    channelwidth 2   |   -   | 16   1|  6   1| 15   0|  5   0| 17   2| 12   2|  7   2|
+ 701      8   moveoutbox   19   channel    54   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  3   3| 15   0|  5   0| 17   2| 18   3|
+------------------------------------------------------------------------------------
+startDepalletize
+ 702      8   moveinbox   17   channel    51   process 3   boxwidth 2    channelwidth 2   |   -   |   -   | 17   2| 16   1|  6   1|  2   2| 15   0|  5   0|
+ 703      8   moveinbox   17   channel     1   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2|  6   1|  2   2|  7   2| 12   2|  7   2|  2   2|
+ 704      8   moveinbox   17   channel    91   process 2   boxwidth 2    channelwidth 2   |   -   | 17   2|  6   1|  6   1|  7   2|  6   1| 12   2|  2   2|
+ 705      8   moveinbox   17   channel    54   process 3   boxwidth 2    channelwidth 5   |   -   |   -   | 17   2|  3   3| 15   0|  5   0| 17   2| 18   3|
+ 706      8   getbox    9   shiftbox     9    channelwidth 4    putbox 9  channel58         |  9   4|  4   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 707      8   moveinbox   17   channel    26   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2|  0   0|  8   3|  7   2| 12   2| 12   2|  2   2|
+ 708      8   moveoutbox    1   channel    60   process 6    boxwidth 1    channelwidth 1   |   -   | 20   0|  5   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+ 709      8   getbox   10   shiftbox    10    channelwidth 5    putbox10  channel94         | 10   0| 16   1|  1   1| 18   3| 19   4| 14   4|  4   4| 20   0|
+ 710      8   moveoutbox    2   channel    71   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0|  5   0| 16   1| 12   2|  7   2|  7   2|
+ 711      8   getbox   10   shiftbox    10    channelwidth 3    putbox10  channel97         |   -   | 10   0| 16   1|  8   3| 13   3| 18   3|  3   3| 20   0|
+ 712      8   moveinbox   17   channel    31   process 2   boxwidth 2    channelwidth 2   |   -   | 17   2| 11   1|  0   0|  7   2| 12   2| 12   2|  2   2|
+ 713      8   moveoutbox    2   channel    76   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0|  5   0| 16   1| 12   2|  7   2|  7   2|
+ 714      8   moveinbox   17   channel    41   process 3   boxwidth 2    channelwidth 2   |   -   | 17   2| 16   1| 16   1|  6   1|  2   2| 15   0|  0   0|
+ 715      8   moveoutbox    3   channel    98   process 6    boxwidth 3    channelwidth 4   |   -   | 14   4| 19   4|  3   3| 14   4|  9   4|  0   0| 16   1|
+ 716      8   moveinbox   17   channel    96   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2|  2   2| 12   2|  6   1| 16   1|  2   2|  7   2|
+ 717      8   moveoutbox    3   channel    32   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3|  7   2|  0   0| 13   3|  6   1|  8   3|  8   3|
+ 718      8   moveinbox   17   channel    66   process 2   boxwidth 2    channelwidth 2   |   -   | 17   2| 20   0|  5   0| 17   2| 12   2|  7   2|  7   2|
+ 719      8   moveoutbox    3   channel    47   process 4    boxwidth 3    channelwidth 3   |   -   | 16   1|  7   2|  4   4|  2   2| 18   3|  8   3|  8   3|
+ 720      8   moveinbox   17   channel    61   process 3   boxwidth 2    channelwidth 2   |   -   | 17   2| 16   1| 20   0|  5   0| 17   2| 12   2|  7   2|
+ 721      8   moveoutbox    4   channel    59   process 6    boxwidth 4    channelwidth 5   |   -   | 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+------------------------------------------------------------------------------------
+startDepalletize
+ 722      8   moveinbox   19   channel     6   process 1   boxwidth 4    channelwidth 2   |   -   | 19   4| 16   1|  2   2|  7   2| 12   2| 16   1|  2   2|
+ 723      8   moveoutbox    5   channel    51   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |   -   | 17   2| 16   1|  6   1|  2   2| 15   0|
+ 724      8   moveinbox   19   channel    28   process 2   boxwidth 4    channelwidth 4   |   -   | 19   4|  9   4|  3   3| 18   3| 14   4| 15   0|  0   0|
+ 725      8   moveinbox   19   channel    48   process 3   boxwidth 4    channelwidth 4   |   -   | 19   4| 13   3| 13   3|  4   4| 15   0|  5   0| 17   2|
+ 726      8   moveoutbox    6   channel    35   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|
+ 727      8   moveinbox   19   channel    49   process 1   boxwidth 4    channelwidth 5   |   -   | 19   4| 14   4|  9   4| 15   0|  5   0| 17   2| 18   3|
+ 728      8   moveoutbox    6   channel    40   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|
+ 729      8   moveoutbox    7   channel    56   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 16   1|  6   1| 15   0|  5   0| 17   2| 12   2|
+ 730      8   moveinbox   19   channel    53   process 2   boxwidth 4    channelwidth 4   |   -   | 19   4|  9   4|  4   4| 15   0|  5   0| 17   2| 18   3|
+ 731      8   moveoutbox    7   channel    96   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2|  2   2| 12   2|  6   1| 16   1|  2   2|
+ 732      8   moveinbox   19   channel    54   process 3   boxwidth 4    channelwidth 5   |   -   | 19   4| 17   2|  3   3| 15   0|  5   0| 17   2| 18   3|
+ 733      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel45         |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|  6   1|
+ 734      8   moveinbox   19   channel    43   process 1   boxwidth 4    channelwidth 4   | 19   4|  9   4| 11   1|  8   3| 15   0|  0   0| 17   2| 13   3|
+ 735      8   moveoutbox    8   channel    42   process 4    boxwidth 3    channelwidth 3   |   -   | 13   3|  3   3| 15   0|  0   0| 17   2| 13   3|  8   3|
+ 736      8   moveoutbox    7   channel    66   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2| 20   0|  5   0| 17   2| 12   2|  7   2|
+ 737      8   moveoutbox    9   channel    59   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 738      8   moveinbox   19   channel    89   process 2   boxwidth 4    channelwidth 5   | 19   4|  9   4| 16   1|  4   4| 19   4|  7   2|  9   4|  4   4|
+ 739      8   moveinbox   19   channel    99   process 3   boxwidth 4    channelwidth 5   | 19   4| 19   4| 14   4|  9   4|  0   0| 16   1|  3   3|  3   3|
+ 740      8   moveinbox   19   channel    18   process 1   boxwidth 4    channelwidth 4   | 19   4|  9   4|  4   4| 19   4|  7   2|  3   3| 10   0|  0   0|
+ 741      8   moveoutbox   10   channel    95   process 5    boxwidth 0    channelwidth 1   |   -   |   -   |   -   | 11   1| 10   0|  1   1|  1   1|  6   1|
+ 742      8   moveinbox   19   channel    44   process 2   boxwidth 4    channelwidth 5   | 19   4| 19   4|  9   4|  4   4| 15   0|  0   0| 17   2| 18   3|
+ 743      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel63         |  4   4| 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 744      8   moveoutbox   10   channel     2   process 6    boxwidth 0    channelwidth 3   |   -   |   -   |   -   | 13   3| 13   3|  3   3|  8   3|  3   3|
+ 745      8   moveinbox   19   channel    59   process 3   boxwidth 4    channelwidth 5   |   -   | 19   4| 15   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 746      8   moveinbox   19   channel    24   process 1   boxwidth 4    channelwidth 5   | 19   4|  0   0|  9   4| 13   3| 18   3| 18   3|  4   4| 15   0|
+------------------------------------------------------------------------------------
+startDepalletize
+ 747      8   moveoutbox   11   channel    15   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 11   1| 10   0|  1   1|  1   1| 10   0|  0   0|
+ 748      8   moveoutbox   12   channel    92   process 5    boxwidth 2    channelwidth 3   |   -   |   -   |  3   3| 13   3| 10   0| 16   1|  3   3| 12   2|
+ 749      8   moveinbox    7   channel     3   process 2   boxwidth 2    channelwidth 4   |  7   2| 14   4|  4   4| 19   4| 14   4|  9   4|  3   3|  3   3|
+ 750      8   moveoutbox   12   channel    56   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 16   1|  6   1| 15   0|  5   0| 17   2|
+ 751      8   moveinbox    7   channel    51   process 3   boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 17   2| 16   1|  6   1|  2   2| 15   0|
+ 752      8   moveinbox    7   channel     2   process 1   boxwidth 2    channelwidth 3   |   -   |   -   |  7   2| 13   3| 13   3|  3   3|  8   3|  3   3|
+ 753      8   moveinbox    7   channel    71   process 2   boxwidth 2    channelwidth 2   |   -   |  7   2| 20   0|  5   0| 16   1| 12   2|  7   2|  7   2|
+ 754      8   moveinbox    7   channel    56   process 3   boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 16   1|  6   1| 15   0|  5   0| 17   2|
+ 755      8   moveinbox    7   channel    76   process 1   boxwidth 2    channelwidth 2   |   -   |  7   2| 20   0|  5   0| 16   1| 12   2|  7   2|  7   2|
+ 756      8   moveinbox    7   channel    51   process 2   boxwidth 2    channelwidth 2   |   -   |  7   2|  7   2| 17   2| 16   1|  6   1|  2   2| 15   0|
+ 757      8   moveoutbox   13   channel     8   process 5    boxwidth 3    channelwidth 4   |   -   | 14   4|  0   0| 19   4| 14   4|  9   4|  9   4|  2   2|
+ 758      8   moveoutbox   14   channel    58   process 6    boxwidth 4    channelwidth 4   |   -   |  9   4|  4   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 759      8   moveinbox    7   channel    96   process 3   boxwidth 2    channelwidth 2   |   -   |  7   2| 17   2|  2   2| 12   2|  6   1| 16   1|  2   2|
+ 760      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel91         |   -   |  2   2| 17   2|  6   1|  6   1|  7   2|  6   1| 12   2|
+ 761      8   moveinbox    7   channel    66   process 1   boxwidth 2    channelwidth 2   |   -   |  7   2| 17   2| 20   0|  5   0| 17   2| 12   2|  7   2|
+ 762      8   moveoutbox   14   channel    59   process 4    boxwidth 4    channelwidth 5   |   -   |   -   | 19   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+------------------------------------------------------------------------------------
+startDepalletize
+ 763      8   moveinbox   12   channel     2   process 2   boxwidth 2    channelwidth 3   |   -   | 12   2|  7   2| 13   3| 13   3|  3   3|  8   3|  3   3|
+ 764      8   moveoutbox   15   channel    36   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |  0   0|  9   4| 10   0| 10   0|  7   2|  2   2|
+ 765      8   moveinbox   12   channel    92   process 3   boxwidth 2    channelwidth 3   |   -   | 12   2|  3   3| 13   3| 10   0| 16   1|  3   3| 12   2|
+ 766      8   moveoutbox   15   channel    24   process 6    boxwidth 0    channelwidth 5   |   -   | 19   4|  0   0|  9   4| 13   3| 18   3| 18   3|  4   4|
+ 767      8   moveoutbox   16   channel    80   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 11   1|  1   1| 11   1|  1   1|  1   1|  5   0|
+ 768      8   moveinbox   12   channel    56   process 1   boxwidth 2    channelwidth 2   |   -   | 12   2|  7   2| 16   1|  6   1| 15   0|  5   0| 17   2|
+ 769      8   moveinbox   12   channel    59   process 2   boxwidth 2    channelwidth 5   |   -   | 12   2| 19   4| 15   0|  5   0| 17   2| 18   3| 19   4|
+ 770      8   moveinbox   12   channel    36   process 3   boxwidth 2    channelwidth 2   |   -   | 12   2|  0   0|  9   4| 10   0| 10   0|  7   2|  2   2|
+ 771      8   moveoutbox   17   channel    29   process 5    boxwidth 2    channelwidth 5   |   -   |   -   | 14   4|  3   3|  2   2|  4   4| 15   0|  0   0|
+ 772      8   moveoutbox   17   channel    52   process 6    boxwidth 2    channelwidth 3   |   -   |   -   |  3   3|  8   3|  8   3|  3   3| 15   0|  5   0|
+ 773      8   moveinbox   12   channel    11   process 1   boxwidth 2    channelwidth 2   | 12   2|  2   2|  7   2| 12   2| 12   2|  2   2| 10   0|  0   0|
+ 774      8   moveinbox   12   channel    16   process 2   boxwidth 2    channelwidth 2   | 12   2|  2   2| 12   2|  7   2| 12   2|  2   2| 10   0|  0   0|
+ 775      8   moveoutbox   18   channel    44   process 4    boxwidth 3    channelwidth 5   |   -   | 19   4| 19   4|  9   4|  4   4| 15   0|  0   0| 17   2|
+ 776      8   moveoutbox   18   channel    49   process 5    boxwidth 3    channelwidth 5   |   -   |   -   | 19   4| 14   4|  9   4| 15   0|  5   0| 17   2|
+ 777      8   moveinbox   12   channel    29   process 3   boxwidth 2    channelwidth 5   |   -   | 12   2| 14   4|  3   3|  2   2|  4   4| 15   0|  0   0|
+ 778      8   moveoutbox   19   channel    58   process 6    boxwidth 4    channelwidth 4   |   -   |   -   |  9   4|  4   4| 15   0|  5   0| 17   2| 18   3|
+ 779      8   moveoutbox   19   channel    59   process 4    boxwidth 4    channelwidth 5   |   -   |   -   | 12   2| 19   4| 15   0|  5   0| 17   2| 18   3|
+ 780      8   moveinbox   12   channel    52   process 1   boxwidth 2    channelwidth 3   |   -   | 12   2|  3   3|  8   3|  8   3|  3   3| 15   0|  5   0|
+ 781      8   moveinbox   12   channel    81   process 2   boxwidth 2    channelwidth 2   | 12   2| 20   0|  5   0| 16   1| 12   2| 12   2|  7   2|  2   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 782      8   moveinbox   15   channel    49   process 3   boxwidth 0    channelwidth 5   |   -   | 15   0| 19   4| 14   4|  9   4| 15   0|  5   0| 17   2|
+ 783      8   moveinbox   15   channel    35   process 1   boxwidth 0    channelwidth 1   |   -   |   -   | 15   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 784      8   moveinbox   15   channel    40   process 2   boxwidth 0    channelwidth 1   |   -   |   -   | 15   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 785      8   moveoutbox   20   channel    94   process 4    boxwidth 0    channelwidth 5   |   -   | 10   0| 16   1|  1   1| 18   3| 19   4| 14   4|  4   4|
+ 786      8   getbox    9   shiftbox     9    channelwidth 4    putbox 9  channel63         |  9   4|  4   4| 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 787      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel64         |  4   4| 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 788      8   moveoutbox   20   channel    97   process 5    boxwidth 0    channelwidth 3   |   -   |   -   | 10   0| 16   1|  8   3| 13   3| 18   3|  3   3|
+ 789      8   moveinbox   15   channel    95   process 3   boxwidth 0    channelwidth 1   |   -   |   -   | 15   0| 11   1| 10   0|  1   1|  1   1|  6   1|
+ 790      8   moveoutbox    1   channel    65   process 6    boxwidth 1    channelwidth 1   |   -   | 20   0|  5   0| 11   1| 11   1|  6   1|  6   1|  1   1|
+ 791      8   moveinbox   15   channel    30   process 1   boxwidth 0    channelwidth 1   |   -   | 15   0| 16   1|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 792      8   moveoutbox    2   channel    81   process 4    boxwidth 2    channelwidth 2   |   -   | 12   2| 20   0|  5   0| 16   1| 12   2| 12   2|  7   2|
+ 793      8   moveinbox   15   channel    90   process 2   boxwidth 0    channelwidth 1   |   -   | 15   0| 16   1| 11   1|  7   2|  1   1|  6   1|  1   1|
+ 794      8   moveoutbox    2   channel    86   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0| 10   0| 16   1| 12   2| 12   2|  7   2|
+ 795      8   moveinbox   15   channel    35   process 3   boxwidth 0    channelwidth 1   |   -   | 15   0| 15   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 796      8   moveoutbox    3   channel    99   process 6    boxwidth 3    channelwidth 5   |   -   | 19   4| 19   4| 14   4|  9   4|  0   0| 16   1|  3   3|
+ 797      8   moveinbox   15   channel    40   process 1   boxwidth 0    channelwidth 1   |   -   | 15   0| 15   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 798      8   moveoutbox    3   channel    22   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3|  3   3| 18   3|  0   0| 13   3|  3   3|
+ 799      8   moveinbox   15   channel    95   process 2   boxwidth 0    channelwidth 1   |   -   | 15   0| 15   0| 11   1| 10   0|  1   1|  1   1|  6   1|
+ 800      8   moveoutbox    3   channel     3   process 5    boxwidth 3    channelwidth 4   |   -   |  7   2| 14   4|  4   4| 19   4| 14   4|  9   4|  3   3|
+ 801      8   moveinbox   15   channel    15   process 3   boxwidth 0    channelwidth 1   |   -   | 15   0| 11   1| 10   0|  1   1|  1   1| 10   0|  0   0|
+------------------------------------------------------------------------------------
+startDepalletize
+ 802      8   moveoutbox    4   channel    68   process 6    boxwidth 4    channelwidth 4   |   -   | 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 803      8   moveoutbox    5   channel    52   process 4    boxwidth 0    channelwidth 3   |   -   |   -   | 12   2|  3   3|  8   3|  8   3|  3   3| 15   0|
+ 804      8   moveinbox    2   channel    80   process 1   boxwidth 2    channelwidth 1   |   -   |  2   2| 11   1|  1   1| 11   1|  1   1|  1   1|  5   0|
+ 805      8   moveinbox    2   channel    58   process 2   boxwidth 2    channelwidth 4   |   -   |  2   2|  9   4|  4   4| 15   0|  5   0| 17   2| 18   3|
+ 806      8   moveoutbox    6   channel    45   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|
+ 807      8   moveoutbox    6   channel    95   process 6    boxwidth 1    channelwidth 1   |   -   |   -   | 15   0| 15   0| 11   1| 10   0|  1   1|  1   1|
+ 808      8   moveinbox    2   channel    59   process 3   boxwidth 2    channelwidth 5   |   -   |  2   2| 12   2| 19   4| 15   0|  5   0| 17   2| 18   3|
+ 809      8   moveinbox    2   channel    97   process 1   boxwidth 2    channelwidth 3   |   -   |  2   2| 10   0| 16   1|  8   3| 13   3| 18   3|  3   3|
+ 810      8   moveinbox    2   channel    86   process 2   boxwidth 2    channelwidth 2   |   -   |  2   2| 20   0| 10   0| 16   1| 12   2| 12   2|  7   2|
+ 811      8   moveoutbox    7   channel    61   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2| 16   1| 20   0|  5   0| 17   2| 12   2|
+ 812      8   moveinbox    2   channel    22   process 3   boxwidth 2    channelwidth 3   |   -   |  2   2|  3   3|  3   3| 18   3|  0   0| 13   3|  3   3|
+ 813      8   moveoutbox    7   channel    71   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 20   0|  5   0| 16   1| 12   2|  7   2|
+ 814      8   moveinbox    2   channel    52   process 1   boxwidth 2    channelwidth 3   |   -   |  2   2| 12   2|  3   3|  8   3|  8   3|  3   3| 15   0|
+ 815      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel 5         |   -   |  1   1|  6   1| 10   0| 10   0|  1   1|  6   1|  6   1|
+ 816      8   moveinbox    2   channel    21   process 2   boxwidth 2    channelwidth 2   |  2   2|  7   2| 12   2| 12   2| 19   4|  2   2| 10   0|  0   0|
+ 817      8   moveoutbox    7   channel    76   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 20   0|  5   0| 16   1| 12   2|  7   2|
+ 818      8   moveinbox    2   channel    46   process 3   boxwidth 2    channelwidth 2   |  2   2|  7   2|  7   2|  2   2| 17   2|  7   2|  7   2|  2   2|
+ 819      8   moveoutbox    8   channel    57   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3|  3   3| 15   0|  5   0| 17   2| 18   3|  8   3|
+ 820      8   moveoutbox    9   channel    64   process 6    boxwidth 4    channelwidth 5   |   -   |  4   4| 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 821      8   moveinbox    2   channel    61   process 1   boxwidth 2    channelwidth 2   |   -   |  2   2| 17   2| 16   1| 20   0|  5   0| 17   2| 12   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 822      8   moveoutbox    9   channel    68   process 4    boxwidth 4    channelwidth 4   |   -   |   -   | 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 823      8   moveinbox   20   channel    71   process 2   boxwidth 0    channelwidth 2   |   -   | 20   0|  7   2| 20   0|  5   0| 16   1| 12   2|  7   2|
+ 824      8   moveinbox   20   channel    45   process 3   boxwidth 0    channelwidth 1   |   -   | 20   0|  1   1| 15   0|  0   0| 11   1| 11   1|  6   1|
+ 825      8   moveinbox   20   channel    95   process 1   boxwidth 0    channelwidth 1   |   -   | 20   0| 15   0| 15   0| 11   1| 10   0|  1   1|  1   1|
+ 826      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel11         |  0   0| 12   2|  2   2|  7   2| 12   2| 12   2|  2   2| 10   0|
+ 827      8   moveinbox   20   channel    76   process 2   boxwidth 0    channelwidth 2   |   -   | 20   0|  7   2| 20   0|  5   0| 16   1| 12   2|  7   2|
+ 828      8   moveoutbox   11   channel    20   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 11   1| 10   0|  1   1| 10   0|  0   0| 11   1|
+ 829      8   moveoutbox   12   channel    92   process 5    boxwidth 2    channelwidth 3   |   -   |   -   | 12   2|  3   3| 13   3| 10   0| 16   1|  3   3|
+ 830      8   moveinbox   20   channel    68   process 3   boxwidth 0    channelwidth 4   |   -   | 20   0| 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 831      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel16         |  0   0| 12   2|  2   2| 12   2|  7   2| 12   2|  2   2| 10   0|
+ 832      8   moveinbox   20   channel     0   process 1   boxwidth 0    channelwidth 1   | 20   0| 11   1|  1   1|  1   1|  6   1| 11   1|  1   1|  1   1|
+ 833      8   moveoutbox   12   channel    91   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 17   2|  6   1|  6   1|  7   2|  6   1|
+ 834      8   moveoutbox   12   channel    61   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 17   2| 16   1| 20   0|  5   0| 17   2|
+ 835      8   moveinbox   20   channel    67   process 2   boxwidth 0    channelwidth 3   | 20   0|  8   3| 20   0|  5   0| 17   2| 18   3|  8   3|  8   3|
+ 836      8   moveinbox   20   channel    20   process 3   boxwidth 0    channelwidth 1   |   -   | 20   0| 11   1| 10   0|  1   1| 10   0|  0   0| 11   1|
+ 837      8   moveoutbox   13   channel    33   process 5    boxwidth 3    channelwidth 4   |   -   | 14   4|  8   3|  3   3|  2   2| 15   0|  0   0| 17   2|
+ 838      8   moveinbox   20   channel    92   process 1   boxwidth 0    channelwidth 3   |   -   | 20   0| 12   2|  3   3| 13   3| 10   0| 16   1|  3   3|
+ 839      8   moveoutbox   14   channel    63   process 6    boxwidth 4    channelwidth 4   |   -   |  9   4|  4   4| 20   0|  5   0| 17   2| 18   3| 19   4|
+ 840      8   moveoutbox   14   channel    64   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4| 20   0|  5   0| 17   2| 18   3| 19   4|
+ 841      8   moveinbox   20   channel    91   process 2   boxwidth 0    channelwidth 2   |   -   | 20   0|  2   2| 17   2|  6   1|  6   1|  7   2|  6   1|
+ 842      8   moveoutbox   15   channel    51   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |  7   2|  7   2| 17   2| 16   1|  6   1|  2   2|
+ 843      8   moveinbox   20   channel    61   process 3   boxwidth 0    channelwidth 2   |   -   | 20   0|  2   2| 17   2| 16   1| 20   0|  5   0| 17   2|
+ 844      8   moveoutbox   15   channel    52   process 6    boxwidth 0    channelwidth 3   |   -   |   -   |  2   2| 12   2|  3   3|  8   3|  8   3|  3   3|
+ 845      8   moveoutbox   16   channel    98   process 4    boxwidth 1    channelwidth 4   |   -   |   -   | 14   4| 19   4|  3   3| 14   4|  9   4|  0   0|
+ 846      8   moveoutbox   17   channel    48   process 5    boxwidth 2    channelwidth 4   |   -   |   -   | 19   4| 13   3| 13   3|  4   4| 15   0|  5   0|
+ 847      8   moveoutbox   17   channel    56   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2|  7   2| 16   1|  6   1| 15   0|  5   0|
+ 848      8   moveoutbox   18   channel    53   process 4    boxwidth 3    channelwidth 4   |   -   |   -   | 19   4|  9   4|  4   4| 15   0|  5   0| 17   2|
+ 849      8   moveoutbox   18   channel    54   process 5    boxwidth 3    channelwidth 5   |   -   |   -   | 19   4| 17   2|  3   3| 15   0|  5   0| 17   2|
+ 850      8   moveoutbox   19   channel    63   process 6    boxwidth 4    channelwidth 4   |   -   |   -   |  9   4|  4   4| 20   0|  5   0| 17   2| 18   3|
+ 851      8   moveoutbox   19   channel    64   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  4   4| 20   0|  5   0| 17   2| 18   3|
+ 852      8   getbox   14   shiftbox    14    channelwidth 4    putbox14  channel68         |   -   | 14   4| 20   0| 20   0|  5   0| 17   2| 18   3| 19   4|
+ 853      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel94         |   -   |  4   4| 10   0| 16   1|  1   1| 18   3| 19   4| 14   4|
+ 854      8   moveoutbox    1   channel    70   process 6    boxwidth 1    channelwidth 1   |   -   | 20   0|  5   0| 16   1| 11   1|  6   1|  6   1|  1   1|
+ 855      8   getbox   17   shiftbox    17    channelwidth 2    putbox17  channel61         |   -   | 17   2| 20   0|  2   2| 17   2| 16   1| 20   0|  5   0|
+ 856      8   getbox   18   shiftbox    18    channelwidth 4    putbox18  channel63         |   -   |   -   | 18   3|  9   4|  4   4| 20   0|  5   0| 17   2|
+ 857      8   moveoutbox    2   channel    46   process 4    boxwidth 2    channelwidth 2   |   -   |  2   2|  7   2|  7   2|  2   2| 17   2|  7   2|  7   2|
+ 858      8   moveoutbox    2   channel     1   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2|  6   1|  2   2|  7   2| 12   2|  7   2|
+ 859      8   moveoutbox    3   channel     2   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 12   2|  7   2| 13   3| 13   3|  3   3|  8   3|
+ 860      8   moveoutbox    3   channel    97   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |  2   2| 10   0| 16   1|  8   3| 13   3| 18   3|
+ 861      8   moveoutbox    3   channel    99   process 5    boxwidth 3    channelwidth 5   |   -   |   -   | 19   4| 19   4| 14   4|  9   4|  0   0| 16   1|
+------------------------------------------------------------------------------------
+startDepalletize
+ 862      8   moveoutbox    4   channel    69   process 6    boxwidth 4    channelwidth 5   |   -   | 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|  9   4|
+ 863      8   moveoutbox    5   channel    80   process 4    boxwidth 0    channelwidth 1   |   -   |   -   |  2   2| 11   1|  1   1| 11   1|  1   1|  1   1|
+ 864      8   moveinbox    3   channel    64   process 3   boxwidth 3    channelwidth 5   |   -   |   -   |  3   3|  4   4| 20   0|  5   0| 17   2| 18   3|
+ 865      8   moveoutbox    6   channel    45   process 5    boxwidth 1    channelwidth 1   |   -   |   -   | 20   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 866      8   moveinbox    3   channel    72   process 1   boxwidth 3    channelwidth 3   |  3   3|  8   3| 20   0|  5   0| 16   1| 18   3|  8   3|  8   3|
+ 867      8   moveoutbox    6   channel     5   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1|  6   1| 10   0| 10   0|  1   1|  6   1|
+ 868      8   moveinbox    3   channel    52   process 2   boxwidth 3    channelwidth 3   |   -   |  3   3|  2   2| 12   2|  3   3|  8   3|  8   3|  3   3|
+ 869      8   moveoutbox    6   channel    91   process 4    boxwidth 1    channelwidth 2   |   -   |   -   | 20   0|  2   2| 17   2|  6   1|  6   1|  7   2|
+ 870      8   moveinbox    3   channel    98   process 3   boxwidth 3    channelwidth 4   |   -   |  3   3| 14   4| 19   4|  3   3| 14   4|  9   4|  0   0|
+ 871      8   moveoutbox    7   channel    66   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 17   2| 20   0|  5   0| 17   2| 12   2|
+ 872      8   moveinbox    3   channel    48   process 1   boxwidth 3    channelwidth 4   |   -   |  3   3| 19   4| 13   3| 13   3|  4   4| 15   0|  5   0|
+ 873      8   moveoutbox    7   channel    81   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 20   0|  5   0| 16   1| 12   2| 12   2|
+ 874      8   moveinbox    3   channel    53   process 2   boxwidth 3    channelwidth 4   |   -   |  3   3| 19   4|  9   4|  4   4| 15   0|  5   0| 17   2|
+ 875      8   moveoutbox    7   channel    86   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 20   0| 10   0| 16   1| 12   2| 12   2|
+ 876      8   moveinbox    3   channel    54   process 3   boxwidth 3    channelwidth 5   |   -   |  3   3| 19   4| 17   2|  3   3| 15   0|  5   0| 17   2|
+ 877      8   moveoutbox    8   channel    62   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3|  3   3| 20   0|  5   0| 17   2| 18   3|  8   3|
+ 878      8   moveinbox    3   channel    63   process 1   boxwidth 3    channelwidth 4   |   -   |  3   3| 18   3|  9   4|  4   4| 20   0|  5   0| 17   2|
+ 879      8   moveoutbox    9   channel    69   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 20   0|  5   0| 17   2| 18   3| 19   4| 14   4|
+ 880      8   moveinbox    3   channel    64   process 2   boxwidth 3    channelwidth 5   |   -   |  3   3|  3   3|  4   4| 20   0|  5   0| 17   2| 18   3|
+------------------------------------------------------------------------------------
+startDepalletize
+ 881      8   moveinbox    6   channel     2   process 3   boxwidth 1    channelwidth 3   |   -   |  6   1| 12   2|  7   2| 13   3| 13   3|  3   3|  8   3|
+ 882      8   moveoutbox   10   channel    11   process 5    boxwidth 0    channelwidth 2   |   -   |  0   0| 12   2|  2   2|  7   2| 12   2| 12   2|  2   2|
+ 883      8   moveinbox    6   channel    51   process 1   boxwidth 1    channelwidth 2   |   -   |  6   1|  7   2|  7   2| 17   2| 16   1|  6   1|  2   2|
+ 884      8   moveoutbox   10   channel    16   process 6    boxwidth 0    channelwidth 2   |   -   |  0   0| 12   2|  2   2| 12   2|  7   2| 12   2|  2   2|
+ 885      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel73         |  4   4| 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|  9   4|
+ 886      8   moveinbox    6   channel    56   process 2   boxwidth 1    channelwidth 2   |   -   |  6   1| 12   2|  7   2| 16   1|  6   1| 15   0|  5   0|
+ 887      8   moveinbox    6   channel     1   process 3   boxwidth 1    channelwidth 2   |   -   |  6   1| 17   2|  6   1|  2   2|  7   2| 12   2|  7   2|
+ 888      8   moveoutbox   11   channel    25   process 4    boxwidth 1    channelwidth 1   |   -   |   -   |  6   1| 10   0|  1   1| 15   0|  0   0| 11   1|
+ 889      8   moveoutbox   12   channel    66   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  7   2| 17   2| 20   0|  5   0| 17   2|
+ 890      8   moveoutbox   12   channel    81   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 12   2| 20   0|  5   0| 16   1| 12   2|
+ 891      8   moveinbox    6   channel    97   process 1   boxwidth 1    channelwidth 3   |   -   |  6   1|  2   2| 10   0| 16   1|  8   3| 13   3| 18   3|
+ 892      8   moveoutbox   12   channel    86   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |   -   |  2   2| 20   0| 10   0| 16   1| 12   2|
+ 893      8   moveinbox    6   channel    99   process 2   boxwidth 1    channelwidth 5   |   -   |  6   1| 19   4| 19   4| 14   4|  9   4|  0   0| 16   1|
+ 894      8   moveinbox    6   channel    80   process 3   boxwidth 1    channelwidth 1   |   -   |  6   1|  2   2| 11   1|  1   1| 11   1|  1   1|  1   1|
+ 895      8   moveoutbox   13   channel    34   process 5    boxwidth 3    channelwidth 5   |   -   | 14   4|  8   3|  4   4|  4   4| 15   0|  0   0| 17   2|
+ 896      8   moveoutbox   14   channel    94   process 6    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4| 10   0| 16   1|  1   1| 18   3| 19   4|
+ 897      8   moveinbox    6   channel    66   process 1   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1|  7   2| 17   2| 20   0|  5   0| 17   2|
+ 898      8   moveinbox    6   channel    81   process 2   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1| 12   2| 20   0|  5   0| 16   1| 12   2|
+ 899      8   moveoutbox   14   channel    69   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |   -   | 20   0|  5   0| 17   2| 18   3| 19   4|
+ 900      8   moveinbox    6   channel    86   process 3   boxwidth 1    channelwidth 2   |   -   |   -   |  6   1|  2   2| 20   0| 10   0| 16   1| 12   2|
+ 901      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel41         |   -   |  0   0| 17   2| 16   1| 16   1|  6   1|  2   2| 15   0|
+ 902      8   moveoutbox   16   channel    99   process 4    boxwidth 1    channelwidth 5   |   -   |   -   |  6   1| 19   4| 19   4| 14   4|  9   4|  0   0|
+ 903      8   getbox    0   shiftbox     0    channelwidth 4    putbox 0  channel28         |   -   |  0   0| 19   4|  9   4|  3   3| 18   3| 14   4| 15   0|
+ 904      8   moveoutbox   17   channel    44   process 5    boxwidth 2    channelwidth 5   |   -   |   -   | 19   4| 19   4|  9   4|  4   4| 15   0|  0   0|
+ 905      8   moveoutbox   17   channel    49   process 6    boxwidth 2    channelwidth 5   |   -   |   -   | 15   0| 19   4| 14   4|  9   4| 15   0|  5   0|
+ 906      8   moveoutbox   18   channel    58   process 4    boxwidth 3    channelwidth 4   |   -   |   -   |  2   2|  9   4|  4   4| 15   0|  5   0| 17   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 907      8   moveoutbox   18   channel    59   process 5    boxwidth 3    channelwidth 5   |   -   |   -   |  2   2| 12   2| 19   4| 15   0|  5   0| 17   2|
+ 908      8   moveoutbox   19   channel    68   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 14   4| 20   0| 20   0|  5   0| 17   2| 18   3|
+ 909      8   moveinbox   18   channel    69   process 3   boxwidth 3    channelwidth 5   |   -   |   -   | 18   3| 20   0|  5   0| 17   2| 18   3| 19   4|
+ 910      8   moveinbox   18   channel    45   process 1   boxwidth 3    channelwidth 1   |   -   | 18   3| 20   0|  1   1| 15   0|  0   0| 11   1| 11   1|
+ 911      8   moveoutbox   19   channel    94   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  4   4| 10   0| 16   1|  1   1| 18   3|
+ 912      8   moveinbox   18   channel    69   process 2   boxwidth 3    channelwidth 5   |   -   | 18   3| 18   3| 20   0|  5   0| 17   2| 18   3| 19   4|
+ 913      8   moveinbox   18   channel    99   process 3   boxwidth 3    channelwidth 5   |   -   | 18   3|  6   1| 19   4| 19   4| 14   4|  9   4|  0   0|
+ 914      8   getbox    9   shiftbox     9    channelwidth 4    putbox 9  channel73         |  9   4|  4   4| 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|
+ 915      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel74         |  4   4| 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|  9   4|
+ 916      8   moveinbox   18   channel    44   process 1   boxwidth 3    channelwidth 5   |   -   | 18   3| 19   4| 19   4|  9   4|  4   4| 15   0|  0   0|
+ 917      8   moveinbox   18   channel    94   process 2   boxwidth 3    channelwidth 5   |   -   |   -   | 18   3|  4   4| 10   0| 16   1|  1   1| 18   3|
+ 918      8   moveoutbox    1   channel    75   process 6    boxwidth 1    channelwidth 1   |   -   | 20   0|  5   0| 16   1| 11   1|  6   1|  6   1|  1   1|
+ 919      8   getbox    5   shiftbox     5    channelwidth 2    putbox 5  channel61         |   -   |  5   0| 17   2| 20   0|  2   2| 17   2| 16   1| 20   0|
+ 920      8   moveinbox   18   channel    49   process 3   boxwidth 3    channelwidth 5   |   -   | 18   3| 15   0| 19   4| 14   4|  9   4| 15   0|  5   0|
+ 921      8   moveinbox   18   channel    58   process 1   boxwidth 3    channelwidth 4   |   -   | 18   3|  2   2|  9   4|  4   4| 15   0|  5   0| 17   2|
+ 922      8   moveinbox   18   channel    59   process 2   boxwidth 3    channelwidth 5   |   -   | 18   3|  2   2| 12   2| 19   4| 15   0|  5   0| 17   2|
+ 923      8   moveoutbox    2   channel    26   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2|  0   0|  8   3|  7   2| 12   2| 12   2|
+ 924      8   getbox   17   shiftbox    17    channelwidth 4    putbox17  channel63         |   -   | 17   2|  3   3| 18   3|  9   4|  4   4| 20   0|  5   0|
+ 925      8   moveoutbox    2   channel    31   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2| 11   1|  0   0|  7   2| 12   2| 12   2|
+ 926      8   moveoutbox    3   channel    22   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  2   2|  3   3|  3   3| 18   3|  0   0| 13   3|
+ 927      8   moveoutbox    3   channel     3   process 4    boxwidth 3    channelwidth 4   |   -   |   -   |  7   2| 14   4|  4   4| 19   4| 14   4|  9   4|
+ 928      8   moveoutbox    3   channel    92   process 5    boxwidth 3    channelwidth 3   |   -   |   -   | 20   0| 12   2|  3   3| 13   3| 10   0| 16   1|
+ 929      8   moveoutbox    4   channel    78   process 6    boxwidth 4    channelwidth 4   |   -   | 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|  9   4|
+ 930      8   moveoutbox    5   channel    48   process 4    boxwidth 0    channelwidth 4   |   -   |   -   |  3   3| 19   4| 13   3| 13   3|  4   4| 15   0|
+ 931      8   moveoutbox    6   channel     5   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1|  6   1| 10   0| 10   0|  1   1|
+ 932      8   moveoutbox    7   channel    71   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0|  7   2| 20   0|  5   0| 16   1| 12   2|
+ 933      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel50         |   -   |  1   1| 15   0|  5   0| 11   1| 11   1|  6   1|  6   1|
+ 934      8   moveoutbox    7   channel    76   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 20   0|  7   2| 20   0|  5   0| 16   1| 12   2|
+ 935      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel55         |   -   |  1   1| 15   0|  5   0| 11   1| 11   1|  6   1|  6   1|
+ 936      8   moveoutbox    7   channel    46   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2|  7   2|  7   2|  2   2| 17   2|  7   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 937      8   moveoutbox    8   channel     7   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3|  7   2|  2   2| 10   0| 16   1| 18   3| 13   3|
+ 938      8   moveoutbox    9   channel    74   process 6    boxwidth 4    channelwidth 5   |   -   |  4   4| 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|
+ 939      8   moveinbox    7   channel    68   process 3   boxwidth 2    channelwidth 4   |   -   |  7   2| 14   4| 20   0| 20   0|  5   0| 17   2| 18   3|
+ 940      8   moveinbox    7   channel    91   process 1   boxwidth 2    channelwidth 2   |   -   |  7   2| 20   0|  2   2| 17   2|  6   1|  6   1|  7   2|
+ 941      8   moveoutbox    9   channel     3   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |   -   |  7   2| 14   4|  4   4| 19   4| 14   4|
+ 942      8   moveinbox    7   channel    66   process 2   boxwidth 2    channelwidth 2   |   -   |  7   2|  6   1|  7   2| 17   2| 20   0|  5   0| 17   2|
+ 943      8   moveinbox    7   channel    81   process 3   boxwidth 2    channelwidth 2   |   -   |  7   2|  6   1| 12   2| 20   0|  5   0| 16   1| 12   2|
+ 944      8   getbox    0   shiftbox     0    channelwidth 2    putbox 0  channel21         |  0   0|  2   2|  7   2| 12   2| 12   2| 19   4|  2   2| 10   0|
+ 945      8   getbox    0   shiftbox     0    channelwidth 5    putbox 0  channel 9         |  0   0| 14   4|  4   4| 19   4| 14   4|  9   4|  2   2| 10   0|
+ 946      8   moveoutbox   11   channel    30   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 15   0| 16   1|  1   1| 15   0|  0   0| 11   1|
+ 947      8   moveoutbox   12   channel    81   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2|  6   1| 12   2| 20   0|  5   0| 16   1|
+ 948      8   moveinbox    7   channel    86   process 1   boxwidth 2    channelwidth 2   |   -   |  7   2|  6   1|  2   2| 20   0| 10   0| 16   1| 12   2|
+ 949      8   moveoutbox   12   channel    26   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |   -   | 17   2|  0   0|  8   3|  7   2| 12   2|
+ 950      8   moveinbox    7   channel     3   process 2   boxwidth 2    channelwidth 4   |   -   |   -   |  7   2|  7   2| 14   4|  4   4| 19   4| 14   4|
+ 951      8   moveoutbox   12   channel    86   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2|  6   1|  2   2| 20   0| 10   0| 16   1|
+ 952      8   moveinbox    7   channel    94   process 3   boxwidth 2    channelwidth 5   |   -   |  7   2| 18   3|  4   4| 10   0| 16   1|  1   1| 18   3|
+ 953      8   moveinbox    7   channel    31   process 1   boxwidth 2    channelwidth 2   |   -   |  7   2| 17   2| 11   1|  0   0|  7   2| 12   2| 12   2|
+ 954      8   moveoutbox   13   channel    38   process 5    boxwidth 3    channelwidth 4   |   -   | 14   4|  8   3|  4   4|  4   4| 15   0|  0   0| 17   2|
+ 955      8   moveoutbox   14   channel    73   process 6    boxwidth 4    channelwidth 4   |   -   |  9   4|  4   4| 20   0|  5   0| 16   1| 18   3| 19   4|
+ 956      8   moveinbox    7   channel    26   process 2   boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 17   2|  0   0|  8   3|  7   2| 12   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 957      8   moveoutbox   14   channel    74   process 4    boxwidth 4    channelwidth 5   |   -   |   -   |  4   4| 20   0|  5   0| 16   1| 18   3| 19   4|
+ 958      8   moveinbox   12   channel    22   process 3   boxwidth 2    channelwidth 3   |   -   | 12   2|  2   2|  3   3|  3   3| 18   3|  0   0| 13   3|
+ 959      8   moveoutbox   15   channel    41   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |  0   0| 17   2| 16   1| 16   1|  6   1|  2   2|
+ 960      8   moveinbox   12   channel    92   process 1   boxwidth 2    channelwidth 3   |   -   | 12   2| 20   0| 12   2|  3   3| 13   3| 10   0| 16   1|
+ 961      8   moveinbox   12   channel    48   process 2   boxwidth 2    channelwidth 4   |   -   | 12   2|  3   3| 19   4| 13   3| 13   3|  4   4| 15   0|
+ 962      8   moveoutbox   15   channel    28   process 6    boxwidth 0    channelwidth 4   |   -   |   -   |  0   0| 19   4|  9   4|  3   3| 18   3| 14   4|
+ 963      8   moveoutbox   16   channel    92   process 4    boxwidth 1    channelwidth 3   |   -   |   -   | 12   2| 20   0| 12   2|  3   3| 13   3| 10   0|
+ 964      8   moveinbox   12   channel    71   process 3   boxwidth 2    channelwidth 2   |   -   | 12   2| 20   0|  7   2| 20   0|  5   0| 16   1| 12   2|
+ 965      8   moveoutbox   17   channel    33   process 5    boxwidth 2    channelwidth 4   |   -   |   -   | 14   4|  8   3|  3   3|  2   2| 15   0|  0   0|
+ 966      8   moveoutbox   17   channel    53   process 6    boxwidth 2    channelwidth 4   |   -   |   -   |  3   3| 19   4|  9   4|  4   4| 15   0|  5   0|
+ 967      8   moveinbox   12   channel    76   process 1   boxwidth 2    channelwidth 2   |   -   | 12   2| 20   0|  7   2| 20   0|  5   0| 16   1| 12   2|
+ 968      8   moveinbox   12   channel    46   process 2   boxwidth 2    channelwidth 2   |   -   | 12   2|  2   2|  7   2|  7   2|  2   2| 17   2|  7   2|
+ 969      8   moveoutbox   18   channel    64   process 4    boxwidth 3    channelwidth 5   |   -   |   -   |  3   3|  3   3|  4   4| 20   0|  5   0| 17   2|
+ 970      8   moveinbox   12   channel     3   process 3   boxwidth 2    channelwidth 4   |   -   | 12   2|  7   2|  7   2| 14   4|  4   4| 19   4| 14   4|
+ 971      8   moveoutbox   18   channel    97   process 5    boxwidth 3    channelwidth 3   |   -   |   -   |  6   1|  2   2| 10   0| 16   1|  8   3| 13   3|
+ 972      8   moveinbox   12   channel    81   process 1   boxwidth 2    channelwidth 2   |   -   | 12   2|  7   2|  6   1| 12   2| 20   0|  5   0| 16   1|
+ 973      8   moveoutbox   19   channel    69   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 18   3| 18   3| 20   0|  5   0| 17   2| 18   3|
+ 974      8   moveinbox   12   channel    26   process 2   boxwidth 2    channelwidth 2   |   -   | 12   2|  7   2| 17   2|  0   0|  8   3|  7   2| 12   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 975      8   moveoutbox   19   channel    73   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |  9   4|  4   4| 20   0|  5   0| 16   1| 18   3|
+ 976      8   moveoutbox   19   channel    74   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |   -   |  4   4| 20   0|  5   0| 16   1| 18   3|
+ 977      8   moveinbox   14   channel    86   process 3   boxwidth 4    channelwidth 2   |   -   | 14   4|  7   2|  6   1|  2   2| 20   0| 10   0| 16   1|
+ 978      8   moveinbox   14   channel    28   process 1   boxwidth 4    channelwidth 4   |   -   | 14   4|  0   0| 19   4|  9   4|  3   3| 18   3| 14   4|
+ 979      8   moveinbox   14   channel    33   process 2   boxwidth 4    channelwidth 4   |   -   | 14   4| 14   4|  8   3|  3   3|  2   2| 15   0|  0   0|
+ 980      8   moveoutbox   20   channel    61   process 4    boxwidth 0    channelwidth 2   |   -   |   -   |  5   0| 17   2| 20   0|  2   2| 17   2| 16   1|
+ 981      8   getbox   14   shiftbox    14    channelwidth 4    putbox14  channel 3         |   -   | 14   4| 12   2|  7   2|  7   2| 14   4|  4   4| 19   4|
+ 982      8   moveoutbox    1   channel    85   process 6    boxwidth 1    channelwidth 1   |   -   | 20   0| 10   0| 16   1| 11   1| 11   1|  6   1|  1   1|
+ 983      8   moveinbox   14   channel    53   process 3   boxwidth 4    channelwidth 4   |   -   | 14   4|  3   3| 19   4|  9   4|  4   4| 15   0|  5   0|
+ 984      8   getbox    5   shiftbox     5    channelwidth 4    putbox 5  channel63         |   -   |  5   0| 17   2|  3   3| 18   3|  9   4|  4   4| 20   0|
+ 985      8   moveoutbox    2   channel     6   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 19   4| 16   1|  2   2|  7   2| 12   2| 16   1|
+ 986      8   moveinbox   14   channel    74   process 1   boxwidth 4    channelwidth 5   |   -   |   -   | 14   4|  4   4| 20   0|  5   0| 16   1| 18   3|
+ 987      8   moveinbox   14   channel    64   process 2   boxwidth 4    channelwidth 5   |   -   | 14   4|  3   3|  3   3|  4   4| 20   0|  5   0| 17   2|
+ 988      8   moveoutbox    2   channel     4   process 5    boxwidth 2    channelwidth 5   |   -   |   -   |  3   3|  4   4| 19   4| 13   3|  9   4|  2   2|
+ 989      8   moveoutbox    3   channel    52   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3|  2   2| 12   2|  3   3|  8   3|  8   3|
+ 990      8   moveinbox   14   channel    69   process 3   boxwidth 4    channelwidth 5   |   -   | 14   4| 18   3| 18   3| 20   0|  5   0| 17   2| 18   3|
+ 991      8   moveinbox   14   channel    73   process 1   boxwidth 4    channelwidth 4   |   -   | 14   4|  9   4|  4   4| 20   0|  5   0| 16   1| 18   3|
+ 992      8   moveinbox   14   channel    74   process 2   boxwidth 4    channelwidth 5   |   -   | 14   4| 14   4|  4   4| 20   0|  5   0| 16   1| 18   3|
+ 993      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel 2         |   -   |  8   3|  6   1| 12   2|  7   2| 13   3| 13   3|  3   3|
+ 994      8   moveoutbox    4   channel    79   process 6    boxwidth 4    channelwidth 5   |   -   | 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|  9   4|
+ 995      8   moveinbox   14   channel     4   process 3   boxwidth 4    channelwidth 5   |   -   | 14   4|  3   3|  4   4| 19   4| 13   3|  9   4|  2   2|
+------------------------------------------------------------------------------------
+startDepalletize
+ 996      8   moveinbox   19   channel    19   process 1   boxwidth 4    channelwidth 5   | 19   4|  9   4| 13   3| 18   3|  9   4|  4   4| 10   0|  0   0|
+ 997      8   moveinbox   19   channel     8   process 2   boxwidth 4    channelwidth 4   | 19   4| 14   4|  0   0| 19   4| 14   4|  9   4|  9   4|  2   2|
+ 998      8   moveinbox   19   channel    24   process 3   boxwidth 4    channelwidth 5   | 19   4| 19   4|  0   0|  9   4| 13   3| 18   3| 18   3|  4   4|
+ 999      8   moveoutbox    5   channel    56   process 4    boxwidth 0    channelwidth 2   |   -   |   -   |  6   1| 12   2|  7   2| 16   1|  6   1| 15   0|
+1000      8   getbox    0   shiftbox     0    channelwidth 4    putbox 0  channel18         |  0   0| 19   4|  9   4|  4   4| 19   4|  7   2|  3   3| 10   0|
+1001      8   moveinbox   19   channel    29   process 1   boxwidth 4    channelwidth 5   | 19   4| 12   2| 14   4|  3   3|  2   2|  4   4| 15   0|  0   0|
+1002      8   moveoutbox    6   channel    50   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  5   0| 11   1| 11   1|  6   1|
+1003      8   moveinbox   19   channel    98   process 2   boxwidth 4    channelwidth 4   | 19   4|  3   3| 14   4| 19   4|  3   3| 14   4|  9   4|  0   0|
+1004      8   moveoutbox    6   channel    55   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0|  5   0| 11   1| 11   1|  6   1|
+1005      8   moveinbox   19   channel    54   process 3   boxwidth 4    channelwidth 5   | 19   4|  3   3| 19   4| 17   2|  3   3| 15   0|  5   0| 17   2|
+1006      8   moveinbox   19   channel    63   process 1   boxwidth 4    channelwidth 4   | 19   4|  5   0| 17   2|  3   3| 18   3|  9   4|  4   4| 20   0|
+1007      8   moveoutbox    7   channel     1   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  6   1| 17   2|  6   1|  2   2|  7   2| 12   2|
+1008      8   moveoutbox    7   channel    91   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 20   0|  2   2| 17   2|  6   1|  6   1|
+1009      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel90         |   -   |  1   1| 15   0| 16   1| 11   1|  7   2|  1   1|  6   1|
+1010      8   moveinbox   19   channel    34   process 2   boxwidth 4    channelwidth 5   | 19   4| 14   4|  8   3|  4   4|  4   4| 15   0|  0   0| 17   2|
+1011      8   moveoutbox    7   channel    46   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2|  2   2|  7   2|  7   2|  2   2| 17   2|
+1012      8   moveoutbox    8   channel    67   process 5    boxwidth 3    channelwidth 3   |   -   | 20   0|  8   3| 20   0|  5   0| 17   2| 18   3|  8   3|
+1013      8   moveinbox   19   channel    99   process 3   boxwidth 4    channelwidth 5   | 19   4| 18   3|  6   1| 19   4| 19   4| 14   4|  9   4|  0   0|
+1014      8   moveoutbox    9   channel    78   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|
+1015      8   moveoutbox    9   channel    79   process 4    boxwidth 4    channelwidth 5   |   -   |   -   | 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|
+------------------------------------------------------------------------------------
+startDepalletize
+1016      8   moveoutbox   10   channel    21   process 5    boxwidth 0    channelwidth 2   |   -   |  0   0|  2   2|  7   2| 12   2| 12   2| 19   4|  2   2|
+1017      8   moveinbox    9   channel    49   process 3   boxwidth 4    channelwidth 5   |  9   4| 18   3| 15   0| 19   4| 14   4|  9   4| 15   0|  5   0|
+1018      8   moveoutbox   10   channel     9   process 6    boxwidth 0    channelwidth 5   |   -   |  0   0| 14   4|  4   4| 19   4| 14   4|  9   4|  2   2|
+1019      8   moveinbox    9   channel    44   process 1   boxwidth 4    channelwidth 5   |  9   4| 18   3| 19   4| 19   4|  9   4|  4   4| 15   0|  0   0|
+1020      8   moveoutbox   11   channel    35   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 15   0| 15   0|  1   1| 15   0|  0   0| 11   1|
+1021      8   moveinbox    9   channel    78   process 2   boxwidth 4    channelwidth 4   |   -   |  9   4| 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|
+1022      8   moveoutbox   12   channel    31   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 17   2| 11   1|  0   0|  7   2| 12   2|
+1023      8   moveoutbox   12   channel    71   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 20   0|  7   2| 20   0|  5   0| 16   1|
+1024      8   moveinbox    9   channel    79   process 3   boxwidth 4    channelwidth 5   |   -   |  9   4| 20   0|  5   0| 16   1| 18   3| 19   4| 14   4|
+1025      8   moveoutbox   12   channel    76   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 20   0|  7   2| 20   0|  5   0| 16   1|
+1026      8   moveinbox    9   channel    58   process 1   boxwidth 4    channelwidth 4   |  9   4| 18   3|  2   2|  9   4|  4   4| 15   0|  5   0| 17   2|
+1027      8   moveoutbox   13   channel    39   process 5    boxwidth 3    channelwidth 5   |   -   |  3   3|  9   4| 11   1|  9   4| 15   0|  0   0| 17   2|
+1028      8   moveinbox    9   channel    59   process 2   boxwidth 4    channelwidth 5   |  9   4| 18   3|  2   2| 12   2| 19   4| 15   0|  5   0| 17   2|
+1029      8   moveoutbox   14   channel    28   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 14   4|  0   0| 19   4|  9   4|  3   3| 18   3|
+1030      8   moveinbox    9   channel    68   process 3   boxwidth 4    channelwidth 4   |  9   4|  7   2| 14   4| 20   0| 20   0|  5   0| 17   2| 18   3|
+1031      8   moveoutbox   14   channel    78   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |  9   4| 20   0|  5   0| 16   1| 18   3| 19   4|
+1032      8   moveinbox    9   channel    94   process 1   boxwidth 4    channelwidth 5   |  9   4|  7   2| 18   3|  4   4| 10   0| 16   1|  1   1| 18   3|
+1033      8   moveinbox    9   channel    48   process 2   boxwidth 4    channelwidth 4   |  9   4| 12   2|  3   3| 19   4| 13   3| 13   3|  4   4| 15   0|
+1034      8   moveoutbox   15   channel    56   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |   -   |  6   1| 12   2|  7   2| 16   1|  6   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1035      8   moveinbox   10   channel    28   process 3   boxwidth 0    channelwidth 4   |   -   | 10   0| 14   4|  0   0| 19   4|  9   4|  3   3| 18   3|
+1036      8   moveoutbox   15   channel    48   process 6    boxwidth 0    channelwidth 4   |   -   |  9   4| 12   2|  3   3| 19   4| 13   3| 13   3|  4   4|
+1037      8   moveinbox   10   channel     5   process 1   boxwidth 0    channelwidth 1   |   -   |   -   | 10   0|  1   1|  6   1| 10   0| 10   0|  1   1|
+1038      8   moveoutbox   16   channel    81   process 4    boxwidth 1    channelwidth 2   |   -   |   -   | 12   2|  7   2|  6   1| 12   2| 20   0|  5   0|
+1039      8   moveinbox   10   channel    25   process 2   boxwidth 0    channelwidth 1   |   -   | 10   0|  6   1| 10   0|  1   1| 15   0|  0   0| 11   1|
+1040      8   moveoutbox   17   channel    54   process 5    boxwidth 2    channelwidth 5   |   -   | 19   4|  3   3| 19   4| 17   2|  3   3| 15   0|  5   0|
+1041      8   moveoutbox   17   channel    66   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2|  6   1|  7   2| 17   2| 20   0|  5   0|
+1042      8   moveinbox   10   channel    56   process 3   boxwidth 0    channelwidth 2   |   -   |   -   | 10   0|  6   1| 12   2|  7   2| 16   1|  6   1|
+1043      8   moveinbox   10   channel     5   process 1   boxwidth 0    channelwidth 1   |   -   | 10   0| 10   0|  1   1|  6   1| 10   0| 10   0|  1   1|
+1044      8   moveoutbox   18   channel    68   process 4    boxwidth 3    channelwidth 4   |   -   |  9   4|  7   2| 14   4| 20   0| 20   0|  5   0| 17   2|
+1045      8   moveinbox   10   channel    30   process 2   boxwidth 0    channelwidth 1   |   -   | 10   0| 15   0| 16   1|  1   1| 15   0|  0   0| 11   1|
+1046      8   moveoutbox   18   channel    94   process 5    boxwidth 3    channelwidth 5   |   -   |  9   4|  7   2| 18   3|  4   4| 10   0| 16   1|  1   1|
+1047      8   moveinbox   10   channel    41   process 3   boxwidth 0    channelwidth 2   |   -   | 10   0|  0   0| 17   2| 16   1| 16   1|  6   1|  2   2|
+1048      8   moveoutbox   19   channel     3   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 14   4| 12   2|  7   2|  7   2| 14   4|  4   4|
+1049      8   moveoutbox   19   channel    78   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |   -   |  9   4| 20   0|  5   0| 16   1| 18   3|
+1050      8   moveinbox   10   channel    92   process 1   boxwidth 0    channelwidth 3   |   -   | 10   0| 12   2| 20   0| 12   2|  3   3| 13   3| 10   0|
+1051      8   moveinbox   10   channel    97   process 2   boxwidth 0    channelwidth 3   |   -   | 10   0|  6   1|  2   2| 10   0| 16   1|  8   3| 13   3|
+1052      8   moveinbox   10   channel    61   process 3   boxwidth 0    channelwidth 2   |   -   | 10   0|  5   0| 17   2| 20   0|  2   2| 17   2| 16   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1053      8   getbox   14   shiftbox    14    channelwidth 5    putbox14  channel79         |   -   | 14   4|  9   4| 20   0|  5   0| 16   1| 18   3| 19   4|
+1054      8   moveoutbox   20   channel    63   process 4    boxwidth 0    channelwidth 4   |   -   | 19   4|  5   0| 17   2|  3   3| 18   3|  9   4|  4   4|
+1055      8   moveinbox   17   channel     6   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2| 19   4| 16   1|  2   2|  7   2| 12   2| 16   1|
+1056      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel21         |   -   |  2   2|  0   0|  2   2|  7   2| 12   2| 12   2| 19   4|
+1057      8   moveinbox   17   channel    78   process 2   boxwidth 2    channelwidth 4   |   -   |   -   | 17   2|  9   4| 20   0|  5   0| 16   1| 18   3|
+1058      8   moveoutbox    1   channel     0   process 6    boxwidth 1    channelwidth 1   |   -   | 20   0| 11   1|  1   1|  1   1|  6   1| 11   1|  1   1|
+1059      8   moveoutbox    2   channel    96   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  7   2| 17   2|  2   2| 12   2|  6   1| 16   1|
+1060      8   moveinbox   17   channel    52   process 3   boxwidth 2    channelwidth 3   |   -   | 17   2|  3   3|  2   2| 12   2|  3   3|  8   3|  8   3|
+1061      8   getbox    5   shiftbox     5    channelwidth 2    putbox 5  channel81         |   -   |   -   |  5   0| 12   2|  7   2|  6   1| 12   2| 20   0|
+1062      8   moveinbox   17   channel     1   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2|  6   1| 17   2|  6   1|  2   2|  7   2| 12   2|
+1063      8   moveoutbox    2   channel     8   process 5    boxwidth 2    channelwidth 4   |   -   | 19   4| 14   4|  0   0| 19   4| 14   4|  9   4|  9   4|
+1064      8   moveinbox   17   channel    91   process 2   boxwidth 2    channelwidth 2   |   -   | 17   2|  7   2| 20   0|  2   2| 17   2|  6   1|  6   1|
+1065      8   moveoutbox    3   channel     2   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  8   3|  6   1| 12   2|  7   2| 13   3| 13   3|
+1066      8   moveinbox   17   channel    46   process 3   boxwidth 2    channelwidth 2   |   -   | 17   2| 12   2|  2   2|  7   2|  7   2|  2   2| 17   2|
+1067      8   moveinbox   17   channel    31   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2|  7   2| 17   2| 11   1|  0   0|  7   2| 12   2|
+1068      8   getbox   10   shiftbox    10    channelwidth 4    putbox10  channel18         | 10   0|  0   0| 19   4|  9   4|  4   4| 19   4|  7   2|  3   3|
+1069      8   moveoutbox    4   channel    83   process 6    boxwidth 4    channelwidth 4   |   -   | 20   0|  5   0| 16   1| 18   3| 13   3| 14   4|  9   4|
+1070      8   getbox   18   shiftbox    18    channelwidth 4    putbox18  channel28         |   -   | 18   3| 10   0| 14   4|  0   0| 19   4|  9   4|  3   3|
+1071      8   moveoutbox    5   channel    49   process 4    boxwidth 0    channelwidth 5   |   -   |  9   4| 18   3| 15   0| 19   4| 14   4|  9   4| 15   0|
+1072      8   moveinbox   17   channel    71   process 2   boxwidth 2    channelwidth 2   |   -   | 17   2| 12   2| 20   0|  7   2| 20   0|  5   0| 16   1|
+1073      8   moveoutbox    6   channel    50   process 5    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 15   0|  5   0| 11   1| 11   1|
+1074      8   moveinbox   17   channel    76   process 3   boxwidth 2    channelwidth 2   |   -   | 17   2| 12   2| 20   0|  7   2| 20   0|  5   0| 16   1|
+1075      8   moveoutbox    6   channel    55   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |   -   |  1   1| 15   0|  5   0| 11   1| 11   1|
+1076      8   moveoutbox    6   channel    91   process 4    boxwidth 1    channelwidth 2   |   -   |   -   | 17   2|  7   2| 20   0|  2   2| 17   2|  6   1|
+1077      8   moveinbox   17   channel    56   process 1   boxwidth 2    channelwidth 2   |   -   | 17   2| 10   0|  6   1| 12   2|  7   2| 16   1|  6   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1078      8   moveinbox    4   channel    81   process 2   boxwidth 4    channelwidth 2   |   -   |  4   4|  5   0| 12   2|  7   2|  6   1| 12   2| 20   0|
+1079      8   moveinbox    4   channel     3   process 3   boxwidth 4    channelwidth 4   |   -   |  4   4| 14   4| 12   2|  7   2|  7   2| 14   4|  4   4|
+1080      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel36         |   -   |  2   2| 12   2|  0   0|  9   4| 10   0| 10   0|  7   2|
+1081      8   moveinbox    4   channel    78   process 1   boxwidth 4    channelwidth 4   |   -   |  4   4| 17   2|  9   4| 20   0|  5   0| 16   1| 18   3|
+1082      8   moveoutbox    8   channel    72   process 5    boxwidth 3    channelwidth 3   |   -   |  3   3|  8   3| 20   0|  5   0| 16   1| 18   3|  8   3|
+1083      8   getbox   12   shiftbox    12    channelwidth 2    putbox12  channel26         |   -   | 12   2| 12   2|  7   2| 17   2|  0   0|  8   3|  7   2|
+1084      8   moveinbox    4   channel    38   process 2   boxwidth 4    channelwidth 4   |  4   4| 14   4|  8   3|  4   4|  4   4| 15   0|  0   0| 17   2|
+1085      8   moveinbox    4   channel    33   process 3   boxwidth 4    channelwidth 4   |  4   4| 14   4| 14   4|  8   3|  3   3|  2   2| 15   0|  0   0|
+1086      8   moveinbox    4   channel    53   process 1   boxwidth 4    channelwidth 4   |  4   4| 14   4|  3   3| 19   4|  9   4|  4   4| 15   0|  5   0|
+1087      8   getbox   12   shiftbox    12    channelwidth 2    putbox12  channel 1         |   -   | 12   2| 17   2|  6   1| 17   2|  6   1|  2   2|  7   2|
+1088      8   moveoutbox    9   channel     8   process 6    boxwidth 4    channelwidth 4   |   -   |   -   | 19   4| 14   4|  0   0| 19   4| 14   4|  9   4|
+1089      8   moveinbox    4   channel    64   process 2   boxwidth 4    channelwidth 5   |  4   4| 14   4|  3   3|  3   3|  4   4| 20   0|  5   0| 17   2|
+1090      8   moveoutbox    9   channel    83   process 4    boxwidth 4    channelwidth 4   |   -   |   -   | 20   0|  5   0| 16   1| 18   3| 13   3| 14   4|
+1091      8   moveinbox    4   channel    69   process 3   boxwidth 4    channelwidth 5   |  4   4| 14   4| 18   3| 18   3| 20   0|  5   0| 17   2| 18   3|
+1092      8   moveoutbox   10   channel    92   process 5    boxwidth 0    channelwidth 3   |   -   |   -   | 10   0| 12   2| 20   0| 12   2|  3   3| 13   3|
+1093      8   moveinbox    4   channel    73   process 1   boxwidth 4    channelwidth 4   |  4   4| 14   4|  9   4|  4   4| 20   0|  5   0| 16   1| 18   3|
+1094      8   getbox    0   shiftbox     0    channelwidth 1    putbox 0  channel10         |   -   |  0   0|  6   1| 10   0|  1   1|  6   1|  1   1| 10   0|
+1095      8   moveoutbox   11   channel    40   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 15   0| 15   0|  1   1| 15   0|  0   0| 11   1|
+1096      8   moveoutbox   12   channel    31   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2|  7   2| 17   2| 11   1|  0   0|  7   2|
+1097      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel11         |   -   |  2   2|  0   0| 12   2|  2   2|  7   2| 12   2| 12   2|
+1098      8   getbox    2   shiftbox     2    channelwidth 2    putbox 2  channel16         |   -   |  2   2|  0   0| 12   2|  2   2| 12   2|  7   2| 12   2|
+1099      8   moveoutbox   13   channel    43   process 5    boxwidth 3    channelwidth 4   |   -   | 19   4|  9   4| 11   1|  8   3| 15   0|  0   0| 17   2|
+1100      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel93         |  4   4| 14   4| 10   0| 16   1| 19   4| 12   2| 13   3| 14   4|
+1101      8   moveoutbox   14   channel    83   process 6    boxwidth 4    channelwidth 4   |   -   |   -   |   -   | 20   0|  5   0| 16   1| 18   3| 13   3|
+1102      8   moveoutbox   15   channel    49   process 4    boxwidth 0    channelwidth 5   |   -   |   -   |  9   4| 18   3| 15   0| 19   4| 14   4|  9   4|
+1103      8   moveoutbox   16   channel    86   process 6    boxwidth 1    channelwidth 2   |   -   |   -   | 14   4|  7   2|  6   1|  2   2| 20   0| 10   0|
+1104      8   getbox    0   shiftbox     0    channelwidth 5    putbox 0  channel29         |  0   0| 19   4| 12   2| 14   4|  3   3|  2   2|  4   4| 15   0|
+1105      8   moveoutbox   17   channel    34   process 4    boxwidth 2    channelwidth 5   |   -   | 19   4| 14   4|  8   3|  4   4|  4   4| 15   0|  0   0|
+1106      8   moveoutbox   17   channel    58   process 5    boxwidth 2    channelwidth 4   |   -   |  9   4| 18   3|  2   2|  9   4|  4   4| 15   0|  5   0|
+1107      8   moveoutbox   18   channel    69   process 6    boxwidth 3    channelwidth 5   |   -   |  4   4| 14   4| 18   3| 18   3| 20   0|  5   0| 17   2|
+1108      8   moveoutbox   18   channel    73   process 4    boxwidth 3    channelwidth 4   |   -   |  4   4| 14   4|  9   4|  4   4| 20   0|  5   0| 16   1|
+1109      8   moveoutbox   19   channel    79   process 5    boxwidth 4    channelwidth 5   |   -   |   -   | 14   4|  9   4| 20   0|  5   0| 16   1| 18   3|
+1110      8   moveoutbox   19   channel    21   process 6    boxwidth 4    channelwidth 2   |   -   |   -   |  2   2|  0   0|  2   2|  7   2| 12   2| 12   2|
+1111      8   getbox    3   shiftbox     3    channelwidth 4    putbox 3  channel18         |  3   3| 10   0|  0   0| 19   4|  9   4|  4   4| 19   4|  7   2|
+1112      8   moveoutbox   20   channel    81   process 6    boxwidth 0    channelwidth 2   |   -   |   -   |  4   4|  5   0| 12   2|  7   2|  6   1| 12   2|
+1113      8   getbox    5   shiftbox     5    channelwidth 2    putbox 5  channel66         |   -   |   -   |  5   0|  7   2|  6   1|  7   2| 17   2| 20   0|
+1114      8   getbox    3   shiftbox     3    channelwidth 4    putbox 3  channel28         |   -   |  3   3| 18   3| 10   0| 14   4|  0   0| 19   4|  9   4|
+1115      8   moveoutbox    1   channel    60   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 20   0|  5   0| 11   1| 11   1|  6   1|  6   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1116      8   moveoutbox    2   channel    51   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  6   1|  7   2|  7   2| 17   2| 16   1|  6   1|
+1117      8   moveinbox    1   channel     8   process 2   boxwidth 1    channelwidth 4   |   -   |  1   1| 19   4| 14   4|  0   0| 19   4| 14   4|  9   4|
+1118      8   moveoutbox    2   channel    41   process 6    boxwidth 2    channelwidth 2   |   -   |   -   | 10   0|  0   0| 17   2| 16   1| 16   1|  6   1|
+1119      8   moveinbox    1   channel    50   process 3   boxwidth 1    channelwidth 1   |   -   |   -   |  1   1|  1   1| 15   0|  5   0| 11   1| 11   1|
+1120      8   moveinbox    1   channel    55   process 1   boxwidth 1    channelwidth 1   |   -   |   -   |  1   1|  1   1| 15   0|  5   0| 11   1| 11   1|
+1121      8   moveinbox    1   channel    83   process 2   boxwidth 1    channelwidth 4   |   -   |   -   |  1   1| 20   0|  5   0| 16   1| 18   3| 13   3|
+1122      8   moveinbox    1   channel    35   process 3   boxwidth 1    channelwidth 1   |   -   |  1   1| 15   0| 15   0|  1   1| 15   0|  0   0| 11   1|
+1123      8   moveinbox    1   channel    66   process 1   boxwidth 1    channelwidth 2   |   -   |  1   1|  5   0|  7   2|  6   1|  7   2| 17   2| 20   0|
+1124      8   getbox   13   shiftbox    13    channelwidth 3    putbox13  channel92         |   -   |   -   | 13   3| 10   0| 12   2| 20   0| 12   2|  3   3|
+1125      8   moveinbox    1   channel    96   process 2   boxwidth 1    channelwidth 2   |   -   |  1   1|  7   2| 17   2|  2   2| 12   2|  6   1| 16   1|
+1126      8   moveoutbox    4   channel    84   process 4    boxwidth 4    channelwidth 5   |   -   | 20   0| 10   0| 16   1| 18   3| 13   3| 14   4|  9   4|
+1127      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel52         |   -   |  8   3| 17   2|  3   3|  2   2| 12   2|  3   3|  8   3|
+1128      8   getbox    5   shiftbox     5    channelwidth 5    putbox 5  channel54         |   -   |  5   0| 19   4|  3   3| 19   4| 17   2|  3   3| 15   0|
+1129      8   moveoutbox    5   channel    53   process 5    boxwidth 0    channelwidth 4   |   -   |  4   4| 14   4|  3   3| 19   4|  9   4|  4   4| 15   0|
+1130      8   moveinbox    1   channel     2   process 3   boxwidth 1    channelwidth 3   |   -   |  1   1|  8   3|  6   1| 12   2|  7   2| 13   3| 13   3|
+1131      8   moveoutbox    6   channel    90   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |  1   1| 15   0| 16   1| 11   1|  7   2|  1   1|
+1132      8   moveinbox    1   channel    50   process 1   boxwidth 1    channelwidth 1   |   -   |  1   1|  1   1|  1   1| 15   0|  5   0| 11   1| 11   1|
+1133      8   moveoutbox    6   channel    56   process 4    boxwidth 1    channelwidth 2   |   -   |   -   | 17   2| 10   0|  6   1| 12   2|  7   2| 16   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1134      8   moveoutbox    6   channel    91   process 5    boxwidth 1    channelwidth 2   |   -   |   -   |   -   | 17   2|  7   2| 20   0|  2   2| 17   2|
+1135      8   moveinbox    2   channel    55   process 2   boxwidth 2    channelwidth 1   |   -   |  2   2|  1   1|  1   1| 15   0|  5   0| 11   1| 11   1|
+1136      8   moveinbox    2   channel    92   process 3   boxwidth 2    channelwidth 3   |   -   |  2   2| 13   3| 10   0| 12   2| 20   0| 12   2|  3   3|
+1137      8   moveoutbox    7   channel    36   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 12   2|  0   0|  9   4| 10   0| 10   0|
+1138      8   moveinbox    2   channel    31   process 1   boxwidth 2    channelwidth 2   |   -   |  2   2| 17   2|  7   2| 17   2| 11   1|  0   0|  7   2|
+1139      8   moveoutbox    7   channel    26   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 12   2|  7   2| 17   2|  0   0|  8   3|
+1140      8   moveinbox    2   channel    83   process 2   boxwidth 2    channelwidth 4   |   -   |  2   2|  1   1| 20   0|  5   0| 16   1| 18   3| 13   3|
+1141      8   moveoutbox    7   channel     1   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 12   2| 17   2|  6   1| 17   2|  6   1|  2   2|
+1142      8   moveinbox    2   channel    91   process 3   boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 17   2|  7   2| 20   0|  2   2| 17   2|
+1143      8   moveoutbox    8   channel    77   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  8   3| 20   0|  5   0| 16   1| 18   3|  8   3|
+1144      8   moveinbox    2   channel    49   process 1   boxwidth 2    channelwidth 5   |   -   |  2   2|  9   4| 18   3| 15   0| 19   4| 14   4|  9   4|
+1145      8   moveoutbox    9   channel     8   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |  1   1| 19   4| 14   4|  0   0| 19   4| 14   4|
+1146      8   moveinbox    2   channel    86   process 2   boxwidth 2    channelwidth 2   |   -   |  2   2| 14   4|  7   2|  6   1|  2   2| 20   0| 10   0|
+1147      8   moveoutbox    9   channel    49   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |  2   2|  9   4| 18   3| 15   0| 19   4| 14   4|
+1148      8   moveinbox    2   channel    79   process 3   boxwidth 2    channelwidth 5   |   -   |  2   2| 14   4|  9   4| 20   0|  5   0| 16   1| 18   3|
+1149      8   moveinbox    2   channel    21   process 1   boxwidth 2    channelwidth 2   |   -   |  2   2|  2   2|  0   0|  2   2|  7   2| 12   2| 12   2|
+1150      8   moveoutbox   10   channel    10   process 6    boxwidth 0    channelwidth 1   |   -   |   -   |  0   0|  6   1| 10   0|  1   1|  6   1|  1   1|
+1151      8   moveoutbox   10   channel    86   process 4    boxwidth 0    channelwidth 2   |   -   |   -   |  2   2| 14   4|  7   2|  6   1|  2   2| 20   0|
+1152      8   moveinbox    2   channel    81   process 2   boxwidth 2    channelwidth 2   |   -   |  2   2|  4   4|  5   0| 12   2|  7   2|  6   1| 12   2|
+------------------------------------------------------------------------------------
+startDepalletize
+1153      8   moveoutbox   11   channel    20   process 5    boxwidth 1    channelwidth 1   |   -   |   -   | 20   0| 11   1| 10   0|  1   1| 10   0|  0   0|
+1154      8   moveinbox    5   channel    51   process 3   boxwidth 0    channelwidth 2   |   -   |  5   0|  6   1|  7   2|  7   2| 17   2| 16   1|  6   1|
+1155      8   moveoutbox   12   channel    11   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2|  0   0| 12   2|  2   2|  7   2| 12   2|
+1156      8   moveinbox    5   channel    40   process 1   boxwidth 0    channelwidth 1   |   -   |  5   0| 15   0| 15   0|  1   1| 15   0|  0   0| 11   1|
+1157      8   moveoutbox   12   channel    16   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2|  0   0| 12   2|  2   2| 12   2|  7   2|
+1158      8   moveinbox    5   channel    60   process 2   boxwidth 0    channelwidth 1   |   -   |  5   0| 20   0|  5   0| 11   1| 11   1|  6   1|  6   1|
+1159      8   moveinbox    5   channel    41   process 3   boxwidth 0    channelwidth 2   |   -   |  5   0| 10   0|  0   0| 17   2| 16   1| 16   1|  6   1|
+1160      8   moveoutbox   12   channel    21   process 5    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2|  2   2|  0   0|  2   2|  7   2| 12   2|
+1161      8   moveoutbox   13   channel    22   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 12   2|  2   2|  3   3|  3   3| 18   3|  0   0|
+1162      8   moveoutbox   14   channel    93   process 4    boxwidth 4    channelwidth 4   |   -   |  4   4| 14   4| 10   0| 16   1| 19   4| 12   2| 13   3|
+1163      8   moveinbox    5   channel    90   process 1   boxwidth 0    channelwidth 1   |   -   |  5   0|  1   1| 15   0| 16   1| 11   1|  7   2|  1   1|
+1164      8   moveinbox    5   channel    56   process 2   boxwidth 0    channelwidth 2   |   -   |  5   0| 17   2| 10   0|  6   1| 12   2|  7   2| 16   1|
+1165      8   moveoutbox   14   channel     8   process 5    boxwidth 4    channelwidth 4   |   -   |   -   |   -   |  1   1| 19   4| 14   4|  0   0| 19   4|
+1166      8   moveinbox    5   channel    91   process 3   boxwidth 0    channelwidth 2   |   -   |  5   0|  2   2| 17   2|  7   2| 20   0|  2   2| 17   2|
+1167      8   moveinbox    5   channel    36   process 1   boxwidth 0    channelwidth 2   |   -   |  5   0|  2   2| 12   2|  0   0|  9   4| 10   0| 10   0|
+1168      8   moveoutbox   15   channel    29   process 6    boxwidth 0    channelwidth 5   |   -   |  0   0| 19   4| 12   2| 14   4|  3   3|  2   2|  4   4|
+1169      8   moveoutbox   15   channel    54   process 4    boxwidth 0    channelwidth 5   |   -   |   -   |  5   0| 19   4|  3   3| 19   4| 17   2|  3   3|
+1170      8   moveinbox    5   channel    26   process 2   boxwidth 0    channelwidth 2   |   -   |  5   0| 12   2| 12   2|  7   2| 17   2|  0   0|  8   3|
+------------------------------------------------------------------------------------
+startDepalletize
+1171      8   moveoutbox   16   channel    61   process 5    boxwidth 1    channelwidth 2   |   -   |   -   | 10   0|  5   0| 17   2| 20   0|  2   2| 17   2|
+1172      8   moveinbox    6   channel     8   process 3   boxwidth 1    channelwidth 4   |   -   |   -   |  6   1|  1   1| 19   4| 14   4|  0   0| 19   4|
+1173      8   moveoutbox   17   channel    59   process 6    boxwidth 2    channelwidth 5   |   -   |  9   4| 18   3|  2   2| 12   2| 19   4| 15   0|  5   0|
+1174      8   moveinbox    6   channel     1   process 1   boxwidth 1    channelwidth 2   |   -   |  6   1| 12   2| 17   2|  6   1| 17   2|  6   1|  2   2|
+1175      8   moveoutbox   17   channel    38   process 4    boxwidth 2    channelwidth 4   |   -   |  4   4| 14   4|  8   3|  4   4|  4   4| 15   0|  0   0|
+1176      8   moveinbox    6   channel    77   process 2   boxwidth 1    channelwidth 3   |   -   |  6   1|  8   3| 20   0|  5   0| 16   1| 18   3|  8   3|
+1177      8   moveoutbox   18   channel    74   process 5    boxwidth 3    channelwidth 5   |   -   |   -   | 14   4| 14   4|  4   4| 20   0|  5   0| 16   1|
+1178      8   moveinbox    6   channel    49   process 3   boxwidth 1    channelwidth 5   |   -   |  6   1|  2   2|  9   4| 18   3| 15   0| 19   4| 14   4|
+1179      8   moveoutbox   18   channel    78   process 6    boxwidth 3    channelwidth 4   |   -   |   -   |  4   4| 17   2|  9   4| 20   0|  5   0| 16   1|
+1180      8   moveinbox    6   channel    10   process 1   boxwidth 1    channelwidth 1   |   -   |  6   1|  0   0|  6   1| 10   0|  1   1|  6   1|  1   1|
+1181      8   moveoutbox   19   channel     8   process 4    boxwidth 4    channelwidth 4   |   -   |   -   |   -   |  6   1|  1   1| 19   4| 14   4|  0   0|
+1182      8   moveinbox    6   channel    86   process 2   boxwidth 1    channelwidth 2   |   -   |  6   1|  2   2| 14   4|  7   2|  6   1|  2   2| 20   0|
+1183      8   moveinbox    6   channel    20   process 3   boxwidth 1    channelwidth 1   |   -   |  6   1| 20   0| 11   1| 10   0|  1   1| 10   0|  0   0|
+1184      8   getbox    7   shiftbox     7    channelwidth 4    putbox 7  channel18         |  7   2|  3   3| 10   0|  0   0| 19   4|  9   4|  4   4| 19   4|
+1185      8   moveinbox    6   channel    11   process 1   boxwidth 1    channelwidth 2   |   -   |  6   1|  2   2|  0   0| 12   2|  2   2|  7   2| 12   2|
+1186      8   moveinbox    6   channel     8   process 2   boxwidth 1    channelwidth 4   |   -   |   -   |  6   1|  6   1|  1   1| 19   4| 14   4|  0   0|
+------------------------------------------------------------------------------------
+startDepalletize
+1187      8   moveoutbox   20   channel    66   process 5    boxwidth 0    channelwidth 2   |   -   |   -   |  1   1|  5   0|  7   2|  6   1|  7   2| 17   2|
+1188      8   getbox    9   shiftbox     9    channelwidth 4    putbox 9  channel28         |   -   |  9   4|  3   3| 18   3| 10   0| 14   4|  0   0| 19   4|
+1189      8   getbox   14   shiftbox    14    channelwidth 5    putbox14  channel49         |   -   | 14   4|  6   1|  2   2|  9   4| 18   3| 15   0| 19   4|
+1190      8   moveoutbox   20   channel    86   process 6    boxwidth 0    channelwidth 2   |   -   |   -   |  6   1|  2   2| 14   4|  7   2|  6   1|  2   2|
+1191      8   moveinbox    8   channel    16   process 3   boxwidth 3    channelwidth 2   |   -   |  8   3|  2   2|  0   0| 12   2|  2   2| 12   2|  7   2|
+1192      8   moveinbox    8   channel    22   process 1   boxwidth 3    channelwidth 3   |   -   |  8   3| 12   2|  2   2|  3   3|  3   3| 18   3|  0   0|
+1193      8   moveoutbox    1   channel    65   process 4    boxwidth 1    channelwidth 1   |   -   |   -   | 20   0|  5   0| 11   1| 11   1|  6   1|  6   1|
+1194      8   moveinbox    8   channel    54   process 2   boxwidth 3    channelwidth 5   |   -   |  8   3|  5   0| 19   4|  3   3| 19   4| 17   2|  3   3|
+1195      8   moveoutbox    2   channel     4   process 5    boxwidth 2    channelwidth 5   |   -   |   -   | 14   4|  3   3|  4   4| 19   4| 13   3|  9   4|
+1196      8   moveoutbox    2   channel     9   process 6    boxwidth 2    channelwidth 5   |   -   |   -   |  0   0| 14   4|  4   4| 19   4| 14   4|  9   4|
+1197      8   moveinbox    8   channel    74   process 3   boxwidth 3    channelwidth 5   |   -   |  8   3| 14   4| 14   4|  4   4| 20   0|  5   0| 16   1|
+1198      8   moveoutbox    3   channel    92   process 4    boxwidth 3    channelwidth 3   |   -   |   -   |  2   2| 13   3| 10   0| 12   2| 20   0| 12   2|
+1199      8   moveinbox    8   channel    78   process 1   boxwidth 3    channelwidth 4   |   -   |  8   3|  4   4| 17   2|  9   4| 20   0|  5   0| 16   1|
+1200      8   moveinbox    8   channel     8   process 2   boxwidth 3    channelwidth 4   |   -   |  8   3|  6   1|  6   1|  1   1| 19   4| 14   4|  0   0|
+1201      8   moveoutbox    3   channel    54   process 5    boxwidth 3    channelwidth 5   |   -   |   -   |  8   3|  5   0| 19   4|  3   3| 19   4| 17   2|
+1202      8   moveinbox    8   channel     4   process 3   boxwidth 3    channelwidth 5   |   -   |  8   3| 14   4|  3   3|  4   4| 19   4| 13   3|  9   4|
+1203      8   moveinbox    8   channel     9   process 1   boxwidth 3    channelwidth 5   |   -   |  8   3|  0   0| 14   4|  4   4| 19   4| 14   4|  9   4|
+1204      8   moveoutbox    4   channel    88   process 4    boxwidth 4    channelwidth 4   |   -   |  9   4| 12   2| 18   3| 19   4|  9   4| 13   3|  9   4|
+1205      8   moveoutbox    5   channel    58   process 5    boxwidth 0    channelwidth 4   |   -   |   -   |  9   4| 18   3|  2   2|  9   4|  4   4| 15   0|
+1206      8   getbox    8   shiftbox     8    channelwidth 3    putbox 8  channel52         |   -   |  8   3|  8   3| 17   2|  3   3|  2   2| 12   2|  3   3|
+1207      8   moveoutbox    6   channel    60   process 6    boxwidth 1    channelwidth 1   |   -   |   -   |  5   0| 20   0|  5   0| 11   1| 11   1|  6   1|
+1208      8   moveinbox    8   channel    92   process 2   boxwidth 3    channelwidth 3   |   -   |  8   3|  2   2| 13   3| 10   0| 12   2| 20   0| 12   2|
+------------------------------------------------------------------------------------
+startDepalletize
+1209      8   moveoutbox    6   channel    51   process 4    boxwidth 1    channelwidth 2   |   -   |   -   |  5   0|  6   1|  7   2|  7   2| 17   2| 16   1|
+1210      8   moveinbox   11   channel    54   process 3   boxwidth 1    channelwidth 5   |   -   | 11   1|  8   3|  5   0| 19   4|  3   3| 19   4| 17   2|
+1211      8   moveinbox   11   channel    21   process 1   boxwidth 1    channelwidth 2   |   -   | 11   1|  2   2|  2   2|  0   0|  2   2|  7   2| 12   2|
+1212      8   moveoutbox    6   channel    41   process 5    boxwidth 1    channelwidth 2   |   -   |   -   |  5   0| 10   0|  0   0| 17   2| 16   1| 16   1|
+1213      8   moveinbox   11   channel    61   process 2   boxwidth 1    channelwidth 2   |   -   | 11   1| 10   0|  5   0| 17   2| 20   0|  2   2| 17   2|
+1214      8   moveoutbox    7   channel    31   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2| 17   2|  7   2| 17   2| 11   1|  0   0|
+1215      8   moveinbox   11   channel    66   process 3   boxwidth 1    channelwidth 2   |   -   | 11   1|  1   1|  5   0|  7   2|  6   1|  7   2| 17   2|
+1216      8   moveoutbox    7   channel    16   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  8   3|  2   2|  0   0| 12   2|  2   2| 12   2|
+1217      8   moveinbox   11   channel    86   process 1   boxwidth 1    channelwidth 2   |   -   | 11   1|  6   1|  2   2| 14   4|  7   2|  6   1|  2   2|
+1218      8   moveinbox   11   channel    65   process 2   boxwidth 1    channelwidth 1   |   -   | 11   1| 20   0|  5   0| 11   1| 11   1|  6   1|  6   1|
+1219      8   moveoutbox    8   channel    12   process 6    boxwidth 3    channelwidth 3   |   -   |   -   | 10   0|  3   3| 10   0|  0   0| 12   2| 13   3|
+1220      8   getbox    1   shiftbox     1    channelwidth 1    putbox 1  channel90         |   -   |  1   1|  5   0|  1   1| 15   0| 16   1| 11   1|  7   2|
+1221      8   moveoutbox    9   channel    84   process 4    boxwidth 4    channelwidth 5   |   -   |   -   | 20   0| 10   0| 16   1| 18   3| 13   3| 14   4|
+1222      8   moveinbox   11   channel    58   process 3   boxwidth 1    channelwidth 4   |   -   | 11   1|  9   4| 18   3|  2   2|  9   4|  4   4| 15   0|
+1223      8   moveoutbox    9   channel     4   process 5    boxwidth 4    channelwidth 5   |   -   |   -   |  8   3| 14   4|  3   3|  4   4| 19   4| 13   3|
+1224      8   moveinbox   11   channel    60   process 1   boxwidth 1    channelwidth 1   |   -   | 11   1|  5   0| 20   0|  5   0| 11   1| 11   1|  6   1|
+1225      8   moveoutbox   10   channel    36   process 6    boxwidth 0    channelwidth 2   |   -   |   -   |  5   0|  2   2| 12   2|  0   0|  9   4| 10   0|
+1226      8   moveinbox   11   channel    51   process 2   boxwidth 1    channelwidth 2   |   -   | 11   1|  5   0|  6   1|  7   2|  7   2| 17   2| 16   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1227      8   moveinbox   15   channel    41   process 3   boxwidth 0    channelwidth 2   |   -   | 15   0|  5   0| 10   0|  0   0| 17   2| 16   1| 16   1|
+1228      8   moveoutbox   11   channel    45   process 5    boxwidth 1    channelwidth 1   |   -   |   -   | 18   3| 20   0|  1   1| 15   0|  0   0| 11   1|
+1229      8   getbox    0   shiftbox     0    channelwidth 4    putbox 0  channel13         |  0   0| 14   4| 13   3| 19   4| 14   4| 12   2|  4   4| 10   0|
+1230      8   moveoutbox   12   channel    81   process 6    boxwidth 2    channelwidth 2   |   -   |   -   |  2   2|  4   4|  5   0| 12   2|  7   2|  6   1|
+1231      8   moveinbox   15   channel    31   process 1   boxwidth 0    channelwidth 2   |   -   | 15   0|  2   2| 17   2|  7   2| 17   2| 11   1|  0   0|
+1232      8   moveoutbox   12   channel    11   process 4    boxwidth 2    channelwidth 2   |   -   |   -   |  6   1|  2   2|  0   0| 12   2|  2   2|  7   2|
+1233      8   moveinbox   15   channel    16   process 2   boxwidth 0    channelwidth 2   |   -   | 15   0|  8   3|  2   2|  0   0| 12   2|  2   2| 12   2|
+1234      8   moveoutbox   12   channel    21   process 5    boxwidth 2    channelwidth 2   |   -   |   -   | 11   1|  2   2|  2   2|  0   0|  2   2|  7   2|
+1235      8   moveinbox   15   channel    12   process 3   boxwidth 0    channelwidth 3   |   -   | 15   0| 10   0|  3   3| 10   0|  0   0| 12   2| 13   3|
+1236      8   moveoutbox   13   channel     7   process 6    boxwidth 3    channelwidth 3   |   -   |   -   |  3   3|  7   2|  2   2| 10   0| 16   1| 18   3|
+1237      8   moveinbox   15   channel    84   process 1   boxwidth 0    channelwidth 5   |   -   | 15   0| 20   0| 10   0| 16   1| 18   3| 13   3| 14   4|
+1238      8   moveinbox   15   channel     4   process 2   boxwidth 0    channelwidth 5   |   -   | 15   0|  8   3| 14   4|  3   3|  4   4| 19   4| 13   3|
+1239      8   moveoutbox   14   channel    84   process 5    boxwidth 4    channelwidth 5   |   -   |   -   | 15   0| 20   0| 10   0| 16   1| 18   3| 13   3|
+1240      8   getbox    4   shiftbox     4    channelwidth 4    putbox 4  channel 3         |   -   |  4   4|  4   4| 14   4| 12   2|  7   2|  7   2| 14   4|
+1241      8   moveoutbox   15   channel    53   process 6    boxwidth 0    channelwidth 4   |   -   |   -   |  4   4| 14   4|  3   3| 19   4|  9   4|  4   4|
+1242      8   moveinbox   15   channel    36   process 3   boxwidth 0    channelwidth 2   |   -   | 15   0|  5   0|  2   2| 12   2|  0   0|  9   4| 10   0|
+1243      8   moveoutbox   15   channel    58   process 4    boxwidth 0    channelwidth 4   |   -   |   -   | 11   1|  9   4| 18   3|  2   2|  9   4|  4   4|
+1244      8   moveinbox   15   channel    45   process 1   boxwidth 0    channelwidth 1   |   -   | 15   0| 18   3| 20   0|  1   1| 15   0|  0   0| 11   1|
+1245      8   moveoutbox   16   channel     6   process 5    boxwidth 1    channelwidth 2   |   -   |   -   | 17   2| 19   4| 16   1|  2   2|  7   2| 12   2|
+1246      8   moveoutbox   17   channel    64   process 6    boxwidth 2    channelwidth 5   |   -   |  4   4| 14   4|  3   3|  3   3|  4   4| 20   0|  5   0|
+1247      8   moveinbox   15   channel    81   process 2   boxwidth 0    channelwidth 2   |   -   | 15   0|  2   2|  4   4|  5   0| 12   2|  7   2|  6   1|
+------------------------------------------------------------------------------------
+startDepalletize
+1248      8   moveinbox   12   channel    11   process 3   boxwidth 2    channelwidth 2   |   -   | 12   2|  6   1|  2   2|  0   0| 12   2|  2   2|  7   2|
+1249      8   moveinbox   12   channel    21   process 1   boxwidth 2    channelwidth 2   |   -   | 12   2| 11   1|  2   2|  2   2|  0   0|  2   2|  7   2|
+1250      8   moveoutbox   17   channel    46   process 4    boxwidth 2    channelwidth 2   |   -   |   -   | 17   2| 12   2|  2   2|  7   2|  7   2|  2   2|
+1251      8   moveoutbox   18   channel    79   process 5    boxwidth 3    channelwidth 5   |   -   |   -   |  2   2| 14   4|  9   4| 20   0|  5   0| 16   1|
+1252      8   moveinbox   12   channel     7   process 2   boxwidth 2    channelwidth 3   |   -   | 12   2|  3   3|  7   2|  2   2| 10   0| 16   1| 18   3|
+1253      8   moveinbox   12   channel    84   process 3   boxwidth 2    channelwidth 5   |   -   | 12   2| 15   0| 20   0| 10   0| 16   1| 18   3| 13   3|
+1254      8   moveoutbox   19   channel    18   process 4    boxwidth 4    channelwidth 4   |   -   |  7   2|  3   3| 10   0|  0   0| 19   4|  9   4|  4   4|
+1255      8   getbox    4   shiftbox     4    channelwidth 5    putbox 4  channel24         |  4   4| 19   4| 19   4|  0   0|  9   4| 13   3| 18   3| 18   3|
+1256      8   moveoutbox   19   channel    28   process 5    boxwidth 4    channelwidth 4   |   -   |   -   |  9   4|  3   3| 18   3| 10   0| 14   4|  0   0|
+1257      8   moveinbox   12   channel    53   process 1   boxwidth 2    channelwidth 4   |   -   | 12   2|  4   4| 14   4|  3   3| 19   4|  9   4|  4   4|
+1258      8   moveoutbox   19   channel    49   process 6    boxwidth 4    channelwidth 5   |   -   |   -   | 14   4|  6   1|  2   2|  9   4| 18   3| 15   0|
+1259      8   moveinbox   12   channel    58   process 2   boxwidth 2    channelwidth 4   |   -   | 12   2| 11   1|  9   4| 18   3|  2   2|  9   4|  4   4|
+1260      8   moveinbox   12   channel     6   process 3   boxwidth 2    channelwidth 2   |   -   | 12   2| 17   2| 19   4| 16   1|  2   2|  7   2| 12   2|
+1261      8   moveinbox   12   channel    46   process 1   boxwidth 2    channelwidth 2   |   -   | 12   2| 17   2| 12   2|  2   2|  7   2|  7   2|  2   2|
+1262      8   moveinbox   12   channel    79   process 2   boxwidth 2    channelwidth 5   |   -   | 12   2|  2   2| 14   4|  9   4| 20   0|  5   0| 16   1|
+1263      8   moveinbox   12   channel    28   process 3   boxwidth 2    channelwidth 4   |   -   | 12   2|  9   4|  3   3| 18   3| 10   0| 14   4|  0   0|
+------------------------------------------------------------------------------------
+startDepalletize
+1264      8   getbox   17   shiftbox    17    channelwidth 5    putbox17  channel54         |   -   | 17   2| 11   1|  8   3|  5   0| 19   4|  3   3| 19   4|
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+finishPalletize #1

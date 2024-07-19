@@ -9,6 +9,8 @@ void ConveyorsInit()
     sqlite3_exec(Store.db, sql_del, 0, 0, &err_msg);
     sqlite3_exec(Store.db, sql, 0, 0, &err_msg);
 
+    Store.kill_prog = false;
+
     for (int i = 0; i < MAX_CONVEYORS; ++i) {
         Store.conveyor_width[i] = i % 5 + 1;
     }
