@@ -82,7 +82,7 @@ void Init_Commands(FILE* file1) {
 
 
 int model_main (int argc, char* argv[]) {
-  FILE *bots_starting_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/bots_starting_positions.csv", "w");
+  bots_starting_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/bots_starting_positions.csv", "r");
 
   f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
@@ -95,15 +95,8 @@ int model_main (int argc, char* argv[]) {
 
   // f = fopen("/home/sasha/Port/log.txt", "w");
   // file = fopen("/home/sasha/Port/TEST1-SIMSIM/small_test.csv", "r");
-  fprintf(bots_starting_positions, "%s, %s\n", "BotId", "BotNode");
-  Init_Commands(file);
 
-  fprintf(bots_starting_positions, "%d,     %s\n", 1, "D.3");
-  fprintf(bots_starting_positions, "%d,     %s\n", 2, "D.2");
-  fprintf(bots_starting_positions, "%d,     %s\n", 3, "D.1");
-  fprintf(bots_starting_positions, "%d,     %s\n", 4, "A.2");
-  fprintf(bots_starting_positions, "%d,     %s\n", 5, "A.1");
-  fprintf(bots_starting_positions, "%d,     %s\n", 6, "B.1");
+  Init_Commands(file);
 
 	InitROSS();
 	int i, num_lps_per_pe;

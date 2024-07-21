@@ -6,7 +6,7 @@ int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     if (atoi(argv[1]) > best_box.row) {
         int flag = 1;
         for (int i = 0; i < MAX_ROBOTS; ++i) {
-            if (Store.robots[i].col == atoi(argv[2])) {
+            if (Store.robots[i].reserved_channel == atoi(argv[2])) {
                 flag = 0;
             }
         }
@@ -22,7 +22,7 @@ int callback_by_width(void *NotUsed, int argc, char **argv, char **azColName) {
     if (atoi(argv[1]) > best_box.row) {
         int flag = 1;
         for (int i = 0; i < MAX_ROBOTS; ++i) {
-            if (Store.robots[i].col == atoi(argv[2])) {
+            if (Store.robots[i].reserved_channel == atoi(argv[2])) {
                 flag = 0;
             }
         }

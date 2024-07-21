@@ -11,11 +11,13 @@
 #include "ross.h"
 
 #define MAX_BOXES 8
-#define MAX_CELLS 12
 #define MAX_ROBOTS 6
 // #define MAX_ROBOTS 50
-#define MAX_CONVEYORS 100
+#define MAX_CONVEYORS 150
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
+
+#define MAX_RACKS 15
+#define MAX_CELLS ((MAX_RACKS + 1) * 4)
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -32,7 +34,7 @@
 #include "sqlite3.h"
 
 static const int low_border = 1;
-static const int high_border = 21;
+static const int high_border = 51;
 
 // static const int threshold = 38;
 
@@ -43,6 +45,7 @@ FILE *file;
 FILE *f;
 FILE *f_dep;
 FILE *temp_txt;
+FILE *bots_starting_positions;
 
 const static double g_robot_calc_time = 0.001;
 static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1));
@@ -113,10 +116,13 @@ typedef struct
     int row;
     int col;
     int cur_task;
-    int cur_conv;
     int has_box;
     int reserved_channel;
+    int low_SKU;
+
+    int kill;
     cell cur_cell;
+    cell goal_cell;
 } robot;
 
 typedef struct {
@@ -129,11 +135,14 @@ struct _Store
 {
     file_requests request;
     sqlite3 *db;
-    char *vertexes[12];
+
+    int store_graph[(MAX_RACKS + 1) * 4][2];
+
+    char vertexes[MAX_RACKS * 4 + 4][5];
     int box_data[7][2];
     int arr_time[7];
     int graph[12];
-    bool kill_prog;
+    int kill_prog;
 
     robot robots[MAX_ROBOTS];
     cell cells[MAX_CELLS];
