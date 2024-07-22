@@ -2,13 +2,6 @@
 
 void ConveyorsInit()
 {
-    fprintf(f, "startDepalletize\n"); 
-    fprintf(f, "startMotion #1\n");
-    fprintf(f, "startMotion #2\n");
-    fprintf(f, "startMotion #3\n");
-    fprintf(f, "startMotion #4\n");
-    fprintf(f, "startMotion #5\n");
-    fprintf(f, "startMotion #6\n");
     char *err_msg = 0;
     char *sql_del = "DROP TABLE IF EXISTS Warehouse";
     char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER, Width INTEGER, Channel_Width INTEGER)";
@@ -125,6 +118,8 @@ void ConveyorsInit()
         bot.kill = 0;
         bot.has_box = -1;
         bot.reserved_channel = -1;
+        bot.cur_time = 0;
+        bot.goal_time = 0;
         fgets(line, sizeof(line), bots_starting_positions);
         fields[0] = strtok(line, ",");
         fields[1] = strtok(NULL, ",");
@@ -202,13 +197,8 @@ void ConveyorsInit()
     }
     Store.boxes_to_deliver = 0;
 
-    for (int i = 0; i < 21; ++i) {
-        fprintf(f, "%d ", Store.cnt_boxes_type[i]);
-    }
-
-    fprintf(f, "finishDepalletize\n");
     fprintf(f, "------------------------------------------\n");
-    fprintf(f, "startPalletize #1\n");
+    fprintf(f, "%*d startPalletize #1\n", 4, glb_time);
     for (int i = 0; i < 7; ++i) {
         Store.box_data[i][0] = -1;
         Store.box_data[i][1] = 0;

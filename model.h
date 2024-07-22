@@ -46,6 +46,7 @@ FILE *f;
 FILE *f_dep;
 FILE *temp_txt;
 FILE *bots_starting_positions;
+FILE *paleta;
 
 const static double g_robot_calc_time = 0.001;
 static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1));
@@ -123,6 +124,9 @@ typedef struct
     int kill;
     cell cur_cell;
     cell goal_cell;
+
+    int cur_time;
+    int goal_time;
 } robot;
 
 typedef struct {

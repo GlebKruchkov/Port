@@ -1,5 +1,3 @@
-// aaaaaaaaaaa huilaaa aaa
-
 //The C main file for a ROSS model
 //This file includes:
 // - definition of the LP types
@@ -85,10 +83,12 @@ int model_main (int argc, char* argv[]) {
   bots_starting_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/bots_starting_positions.csv", "r");
 
   f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
+  paleta = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/report.txt", "w");
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
   f_dep = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/first_depalitization.txt", "w");
   temp_txt = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/temp_txt.txt", "w");
   sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &Store.db);
+  fprintf(f, "TIME  COMMAND  CELL  BOXTYPE  CHANNEL BOTID\n");
 
   // f_dep = fopen("/home/sasha/Port/first_depalitization.txt", "w");
   // sqlite3_open("/home/sasha/Port/ross-sqlite.db", &Store.db);
@@ -120,12 +120,6 @@ int model_main (int argc, char* argv[]) {
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
-  fprintf(f, "finishMotion #1\n");
-  fprintf(f, "finishMotion #2\n");
-  fprintf(f, "finishMotion #3\n");
-  fprintf(f, "finishMotion #4\n");
-  fprintf(f, "finishMotion #5\n");
-  fprintf(f, "finishMotion #6\n");
   fprintf(f, "finishPalletize #1\n");
 
 
