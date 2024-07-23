@@ -153,7 +153,43 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id, int process) {
 
     return col;
 }
- 
+
+void Init_Commands(int *event_id, int *glb_time, const char *filename) {
+    FILE *file1 = fopen(filename, "r");
+    int req_num = 0;
+    Store.request.total = 0;
+    Store.request.curr = 0;
+
+    char line[1024];
+    char *fields[10];
+
+    fgets(line, sizeof(line), file1);
+
+    char *temp_line = strtok(line, ",");
+
+    strncpy(Store.cur_order, temp_line, sizeof(Store.cur_order) - 1);
+
+    // Store.cur_order = strtok(line, ",");
+    fprintf(f, "%*d %*d       startPalletize %s", 6, *event_id, 6, *glb_time, strtok(line, ","));
+    (*event_id) += 1;
+    fgets(line, sizeof(line), file1);
+
+    while (fgets(line, sizeof(line), file1)) {
+        fields[0] = strtok(line, ",");
+        for (int i = 1; i < 10; i++) {
+          fields[i] = strtok(NULL, ",");
+        }
+        int SKU =  atoi(fields[0]) - 1000;
+        int quantity = atoi(fields[1]);
+        while (quantity != 0) {
+          Store.request.requests[req_num][0] = SKU;
+          Store.request.requests[req_num][1] = 1;
+          quantity--;
+          Store.request.total++;
+          req_num++;
+        }
+    }
+}
  
 bool Check(int process) {
     if (Store.request.curr == Store.request.total) {

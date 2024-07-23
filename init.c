@@ -196,9 +196,8 @@ void ConveyorsInit()
         Store.used[i] = 0;
     }
     Store.boxes_to_deliver = 0;
+    Store.cur_file = 0;
 
-    fprintf(f, "------------------------------------------\n");
-    fprintf(f, "%*d startPalletize #1\n", 4, glb_time);
     for (int i = 0; i < 7; ++i) {
         Store.box_data[i][0] = -1;
         Store.box_data[i][1] = 0;

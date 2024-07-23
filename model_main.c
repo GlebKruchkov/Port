@@ -54,26 +54,6 @@ void displayModelSettings()
   }
 }
 
-void Init_Commands(FILE* file1) {
-    int req_num = 0;
-    char line[256];
-    char *fields[10];
-    while (fgets(line, sizeof(line), file1)) {
-        fields[0] = strtok(line, ",");
-        for (int i = 1; i < 10; i++) {
-          fields[i] = strtok(NULL, ",");
-        }
-        int SKU =  atoi(fields[0]);
-        int quantity = atoi(fields[1]);
-        while (quantity != 0) {
-          Store.request.requests[req_num][0] = SKU;
-          Store.request.requests[req_num][1] = 1;
-          quantity--;
-          Store.request.total++;
-          req_num++;
-        }
-    }
-}
 
 //for doxygen
 #define model_main main
@@ -87,8 +67,22 @@ int model_main (int argc, char* argv[]) {
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
   f_dep = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/first_depalitization.txt", "w");
   temp_txt = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/temp_txt.txt", "w");
+
+  const char *directory_path = "/Users/glebkruckov/Documents/Работа/Port/port-model/TEST3-SIMSIM";
+  struct dirent *entry;
+  DIR *dp = opendir(directory_path);
+
+
+  while ((entry = readdir(dp))) {
+    if (strstr(entry->d_name, ".csv") != NULL) {
+      snprintf(Store.files[Store.cur_file], sizeof(Store.files[Store.cur_file]), "%s/%s", directory_path, entry->d_name);
+      Store.cur_file += 1;
+    }
+  }
+  Store.cur_file = 0;
+
   sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &Store.db);
-  fprintf(f, "TIME  COMMAND  CELL  BOXTYPE  CHANNEL BOTID\n");
+  fprintf(f, "EventID  Time BotID        Command StartPoint EndPoint  BoxType Channel TrID\n");
 
   // f_dep = fopen("/home/sasha/Port/first_depalitization.txt", "w");
   // sqlite3_open("/home/sasha/Port/ross-sqlite.db", &Store.db);
@@ -96,7 +90,6 @@ int model_main (int argc, char* argv[]) {
   // f = fopen("/home/sasha/Port/log.txt", "w");
   // file = fopen("/home/sasha/Port/TEST1-SIMSIM/small_test.csv", "r");
 
-  Init_Commands(file);
 
 	InitROSS();
 	int i, num_lps_per_pe;
@@ -120,8 +113,6 @@ int model_main (int argc, char* argv[]) {
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
-  fprintf(f, "finishPalletize #1\n");
-
 
 	return 0;
 }

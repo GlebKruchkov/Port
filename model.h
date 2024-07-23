@@ -13,10 +13,12 @@
 #define MAX_BOXES 8
 #define MAX_ROBOTS 6
 // #define MAX_ROBOTS 50
-#define MAX_CONVEYORS 150
+#define MAX_CONVEYORS 50
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
 
-#define MAX_RACKS 15
+#define MAX_FILES 14
+
+#define MAX_RACKS 5
 #define MAX_CELLS ((MAX_RACKS + 1) * 4)
 
 #include <stdbool.h>
@@ -40,7 +42,7 @@ static const int high_border = 51;
 
 static int is_reverse = 0;
 static int glb_time = 0;
-static int log_id = 1;
+static int event_id = 1;
 FILE *file;
 FILE *f;
 FILE *f_dep;
@@ -140,6 +142,11 @@ struct _Store
     file_requests request;
     sqlite3 *db;
 
+    char cur_order[50];
+
+    char files[15][1024];
+    int cur_file;
+
     int store_graph[(MAX_RACKS + 1) * 4][2];
 
     char vertexes[MAX_RACKS * 4 + 4][5];
@@ -202,6 +209,7 @@ extern int Add_Box(sqlite3 **db1, int type, int process);
 extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
 extern int Reverse(sqlite3 **db1, int row, int col, int *time, int *l_id, int process);
 extern int Remove_Boxes(sqlite3 **db, int type, int *time, int *l_id, int process);
+extern void Init_Commands(int *event_id, int *time, const char *filename);
 extern bool Check(int process);
 extern int compare(const void *a, const void *b);
 extern void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self);
