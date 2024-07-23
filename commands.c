@@ -252,3 +252,48 @@ void Print_Graph() {
         fprintf(temp_txt, "*");
     }         
 }
+
+void write_csv(const char *filename, sqlite3 *db) {
+    sqlite3_stmt *stmt;
+    const char *sql = "SELECT * FROM Warehouse"; // Замените your_table на имя вашей таблицы
+
+    // Подготовка запроса
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) != SQLITE_OK) {
+        fprintf(stderr, "Ошибка при подготовке SQL запроса: %s\n", sqlite3_errmsg(db));
+        return;
+    }
+
+    if (!csv_file) {
+        fprintf(stderr, "Не удалось открыть файл для записи: %s\n", filename);
+        sqlite3_finalize(stmt);
+        return;
+    }
+
+    // Запись заголовков
+    int num_columns = sqlite3_column_count(stmt);
+    for (int i = 0; i < num_columns; i++) {
+        printf("%s\n", sqlite3_column_name(stmt, i));
+        fprintf(csv_file, "%s", sqlite3_column_name(stmt, i));
+        if (i < num_columns - 1) {
+            fprintf(csv_file, ",");
+        }
+    }
+    fprintf(csv_file, "\n");
+
+    // Запись данных
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        for (int i = 0; i < num_columns; i++) {
+            const char *value = (const char *)sqlite3_column_text(stmt, i);
+            if (value) {
+                fprintf(csv_file, "%s", value);
+            }
+            if (i < num_columns - 1) {
+                fprintf(csv_file, ",");
+            }
+        }
+        fprintf(csv_file, "\n");
+    }
+
+    fclose(csv_file);
+    sqlite3_finalize(stmt);
+}

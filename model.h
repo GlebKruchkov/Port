@@ -49,6 +49,7 @@ FILE *f_dep;
 FILE *temp_txt;
 FILE *bots_starting_positions;
 FILE *paleta;
+FILE *csv_file;
 
 const static double g_robot_calc_time = 0.001;
 static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1));
@@ -214,4 +215,5 @@ extern bool Check(int process);
 extern int compare(const void *a, const void *b);
 extern void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self);
 extern void Print_Channel(int col, FILE *log_file);
+extern void write_csv(const char *filename, sqlite3 *db);
 #endif

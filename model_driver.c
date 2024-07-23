@@ -694,6 +694,7 @@ void model_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 //report any final statistics for this LP
 void model_final (state *s, tw_lp *lp) {
   if (lp->gid == 0) {
+    write_csv("Store.csv", Store.db);
     fprintf(f, "%*d %*d      finishPalletize %s", 6, event_id, 6, glb_time, Store.cur_order);
   }
   return;
