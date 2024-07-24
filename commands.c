@@ -284,8 +284,14 @@ void write_csv(const char *filename, sqlite3 *db) {
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         for (int i = 0; i < num_columns; i++) {
             const char *value = (const char *)sqlite3_column_text(stmt, i);
-            if (value) {
-                fprintf(csv_file, "%s", value);
+            int to_print = 0;
+            if (i == 2) {
+                to_print = atoi(value);
+                fprintf(csv_file, "%d", to_print % 10 + 1);
+            } else {
+                if (value) {
+                    fprintf(csv_file, "%s", value);
+                }
             }
             if (i < num_columns - 1) {
                 fprintf(csv_file, ",");
