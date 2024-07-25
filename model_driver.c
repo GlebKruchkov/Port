@@ -364,6 +364,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
         if (Store.robots[self - 1].has_box == -1 && Store.robots[self - 1].cur_cell.id == Store.robots[self - 1].goal_cell.id) {
           Store.robots[self - 1].goal_time = 8;
+          find_data_by_width(&(Store.db), Store.type_to_add);
+          if (best_box.row == -1 || best_box.column == -1) {
+            Store.boxes_to_deliver--;
+            break;
+          }
           if (Store.robots[self - 1].cur_time == 1) {
             fprintf(f, "%*d %*d %*d     startMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, 0, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
             event_id += 1;
@@ -371,7 +376,6 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
 
             Store.robots[self - 1].cur_time = 0;
-            find_data_by_width(&(Store.db), Store.type_to_add);
 
             fprintf(paleta, "%*d AddBox       %*d\n", 4, glb_time, 4, Store.type_to_add);
 
@@ -535,6 +539,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             Store.robots[self - 1].cur_time = 0;
             Remove_Boxes(&(Store.db), Store.box_data[self][0], &(glb_time), &(event_id), self);
+            Store.robots[self - 1].cur_box = Store.box_data[self][0];
             fprintf(f, "%*d %*d %*d     movebox2bot       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.box_data[self][0], 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
             event_id += 1;
 
@@ -698,6 +703,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.robots[self - 1].low_SKU = Store.conveyor[Store.robots[self - 1].col].boxes[7].SKU;
 
             Remove_Boxes(&(Store.db), Store.robots[self - 1].low_SKU, &(glb_time), &(event_id), self);
+            Store.robots[self - 1].cur_box = Store.robots[self - 1].low_SKU;
             fprintf(f, "%*d %*d %*d     movebox2bot       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.robots[self - 1].low_SKU, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
             event_id += 1;
 

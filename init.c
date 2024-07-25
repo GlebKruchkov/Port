@@ -112,6 +112,7 @@ void ConveyorsInit()
     for (int i = 0; i < MAX_ROBOTS; ++i) {
         robot bot;
         bot.cur_task = -1;
+        bot.cur_box = -1;
         bot.pre_reserved = -1;
         bot.low_SKU = -1;
         bot.col = -1;

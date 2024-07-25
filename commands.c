@@ -300,7 +300,20 @@ void write_csv(const char *filename, sqlite3 *db) {
         fprintf(csv_file, "\n");
     }
 
-    
+    fprintf(robots_positions, "BotID");
+    fprintf(robots_positions, ", ");
+    fprintf(robots_positions, "BotNode");
+    fprintf(robots_positions, ", ");
+    fprintf(robots_positions, "BoxTypeID");
+    fprintf(robots_positions, "\n");
+    for (int i = 0; i < 6; ++i) {
+        fprintf(robots_positions, "%d", i);
+        fprintf(robots_positions, ",     ");
+        fprintf(robots_positions, "%s", Store.vertexes[Store.robots[i].cur_cell.id]);
+        fprintf(robots_positions, ",      ");
+        fprintf(robots_positions, "%d", Store.robots[i].cur_box);
+        fprintf(robots_positions, "\n");    
+    }
 
     fclose(csv_file);
     sqlite3_finalize(stmt);
