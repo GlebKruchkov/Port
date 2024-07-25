@@ -300,6 +300,8 @@ void write_csv(const char *filename, sqlite3 *db) {
         fprintf(csv_file, "\n");
     }
 
+    
+
     fclose(csv_file);
     sqlite3_finalize(stmt);
 }
