@@ -190,7 +190,7 @@ void Init_Commands(int *event_id, int *glb_time, const char *filename) {
         }
     }
 }
- 
+
 bool Check(int process) {
     if (Store.request.curr == Store.request.total) {
         return false;

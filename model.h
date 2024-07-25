@@ -43,6 +43,8 @@ static const int high_border = 51;
 static int is_reverse = 0;
 static int glb_time = 0;
 static int event_id = 1;
+static int cur_boxes = 0;
+
 FILE *file;
 FILE *f;
 FILE *f_dep;
@@ -51,8 +53,10 @@ FILE *bots_starting_positions;
 FILE *paleta;
 FILE *csv_file;
 
+FILE *test;
+
 const static double g_robot_calc_time = 0.001;
-static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border + 1));
+static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border));
 
 typedef struct
 {
@@ -127,6 +131,9 @@ typedef struct
     int kill;
     cell cur_cell;
     cell goal_cell;
+    cell prev_cell;
+
+    int pre_reserved;
 
     int cur_time;
     int goal_time;
@@ -169,7 +176,8 @@ struct _Store
     int cnt_boxes_type_const[high_border - low_border + 1];
     struct _conveyor conveyor[MAX_CONVEYORS];
 
-    int used[7];
+    int used[MAX_ROBOTS + 1];
+    int nt_used[MAX_ROBOTS + 1];
     int boxes_to_deliver;
     int type_to_add;
     int N;

@@ -112,6 +112,7 @@ void ConveyorsInit()
     for (int i = 0; i < MAX_ROBOTS; ++i) {
         robot bot;
         bot.cur_task = -1;
+        bot.pre_reserved = -1;
         bot.low_SKU = -1;
         bot.col = -1;
         bot.row = -1;
@@ -126,15 +127,19 @@ void ConveyorsInit()
         
         if (fields[1][5] == 'A') {
             bot.cur_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
+            bot.prev_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
             Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')].reserved = 1;
         } else if (fields[1][5] == 'D') {
             bot.cur_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
+            bot.prev_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
             Store.cells[(int)(fields[1][7] - '0') - 1].reserved = 1;
         } else if (fields[1][5] == 'B') {
             bot.cur_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
+            bot.prev_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
             Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')].reserved = 1;
         } else if (fields[1][5] == 'C') {
             bot.cur_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
+            bot.prev_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
             Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')].reserved = 1;
         } else {
             printf("WRONG BOTS STARTING POZITION\n");
@@ -163,33 +168,13 @@ void ConveyorsInit()
     int id = 1;
     for (int row = MAX_BOXES - 1; row >= 0; --row) {
         for (int col = 0; col < MAX_CONVEYORS; ++col) {
-            Store.conveyor[col].max_length = MAX_BOXES;
-            int current_SKU = (low_border + (change_tmp) % (high_border - low_border + 1)) - 1;
-
-
-            int current_conv_len = Store.conveyor_width[col];
-            int answer = -100;
-            int cur_box_len = -1;
-            for (int con = 1; con < high_border - low_border + 1; ++con) {
-                if (Store.box_width[con].width > cur_box_len && Store.box_width[con].width <= current_conv_len && Store.cnt_boxes_type[Store.box_width[con].SKU] < MAX_CONVEYORS * MAX_BOXES / (high_border - low_border)) {
-                    cur_box_len = Store.box_width[con].width;
-                    answer = con;
-                }
-            }
-            // printf("%d\n", answer);
-
-            Store.conveyor[col].boxes[row].SKU = Store.box_width[answer].SKU;
-            Store.conveyor[col].boxes[row].width = Store.box_width[answer].width;
-            Store.conveyor[col].boxes[row].empty = 0;
+            int current_SKU = (low_border + (change_tmp) % (high_border - low_border));
+            Store.conveyor[col].boxes[row].SKU = -1;
+            Store.conveyor[col].boxes[row].width = -1;
+            Store.conveyor[col].boxes[row].empty = 1;
             change_tmp++;
-            Store.conveyor[col].current_length++;
-            Store.cnt_boxes_type[Store.box_width[answer].SKU]++;
-            Store.cnt_boxes_type_const[Store.box_width[answer].SKU]++;
-            insert_data(&(Store.db), Store.box_width[answer].SKU, row, col, Store.box_width[answer].width);
-            fprintf(f_dep, "%*d   %*d   movebox%*d   channel%*d    channellen%*d    ", 4, id, 4, glb_time, 5, Store.box_width[answer].SKU, 6, col, 4, current_conv_len);
             
-            Print_Channel(col, f_dep);
-            tempor += 1;
+            insert_data(&(Store.db), -1, row, col, -1);
         }
     }
     for (int i = 0; i < 10; ++i) {
