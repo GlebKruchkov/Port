@@ -66,10 +66,13 @@ void ConveyorsInit()
         Store.box_width[i] = bp;
     }
 
-
     // Initialization of cells
     for (int i = 0; i < MAX_CELLS; ++i) {
+        printf("%d\n", i);
         cell c_cell;
+        for (int j = 0; j < MAX_ROBOTS; ++j) {
+            c_cell.queue[j] = -1;
+        }
         c_cell.id = i;
         c_cell.reserved = 0;
         Store.cells[i] = c_cell;
@@ -111,6 +114,7 @@ void ConveyorsInit()
     // Initialization of robots to take out
     for (int i = 0; i < MAX_ROBOTS; ++i) {
         robot bot;
+        bot.tmp_fl = 1;
         bot.cur_task = -1;
         bot.cur_box = -1;
         bot.pre_reserved = -1;
@@ -178,6 +182,7 @@ void ConveyorsInit()
             insert_data(&(Store.db), -1, row, col, -1);
         }
     }
+    
     for (int i = 0; i < 10; ++i) {
         Store.used[i] = 0;
     }

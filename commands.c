@@ -154,7 +154,7 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id, int process) {
     return col;
 }
 
-void Init_Commands(int *event_id, int *glb_time, const char *filename) {
+void Init_Commands(int *event_id, int *rec_id, int *glb_time, const char *filename) {
     FILE *file1 = fopen(filename, "r");
     int req_num = 0;
     Store.request.total = 0;
@@ -170,6 +170,10 @@ void Init_Commands(int *event_id, int *glb_time, const char *filename) {
     strncpy(Store.cur_order, temp_line, sizeof(Store.cur_order) - 1);
 
     // Store.cur_order = strtok(line, ",");
+    fprintf(paleta, "%*d %*d %*s %*s       %*s", 6, *rec_id, 6, *glb_time, 18, "startPalletize", 22, strtok(line, ","), 6, "#1");
+    fprintf(paleta, "\n");
+    (*rec_id) += 1;
+
     fprintf(f, "%*d %*d       startPalletize %s", 6, *event_id, 6, *glb_time, strtok(line, ","));
     (*event_id) += 1;
     fgets(line, sizeof(line), file1);
@@ -317,4 +321,37 @@ void write_csv(const char *filename, sqlite3 *db) {
 
     fclose(csv_file);
     sqlite3_finalize(stmt);
+}
+
+void add_to_queue(int robot_id) {
+    // if (Store.robots[robot_id].cur_cell.id == MAX_RACKS * 4 + 3) {
+    //     if (Store.robots[robot_id].goal_cell.id == MAX_RACKS * 2 + 2 || (Store.cells[MAX_RACKS * 2 + 2].queue[0] != -1)) {
+    //         for (int i = 0; i < MAX_ROBOTS; ++i) { 
+    //             if (Store.cells[MAX_RACKS * 2 + 2].queue[i] == -1) { 
+    //                 Store.cells[MAX_RACKS * 2 + 2].queue[i] = robot_id; 
+    //                 return; 
+    //             } 
+    //         } 
+    //         return; 
+    //     }
+    // }
+    if ((Store.robots[robot_id].goal_cell.id == Store.robots[robot_id].cur_cell.id) || (Store.cells[Store.robots[robot_id].cur_cell.id].queue[0] != -1)) {
+        for (int i = 0; i < MAX_ROBOTS; ++i) {
+            if (Store.cells[Store.robots[robot_id].cur_cell.id + 1].queue[i] == -1) {
+                Store.cells[Store.robots[robot_id].cur_cell.id + 1].queue[i] = robot_id;
+                return;
+            }
+        }
+    }
+}
+
+void del_from_queue(int robot_id) {
+    if (robot_id == Store.cells[Store.robots[robot_id].cur_cell.id].queue[0]) {
+        Store.cells[Store.robots[robot_id].cur_cell.id].queue[0] = -1;
+        for (int i = 0; i < MAX_ROBOTS - 1; ++i) {
+            int temp = Store.cells[Store.robots[robot_id].cur_cell.id].queue[i];
+            Store.cells[Store.robots[robot_id].cur_cell.id].queue[i] =  Store.cells[Store.robots[robot_id].cur_cell.id].queue[i + 1];
+            Store.cells[Store.robots[robot_id].cur_cell.id].queue[i] = temp;
+        }
+    }
 }

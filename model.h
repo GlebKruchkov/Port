@@ -44,6 +44,8 @@ static int is_reverse = 0;
 static int glb_time = 0;
 static int event_id = 1;
 static int cur_boxes = 0;
+static int palet_type = 1;
+static int rec_id = 1;
 
 FILE *file;
 FILE *f;
@@ -118,6 +120,7 @@ typedef struct
 {
     int id;
     bool reserved;
+    int queue[MAX_ROBOTS];
 } cell;
 
 typedef struct
@@ -139,6 +142,7 @@ typedef struct
     int cur_time;
     int goal_time;
     int cur_box;
+    int tmp_fl;
 } robot;
 
 typedef struct {
@@ -220,10 +224,12 @@ extern int Add_Box(sqlite3 **db1, int type, int process);
 extern void Swap_Boxes(sqlite3 **db1, int row, int col1, int col2);
 extern int Reverse(sqlite3 **db1, int row, int col, int *time, int *l_id, int process);
 extern int Remove_Boxes(sqlite3 **db, int type, int *time, int *l_id, int process);
-extern void Init_Commands(int *event_id, int *time, const char *filename);
+extern void Init_Commands(int *event_id, int *rec_id, int *time, const char *filename);
 extern bool Check(int process);
 extern int compare(const void *a, const void *b);
 extern void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self);
 extern void Print_Channel(int col, FILE *log_file);
 extern void write_csv(const char *filename, sqlite3 *db);
+extern void add_to_queue(int robot_id);
+extern void del_from_queue(int robot_id);
 #endif

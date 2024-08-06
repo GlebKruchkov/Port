@@ -83,6 +83,8 @@ int model_main (int argc, char* argv[]) {
   }
   Store.cur_file = 0;
 
+  fprintf(paleta, " RecId   Time             Action              PalletID PalletTypeID\n");
+
   sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &Store.db);
   fprintf(f, "EventID  Time BotID        Command StartPoint EndPoint  BoxType Channel TrID\n");
 
