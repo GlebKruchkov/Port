@@ -78,67 +78,19 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         for (int i = 1; i < high_border - low_border + 1; ++i) {
           if (ok_take_in && Store.cnt_boxes_type[i] < 5) {
             Store.boxes_to_deliver = threshold - Store.cnt_boxes_type[i];
-            
-            if ((Store.robots[0].cur_task == 1 || Store.boxes_to_deliver >= 1) && Store.robots[0].cur_task != 2) {
-              Store.nt_used[1] = 1;
-              Store.used[1] = 1;
-              Store.robots[0].cur_task = 1;
-              Send_Event(1, TAKE_IN, lp, &(lp->gid));
-              if (Store.robots[0].has_box == -1) {
-                Store.robots[0].goal_cell.id = MAX_RACKS - 1; 
-              }
-            }
 
-            if ((Store.robots[1].cur_task == 1 || Store.boxes_to_deliver >= 2) && Store.robots[1].cur_task != 2) {
-              Store.nt_used[2] = 1;
-              Store.used[2] = 1;
-              Store.robots[1].cur_task = 1;
-              Send_Event(2, TAKE_IN, lp, &(lp->gid));
-              if (Store.robots[1].has_box == -1) {
-                Store.robots[1].goal_cell.id = MAX_RACKS - 1; 
+            for (int cur_robot = 0; cur_robot < 6; ++cur_robot) {
+              if ((Store.robots[cur_robot].cur_task == 1 || Store.boxes_to_deliver >= cur_robot + 1) && Store.robots[cur_robot].cur_task != 2) {
+                Store.nt_used[cur_robot + 1] = 1;
+                Store.used[cur_robot + 1] = 1;
+                Store.robots[cur_robot].cur_task = 1;
+                Send_Event(cur_robot + 1, TAKE_IN, lp, &(lp->gid));
+                if (Store.robots[cur_robot].has_box == -1) {
+                  Store.robots[cur_robot].goal_cell.id = MAX_RACKS - 1; 
+                }
               }
             }
-            if ((Store.robots[2].cur_task == 1 || Store.boxes_to_deliver >= 3) && Store.robots[2].cur_task != 2) {
-              Store.nt_used[3] = 1;
-              Store.used[3] = 1;
-              Store.robots[2].cur_task = 1;
-              Send_Event(3, TAKE_IN, lp, &(lp->gid));
-              if (Store.robots[2].has_box == -1) {
-                Store.robots[2].goal_cell.id = MAX_RACKS - 1; 
-              }
-              fprintf(f, "3");
-            }
-            if ((Store.robots[3].cur_task == 1 || Store.boxes_to_deliver >= 4) && Store.robots[3].cur_task != 2) {
-              Store.nt_used[4] = 1;
-              Store.used[4] = 1;
-              Store.robots[3].cur_task = 1;
-              Send_Event(4, TAKE_IN, lp, &(lp->gid));
-              if (Store.robots[3].has_box == -1) {
-                Store.robots[3].goal_cell.id = MAX_RACKS - 1; 
-              }
-              fprintf(f, "4");
-            }
-            if ((Store.robots[4].cur_task == 1 || Store.boxes_to_deliver >= 5) && Store.robots[4].cur_task != 2) {
-              Store.nt_used[5] = 1;
-              
-              Store.used[5] = 1;
-              Store.robots[4].cur_task = 1;
-              Send_Event(5, TAKE_IN, lp, &(lp->gid));
-              if (Store.robots[4].has_box == -1) {
-                Store.robots[4].goal_cell.id = MAX_RACKS - 1; 
-              }
-              fprintf(f, "5");
-            }
-            if ((Store.robots[5].cur_task == 1 || Store.boxes_to_deliver >= 6) && Store.robots[5].cur_task != 2) {
-              Store.nt_used[6] = 1;
-              Store.used[6] = 1;
-              Store.robots[5].cur_task = 1;
-              Send_Event(6, TAKE_IN, lp, &(lp->gid));
-              if (Store.robots[5].has_box == -1) {
-                Store.robots[5].goal_cell.id = MAX_RACKS - 1; 
-              }
-              fprintf(f, "6");
-            }
+            
             Store.type_to_add = i;
             fprintf(paleta, "%*d %*d %*s %*d %*d CNT%d", 6, rec_id, 6, glb_time, 18, "StartDepalletize", 21, palet_type, 12, Store.type_to_add, Store.boxes_to_deliver);
             fprintf(paleta, "\n");
@@ -152,58 +104,15 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
         //printf("%d\n", Store.boxes_to_deliver);
 
-        if (ok_take_in && (Store.robots[0].cur_task == 1 || Store.boxes_to_deliver >= 1) && Store.robots[0].cur_task != 2) {
-          Store.nt_used[1] = 1;
-          Store.used[1] = 1;
-          Store.robots[0].cur_task = 1;
-          Send_Event(1, TAKE_IN, lp, &(lp->gid));
-          if (Store.robots[0].has_box == -1) {
-            Store.robots[0].goal_cell.id = MAX_RACKS - 1; 
-          }
-        }
-        if (ok_take_in && (Store.robots[1].cur_task == 1 || Store.boxes_to_deliver >= 2) && Store.robots[1].cur_task != 2) {
-          Store.nt_used[2] = 1;
-          Store.used[2] = 1;
-          Store.robots[1].cur_task = 1;
-          Send_Event(2, TAKE_IN, lp, &(lp->gid));
-          if (Store.robots[1].has_box == -1) {
-            Store.robots[1].goal_cell.id = MAX_RACKS - 1; 
-          }
-        }
-        if (ok_take_in && (Store.robots[2].cur_task == 1 || Store.boxes_to_deliver >= 3) && Store.robots[2].cur_task != 2) {
-          Store.nt_used[3] = 1;
-          Store.used[3] = 1;
-          Store.robots[2].cur_task = 1;
-          Send_Event(3, TAKE_IN, lp, &(lp->gid));
-          if (Store.robots[2].has_box == -1) {
-            Store.robots[2].goal_cell.id = MAX_RACKS - 1; 
-          }
-        }
-        if (ok_take_in && (Store.robots[3].cur_task == 1 || Store.boxes_to_deliver >= 4) && Store.robots[3].cur_task != 2) {
-          Store.nt_used[4] = 1;
-          Store.used[4] = 1;
-          Store.robots[3].cur_task = 1;
-          Send_Event(4, TAKE_IN, lp, &(lp->gid));
-          if (Store.robots[3].has_box == -1) {
-            Store.robots[3].goal_cell.id = MAX_RACKS - 1; 
-          }
-        }
-        if (ok_take_in && (Store.robots[4].cur_task == 1 || Store.boxes_to_deliver >= 5) && Store.robots[4].cur_task != 2) {
-          Store.nt_used[5] = 1;
-          Store.used[5] = 1;
-          Store.robots[4].cur_task = 1;
-          Send_Event(5, TAKE_IN, lp, &(lp->gid));
-          if (Store.robots[4].has_box == -1) {
-            Store.robots[4].goal_cell.id = MAX_RACKS - 1; 
-          }
-        }
-        if (ok_take_in && (Store.robots[5].cur_task == 1 || Store.boxes_to_deliver >= 6) && Store.robots[5].cur_task != 2) {
-          Store.nt_used[6] = 1;
-          Store.used[6] = 1;
-          Store.robots[5].cur_task = 1;
-          Send_Event(6, TAKE_IN, lp, &(lp->gid));
-          if (Store.robots[5].has_box == -1) {
-            Store.robots[5].goal_cell.id = MAX_RACKS - 1; 
+        for (int cur_robot = 0; cur_robot < 6; ++cur_robot) {
+          if (ok_take_in && (Store.robots[cur_robot].cur_task == 1 || Store.boxes_to_deliver >= cur_robot + 1) && Store.robots[cur_robot].cur_task != 2) {
+            Store.nt_used[cur_robot + 1] = 1;
+            Store.used[cur_robot + 1] = 1;
+            Store.robots[cur_robot].cur_task = 1;
+            Send_Event(cur_robot + 1, TAKE_IN, lp, &(lp->gid));
+            if (Store.robots[cur_robot].has_box == -1) {
+              Store.robots[cur_robot].goal_cell.id = MAX_RACKS - 1; 
+            }
           }
         }
       }
@@ -273,6 +182,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     if (Store.robots[self - 1].cur_time == 1) {
       del_from_queue(self - 1);
     }
+    fprintf(test, "%d\n", self - 1);
     switch (in_msg->type)
     {
       case TAKE_IN:
@@ -292,17 +202,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             find_data_by_width(&(Store.db), Store.type_to_add);
             if (best_box.row == -1 || best_box.column == -1) {
-              // if (Store.robots[self - 1].cur_cell.id == 23) {
-              //   if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-              //     Send_Event(0, TAKE_IN, lp, &(lp->gid));
-              //     break;
-              //   }
-              // } else {
-              //   if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-              //     Send_Event(0, TAKE_IN, lp, &(lp->gid));
-              //     break;
-              //   }
-              // }
+
               cur_boxes += 1;
               Store.robots[self - 1].cur_time = 0;
               Store.robots[self - 1].cur_task = -1;
@@ -930,8 +830,28 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         if (cur_boxes >= 390) {
           break;
         }
-        Store.used[self] = 0;
+        
+        if (Store.robots[self - 1].cur_cell.id == 23) {
+          if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
+            Store.robots[self - 1].tmp_fl = 1;
+            Store.robots[self - 1].cur_time = 0;
+            Send_Event(0, GO, lp, &(lp->gid));
+            break;
+          }
+        } else {
+          if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
+            Store.robots[self - 1].tmp_fl = 1;
+            Store.robots[self - 1].cur_time = 0;
+            Send_Event(0, GO, lp, &(lp->gid));
+            break;
+          }
+        }
+
+        add_to_queue(self - 1);
         Store.robots[self - 1].tmp_fl = 1;
+        Store.robots[self - 1].goal_cell.id = MAX_RACKS * 3 + 1 - (int)(Store.robots[self - 1].col / 10);
+
+        Store.robots[self - 1].cur_time = 0;
 
         Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
 

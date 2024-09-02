@@ -156,6 +156,8 @@ struct _Store
     file_requests request;
     sqlite3 *db;
 
+    message messages[MAX_ROBOTS];
+
     char cur_order[50];
 
     char files[15][1024];

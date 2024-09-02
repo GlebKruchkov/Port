@@ -113,6 +113,7 @@ void ConveyorsInit()
     
     // Initialization of robots to take out
     for (int i = 0; i < MAX_ROBOTS; ++i) {
+        Store.messages[i].type = GO;
         robot bot;
         bot.tmp_fl = 1;
         bot.cur_task = -1;
