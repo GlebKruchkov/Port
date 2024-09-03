@@ -84,7 +84,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
                 Store.nt_used[cur_robot + 1] = 1;
                 Store.used[cur_robot + 1] = 1;
                 Store.robots[cur_robot].cur_task = 1;
-                Send_Event(cur_robot + 1, TAKE_IN, lp, &(lp->gid));
+                Store.messages[cur_robot].type = TAKE_IN;
                 if (Store.robots[cur_robot].has_box == -1) {
                   Store.robots[cur_robot].goal_cell.id = MAX_RACKS - 1; 
                 }
@@ -109,7 +109,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.nt_used[cur_robot + 1] = 1;
             Store.used[cur_robot + 1] = 1;
             Store.robots[cur_robot].cur_task = 1;
-            Send_Event(cur_robot + 1, TAKE_IN, lp, &(lp->gid));
+            Store.messages[cur_robot].type = TAKE_IN;
             if (Store.robots[cur_robot].has_box == -1) {
               Store.robots[cur_robot].goal_cell.id = MAX_RACKS - 1; 
             }
@@ -125,10 +125,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.robots[process - 1].cur_task = 2;
             if (Store.robots[process - 1].row != 7) {
               Store.used[process] = 1;
-              Send_Event(process, REVERSE, lp, &(lp->gid));
+              Store.messages[process - 1].type = REVERSE;
             } else {
               Store.used[process] = 1;
-              Send_Event(process, TAKE_OUT, lp, &(lp->gid)); 
+              Store.messages[process - 1].type = TAKE_OUT;
             }
           } else {
             if (Check(process)) {
@@ -142,10 +142,10 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
               if (Store.robots[process - 1].row != 7) {
                 Store.used[process] = 1;
-                Send_Event(process, REVERSE, lp, &(lp->gid));
+                Store.messages[process - 1].type = REVERSE;
               } else {
                 Store.used[process] = 1;
-                Send_Event(process, TAKE_OUT, lp, &(lp->gid));
+                Store.messages[process - 1].type = TAKE_OUT;
               }
             } else {
               if (Store.cur_file > MAX_FILES) {
@@ -169,9 +169,14 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
       for (int i = 1; i < 7; ++i) {
         if (cur_boxes < 390 && ok_take_in && Store.nt_used[i] == 0) {
           Store.used[i] = 1;
-          Send_Event(i, GO, lp, &(lp->gid));
+          Store.messages[i - 1].type = GO;
         }
       }
+
+      for (int i = 0; i < MAX_ROBOTS; ++i) {
+        Send_Event(i + 1, Store.messages[i].type, lp, &(lp->gid));
+      }
+
       // printf("\n");
     }
   } else if (Store.kill_prog == 0) {
