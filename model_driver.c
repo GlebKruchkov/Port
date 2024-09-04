@@ -116,7 +116,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           }
         }
       }
-      printf("%d\n", cur_boxes);
+      // printf("%d\n", cur_boxes);
 
       for (int process = 1; process < 7; ++process) {
         if (cur_boxes >= 390 && Store.robots[process - 1].cur_task != 1) {
@@ -173,21 +173,18 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         }
       }
 
-      for (int i = 0; i < MAX_ROBOTS; ++i) {
-        Send_Event(i + 1, Store.messages[i].type, lp, &(lp->gid));
-      }
+      Send_Event(1, Store.messages[0].type, lp, &(lp->gid));
 
       // printf("\n");
     }
   } else if (Store.kill_prog == 0) {
     Store.used[self] = 0;
     Store.nt_used[self] = 0;
-    //printf("%d\n", self);
+    // if (Store.robots[self - 1].cur_time == 1) {
+    //   del_from_queue(self - 1);
+      
+    // }
     Store.robots[self - 1].cur_time += 1;
-    if (Store.robots[self - 1].cur_time == 1) {
-      del_from_queue(self - 1);
-    }
-    fprintf(test, "%d\n", self - 1);
     switch (in_msg->type)
     {
       case TAKE_IN:
@@ -217,18 +214,29 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               Store.boxes_to_deliver--;
               Store.robots[self - 1].tmp_fl = 1;
 
-
-              Send_Event(0, TAKE_IN, lp, &(lp->gid));
+              if (self == 6) {
+                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+              } else {
+                Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+              }
               break;
             }
             if (Store.robots[self - 1].cur_cell.id == 23) {
               if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
@@ -238,7 +246,6 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
             Store.robots[self - 1].reserved_channel = best_box.column;
             Store.robots[self - 1].has_box = 1;
-            add_to_queue(self - 1);
             Store.robots[self - 1].goal_cell.id = MAX_RACKS + 1 + (int)(best_box.column / 10);
             Store.robots[self - 1].col = best_box.column;
             Store.robots[self - 1].row = best_box.row;
@@ -253,13 +260,16 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               Store.robots[self - 1].pre_reserved = 1;
             }
             fprintf(f, "%*d %*d %*d    finishMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.type_to_add, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
+            del_from_queue(self - 1);
             Store.robots[self - 1].cur_cell.id += 1;
+            add_to_queue(self - 1);
             event_id += 1;
 
           }
 
 
         } else if (Store.robots[self - 1].has_box == 1 && Store.robots[self - 1].cur_cell.id == Store.robots[self - 1].goal_cell.id) {
+          
           Store.robots[self - 1].goal_time = 8;
           if (Store.robots[self - 1].cur_time == 1) {
             fprintf(f,"%*d %*d %*d     startMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.type_to_add, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
@@ -268,12 +278,20 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == 23) {
               if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
@@ -294,7 +312,6 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             Store.robots[self - 1].col = -1;
             Store.robots[self - 1].row = -1;
             Store.robots[self - 1].cur_task = -1;
-            add_to_queue(self - 1);
             if (Store.boxes_to_deliver == 0) {
               fprintf(paleta, "%*d %*d %*s %*d %*d", 6, rec_id, 6, glb_time, 18, "finishDepalletize", 21, palet_type, 12, Store.type_to_add);
               fprintf(paleta, "\n");
@@ -311,10 +328,42 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             } else {
               Store.robots[self - 1].pre_reserved = 1;
             }
+            del_from_queue(self - 1);
             Store.robots[self - 1].cur_cell.id += 1;
+            add_to_queue(self - 1);
           }
 
         } else {
+
+          /*
+            if (Store.vertexes[Store.robots[self - 1].goal_cell.id][0] == Store.vertexes[Store.robots[self - 1].cur_cell.id][0]) {
+              Store.vertexes[Store.robots[self - 1].cur_cell.id += 1;
+            } else if (Store.vertexes[Store.robots[self - 1].goal_cell.id][0] > Store.vertexes[Store.robots[self - 1].cur_cell.id][0]) {
+              if (стык если можно вверх) {
+
+              } else if (стык если можно вбок) {
+                Store.vertexes[Store.robots[self - 1].cur_cell.id += 1;
+
+              } else {
+                вниз по стыку
+              }
+            } else {
+              if (стык если можно вниз) {
+
+              } else if (стык если можно вбок) {
+                Store.vertexes[Store.robots[self - 1].cur_cell.id += 1;
+                
+              } else {
+                вверх по стыку
+              }
+            }
+
+            if (Store.vertexes[Store.robots[self - 1].goal_cell.id == Store.vertexes[Store.robots[self - 1].cur_cell.id) {
+              
+            }
+
+          */
+          
           if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
             Store.robots[self - 1].goal_time = 3;
           } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 4 + 3) {
@@ -349,21 +398,32 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 3 + 2) {
               if (Store.cells[Store.store_graph[MAX_RACKS * 3 + 2][1]].queue[0] != -1 && Store.cells[Store.store_graph[MAX_RACKS * 3 + 2][1]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
               if (Store.cells[Store.store_graph[MAX_RACKS * 2 + 1][1]].queue[0] != -1 && Store.cells[Store.store_graph[MAX_RACKS * 2 + 1][1]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.store_graph[Store.robots[self - 1].cur_cell.id][0]].queue[0] != -1 && Store.cells[Store.store_graph[Store.robots[self - 1].cur_cell.id][0]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -375,8 +435,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               event_id += 1;
             }
             if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 3 + 2) {
-
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[MAX_RACKS * 3 + 2][1];
+              add_to_queue(self - 1);
 
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
@@ -386,8 +447,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               }
 
             } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
-
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[MAX_RACKS * 2 + 1][1];
+              add_to_queue(self - 1);
               
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
@@ -397,8 +459,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               }
 
             } else {
-
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[Store.robots[self - 1].cur_cell.id][0];
+              add_to_queue(self - 1);
 
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
@@ -414,7 +477,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
         }
         
         
-        Send_Event(0, TAKE_IN, lp, &(lp->gid));
+        if (self == 6) {
+          Send_Event(0, TAKE_IN, lp, &(lp->gid));
+        } else {
+          Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+        }
         break;
 
       case TAKE_OUT:
@@ -426,6 +493,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
         Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
         if (Store.robots[self - 1].has_box == -1 && Store.robots[self - 1].cur_cell.id == Store.robots[self - 1].goal_cell.id) {
+          
           Store.robots[self - 1].goal_time = 8;
           if (Store.robots[self - 1].cur_time == 1) {
             fprintf(f, "%*d %*d %*d     startMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, 0, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
@@ -434,16 +502,23 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == 23) {
               if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -467,11 +542,13 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             } else {
               Store.robots[self - 1].pre_reserved = 1;
             }
-
+            del_from_queue(self - 1);
             Store.robots[self - 1].cur_cell.id += 1;
+            add_to_queue(self - 1);
           }
 
         } else if (Store.robots[self - 1].has_box == 1 && Store.robots[self - 1].cur_cell.id == Store.robots[self - 1].goal_cell.id) {
+          
           Store.robots[self - 1].goal_time = 8;
           if (Store.robots[self - 1].cur_time == 1) {
             fprintf(f, "%*d %*d %*d     startMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.box_data[self][0], 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
@@ -480,16 +557,23 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == 23) {
               if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -507,9 +591,12 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             } else {
               Store.robots[self - 1].pre_reserved = 1;
             }
+            del_from_queue(self - 1);
             Store.robots[self - 1].cur_cell.id += 1;
+            add_to_queue(self - 1);
           }
         } else {
+          
           if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
             Store.robots[self - 1].goal_time = 7;
           } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 4 + 3) {
@@ -549,21 +636,32 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 3 + 2) {
               if (Store.cells[Store.store_graph[MAX_RACKS * 3 + 2][0]].queue[0] != -1 && Store.cells[Store.store_graph[MAX_RACKS * 3 + 2][0]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
               if (Store.cells[Store.store_graph[MAX_RACKS * 2 + 1][0]].queue[0] != -1 && Store.cells[Store.store_graph[MAX_RACKS * 2 + 1][0]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.store_graph[Store.robots[self - 1].cur_cell.id][0]].queue[0] != -1 && Store.cells[Store.store_graph[Store.robots[self - 1].cur_cell.id][0]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -575,7 +673,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               event_id += 1;
             }
             if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 3 + 2) {
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[MAX_RACKS * 3 + 2][0];
+              add_to_queue(self - 1);
 
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.robots[self - 1].pre_reserved = -1;
@@ -585,7 +685,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               }
 
             } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[MAX_RACKS * 2 + 1][0];
+              add_to_queue(self - 1);
               
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
@@ -595,7 +697,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               }
 
             } else {
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[Store.robots[self - 1].cur_cell.id][0];
+              add_to_queue(self - 1);
 
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.robots[self - 1].pre_reserved = -1;
@@ -608,7 +712,11 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           }
         }
         
-        Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+        if (self == 6) {
+          Send_Event(0, TAKE_OUT, lp, &(lp->gid));
+        } else {
+          Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+        }
         break;
 
         // if (Store.box_data[self][0] > high_border || Store.box_data[self][0] < low_border) {
@@ -638,6 +746,7 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 
         Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
         if (Store.robots[self - 1].has_box == -1 && Store.robots[self - 1].cur_cell.id == Store.robots[self - 1].goal_cell.id) {
+          
           Store.robots[self - 1].goal_time = 8;
           if (Store.robots[self - 1].cur_time == 1) {
             fprintf(f, "%*d %*d %*d     startMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, 0, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
@@ -646,16 +755,23 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == 23) {
               if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -677,11 +793,14 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
             }
             
             fprintf(f, "%*d %*d %*d    finishMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.robots[self - 1].low_SKU, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
+            del_from_queue(self - 1);
             Store.robots[self - 1].cur_cell.id += 1;
+            add_to_queue(self - 1);
             event_id += 1;
           }
 
         } else if (Store.robots[self - 1].has_box == 1 && Store.robots[self - 1].cur_cell.id == Store.robots[self - 1].goal_cell.id) {
+          
           Store.robots[self - 1].goal_time = 8;
           if (Store.robots[self - 1].cur_time == 1) {
             fprintf(f, "%*d %*d %*d     startMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, Store.robots[self - 1].low_SKU, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
@@ -690,16 +809,23 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == 23) {
               if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -733,10 +859,13 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               Store.robots[self - 1].pre_reserved = 1;
             }
             fprintf(f, "%*d %*d %*d    finishMotion       %*s     %*s     %*d    %*d   %*d\n", 6, event_id, 6, glb_time, 4, self, 4, Store.vertexes[Store.robots[self - 1].cur_cell.id], 4, Store.vertexes[Store.robots[self - 1].cur_cell.id + 1], 4, 0, 4, Store.robots[self - 1].col % 10 + 1, 2, 0);
+            del_from_queue(self - 1);
             Store.robots[self - 1].cur_cell.id += 1;
+            add_to_queue(self - 1);
             event_id += 1;
           }
         } else {
+          
           if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
             Store.robots[self - 1].goal_time = 7;
           } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 4 + 3) {
@@ -771,21 +900,32 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           if (Store.robots[self - 1].cur_time >= Store.robots[self - 1].goal_time) {
             if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 3 + 2) {
               if (Store.cells[Store.store_graph[MAX_RACKS * 3 + 2][1]].queue[0] != -1 && Store.cells[Store.store_graph[MAX_RACKS * 3 + 2][1]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
               if (Store.cells[Store.store_graph[MAX_RACKS * 2 + 1][0]].queue[0] != -1 && Store.cells[Store.store_graph[MAX_RACKS * 2 + 1][0]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             } else {
               if (Store.cells[Store.store_graph[Store.robots[self - 1].cur_cell.id][0]].queue[0] != -1 && Store.cells[Store.store_graph[Store.robots[self - 1].cur_cell.id][0]].queue[0] != self - 1) {
-                Send_Event(0, TAKE_IN, lp, &(lp->gid));
+                if (self == 6) {
+                  Send_Event(0, REVERSE, lp, &(lp->gid));
+                } else {
+                  Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+                }
                 break;
               }
             }
-            add_to_queue(self - 1);
             Store.robots[self - 1].tmp_fl = 1;
 
             Store.robots[self - 1].cur_time = 0;
@@ -797,7 +937,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               event_id += 1;
             }
             if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 3 + 2) {
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[MAX_RACKS * 3 + 2][1];
+              add_to_queue(self - 1);
 
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.robots[self - 1].pre_reserved = -1;
@@ -807,7 +949,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               }
 
             } else if (Store.robots[self - 1].cur_cell.id == MAX_RACKS * 2 + 1) {
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[MAX_RACKS * 2 + 1][0];
+              add_to_queue(self - 1);
               
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
@@ -817,7 +961,9 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
               }
 
             } else {
+              del_from_queue(self - 1);
               Store.robots[self - 1].cur_cell.id = Store.store_graph[Store.robots[self - 1].cur_cell.id][0];
+              add_to_queue(self - 1);
 
               if (Store.cells[Store.robots[self - 1].cur_cell.id].reserved == 0) {
                 Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 1;
@@ -829,44 +975,61 @@ void model_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
           }
         }
         
-        Send_Event(0, REVERSE, lp, &(lp->gid));
+        if (self == 6) {
+          Send_Event(0, REVERSE, lp, &(lp->gid));
+        } else {
+          Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+        }
         break;
       case GO:
         if (cur_boxes >= 390) {
           break;
         }
         
+        
         if (Store.robots[self - 1].cur_cell.id == 23) {
           if (Store.cells[12].queue[0] != -1 && Store.cells[12].queue[0] != self - 1) {
             Store.robots[self - 1].tmp_fl = 1;
             Store.robots[self - 1].cur_time = 0;
-            Send_Event(0, GO, lp, &(lp->gid));
+            if (self == 6) {
+              Send_Event(0, GO, lp, &(lp->gid));
+            } else {
+              Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+            }
             break;
           }
         } else {
           if (Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != -1 && Store.cells[Store.robots[self - 1].cur_cell.id + 1].queue[0] != self - 1) {
             Store.robots[self - 1].tmp_fl = 1;
             Store.robots[self - 1].cur_time = 0;
-            Send_Event(0, GO, lp, &(lp->gid));
+            if (self == 6) {
+              Send_Event(0, GO, lp, &(lp->gid));
+            } else {
+              Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+            }
             break;
           }
         }
 
-        add_to_queue(self - 1);
         Store.robots[self - 1].tmp_fl = 1;
-        Store.robots[self - 1].goal_cell.id = MAX_RACKS * 3 + 1 - (int)(Store.robots[self - 1].col / 10);
+        //Store.robots[self - 1].goal_cell.id = MAX_RACKS * 3 + 1 - (int)(Store.robots[self - 1].col / 10);
 
         Store.robots[self - 1].cur_time = 0;
 
         Store.cells[Store.robots[self - 1].cur_cell.id].reserved = 0;
-
+        del_from_queue(self - 1);
         if (Store.robots[self - 1].cur_cell.id != 23) {
           Store.robots[self - 1].cur_cell.id += 1;
         } else {
           Store.robots[self - 1].cur_cell.id = 12;
         }
+        add_to_queue(self - 1);
 
-        Send_Event(0, TAKE_IN, lp, &(lp->gid));
+        if (self == 6) {
+          Send_Event(0, GO, lp, &(lp->gid));
+        } else {
+          Send_Event(self + 1, Store.messages[self].type, lp, &(lp->gid));
+        }
         break;
       default:
         printf("\n%s\n", "No message");

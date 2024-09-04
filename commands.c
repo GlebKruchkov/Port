@@ -209,7 +209,7 @@ bool Check(int process) {
 }
 
 void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self) {
-    tw_event *e = tw_event_new(process, 0, lp);
+    tw_event *e = tw_event_new(process, 0.001, lp);
     message *msg = tw_event_data(e);
     msg->type = command;
     msg->contents = tw_rand_unif(lp->rng);
@@ -324,18 +324,8 @@ void write_csv(const char *filename, sqlite3 *db) {
 }
 
 void add_to_queue(int robot_id) {
-    // if (Store.robots[robot_id].cur_cell.id == MAX_RACKS * 4 + 3) {
-    //     if (Store.robots[robot_id].goal_cell.id == MAX_RACKS * 2 + 2 || (Store.cells[MAX_RACKS * 2 + 2].queue[0] != -1)) {
-    //         for (int i = 0; i < MAX_ROBOTS; ++i) { 
-    //             if (Store.cells[MAX_RACKS * 2 + 2].queue[i] == -1) { 
-    //                 Store.cells[MAX_RACKS * 2 + 2].queue[i] = robot_id; 
-    //                 return; 
-    //             } 
-    //         } 
-    //         return; 
-    //     }
-    // }
-    if ((Store.robots[robot_id].goal_cell.id == Store.robots[robot_id].cur_cell.id) || (Store.cells[Store.robots[robot_id].cur_cell.id].queue[0] != -1)) {
+    if ((Store.robots[robot_id].goal_cell.id == Store.robots[robot_id].cur_cell.id) || 
+    (MAX_CELLS > Store.robots[robot_id].cur_cell.id + 1 && Store.cells[Store.robots[robot_id].cur_cell.id + 1].queue[0] != -1)) {
         for (int i = 0; i < MAX_ROBOTS; ++i) {
             if (Store.cells[Store.robots[robot_id].cur_cell.id + 1].queue[i] == -1) {
                 Store.cells[Store.robots[robot_id].cur_cell.id + 1].queue[i] = robot_id;
@@ -355,3 +345,4 @@ void del_from_queue(int robot_id) {
         }
     }
 }
+
