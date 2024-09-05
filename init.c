@@ -1,5 +1,71 @@
 #include "model.h"
 
+void init_graph() {
+    for (int i = 0; i < 49; ++i) {
+        Store.direction_graph[i] = -1;
+    }
+
+    Store.direction_graph[6] = 7;
+
+    Store.direction_graph[7] = 18;
+
+
+
+    Store.direction_graph[18] = 19;
+
+    Store.direction_graph[19] = 30;
+
+    Store.direction_graph[30] = 31;
+
+    Store.direction_graph[31] = 42;
+
+    Store.direction_graph[42] = 43;
+
+    Store.direction_graph[48] = 37;
+
+    Store.direction_graph[37] = 36;
+
+    Store.direction_graph[36] = 25;
+
+    Store.direction_graph[25] = 24;
+
+    Store.direction_graph[24] = 13;
+
+    Store.direction_graph[13] = 12;
+
+    Store.direction_graph[12] = 0;
+}
+
+void InitVertexNames(char ch, int from, int to) {
+    if (from < to) {
+        int ind = 1;
+        while (from - 1 <= to) {
+            char str1[5];
+            str1[0] = ch;
+            str1[1] = '\0';
+            char str2[3];
+            sprintf(str2, "%d", ind); 
+            strcat(str1, str2);
+            strcpy(Store.vertexes[from - 1], str1);
+            from++;
+            ind++;
+        }
+    } else {
+        int ind = 1;
+        while (from > to) {
+            char str1[5]; 
+            str1[0] = ch;
+            str1[1] = '\0';
+            char str2[3];
+            sprintf(str2, "%d", ind); 
+            strcat(str1, str2);
+            strcpy(Store.vertexes[from - 1], str1); 
+            from--;
+            ind++;
+        }
+    }
+}
+
 void ConveyorsInit()
 {
     char *err_msg = 0;
@@ -8,48 +74,17 @@ void ConveyorsInit()
     sqlite3_exec(Store.db, sql_del, 0, 0, &err_msg);
     sqlite3_exec(Store.db, sql, 0, 0, &err_msg);
 
-    int a_tmp = MAX_RACKS * 4 + 3;
-    int b_tmp = MAX_RACKS * 2 + 2;
-    int c_tmp = MAX_RACKS * 2 + 1;
-    int ind = 1;
-    while (ind - 1 <= MAX_RACKS) {
-        char str1[5] = "D";
-        char str2[3];
-        sprintf(str2, "%d", ind);
-        strcat(str1, str2);
-        strcpy(Store.vertexes[ind - 1], str1);
-        ind++;
-    }
-    ind = 1;
-    while (c_tmp > MAX_RACKS) { 
-        char str1[5] = "C";
-        char str2[3];
-        sprintf(str2, "%d", ind);
-        strcat(str1, str2);
-        strcpy(Store.vertexes[c_tmp], str1);
-        ind++;
-        c_tmp--;
-    }
-    ind = 1;
-    while (b_tmp <= MAX_RACKS * 3 + 2) { 
-        char str1[5] = "B";
-        char str2[3];
-        sprintf(str2, "%d", ind);
-        strcat(str1, str2);
-        strcpy(Store.vertexes[b_tmp], str1);
-        ind++;
-        b_tmp++;
-    }
-    ind = 1;
-    while (a_tmp >= MAX_RACKS * 3 + 3) { 
-        char str1[5] = "A";
-        char str2[3];
-        sprintf(str2, "%d", ind);
-        strcat(str1, str2);
-        strcpy(Store.vertexes[a_tmp], str1);
-        ind++;
-        a_tmp--;
-    }
+    init_graph();
+
+    InitVertexNames('A', 1, MAX_RACKS + 1);
+    InitVertexNames('B', MAX_RACKS * 2 + 3, MAX_RACKS + 2);
+    InitVertexNames('C', MAX_RACKS * 2 + 4, MAX_RACKS * 3 + 3);
+    InitVertexNames('D', MAX_RACKS * 5, MAX_RACKS * 3 + 4);
+    InitVertexNames('E', MAX_RACKS * 5 + 1, MAX_RACKS * 6);
+    InitVertexNames('F', MAX_RACKS * 7 + 2, MAX_RACKS * 6 + 1);
+    InitVertexNames('G', MAX_RACKS * 7 + 3, MAX_RACKS * 8 + 2);
+    InitVertexNames('H', MAX_RACKS * 9 + 4, MAX_RACKS * 8 + 3);
+    Store.vertexes[MAX_VERTEXES][0] = '#';
 
     Store.kill_prog = false;
 
@@ -67,7 +102,7 @@ void ConveyorsInit()
     }
 
     // Initialization of cells
-    for (int i = 0; i < MAX_CELLS; ++i) {
+    for (int i = 0; i < MAX_VERTEXES; ++i) {
         printf("%d\n", i);
         cell c_cell;
         for (int j = 0; j < MAX_ROBOTS; ++j) {
@@ -112,6 +147,47 @@ void ConveyorsInit()
     fgets(line, sizeof(line), bots_starting_positions);
     
     // Initialization of robots to take out
+    // for (int i = 0; i < MAX_ROBOTS; ++i) {
+    //     Store.messages[i].type = GO;
+    //     robot bot;
+    //     bot.tmp_fl = 1;
+    //     bot.cur_task = -1;
+    //     bot.cur_box = -1;
+    //     bot.pre_reserved = -1;
+    //     bot.low_SKU = -1;
+    //     bot.col = -1;
+    //     bot.row = -1;
+    //     bot.kill = 0;
+    //     bot.has_box = -1;
+    //     bot.reserved_channel = -1;
+    //     bot.cur_time = 0;
+    //     bot.goal_time = 0;
+    //     fgets(line, sizeof(line), bots_starting_positions);
+    //     fields[0] = strtok(line, ",");
+    //     fields[1] = strtok(NULL, ",");
+        
+    //     if (fields[1][5] == 'A') {
+    //         bot.cur_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
+    //         bot.prev_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
+    //         Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')].reserved = 1;
+    //     } else if (fields[1][5] == 'D') {
+    //         bot.cur_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
+    //         bot.prev_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
+    //         Store.cells[(int)(fields[1][7] - '0') - 1].reserved = 1;
+    //     } else if (fields[1][5] == 'B') {
+    //         bot.cur_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
+    //         bot.prev_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
+    //         Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')].reserved = 1;
+    //     } else if (fields[1][5] == 'C') {
+    //         bot.cur_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
+    //         bot.prev_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
+    //         Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')].reserved = 1;
+    //     } else {
+    //         printf("WRONG BOTS STARTING POZITION\n");
+    //         exit(0);
+    //     }
+    //     Store.robots[i] = bot;
+    // }
     for (int i = 0; i < MAX_ROBOTS; ++i) {
         Store.messages[i].type = GO;
         robot bot;
@@ -127,30 +203,7 @@ void ConveyorsInit()
         bot.reserved_channel = -1;
         bot.cur_time = 0;
         bot.goal_time = 0;
-        fgets(line, sizeof(line), bots_starting_positions);
-        fields[0] = strtok(line, ",");
-        fields[1] = strtok(NULL, ",");
-        
-        if (fields[1][5] == 'A') {
-            bot.cur_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
-            bot.prev_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
-            Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')].reserved = 1;
-        } else if (fields[1][5] == 'D') {
-            bot.cur_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
-            bot.prev_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
-            Store.cells[(int)(fields[1][7] - '0') - 1].reserved = 1;
-        } else if (fields[1][5] == 'B') {
-            bot.cur_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
-            bot.prev_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
-            Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')].reserved = 1;
-        } else if (fields[1][5] == 'C') {
-            bot.cur_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
-            bot.prev_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
-            Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')].reserved = 1;
-        } else {
-            printf("WRONG BOTS STARTING POZITION\n");
-            exit(0);
-        }
+        bot.cur_cell = Store.cells[i];
         Store.robots[i] = bot;
     }
 

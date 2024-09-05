@@ -76,7 +76,7 @@ int find_data_by_width(sqlite3 **db1, int type) {
 
 int Add_Box(sqlite3 **db1, int type, int process) {
     struct sqlite3 * db = (struct sqlite3 *) *db1;
-    // find_data_by_width(db1, type);
+    // find_data_by_width(db, type);
     int col = Store.robots[process - 1].col;
     int r = Store.robots[process - 1].row;
     char *err_msg = 0;
@@ -90,7 +90,6 @@ int Add_Box(sqlite3 **db1, int type, int process) {
     Store.cnt_boxes_type[type]++;
 
     insert_data(db1, type, r, col, Store.b_w[type]);
-    return col;
 }
 
 void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
@@ -321,6 +320,32 @@ void write_csv(const char *filename, sqlite3 *db) {
 
     fclose(csv_file);
     sqlite3_finalize(stmt);
+}
+
+int next_vertex(int cur_vertex, int cur_goal) {
+    if (Store.vertexes[cur_goal][0] == Store.vertexes[cur_vertex][0]) {  // если нам нужно двигаться в текущей строке
+        if (Store.vertexes[cur_vertex + 1][0] != Store.vertexes[cur_vertex][0]) { // если цель в обратном направлении 
+        return Store.direction_graph[cur_vertex];
+        } else {
+        return cur_vertex + 1;
+        }
+    } else if (Store.vertexes[cur_goal][0] > Store.vertexes[cur_vertex][0]) { // если нам нужно двигаться вверх
+        if (Store.direction_graph[cur_vertex] != -1 && Store.vertexes[Store.direction_graph[cur_vertex]][1] != '1') { // если мы на стыке и можно вверх
+        return Store.direction_graph[cur_vertex];
+        } else if (Store.direction_graph[cur_vertex] == -1) { // если мы не на стыке
+        return cur_vertex + 1;
+        } else { // иначе вниз
+        return Store.direction_graph[cur_vertex];
+        }
+    } else {
+        if (Store.direction_graph[cur_vertex] != -1 && Store.vertexes[Store.direction_graph[cur_vertex]][1] == '1') { // если мы на стыке и можно вниз
+        return Store.direction_graph[cur_vertex];
+        } else if (Store.direction_graph[cur_vertex] == -1) { // если мы не на стыке
+        return cur_vertex + 1;
+        } else { // иначе вверх
+        return Store.direction_graph[cur_vertex];
+        }
+    }
 }
 
 void add_to_queue(int robot_id) {

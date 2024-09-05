@@ -13,13 +13,15 @@
 #define MAX_BOXES 8
 #define MAX_ROBOTS 6
 // #define MAX_ROBOTS 50
-#define MAX_CONVEYORS 50
+#define MAX_CONVEYORS 150
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
 
 #define MAX_FILES 14
 
 #define MAX_RACKS 5
 #define MAX_CELLS ((MAX_RACKS + 1) * 4)
+
+#define MAX_VERTEXES 49
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -163,16 +165,18 @@ struct _Store
     char files[15][1024];
     int cur_file;
 
+    int direction_graph[MAX_VERTEXES];
+
     int store_graph[(MAX_RACKS + 1) * 4][2];
 
-    char vertexes[MAX_RACKS * 4 + 4][5];
+    char vertexes[MAX_VERTEXES + 1][5];
     int box_data[7][2];
     int arr_time[7];
     int graph[12];
     int kill_prog;
 
     robot robots[MAX_ROBOTS];
-    cell cells[MAX_CELLS];
+    cell cells[MAX_VERTEXES];
 
     //int prev_commands[10][36]; // 1 + 7 * 5
     int times_to_inc;
@@ -234,4 +238,5 @@ extern void Print_Channel(int col, FILE *log_file);
 extern void write_csv(const char *filename, sqlite3 *db);
 extern void add_to_queue(int robot_id);
 extern void del_from_queue(int robot_id);
+extern int next_vertex(int cur_vertex, int cur_goal);
 #endif
