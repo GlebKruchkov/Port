@@ -236,7 +236,7 @@ extern int compare(const void *a, const void *b);
 extern void Send_Event(int process, message_type command, tw_lp *lp, tw_lpid *self);
 extern void Print_Channel(int col, FILE *log_file);
 extern void write_csv(const char *filename, sqlite3 *db);
-extern void add_to_queue(int robot_id);
+extern void add_to_queue(int robot_id, int next_vert);
 extern void del_from_queue(int robot_id);
 extern int next_vertex(int cur_vertex, int cur_goal);
 #endif
