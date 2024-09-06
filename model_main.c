@@ -118,5 +118,13 @@ int model_main (int argc, char* argv[]) {
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
 
+  for (int i = 0; i < MAX_VERTEXES; ++i) {
+    fprintf(test, "CELL %s. QUEUE", Store.vertexes[i]);
+    for (int j = 0; j < MAX_ROBOTS; ++j) {
+      fprintf(test, "%d ", Store.cells[i].queue[j]);
+    }
+    fprintf(test, "\n");
+  }
+
 	return 0;
 }

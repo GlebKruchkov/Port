@@ -1,170 +1,170 @@
  RecId   Time             Action              PalletID PalletTypeID
      1      1   StartDepalletize                     1            1 CNT24
-     2    413  finishDepalletize                     1            1
-     3    414   StartDepalletize                     2            2 CNT24
-     4    851  finishDepalletize                     2            2
-     5    852   StartDepalletize                     3            3 CNT24
-     6   1178  finishDepalletize                     3            3
-     7   1179   StartDepalletize                     4            4 CNT24
-     8   1470  finishDepalletize                     4            4
-     9   1471   StartDepalletize                     5            5 CNT24
-    10   1804  finishDepalletize                     5            5
-    11   1805   StartDepalletize                     6            6 CNT24
-    12   2096  finishDepalletize                     6            6
-    13   2097   StartDepalletize                     7            7 CNT24
-    14   2466  finishDepalletize                     7            7
-    15   2467   StartDepalletize                     8            8 CNT24
-    16   2871  finishDepalletize                     8            8
-    17   2872   StartDepalletize                     9            9 CNT24
-    18   3188  finishDepalletize                     9            9
-    19   3189   StartDepalletize                    10           10 CNT24
-    20   3555  finishDepalletize                    10           10
-    21   3556   StartDepalletize                    11           11 CNT24
-    22   3883  finishDepalletize                    11           11
-    23   3884   StartDepalletize                    12           12 CNT24
-    24   4139  finishDepalletize                    12           12
-    25   4140   StartDepalletize                    13           13 CNT24
-    26   4509  finishDepalletize                    13           13
-    27   4510   StartDepalletize                    14           14 CNT24
-    28   4856  finishDepalletize                    14           14
-    29   4857   StartDepalletize                    15           15 CNT24
-    30   5221  finishDepalletize                    15           15
-    31   5222   StartDepalletize                    16           16 CNT24
-    32   5573  finishDepalletize                    16           16
-    33   5574   StartDepalletize                    17           17 CNT24
-    34   5899  finishDepalletize                    17           17
-    35   5900   StartDepalletize                    18           18 CNT24
-    36   6197  finishDepalletize                    18           18
-    37   6198   StartDepalletize                    19           19 CNT24
-    38   6581  finishDepalletize                    19           19
-    39   6582   StartDepalletize                    20           20 CNT24
-    40   7081  finishDepalletize                    20           20
-    41   7082   StartDepalletize                    21           21 CNT24
-    42   7710  finishDepalletize                    21           21
-    43   7711   StartDepalletize                    22           22 CNT24
-    44   8238  finishDepalletize                    22           22
-    45   8239   StartDepalletize                    23           23 CNT24
-    46   8818  finishDepalletize                    23           23
-    47   8819   StartDepalletize                    24           24 CNT24
-    48   9555  finishDepalletize                    24           24
-    49   9556   StartDepalletize                    25           25 CNT24
-    50  10046  finishDepalletize                    25           25
-    51  10047   StartDepalletize                    26           26 CNT24
-    52  10581  finishDepalletize                    26           26
-    53  10582   StartDepalletize                    27           27 CNT24
-    54  11058  finishDepalletize                    27           27
-    55  11059   StartDepalletize                    28           28 CNT24
-    56  11444  finishDepalletize                    28           28
-    57  11445   StartDepalletize                    29           29 CNT24
-    58  11979  finishDepalletize                    29           29
-    59  11980   StartDepalletize                    30           30 CNT24
-    60  12383  finishDepalletize                    30           30
-    61  12384   StartDepalletize                    31           31 CNT24
-    62  13031  finishDepalletize                    31           31
-    63  13032   StartDepalletize                    32           32 CNT24
-    64  14144  finishDepalletize                    32           32
-    65  14145   StartDepalletize                    33           33 CNT24
-    66  14603  finishDepalletize                    33           33
-    67  14604   StartDepalletize                    34           34 CNT24
-    68  15151  finishDepalletize                    34           34
-    69  15152   StartDepalletize                    35           35 CNT24
-    70  15603  finishDepalletize                    35           35
-    71  15604   StartDepalletize                    36           36 CNT24
-    72  16221  finishDepalletize                    36           36
-    73  16222   StartDepalletize                    37           37 CNT24
-    74  16923  finishDepalletize                    37           37
-    75  16924   StartDepalletize                    38           38 CNT24
-    76  17533  finishDepalletize                    38           38
-    77  17534   StartDepalletize                    39           39 CNT24
-    78  18067  finishDepalletize                    39           39
-    79  18068   StartDepalletize                    40           40 CNT24
-    80  18874  finishDepalletize                    40           40
-    81  18875   StartDepalletize                    41           41 CNT24
-    82  19412  finishDepalletize                    41           41
-    83  19413   StartDepalletize                    42           42 CNT24
-    84  20065  finishDepalletize                    42           42
-    85  20066   StartDepalletize                    43           43 CNT24
-    86  20673  finishDepalletize                    43           43
-    87  20674   StartDepalletize                    44           44 CNT24
-    88  21295  finishDepalletize                    44           44
-    89  21296   StartDepalletize                    45           45 CNT24
-    90  22207  finishDepalletize                    45           45
-    91  22208   StartDepalletize                    46           46 CNT24
-    92  22771  finishDepalletize                    46           46
-    93  22772   StartDepalletize                    47           47 CNT24
-    94  23328  finishDepalletize                    47           47
-    95  23329   StartDepalletize                    48           48 CNT24
-    96  24055  finishDepalletize                    48           48
-    97  24056   StartDepalletize                    49           49 CNT24
-    98  24315   StartDepalletize                    49           50 CNT24
-    99  24864     startPalletize   1111141001011149554
+     2    411  finishDepalletize                     1            1
+     3    412   StartDepalletize                     2            2 CNT24
+     4    793  finishDepalletize                     2            2
+     5    794   StartDepalletize                     3            3 CNT24
+     6   1165  finishDepalletize                     3            3
+     7   1166   StartDepalletize                     4            4 CNT24
+     8   1524  finishDepalletize                     4            4
+     9   1525   StartDepalletize                     5            5 CNT24
+    10   1866  finishDepalletize                     5            5
+    11   1867   StartDepalletize                     6            6 CNT24
+    12   2181  finishDepalletize                     6            6
+    13   2182   StartDepalletize                     7            7 CNT24
+    14   2527  finishDepalletize                     7            7
+    15   2528   StartDepalletize                     8            8 CNT24
+    16   2905  finishDepalletize                     8            8
+    17   2906   StartDepalletize                     9            9 CNT24
+    18   3213  finishDepalletize                     9            9
+    19   3214   StartDepalletize                    10           10 CNT24
+    20   3578  finishDepalletize                    10           10
+    21   3579   StartDepalletize                    11           11 CNT24
+    22   3919  finishDepalletize                    11           11
+    23   3920   StartDepalletize                    12           12 CNT24
+    24   4210  finishDepalletize                    12           12
+    25   4211   StartDepalletize                    13           13 CNT24
+    26   4580  finishDepalletize                    13           13
+    27   4581   StartDepalletize                    14           14 CNT24
+    28   4942  finishDepalletize                    14           14
+    29   4943   StartDepalletize                    15           15 CNT24
+    30   5303  finishDepalletize                    15           15
+    31   5304   StartDepalletize                    16           16 CNT24
+    32   5662  finishDepalletize                    16           16
+    33   5663   StartDepalletize                    17           17 CNT24
+    34   5999  finishDepalletize                    17           17
+    35   6000   StartDepalletize                    18           18 CNT24
+    36   6339  finishDepalletize                    18           18
+    37   6340   StartDepalletize                    19           19 CNT24
+    38   6725  finishDepalletize                    19           19
+    39   6726   StartDepalletize                    20           20 CNT24
+    40   7036  finishDepalletize                    20           20
+    41   7037   StartDepalletize                    21           21 CNT24
+    42   7399  finishDepalletize                    21           21
+    43   7400   StartDepalletize                    22           22 CNT24
+    44   7763  finishDepalletize                    22           22
+    45   7764   StartDepalletize                    23           23 CNT24
+    46   8067  finishDepalletize                    23           23
+    47   8068   StartDepalletize                    24           24 CNT24
+    48   8401  finishDepalletize                    24           24
+    49   8402   StartDepalletize                    25           25 CNT24
+    50   8729  finishDepalletize                    25           25
+    51   8730   StartDepalletize                    26           26 CNT24
+    52   9045  finishDepalletize                    26           26
+    53   9046   StartDepalletize                    27           27 CNT24
+    54   9421  finishDepalletize                    27           27
+    55   9422   StartDepalletize                    28           28 CNT24
+    56   9725  finishDepalletize                    28           28
+    57   9726   StartDepalletize                    29           29 CNT24
+    58  10047  finishDepalletize                    29           29
+    59  10048   StartDepalletize                    30           30 CNT24
+    60  10389  finishDepalletize                    30           30
+    61  10390   StartDepalletize                    31           31 CNT24
+    62  10689  finishDepalletize                    31           31
+    63  10690   StartDepalletize                    32           32 CNT24
+    64  11035  finishDepalletize                    32           32
+    65  11036   StartDepalletize                    33           33 CNT24
+    66  11407  finishDepalletize                    33           33
+    67  11408   StartDepalletize                    34           34 CNT24
+    68  11719  finishDepalletize                    34           34
+    69  11720   StartDepalletize                    35           35 CNT24
+    70  12091  finishDepalletize                    35           35
+    71  12092   StartDepalletize                    36           36 CNT24
+    72  12448  finishDepalletize                    36           36
+    73  12449   StartDepalletize                    37           37 CNT24
+    74  12723  finishDepalletize                    37           37
+    75  12724   StartDepalletize                    38           38 CNT24
+    76  13093  finishDepalletize                    38           38
+    77  13094   StartDepalletize                    39           39 CNT24
+    78  13453  finishDepalletize                    39           39
+    79  13454   StartDepalletize                    40           40 CNT24
+    80  13836  finishDepalletize                    40           40
+    81  13837   StartDepalletize                    41           41 CNT24
+    82  14205  finishDepalletize                    41           41
+    83  14206   StartDepalletize                    42           42 CNT24
+    84  14521  finishDepalletize                    42           42
+    85  14522   StartDepalletize                    43           43 CNT24
+    86  14828  finishDepalletize                    43           43
+    87  14829   StartDepalletize                    44           44 CNT24
+    88  15211  finishDepalletize                    44           44
+    89  15212   StartDepalletize                    45           45 CNT24
+    90  15559  finishDepalletize                    45           45
+    91  15560   StartDepalletize                    46           46 CNT24
+    92  15966  finishDepalletize                    46           46
+    93  15967   StartDepalletize                    47           47 CNT24
+    94  16301  finishDepalletize                    47           47
+    95  16302   StartDepalletize                    48           48 CNT24
+    96  16617  finishDepalletize                    48           48
+    97  16618   StartDepalletize                    49           49 CNT24
+    98  16795   StartDepalletize                    49           50 CNT24
+    99  17322     startPalletize   1111141001011149554
            #1
-   100  27616  finishDepalletize                    49           50
-   101  31755    finishPalletize  1111141001011149554
+   100  17365  finishDepalletize                    49           50
+   101  19586    finishPalletize  1111141001011149554
            #1
-   102  31755     startPalletize 111114100101114954951
+   102  19586     startPalletize 111114100101114954951
            #1
-   103  40421    finishPalletize 111114100101114954951
+   103  21736    finishPalletize 111114100101114954951
            #1
-   104  40421     startPalletize 111114100101114954950
+   104  21736     startPalletize 111114100101114954950
            #1
-   105  47560    finishPalletize 111114100101114954950
+   105  23689    finishPalletize 111114100101114954950
            #1
-   106  47560     startPalletize   1111141001011149555
+   106  23689     startPalletize   1111141001011149555
            #1
-   107  55873    finishPalletize  1111141001011149555
+   107  25162    finishPalletize  1111141001011149555
            #1
-   108  55873     startPalletize   1111141001011149553
+   108  25162     startPalletize   1111141001011149553
            #1
-   109  61273   StartDepalletize                    50           49 CNT20
-   110  62132    finishPalletize  1111141001011149553
+   109  26796    finishPalletize  1111141001011149553
            #1
-   111  62132     startPalletize 111114100101114954948
+   110  26796     startPalletize 111114100101114954948
            #1
-   112  67009    finishPalletize 111114100101114954948
+   111  28536    finishPalletize 111114100101114954948
            #1
-   113  67009     startPalletize 111114100101114954949
+   112  28536     startPalletize 111114100101114954949
            #1
-   114  73227  finishDepalletize                    50           49
-   115  74984    finishPalletize 111114100101114954949
+   113  30128    finishPalletize 111114100101114954949
            #1
-   116  74984     startPalletize   1111141001011149552
+   114  30128     startPalletize   1111141001011149552
            #1
-   117  81942    finishPalletize  1111141001011149552
+   115  30638   StartDepalletize                    50           49 CNT20
+   116  31142  finishDepalletize                    50           49
+   117  32584    finishPalletize  1111141001011149552
            #1
-   118  81942     startPalletize 111114100101114954953
+   118  32584     startPalletize 111114100101114954953
            #1
-   119  83895   StartDepalletize                    51            9 CNT20
-   120  90103  finishDepalletize                    51            9
-   121  90767    finishPalletize 111114100101114954953
+   119  32943   StartDepalletize                    51            3 CNT20
+   120  33584  finishDepalletize                    51            3
+   121  33585   StartDepalletize                    52            9 CNT21
+   122  33973  finishDepalletize                    52            9
+   123  35425    finishPalletize 111114100101114954953
            #1
-   122  90767     startPalletize 111114100101114954952
+   124  35425     startPalletize 111114100101114954952
            #1
-   123  98598    finishPalletize 111114100101114954952
+   125  37380    finishPalletize 111114100101114954952
            #1
-   124  98598     startPalletize 111114100101114954954
+   126  37380     startPalletize 111114100101114954954
            #1
-   125  99260    finishPalletize 111114100101114954954
+   127  37568    finishPalletize 111114100101114954954
            #1
-   126  99260     startPalletize   1111141001011149551
+   128  37568     startPalletize   1111141001011149551
            #1
-   127  99514   StartDepalletize                    52            3 CNT20
-   128 100400  finishDepalletize                    52            3
-   129 102337    finishPalletize  1111141001011149551
+   129  39182    finishPalletize  1111141001011149551
            #1
-   130 102337     startPalletize   1111141001011149550
+   130  39182     startPalletize   1111141001011149550
            #1
-   131 107133    finishPalletize  1111141001011149550
+   131  40872    finishPalletize  1111141001011149550
            #1
-   132 107133     startPalletize   1111141001011149557
+   132  40872     startPalletize   1111141001011149557
            #1
-   133 110786   StartDepalletize                    53           41 CNT20
-   134 111899  finishDepalletize                    53           41
-   135 112716    finishPalletize  1111141001011149557
+   133  42551    finishPalletize  1111141001011149557
            #1
-   136 112716     startPalletize   1111141001011149556
+   134  42551     startPalletize   1111141001011149556
            #1
-   137 112761   StartDepalletize                    54            1 CNT20
-   138 113620  finishDepalletize                    54            1
-   139 115808    finishPalletize   1111141001011149556
+   135  42602   StartDepalletize                    53            1 CNT20
+   136  43081  finishDepalletize                    53            1
+   137  43084   StartDepalletize                    54           41 CNT20
+   138  43459  finishDepalletize                    54           41
+   139  44608    finishPalletize   1111141001011149556
            #1
