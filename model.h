@@ -59,6 +59,7 @@ FILE *csv_file;
 
 FILE *test;
 FILE *robots_positions;
+FILE *control_system_log;
 
 const static double g_robot_calc_time = 0.001;
 static const int threshold = (int)((MAX_BOXES * MAX_CONVEYORS) / (high_border - low_border));
@@ -239,4 +240,5 @@ extern void write_csv(const char *filename, sqlite3 *db);
 extern void add_to_queue(int robot_id, int next_vert);
 extern void del_from_queue(int robot_id);
 extern int next_vertex(int cur_vertex, int cur_goal);
+extern int GeTrIdFromBot(int curr_cell);
 #endif

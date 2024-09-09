@@ -1,5 +1,16 @@
 #include "model.h"
 
+int CellIdFromName(char* name) {
+  int code = (int)(name[5] - 'A');
+  if (code == 0) {
+    return (int)(name[7] - '0') - 1;
+  }
+  if (code % 2 == 0) {
+    return (int)(name[7] - '0') + 6 + (code - 1) * 6;
+  }
+  return 7 + code * 6 - (int)(name[7] - '0');
+}
+
 void init_graph() {
     for (int i = 0; i < 49; ++i) {
         Store.direction_graph[i] = -1;
@@ -188,7 +199,13 @@ void ConveyorsInit()
     //     }
     //     Store.robots[i] = bot;
     // }
+    
     for (int i = 0; i < MAX_ROBOTS; ++i) {
+
+        fgets(line, sizeof(line), bots_starting_positions);
+        fields[0] = strtok(line, ",");
+        fields[1] = strtok(NULL, ",");
+
         Store.messages[i].type = GO;
         robot bot;
         bot.tmp_fl = 1;
@@ -203,8 +220,8 @@ void ConveyorsInit()
         bot.reserved_channel = -1;
         bot.cur_time = 0;
         bot.goal_time = 0;
-        bot.cur_cell = Store.cells[i];
-        Store.robots[i] = bot;
+        bot.cur_cell = Store.cells[CellIdFromName(fields[1])];
+        Store.robots[(int)(fields[0][0] - '0') - 1] = bot;    
     }
 
     

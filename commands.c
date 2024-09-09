@@ -169,7 +169,7 @@ void Init_Commands(int *event_id, int *rec_id, int *glb_time, const char *filena
     strncpy(Store.cur_order, temp_line, sizeof(Store.cur_order) - 1);
 
     // Store.cur_order = strtok(line, ",");
-    fprintf(paleta, "%*d %*d %*s %*s       %*s", 6, *rec_id, 6, *glb_time, 18, "startPalletize", 22, strtok(line, ","), 6, "#1");
+    fprintf(paleta, "%*d %*d %*s %*s", 6, *rec_id, 6, *glb_time, 18, "startPalletize", 22, strtok(line, ","));
     fprintf(paleta, "\n");
     (*rec_id) += 1;
 
@@ -352,20 +352,20 @@ void add_to_queue(int robot_id, int next_vert) {
 
     if ((Store.robots[robot_id].goal_cell.id == Store.robots[robot_id].cur_cell.id) || (Store.cells[next_vert].queue[0] != -1)) {
 
-        fprintf(f, "BEFORE ADDING ID %d, CELL %s ", robot_id + 1, Store.vertexes[next_vert]);
-        for (int j = 0; j < MAX_ROBOTS; ++j) {
-            fprintf(f, "%d ", Store.cells[next_vert].queue[j]);
-        }
-        fprintf(f, "\n");
+        // fprintf(f, "BEFORE ADDING ID %d, CELL %s ", robot_id + 1, Store.vertexes[next_vert]);
+        // for (int j = 0; j < MAX_ROBOTS; ++j) {
+        //     fprintf(f, "%d ", Store.cells[next_vert].queue[j]);
+        // }
+        // fprintf(f, "\n");
 
         for (int i = 0; i < MAX_ROBOTS; ++i) {
             if (Store.cells[next_vert].queue[i] == -1) {
                 Store.cells[next_vert].queue[i] = robot_id;
-                fprintf(f, "AFTER ADDING ");
-                for (int j = 0; j < MAX_ROBOTS; ++j) {
-                    fprintf(f, "%d ", Store.cells[next_vert].queue[j]);
-                }
-                fprintf(f, "\n");
+                // fprintf(f, "AFTER ADDING ");
+                // for (int j = 0; j < MAX_ROBOTS; ++j) {
+                //     fprintf(f, "%d ", Store.cells[next_vert].queue[j]);
+                // }
+                // fprintf(f, "\n");
                 return;
             }
         }
@@ -376,11 +376,11 @@ void add_to_queue(int robot_id, int next_vert) {
 void del_from_queue(int robot_id) {
     if (robot_id == Store.cells[Store.robots[robot_id].cur_cell.id].queue[0]) {
 
-        fprintf(f, "BEFORE DELETING ID %d, CELL %s ", robot_id + 1, Store.vertexes[Store.robots[robot_id].cur_cell.id]);
-        for (int j = 0; j < MAX_ROBOTS; ++j) {
-            fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j]);
-        }
-        fprintf(f, "\n");
+        // fprintf(f, "BEFORE DELETING ID %d, CELL %s ", robot_id + 1, Store.vertexes[Store.robots[robot_id].cur_cell.id]);
+        // for (int j = 0; j < MAX_ROBOTS; ++j) {
+        //     fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j]);
+        // }
+        // fprintf(f, "\n");
 
         Store.cells[Store.robots[robot_id].cur_cell.id].queue[0] = -1;
         for (int i = 0; i < MAX_ROBOTS - 1; ++i) {
@@ -389,12 +389,24 @@ void del_from_queue(int robot_id) {
             Store.cells[Store.robots[robot_id].cur_cell.id].queue[i + 1] = temp;
         }
 
-        fprintf(f, "AFTER DELETING ");
-        for (int j = 0; j < MAX_ROBOTS; ++j) {
-            fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j]);
-        }
-        fprintf(f, "\n");
+        // fprintf(f, "AFTER DELETING ");
+        // for (int j = 0; j < MAX_ROBOTS; ++j) {
+        //     fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j]);
+        // }
+        // fprintf(f, "\n");
 
     }
+}
+
+int GeTrIdFromBot(int curr_cell) {
+  if (curr_cell < 3) {
+    return curr_cell + 3;
+  }
+  if (curr_cell + 1 == 47) {
+    return 2;
+  }
+  if (curr_cell + 1 == 48) {
+    return 1;
+  }
 }
 

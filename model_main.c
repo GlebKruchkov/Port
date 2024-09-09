@@ -70,6 +70,7 @@ int model_main (int argc, char* argv[]) {
   csv_file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/csv_file.csv", "w");
   test = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/test.txt", "w");
   robots_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/robots_positions.csv", "w");
+  control_system_log = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/control_system_log.txt", "w");
   const char *directory_path = "/Users/glebkruckov/Documents/Работа/Port/port-model/TEST3-SIMSIM";
   struct dirent *entry;
   DIR *dp = opendir(directory_path);
