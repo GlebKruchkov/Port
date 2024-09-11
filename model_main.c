@@ -88,6 +88,7 @@ int model_main (int argc, char* argv[]) {
 
   sqlite3_open("/Users/glebkruckov/Documents/Работа/Port/port-model/ross-sqlite.db", &Store.db);
   fprintf(f, "EventID  Time BotID        Command StartPoint EndPoint  BoxType Channel TrID\n");
+  fprintf(control_system_log, "EventID  Time BotID        Command StartPoint EndPoint  BoxType Channel TrID\n");
 
   // f_dep = fopen("/home/sasha/Port/first_depalitization.txt", "w");
   // sqlite3_open("/home/sasha/Port/ross-sqlite.db", &Store.db);

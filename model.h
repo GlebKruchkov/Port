@@ -45,6 +45,7 @@ static const int high_border = 51;
 static int is_reverse = 0;
 static int glb_time = 0;
 static int event_id = 1;
+static int control_id = 1;
 static int cur_boxes = 0;
 static int palet_type = 1;
 static int rec_id = 1;

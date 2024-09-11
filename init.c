@@ -79,6 +79,7 @@ void InitVertexNames(char ch, int from, int to) {
 
 void ConveyorsInit()
 {
+    // Store.type_to_add = -1;
     char *err_msg = 0;
     char *sql_del = "DROP TABLE IF EXISTS Warehouse";
     char *sql = "CREATE TABLE Warehouse(Type INTEGER, Row INTEGER, Column INTEGER, Width INTEGER, Channel_Width INTEGER)";
