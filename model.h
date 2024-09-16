@@ -1,25 +1,16 @@
-//The header file template for a ROSS model
-//This file includes:
-// - the state and message structs
-// - extern'ed command line arguments
-// - custom mapping function prototypes (if needed)
-// - any other needed structs, enums, unions, or #defines
-
 #ifndef _model_h
 #define _model_h
 
 #include "ross.h"
 
 #define MAX_BOXES 8
-#define MAX_ROBOTS 6
-// #define MAX_ROBOTS 50
+#define MAX_ROBOTS 15
 #define MAX_CONVEYORS 150
 #define MEM_POOL_SIZE (512 * 1024 * 1024)
 
 #define MAX_FILES 14
 
 #define MAX_RACKS 5
-#define MAX_CELLS ((MAX_RACKS + 1) * 4)
 
 #define MAX_VERTEXES 49
 
@@ -39,8 +30,6 @@
 
 static const int low_border = 1;
 static const int high_border = 51;
-
-// static const int threshold = 38;
 
 static int is_reverse = 0;
 static int glb_time = 0;
@@ -94,19 +83,6 @@ typedef struct
     tw_lpid sender;
 } message;
 
-// struct _robot
-// {
-//     int free;
-// };
-
-// struct _robots
-// {
-//     struct _robot elem[MAX_ROBOTS];
-//     int N;
-// };
-
-// struct _robots Robots;
-
 struct _conveyor
 {
     int max_length;
@@ -139,7 +115,6 @@ typedef struct
     int kill;
     cell cur_cell;
     cell goal_cell;
-    cell prev_cell;
 
     int pre_reserved;
 
@@ -147,6 +122,11 @@ typedef struct
     int goal_time;
     int cur_box;
     int tmp_fl;
+
+    int prev_vertex;
+    int prev_box_type;
+    int prev_channel;
+    int prev_tr_id;
 } robot;
 
 typedef struct {
@@ -169,19 +149,13 @@ struct _Store
 
     int direction_graph[MAX_VERTEXES];
 
-    int store_graph[(MAX_RACKS + 1) * 4][2];
-
     char vertexes[MAX_VERTEXES + 1][5];
-    int box_data[7][2];
-    int arr_time[7];
-    int graph[12];
+    int box_data[MAX_ROBOTS + 1][2];
     int kill_prog;
 
     robot robots[MAX_ROBOTS];
     cell cells[MAX_VERTEXES];
 
-    //int prev_commands[10][36]; // 1 + 7 * 5
-    int times_to_inc;
     
     int b_w[high_border - low_border + 1];
     box_pair box_width[high_border - low_border + 1];
@@ -194,8 +168,6 @@ struct _Store
     int nt_used[MAX_ROBOTS + 1];
     int boxes_to_deliver;
     int type_to_add;
-    int N;
-    bool full;
 };
 
 struct _Store Store;
@@ -205,23 +177,17 @@ typedef struct {
   int got_msgs_TAKE_IN;
   int got_msgs_TAKE_OUT;
   int got_msgs_REVERSE;
-//   lp_type type;
   double value;
 } state;
 
 extern unsigned int setting_1;
 
-//Global variables used by both main and driver
-// - this defines the LP types
 extern tw_lptype model_lps[];
 
-//Function Declarations
-// defined in model_driver.c:
 extern void model_init(state *s, tw_lp *lp);
 extern void model_event(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
 extern void model_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
 extern void model_final(state *s, tw_lp *lp);
-// defined in model_map.c:
 extern tw_peid model_map(tw_lpid gid);
 
 extern int callback(void *NotUsed, int argc, char **argv, char **azColName);

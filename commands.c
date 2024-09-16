@@ -120,7 +120,7 @@ void Swap_Boxes(sqlite3 **db1, int col, int row1, int row2) {
 int Reverse(sqlite3 **db1, int col, int row, int *time, int *l_id, int process) {
     //fprintf(f, "%*d   %*d   getbox%*d   shiftbox%*d    channelwidth%*d    putbox%*d  channel%*d         ", 4, *l_id, 4, *time, 5, Store.conveyor[col].boxes[7].SKU, 6, Store.conveyor[col].boxes[7].SKU, 2, Store.conveyor_width[col], 2, Store.conveyor[col].boxes[7].SKU, 2, col);
     *l_id += 1;
-    for (int i = 7; i >= 1; --i) {
+    for (int i = MAX_BOXES - 1; i >= 1; --i) {
         if (Store.conveyor[col].boxes[i - 1].empty == 0) {
             Swap_Boxes(db1, col, i, i - 1);
         }
@@ -139,13 +139,13 @@ int Remove_Boxes(sqlite3 **db1, int type, int *time, int *l_id, int process) {
     sprintf(sql, "DELETE FROM Warehouse WHERE Type = %d AND Row = %d AND Column = %d", type, 7, col);
     sqlite3_exec(db, sql, 0, 0, &err_msg);
 
-    insert_data(db1, -1, 7, col, -1);
+    insert_data(db1, -1, MAX_BOXES - 1, col, -1);
 
-    Store.conveyor[col].boxes[7].SKU = -1;
-    Store.conveyor[col].boxes[7].empty = 1;
-    Store.conveyor[col].boxes[7].width = -1;
+    Store.conveyor[col].boxes[MAX_BOXES - 1].SKU = -1;
+    Store.conveyor[col].boxes[MAX_BOXES - 1].empty = 1;
+    Store.conveyor[col].boxes[MAX_BOXES - 1].width = -1;
 
-    for (int i = 7; i >= 1; --i) {
+    for (int i = MAX_BOXES - 1; i >= 1; --i) {
         Swap_Boxes(db1, col, i, i - 1);
     }
     Store.cnt_boxes_type[type]--;
@@ -227,35 +227,6 @@ void Print_Channel(int col, FILE *log_file) {
     fprintf(log_file, "|\n");
 }
 
-void Print_Graph() {
-    for (int i = 0; i < MAX_CELLS; ++i) {
-      Store.graph[i] = 0;
-    }
-    for (int i = 0; i < MAX_ROBOTS; ++i) {
-      Store.graph[Store.robots[i].cur_cell.id] = i + 1;
-    }
-    fprintf(temp_txt, "\n");
-    for (int i = 0; i < 15; ++i) {
-        fprintf(temp_txt, "*");
-    }         
-    fprintf(temp_txt, "\n");
-    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[9], Store.graph[10], Store.graph[11]);
-    fprintf(temp_txt, "|      |      |\n");
-    fprintf(temp_txt, "|      |      |\n");
-    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[8], Store.graph[7], Store.graph[6]);
-    fprintf(temp_txt, "|/////////////|\n");
-    fprintf(temp_txt, "|||||||||||||||\n");
-    fprintf(temp_txt, "|/////////////|\n");
-    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[1], Store.graph[0], Store.graph[5]);
-    fprintf(temp_txt, "|      |      |\n");
-    fprintf(temp_txt, "|      |      |\n");
-    fprintf(temp_txt, "%d------%d------%d\n", Store.graph[2], Store.graph[3], Store.graph[4]);
-    fprintf(temp_txt, "\n");
-    for (int i = 0; i < 15; ++i) {
-        fprintf(temp_txt, "*");
-    }         
-}
-
 void write_csv(const char *filename, sqlite3 *db) {
     sqlite3_stmt *stmt;
     const char *sql = "SELECT * FROM Warehouse"; // Замените your_table на имя вашей таблицы
@@ -309,7 +280,7 @@ void write_csv(const char *filename, sqlite3 *db) {
     fprintf(robots_positions, ", ");
     fprintf(robots_positions, "BoxTypeID");
     fprintf(robots_positions, "\n");
-    for (int i = 0; i < 6; ++i) {
+    for (int i = 0; i < MAX_ROBOTS; ++i) {
         fprintf(robots_positions, "%d", i);
         fprintf(robots_positions, ",     ");
         fprintf(robots_positions, "%s", Store.vertexes[Store.robots[i].cur_cell.id]);
@@ -350,27 +321,27 @@ int next_vertex(int cur_vertex, int cur_goal) {
 
 void add_to_queue(int robot_id, int next_vert) {
 
-    if ((Store.robots[robot_id].goal_cell.id == Store.robots[robot_id].cur_cell.id) || (Store.cells[next_vert].queue[0] != -1)) {
+    // if ((Store.robots[robot_id].goal_cell.id == Store.robots[robot_id].cur_cell.id) || (Store.cells[next_vert].queue[0] != -1)) {
 
         // fprintf(f, "BEFORE ADDING ID %d, CELL %s ", robot_id + 1, Store.vertexes[next_vert]);
         // for (int j = 0; j < MAX_ROBOTS; ++j) {
-        //     fprintf(f, "%d ", Store.cells[next_vert].queue[j]);
+        //     fprintf(f, "%d ", Store.cells[next_vert].queue[j] + 1);
         // }
         // fprintf(f, "\n");
 
-        for (int i = 0; i < MAX_ROBOTS; ++i) {
-            if (Store.cells[next_vert].queue[i] == -1) {
-                Store.cells[next_vert].queue[i] = robot_id;
-                // fprintf(f, "AFTER ADDING ");
-                // for (int j = 0; j < MAX_ROBOTS; ++j) {
-                //     fprintf(f, "%d ", Store.cells[next_vert].queue[j]);
-                // }
-                // fprintf(f, "\n");
-                return;
-            }
+    for (int i = 0; i < MAX_ROBOTS; ++i) {
+        if (Store.cells[next_vert].queue[i] == -1) {
+            Store.cells[next_vert].queue[i] = robot_id;
+            // fprintf(f, "AFTER ADDING ");
+            // for (int j = 0; j < MAX_ROBOTS; ++j) {
+            //     fprintf(f, "%d ", Store.cells[next_vert].queue[j] + 1);
+            // }
+            // fprintf(f, "\n");
+            return;
+        }
         }
 
-    }
+    // }
 }
 
 void del_from_queue(int robot_id) {
@@ -378,7 +349,7 @@ void del_from_queue(int robot_id) {
 
         // fprintf(f, "BEFORE DELETING ID %d, CELL %s ", robot_id + 1, Store.vertexes[Store.robots[robot_id].cur_cell.id]);
         // for (int j = 0; j < MAX_ROBOTS; ++j) {
-        //     fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j]);
+        //     fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j] + 1);
         // }
         // fprintf(f, "\n");
 
@@ -391,7 +362,7 @@ void del_from_queue(int robot_id) {
 
         // fprintf(f, "AFTER DELETING ");
         // for (int j = 0; j < MAX_ROBOTS; ++j) {
-        //     fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j]);
+        //     fprintf(f, "%d ", Store.cells[Store.robots[robot_id].cur_cell.id].queue[j] + 1);
         // }
         // fprintf(f, "\n");
 
@@ -402,10 +373,10 @@ int GeTrIdFromBot(int curr_cell) {
   if (curr_cell < 3) {
     return curr_cell + 3;
   }
-  if (curr_cell + 1 == 47) {
+  if (curr_cell + 1 == MAX_VERTEXES - 2) {
     return 2;
   }
-  if (curr_cell + 1 == 48) {
+  if (curr_cell + 1 == MAX_VERTEXES - 1) {
     return 1;
   }
 }

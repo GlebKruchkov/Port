@@ -62,12 +62,12 @@ void displayModelSettings()
 int model_main (int argc, char* argv[]) {
   bots_starting_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/bots_starting_positions.csv", "r");
 
-  f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/log.txt", "w");
-  paleta = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/report.txt", "w");
+  f = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/full_actions_log.txt", "w");
+  paleta = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/paletize_depaletize.txt", "w");
   file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/TEST1-SIMSIM/small_test.csv", "r");
   f_dep = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/first_depalitization.txt", "w");
   temp_txt = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/temp_txt.txt", "w");
-  csv_file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/csv_file.csv", "w");
+  csv_file = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/final_warehouse.csv", "w");
   test = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/test.txt", "w");
   robots_positions = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/robots_positions.csv", "w");
   control_system_log = fopen("/Users/glebkruckov/Documents/Работа/Port/port-model/control_system_log.txt", "w");
@@ -101,7 +101,7 @@ int model_main (int argc, char* argv[]) {
 	int i, num_lps_per_pe;
   tw_opt_add(model_opts);
   tw_init(&argc, &argv);
-  num_lps_per_pe = 7;
+  num_lps_per_pe = MAX_ROBOTS + 1;
   // g_tw_events_per_pe = 100000;
   tw_define_lps(num_lps_per_pe, sizeof(message));
   // displayModelSettings();
@@ -120,13 +120,13 @@ int model_main (int argc, char* argv[]) {
   fprintf(f, "------------------------------------------------------------------------------------\n");
   fprintf(f, "------------------------------------------------------------------------------------\n");
 
-  for (int i = 0; i < MAX_VERTEXES; ++i) {
-    fprintf(test, "CELL %s. QUEUE", Store.vertexes[i]);
-    for (int j = 0; j < MAX_ROBOTS; ++j) {
-      fprintf(test, "%d ", Store.cells[i].queue[j]);
-    }
-    fprintf(test, "\n");
-  }
+  // for (int i = 0; i < MAX_VERTEXES; ++i) {
+  //   fprintf(test, "CELL %s. QUEUE", Store.vertexes[i]);
+  //   for (int j = 0; j < MAX_ROBOTS; ++j) {
+  //     fprintf(test, "%d ", Store.cells[i].queue[j]);
+  //   }
+  //   fprintf(test, "\n");
+  // }
 
 	return 0;
 }

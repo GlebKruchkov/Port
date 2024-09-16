@@ -115,7 +115,7 @@ void ConveyorsInit()
 
     // Initialization of cells
     for (int i = 0; i < MAX_VERTEXES; ++i) {
-        printf("%d\n", i);
+        // printf("%d\n", i);
         cell c_cell;
         for (int j = 0; j < MAX_ROBOTS; ++j) {
             c_cell.queue[j] = -1;
@@ -125,81 +125,10 @@ void ConveyorsInit()
         Store.cells[i] = c_cell;
     }
 
-    // Store.vertexes[0] = "B2";
-    // Store.vertexes[1] = "B1";
-    // Store.vertexes[2] = "A1";
-    // Store.vertexes[3] = "A2";
-    // Store.vertexes[4] = "A3";
-    // Store.vertexes[5] = "B3";
-    // Store.vertexes[6] = "C3";
-    // Store.vertexes[7] = "C2";
-    // Store.vertexes[8] = "C1";
-    // Store.vertexes[9] = "D1";
-    // Store.vertexes[10] = "D2";
-    // Store.vertexes[11] = "D3";
-
-    for (int i = 0; i < (MAX_RACKS + 1) * 4; ++i) {
-        if (i == MAX_RACKS * 2 + 1) {
-            Store.store_graph[i][0] = i + 1;
-            Store.store_graph[i][1] = 0;     
-        } else if (i == MAX_RACKS * 3 + 2) {
-            Store.store_graph[i][0] = i + 1;
-            Store.store_graph[i][1] = MAX_RACKS + 1;
-        } else if (i == MAX_RACKS * 4 + 3) {
-            Store.store_graph[i][0] = MAX_RACKS * 2 + 2;
-            Store.store_graph[i][1] = -1;  
-        } else {
-            Store.store_graph[i][0] = i + 1;
-            Store.store_graph[i][1] = -1;
-        }
-    }
 
     char line[256];
     char *fields[3];
     fgets(line, sizeof(line), bots_starting_positions);
-    
-    // Initialization of robots to take out
-    // for (int i = 0; i < MAX_ROBOTS; ++i) {
-    //     Store.messages[i].type = GO;
-    //     robot bot;
-    //     bot.tmp_fl = 1;
-    //     bot.cur_task = -1;
-    //     bot.cur_box = -1;
-    //     bot.pre_reserved = -1;
-    //     bot.low_SKU = -1;
-    //     bot.col = -1;
-    //     bot.row = -1;
-    //     bot.kill = 0;
-    //     bot.has_box = -1;
-    //     bot.reserved_channel = -1;
-    //     bot.cur_time = 0;
-    //     bot.goal_time = 0;
-    //     fgets(line, sizeof(line), bots_starting_positions);
-    //     fields[0] = strtok(line, ",");
-    //     fields[1] = strtok(NULL, ",");
-        
-    //     if (fields[1][5] == 'A') {
-    //         bot.cur_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
-    //         bot.prev_cell = Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')];
-    //         Store.cells[MAX_RACKS * 4 + 4 - (int)(fields[1][7] - '0')].reserved = 1;
-    //     } else if (fields[1][5] == 'D') {
-    //         bot.cur_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
-    //         bot.prev_cell = Store.cells[(int)(fields[1][7] - '0') - 1];
-    //         Store.cells[(int)(fields[1][7] - '0') - 1].reserved = 1;
-    //     } else if (fields[1][5] == 'B') {
-    //         bot.cur_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
-    //         bot.prev_cell = Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')];
-    //         Store.cells[MAX_RACKS * 2 + 1 + (int)(fields[1][7] - '0')].reserved = 1;
-    //     } else if (fields[1][5] == 'C') {
-    //         bot.cur_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
-    //         bot.prev_cell = Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')];
-    //         Store.cells[MAX_RACKS * 2 + 2 - (int)(fields[1][7] - '0')].reserved = 1;
-    //     } else {
-    //         printf("WRONG BOTS STARTING POZITION\n");
-    //         exit(0);
-    //     }
-    //     Store.robots[i] = bot;
-    // }
     
     for (int i = 0; i < MAX_ROBOTS; ++i) {
 
@@ -222,16 +151,23 @@ void ConveyorsInit()
         bot.cur_time = 0;
         bot.goal_time = 0;
         bot.cur_cell = Store.cells[CellIdFromName(fields[1])];
-        Store.robots[(int)(fields[0][0] - '0') - 1] = bot;    
+        bot.prev_vertex = -1;
+        bot.prev_box_type = -1;
+        bot.prev_channel = -1;
+        bot.prev_tr_id = -1;
+        Store.robots[i] = bot;    
+    }
+
+    for (int i = 0; i < MAX_ROBOTS; ++i) {
+        printf("%s\n", Store.vertexes[Store.robots[i].cur_cell.id]);
     }
 
     
     int change_tmp = 0;
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < high_border - low_border + 1; ++i) {
         Store.cnt_boxes_type[i] = 0;
         Store.cnt_boxes_type_const[i] = 0;
     }
-    int tempor = 1;
 
     for (int row = 0; row < MAX_BOXES; ++row) {
         for (int col = 0; col < MAX_CONVEYORS; ++col) {
@@ -255,16 +191,15 @@ void ConveyorsInit()
         }
     }
     
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_ROBOTS + 1; ++i) {
         Store.used[i] = 0;
     }
     Store.boxes_to_deliver = 0;
     Store.cur_file = 0;
 
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < MAX_ROBOTS + 1; ++i) {
         Store.box_data[i][0] = -1;
         Store.box_data[i][1] = 0;
-        Store.arr_time[i] = 0;
     }
 }
 
